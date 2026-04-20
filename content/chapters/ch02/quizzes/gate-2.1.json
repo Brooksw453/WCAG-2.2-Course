@@ -1,0 +1,53 @@
+{
+  "sectionId": "2.1",
+  "chapterId": 2,
+  "questions": [
+    {
+      "id": "ch02-q01",
+      "question": "A faculty member posts a syllabus where the section titles are formatted as bold 16pt text, but the Heading styles were not applied. How does this affect a student using a screen reader?",
+      "options": [
+        {
+          "text": "The section titles will be read aloud, but the screen reader won't recognize them as section headings",
+          "correct": true
+        },
+        {
+          "text": "The section titles will be skipped entirely by the screen reader",
+          "correct": false
+        },
+        {
+          "text": "The section titles will be read twice — once as formatted text, once as headings",
+          "correct": false
+        },
+        {
+          "text": "There is no difference between bold formatting and Heading styles for screen readers",
+          "correct": false
+        }
+      ],
+      "explanation": "Formatting (bold, large text) is visual only. Screen readers read the content but don't recognize visual formatting as structural meaning. A student relying on the screen reader to navigate by headings (a common navigation technique) won't be able to jump to sections efficiently. The Perceivable and Understandable principles are satisfied (the student can read the content), but the Operable principle fails (the student can't navigate efficiently). This illustrates why semantic structure (Heading styles) matters alongside visual formatting."
+    },
+    {
+      "id": "ch02-q02",
+      "question": "Which of the following best describes the 'Robust' principle in WCAG?",
+      "options": [
+        {
+          "text": "Content must be built with strong, durable technology that won't break",
+          "correct": false
+        },
+        {
+          "text": "Content must work with assistive technology and work across different devices and browsers",
+          "correct": true
+        },
+        {
+          "text": "Materials must remain accessible even if the original tool or software is no longer maintained",
+          "correct": false
+        },
+        {
+          "text": "Courses must be designed to handle large numbers of students accessing materials simultaneously",
+          "correct": false
+        }
+      ],
+      "explanation": "The Robust principle asks whether your material works with the assistive technologies that students rely on — screen readers, speech recognition software, magnifiers, and others. It also means the content should work across browsers and devices, and be structured in a way that current and future assistive technology can understand it. A PDF that was scanned from a paper document (with no OCR) is not robust because a screen reader can't read the scanned image. A well-structured Word document exported to PDF is robust because the structure is preserved."
+    }
+  ],
+  "passThreshold": 80
+}

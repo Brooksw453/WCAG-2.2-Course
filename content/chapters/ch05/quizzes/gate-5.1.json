@@ -1,0 +1,53 @@
+{
+  "sectionId": "5.1",
+  "chapterId": 5,
+  "questions": [
+    {
+      "id": "ch05-q01",
+      "question": "A faculty member records a 30-minute lecture and uploads it to YouTube, which auto-generates captions. The faculty member enables the auto-captions and makes them available to students. Does this satisfy WCAG 2.1 AA requirements for caption accessibility?",
+      "options": [
+        {
+          "text": "No — auto-generated captions must be reviewed and edited by a human to verify accuracy, especially for technical terminology and proper nouns",
+          "correct": true
+        },
+        {
+          "text": "Yes — YouTube's auto-captions are 99% accurate and meet all WCAG requirements",
+          "correct": false
+        },
+        {
+          "text": "No — only professional captioning services meet WCAG requirements",
+          "correct": false
+        },
+        {
+          "text": "Yes — as long as the captions are turned on by default and students can see them",
+          "correct": false
+        }
+      ],
+      "explanation": "Auto-generated captions are a fast, free starting point, but they typically achieve only 80–90% accuracy. Technical terminology, proper nouns, accents, and background noise cause errors. Industry standards (like DCMP) require 99%+ accuracy for educational content. Auto-captions must be reviewed and edited before they are considered accessible. YouTube Studio makes this editing straightforward."
+    },
+    {
+      "id": "ch05-q02",
+      "question": "What is the primary difference between a transcript and a caption?",
+      "options": [
+        {
+          "text": "A transcript is a complete text version of audio content (not synchronized with the video), while a caption is synchronized text displayed on screen during playback",
+          "correct": true
+        },
+        {
+          "text": "A transcript is used for audio-only content, while captions are only for video",
+          "correct": false
+        },
+        {
+          "text": "A transcript includes only dialogue, while a caption includes sound descriptions like [applause]",
+          "correct": false
+        },
+        {
+          "text": "There is no difference — the terms are interchangeable",
+          "correct": false
+        }
+      ],
+      "explanation": "Transcripts and captions serve different purposes. A caption is synchronized with video/audio (it appears at the moment corresponding dialogue is spoken). A transcript is a standalone text document that can be read anytime, independent of the video. Both are required for video content under WCAG — captions for real-time accessibility during playback, transcripts as a complete alternative format."
+    }
+  ],
+  "passThreshold": 80
+}

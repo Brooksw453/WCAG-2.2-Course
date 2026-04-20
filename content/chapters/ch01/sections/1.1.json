@@ -1,0 +1,63 @@
+{
+  "sectionId": "1.1",
+  "chapterId": 1,
+  "title": "Title II in Plain English",
+  "learningObjectives": [
+    "Summarize the DOJ's ADA Title II final rule and what it requires",
+    "Identify the compliance deadlines for large vs. small public entities",
+    "Explain why digital accessibility is now a legal obligation, not just best practice"
+  ],
+  "keyTerms": [
+    {
+      "term": "ADA Title II",
+      "definition": "The section of the Americans with Disabilities Act that prohibits discrimination by public entities — including public colleges and universities — in their services, programs, and activities. A 2024 final rule extended this to explicitly cover websites, mobile apps, and digital content."
+    },
+    {
+      "term": "WCAG (Web Content Accessibility Guidelines)",
+      "definition": "An internationally recognized set of technical standards published by the World Wide Web Consortium (W3C) that define how to make digital content accessible to people with disabilities. The current version is WCAG 2.2, though Title II requires conformance to WCAG 2.1 Level AA."
+    },
+    {
+      "term": "Digital Accessibility",
+      "definition": "The practice of designing and creating digital content — websites, documents, videos, apps, and course materials — so that people with disabilities can perceive, understand, navigate, and interact with them effectively."
+    },
+    {
+      "term": "Public Entity",
+      "definition": "Under the ADA, any state or local government and its departments, agencies, or instrumentalities. All public colleges, universities, and community colleges are public entities subject to Title II."
+    },
+    {
+      "term": "Conformance Level",
+      "definition": "WCAG organizes its success criteria into three levels: A (minimum), AA (recommended standard), and AAA (highest). Title II requires Level AA conformance, which includes all Level A and Level AA success criteria — 50 criteria total under WCAG 2.1."
+    },
+    {
+      "term": "Undue Burden",
+      "definition": "A legal defense under Title II that allows an entity to claim compliance would result in significant difficulty or expense. This is a high bar — it requires documented evidence and top-level sign-off, and even when claimed, the institution must still provide access through alternative means."
+    }
+  ],
+  "contentBlocks": [
+    {
+      "type": "concept",
+      "title": "What Title II Actually Says",
+      "body": "On April 24, 2024, the U.S. Department of Justice published a [final rule](https://www.ada.gov/resources/2024-03-08-web-rule/) that changed the game for every public college and university in the country. For the first time, **ADA Title II** now explicitly requires that the websites, mobile apps, and digital content of state and local governments — including public higher-ed institutions — conform to a specific technical standard: **WCAG 2.1, Level AA**.\n\nBefore this rule, Title II already prohibited disability discrimination in public services. Courts and the Office for Civil Rights had been applying that principle to digital content for years, resulting in resolution agreements and settlements with universities across the country. But the standard was vague. Institutions could argue about what \"accessible\" meant. The 2024 rule eliminated that ambiguity.\n\nHere is what the rule says, stripped to its essentials:\n\n- **Who is covered?** Every state and local government entity, which includes every public college, university, community college, and technical school in the United States.\n- **What must be accessible?** Web content and mobile apps used to provide services, programs, or activities — including your institution's website, its learning management system, course documents posted online, registration systems, library resources, and third-party tools the institution pays for or requires students to use.\n- **What standard must be met?** WCAG 2.1, Level AA. That means conforming to 50 specific success criteria that cover everything from color contrast to keyboard navigation to alternative text for images.\n- **When?** Large public entities (those serving 50,000 or more people) must comply by **April 24, 2026**. Smaller entities have until **April 26, 2027**.\n\nThis is not a suggestion, a grant requirement, or a best-practice recommendation. It is a federal regulation with the force of law, published in the [Federal Register](https://www.federalregister.gov/documents/2024/04/24/2024-07758/nondiscrimination-on-the-basis-of-disability-accessibility-of-web-information-and-services-of-state) and enforceable through Department of Justice action and private lawsuits."
+    },
+    {
+      "type": "concept",
+      "title": "What This Means for Your Institution",
+      "body": "If you teach at a public college or university, this rule applies to your institution — and by extension, to the course materials you create and post for students.\n\nThe scope is broader than many faculty realize. The rule covers:\n\n- **Your institution's website** — every page, from admissions to the campus map\n- **Your LMS course pages** — the content you post in Canvas, Blackboard, Moodle, or whatever system your institution uses\n- **Documents you upload** — syllabi, handouts, slide decks, PDFs, and spreadsheets\n- **Videos and multimedia** — lecture recordings, embedded YouTube videos, publisher content\n- **Third-party tools** — if your institution requires students to use a platform (a publisher's homework system, a virtual lab, a proctoring tool), the institution is responsible for that tool's accessibility even though the institution didn't build it\n\nThere are a handful of limited exceptions in the rule — for archived web content that is not actively used, for password-protected course content in certain narrow circumstances, and for situations where compliance would constitute an **undue burden**. But these exceptions are narrower than most people assume. The undue burden defense, for example, requires the institution to document significant difficulty or expense, have a senior official sign off on the determination, and still provide the information through an alternative accessible means. \"We didn't know\" and \"we don't have the budget\" are not undue burden defenses.\n\nThe practical takeaway for faculty is simple: **the documents, slides, videos, and course materials you create are covered by this rule**. If a student with a disability cannot access your syllabus, your lecture slides, or your quiz because of how it was built, that is a potential Title II violation — not just an inconvenience.\n\nThis is not cause for panic. It is cause for learning what accessible course materials look like and building the skills to create them. That is exactly what this course will help you do."
+    },
+    {
+      "type": "example",
+      "title": "A Real Compliance Timeline",
+      "body": "Consider the experience of a mid-size state university — let's call it Midlands State — with 18,000 students and around 900 faculty.\n\nIn late 2024, Midlands State's general counsel flagged the new Title II rule and briefed the provost. The institution had already dealt with two OCR complaints about inaccessible PDF forms on its financial aid website, but had never conducted a comprehensive accessibility audit.\n\nHere is what their compliance timeline looked like:\n\n**Fall 2024 — The Audit.** The university hired an accessibility consultant to audit its main website, its Canvas LMS templates, and a sample of 200 course documents across departments. The results were sobering: the main website had over 4,000 WCAG violations. Forty-three percent of sampled course documents had at least one critical accessibility issue — most commonly missing heading structure, missing alt text on images, and non-descriptive link text (\"click here\").\n\n**Spring 2025 — The Remediation Plan.** IT and the provost's office developed a phased remediation plan. Website fixes were prioritized first. For course materials, the plan relied on two things: (1) a new institutional license for an automated document remediation tool, and (2) mandatory faculty training — a self-paced accessibility course that every instructor would complete before Fall 2025.\n\n**Fall 2025 — Faculty Training.** Faculty completed the training, which took about five hours. Departmental accessibility liaisons were appointed to answer questions and spot-check materials. The university's Center for Teaching and Learning offered drop-in \"accessibility office hours\" during syllabus prep week.\n\n**April 2026 — The Deadline.** Midlands State was not perfectly compliant — no institution of that size is — but it had a documented plan, demonstrated progress, trained faculty, and a system for handling new materials going forward. When the Office for Civil Rights inquired about their status, the university could show a credible, active compliance effort rather than a blank stare.\n\nThis is a realistic picture. No institution flips a switch and becomes compliant overnight. What matters is demonstrable, good-faith progress — and faculty training is one of the most visible and effective components of that progress."
+    },
+    {
+      "type": "summary",
+      "body": "ADA Title II now explicitly requires public colleges and universities to make their digital content — including websites, LMS courses, documents, and multimedia — conform to WCAG 2.1 Level AA. Large institutions faced an April 2026 deadline; smaller ones have until April 2027. This is a federal regulation, not a recommendation. The course materials you create as faculty are covered. The good news: the skills to build accessible materials are learnable, and that is what this course is for."
+    }
+  ],
+  "freeTextPrompt": {
+    "id": "ft-1.1",
+    "prompt": "Look up your own institution's accessibility policy or statement. Most institutions have one linked from their website footer, or you can search your institution's name plus \"accessibility\" or \"ADA compliance.\" Does it reference Title II, WCAG, or specific conformance levels? What did you find — or not find? What questions does this raise for you about your own course materials?",
+    "minWords": 100,
+    "rubric": "A strong response demonstrates that the participant actually searched for their institution's policy (not a hypothetical). It identifies specific details — whether the policy references Title II, WCAG, a conformance level, or a compliance deadline — or notes their absence. It connects the findings (or gaps) to their own role as a faculty member and raises at least one thoughtful question about their own materials or practices."
+  }
+}

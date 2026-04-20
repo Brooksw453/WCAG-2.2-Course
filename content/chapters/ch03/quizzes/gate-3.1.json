@@ -1,0 +1,53 @@
+{
+  "sectionId": "3.1",
+  "chapterId": 3,
+  "questions": [
+    {
+      "id": "ch03-q01",
+      "question": "A document uses bold 14pt text for section titles instead of applying Heading 1 styles. How does this affect a screen reader user navigating the document?",
+      "options": [
+        {
+          "text": "The screen reader can still navigate by headings — visual formatting and semantic structure are the same",
+          "correct": false
+        },
+        {
+          "text": "The screen reader cannot recognize these as headings and cannot navigate by heading list; the user must listen to the entire document",
+          "correct": true
+        },
+        {
+          "text": "The screen reader announces the text twice — once as formatted, once as a heading",
+          "correct": false
+        },
+        {
+          "text": "The document becomes completely inaccessible and cannot be read at all",
+          "correct": false
+        }
+      ],
+      "explanation": "Screen readers detect semantic structure (heading styles), not visual formatting. Bold text is just bold text to a screen reader. When a screen reader user pulls up the 'Headings' list to navigate quickly, they get an empty list because the document has no heading styles applied. This is a common accessibility issue that the Accessibility Checker flags. The fix: select the bold text and apply Heading styles from the Styles pane."
+    },
+    {
+      "id": "ch03-q02",
+      "question": "In PowerPoint, where should you check and adjust the reading order of elements on a slide?",
+      "options": [
+        {
+          "text": "In the View menu by switching to Outline view",
+          "correct": false
+        },
+        {
+          "text": "In the Format menu by selecting the object and choosing 'Arrange'",
+          "correct": false
+        },
+        {
+          "text": "In the Selection Pane (found in the Design or Accessibility menu) which shows all objects in reading order",
+          "correct": true
+        },
+        {
+          "text": "Reading order is automatically correct in PowerPoint and cannot be adjusted",
+          "correct": false
+        }
+      ],
+      "explanation": "The Selection Pane is the dedicated tool for managing reading order in PowerPoint. It displays all objects on a slide in the sequence they will be read by a screen reader. If the reading order doesn't match the visual layout, you can reorder objects using the up/down arrows in the Selection Pane. Using built-in slide layouts instead of custom text boxes typically ensures correct reading order by default."
+    }
+  ],
+  "passThreshold": 80
+}

@@ -1,0 +1,63 @@
+{
+  "sectionId": "8.2",
+  "chapterId": 8,
+  "title": "Building Your Personal Workflow",
+  "learningObjectives": [
+    "Design a repeatable accessibility workflow for creating and updating course materials",
+    "Integrate accessibility checks into your existing course preparation process",
+    "Create a semester-start accessibility checklist that fits your teaching schedule"
+  ],
+  "keyTerms": [
+    {
+      "term": "Born accessible",
+      "definition": "Building accessibility into course materials from the moment of creation. Materials designed with accessible structure, alt text, and clear language from the start, rather than retrofitted after complaints."
+    },
+    {
+      "term": "Retroactive remediation",
+      "definition": "The process of taking existing, inaccessible materials and fixing them after the fact. More time-consuming and expensive than building accessible from the start, but sometimes necessary for legacy content."
+    },
+    {
+      "term": "Semester-start checklist",
+      "definition": "A standardized set of accessibility tasks to complete before each semester begins, ensuring consistent baseline accessibility across all course materials and the LMS environment."
+    },
+    {
+      "term": "Batch processing",
+      "definition": "Running accessibility checks or remediation on multiple documents at once (e.g., uploading all syllabi to Document Ally Pro) rather than checking each individually."
+    },
+    {
+      "term": "Workflow",
+      "definition": "A repeatable sequence of steps, integrated into your course preparation routine, that ensures accessibility is checked at predictable points in the semester."
+    },
+    {
+      "term": "Template",
+      "definition": "A pre-built, already-accessible document or course structure (like a syllabus template) that you use as the starting point for new courses, so you don't start from zero each time."
+    }
+  ],
+  "contentBlocks": [
+    {
+      "type": "concept",
+      "title": "Born Accessible vs. Retrofit",
+      "body": "The most expensive and frustrating way to do accessibility is to fix everything at the end. The most efficient way is to build it right from the start.\n\nConsider two scenarios:\n\n**Scenario 1: Retrofit (the hard way).** You finish preparing a course in August. You upload 47 documents to Canvas — syllabi, lectures, handouts, readings. A student with a visual disability enrolls in September and requests alternative formats. Your disability services office reaches out: \"Can you provide these materials in accessible PDF?\" You now have to spend hours hunting down files, converting PDFs, fixing heading structure, writing alt text. You're reactive, frustrated, and the student has already missed the first week of class.\n\n**Scenario 2: Born Accessible (the smart way).** In May, you create your syllabus using a template you know is already accessible. As you prepare each lecture, you check the heading structure in your PowerPoint before saving it. You run the Accessibility Checker once. When you upload documents, you batch them through Canvas Ally to verify they're tagged. By August, your course is ready — and it's ready for *everyone*. A student with a disability gets the same accessible materials as everyone else on day one.\n\nThe second approach takes approximately the same amount of time if you build it into your routine. The difference is *when* you invest that time — upfront in May (when you're calm and organized) or frantically in September (when you're overwhelmed). The upfront investment also scales: as you repeat this workflow over years, you build a library of accessible templates and examples.\n\n**The key insight:** accessibility is not extra work if you build it in from the start. It *becomes* extra work if you try to fix it later."
+    },
+    {
+      "type": "example",
+      "title": "A Concrete Semester-Start Workflow",
+      "body": "Here's a step-by-step process you can adopt starting next semester. Estimated time: **60-90 minutes per course**.\n\n**Step 1: Syllabus (15 minutes)**\n- Start with an accessible syllabus template (ask your Center for Teaching and Learning or accessibility office for one, or use one you know works).\n- Update your course-specific content.\n- Run the Microsoft Accessibility Checker. Fix any errors.\n- Save as PDF (if required by your institution). Verify in the PDF that heading structure is preserved.\n\n**Step 2: Existing Course Documents (20 minutes)**\n- Identify all documents you'll reuse from last semester or from colleagues (syllabi, handouts, old exams).\n- If using Canvas Ally or Document Ally Pro, batch-upload them. Get a score report.\n- If not using Ally, spot-check them using the 60-Second Scan from Module 2: headings? Alt text? Links? Contrast? Language?\n- Flag any that need remediation and put them in a \"to fix\" folder.\n\n**Step 3: New Documents and Slides (15 minutes)**\n- Before you upload lecture slides, spot-check the reading order (PowerPoint Selection Pane) on one slide as a test.\n- Add alt text to any images as you build slides (not after).\n- As you create handouts, use Heading styles, not bold text.\n\n**Step 4: Video Content (10 minutes)**\n- List all videos you'll use (yours, YouTube, publisher content).\n- Spot-check 2-3 for captions. Note any without captions in your \"to do\" list.\n- If you record lectures, plan to caption them before posting (set a reminder).\n\n**Step 5: Quizzes (15 minutes)**\n- Open one quiz you'll reuse. Try navigating it with keyboard only (Tab, Enter, Space).\n- Check that you're not using drag-and-drop matching. If you are, make a note to rebuild it as dropdowns.\n- Verify that timed quizzes have accommodations set up correctly for students with extended time.\n\n**Step 6: Accessibility Statement and Housekeeping (5 minutes)**\n- Add or update the accessibility statement in your syllabus (see Module 7 for template language).\n- Add Disability Services contact information to your course welcome page.\n- Create a simple sign that says \"If you have an accommodation letter, please share it by [date].\" Post in your course welcome area.\n\n**Total time: 60-90 minutes. Once.**\n\nDo this in July or early August, before the semester starts. It's not multi-day work — it's a focused afternoon. And it eliminates panicked fixes in September."
+    },
+    {
+      "type": "concept",
+      "title": "A Faculty Member's Real Workflow",
+      "body": "Let's walk through what this actually looks like in practice. Meet Sarah, a biology professor who teaches three sections of Introductory Biology. Here's her routine:\n\n**May (before summer break).** Sarah opens her folder of course materials from last year. She has 23 lecture slide decks, a syllabus, 8 lab handouts, and 10 quiz files. Instead of checking each individually, she creates a new syllabus using the template her institution's accessibility office provided in January. She runs Accessibility Checker on it — it finds a low-contrast link. She fixes it. She uploads all 23 slide decks to Canvas Ally (her institution has it). Ally scores them: 12 are fine, 8 have minor issues (missing slide titles), 3 have significant issues (blank slides with scattered text boxes). She marks the 3 for remediation.\n\n**June (when she has breathing room).** Sarah fixes the 3 problematic slide decks. For each one, she opens it and uses the Selection Pane to re-order elements so they read logically. Takes about 45 minutes total. She uploads the fixed versions to replace the originals.\n\n**July (preparing for the semester).** Sarah builds new lab handouts for two labs she's redesigned. As she builds each handout, she uses Heading 1 and Heading 2 for section titles (not bold), includes alt text for diagrams, and puts table headers in bold. She also records a 15-minute \"welcome to the course\" video. She uploads it to YouTube, copies the auto-generated captions, reads through them (they're pretty good — YouTube's captions are accurate for English lectures with standard accents), and publishes the video with captions.\n\n**Late July (final check).** Sarah opens her course in Canvas. She spot-checks the reading order of one lecture slide. She tries to navigate one quiz with keyboard only — it works fine, no drag-and-drop. She verifies that her accommodation setup in Canvas is correct (she has 3 students registered for extended time). She adds a small text box to her course welcome page that links to her institution's Disability Services office and includes an invitation for students to reach out early.\n\n**August (course goes live).** Sarah's course launches. Everything is ready. When a student with a disability enrolls, they find accessible materials already waiting for them.\n\n**Key lesson:** Sarah didn't treat accessibility as a separate project. She wove it into the normal prep process — a few minutes here (fixing a slide), a few minutes there (adding alt text). The total time investment was minimal, and it happened when she was mentally fresh, not when she was panicked about the semester starting."
+    },
+    {
+      "type": "summary",
+      "body": "Build accessibility in from the start, not after. A realistic semester-start workflow takes 60-90 minutes per course: check your syllabus, batch-check existing documents with Canvas Ally, spot-check videos and quizzes, and add accessibility information to your course welcome area. Do it in July, not September. Use templates for documents you create repeatedly. When accessibility is part of your routine, it costs almost no extra time."
+    }
+  ],
+  "freeTextPrompt": {
+    "id": "ft-8.2",
+    "prompt": "Draft your own semester-start accessibility checklist. Based on what you've learned in this course, list the specific steps you would take — in order — to prepare your course materials for accessibility before the first day of class. Include which tools you'll use for each step, and be realistic about your teaching load. Aim for a checklist that takes 60-90 minutes to complete.",
+    "minWords": 100,
+    "rubric": "A strong response shows a concrete, realistic checklist tailored to the faculty member's actual courses and tools available to them (not generic). It lists specific steps in sequence (e.g., \"1. Run Accessibility Checker on syllabus\") and identifies which tools they'll use (Microsoft Checker, WAVE, Canvas Ally, etc.). It reflects honest understanding of their own workflow — how much time they actually have, what their biggest accessibility gap is, and what tool is most available to them. If they mention specific document types they use (quizzes, videos, lab handouts), that shows they're thinking about their own context."
+  }
+}

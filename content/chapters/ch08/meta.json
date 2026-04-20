@@ -1,0 +1,13 @@
+{
+  "chapterId": 8,
+  "title": "Tools and Workflows",
+  "weekNum": 8,
+  "reading": "Original content — no external textbook required",
+  "learningObjectives": [
+    "Use accessibility checking tools confidently (Microsoft Accessibility Checker, Acrobat, Canvas Ally, Document Ally Pro)",
+    "Build a personal accessibility workflow you can apply every semester",
+    "Know which free and institutional tools are available and when to use each",
+    "Create an accessibility maintenance plan for ongoing compliance"
+  ],
+  "sections": ["8.1", "8.2", "8.3"]
+}

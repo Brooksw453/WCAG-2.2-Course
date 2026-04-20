@@ -1,0 +1,53 @@
+{
+  "sectionId": "2.2",
+  "chapterId": 2,
+  "questions": [
+    {
+      "id": "ch02-q03",
+      "question": "A Canvas quiz uses drag-and-drop matching questions where students must drag answers to match them with questions. Which WCAG 2.2 criterion does this most directly violate?",
+      "options": [
+        {
+          "text": "2.4.11 Focus Appearance — the focus indicator is not visible enough",
+          "correct": false
+        },
+        {
+          "text": "2.5.7 Dragging Movements — there is no keyboard or alternative input method",
+          "correct": true
+        },
+        {
+          "text": "3.3.8 Accessible Authentication — students cannot authenticate with a keyboard",
+          "correct": false
+        },
+        {
+          "text": "2.5.8 Target Size — the drag targets are too small",
+          "correct": false
+        }
+      ],
+      "explanation": "Criterion 2.5.7 explicitly requires that any task that can be done with dragging must have an alternative method that doesn't rely on dragging. A keyboard user or someone using a mouth-stick controller cannot drag. The solution is to rebuild the quiz using dropdowns, checkboxes, or multiple-choice questions that test the same knowledge. This is not about lowering standards — it's about achieving the same learning outcome in an inclusive way."
+    },
+    {
+      "id": "ch02-q04",
+      "question": "True or False: Title II of the ADA explicitly requires institutions to comply with WCAG 2.2 by April 2026.",
+      "options": [
+        {
+          "text": "True — WCAG 2.2 is the legal standard institutions must meet",
+          "correct": false
+        },
+        {
+          "text": "False — Title II requires WCAG 2.1 AA; WCAG 2.2 is best practice but not legally required yet",
+          "correct": true
+        },
+        {
+          "text": "True — WCAG 2.2 was published before the deadline, so it applies",
+          "correct": false
+        },
+        {
+          "text": "False — Title II does not reference specific WCAG versions",
+          "correct": false
+        }
+      ],
+      "explanation": "The Title II final rule specifically references WCAG 2.1 at the AA level. However, many institutions are targeting WCAG 2.2 AA as best practice because the new criteria address real accessibility barriers. Faculty should be aware of both: Title II sets the legal floor (2.1 AA), but aiming for 2.2 AA is the smart, forward-looking choice. This matters for design decisions — if you're building a drag-and-drop feature, knowing that 2.2 requires alternatives helps you build inclusively from the start."
+    }
+  ],
+  "passThreshold": 80
+}

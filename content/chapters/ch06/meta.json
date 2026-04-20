@@ -1,0 +1,13 @@
+{
+  "chapterId": 6,
+  "title": "Accessible Assessments and Quizzes",
+  "weekNum": 6,
+  "reading": "Original content — no external textbook required",
+  "learningObjectives": [
+    "Build quizzes in Canvas/Blackboard that work with screen readers and keyboard navigation",
+    "Design assessments that are valid for students using extended time or assistive technology",
+    "Avoid common assessment patterns that create accessibility barriers",
+    "Apply WCAG 2.2 requirements (especially Dragging Movements) to quiz design"
+  ],
+  "sections": ["6.1", "6.2", "6.3"]
+}

@@ -1,0 +1,53 @@
+{
+  "sectionId": "6.2",
+  "chapterId": 6,
+  "questions": [
+    {
+      "id": "ch06-q03",
+      "question": "In Canvas, when setting up extended time accommodations, what is the best practice?",
+      "options": [
+        {
+          "text": "Set the accommodation individually on each quiz as you create it throughout the semester",
+          "correct": false
+        },
+        {
+          "text": "Set extended-time accommodations at the student level so they apply automatically to all quizzes in the course",
+          "correct": true
+        },
+        {
+          "text": "Tell the student to manually add extra time when they take the quiz",
+          "correct": false
+        },
+        {
+          "text": "Use a fixed auto-submit timer so all students get the same experience",
+          "correct": false
+        }
+      ],
+      "explanation": "Setting accommodations at the student level (when the LMS supports it) prevents accidentally missing one quiz. If you set extended time on each quiz individually, you risk setting it on quiz 1, 2, 4, and 6 but forgetting quiz 3 and 5 — resulting in an inconsistent and unfair experience. Student-level settings ensure the accommodation applies uniformly across all assessments. Telling students to manually add time is unreliable and shifts responsibility. Fixed auto-submit timers actually break extended-time accommodations because they override the accommodation's time multiplier."
+    },
+    {
+      "id": "ch06-q04",
+      "question": "A faculty member designs a 50-minute quiz and sets extended time at 1.5× for a student. The quiz is open Monday 9 AM through Friday 5 PM, with auto-submit at 5:00 PM Friday. The student with extended time starts the quiz at 3:30 PM Friday. What problem occurs?",
+      "options": [
+        {
+          "text": "The student's accommodation will work correctly — they will get 75 minutes to complete the 50-minute quiz",
+          "correct": false
+        },
+        {
+          "text": "The auto-submit timer will lock the quiz at 5:00 PM (clock time), before the student's extended time runs out. The accommodation does not actually work.",
+          "correct": true
+        },
+        {
+          "text": "The student should contact Disability Services to complain",
+          "correct": false
+        },
+        {
+          "text": "The LMS will automatically extend the deadline when it detects the accommodation",
+          "correct": false
+        }
+      ],
+      "explanation": "This is a common, real-world scenario. The student needs 75 minutes (50 × 1.5), which would be 4:45 PM. But the fixed auto-submit timer locks the quiz at the clock time 5:00 PM regardless. Starting at 3:30 PM means the timer expires at 5:00 PM — only 90 minutes elapsed, but the clock time triggers the lock. The student only gets 90 minutes of elapsed time instead of 75 minutes of quiz time. The fix: use *relative* time (auto-submit X minutes after the student opens the quiz) instead of a *fixed clock time*. Or extend the deadline window to accommodate extended time."
+    }
+  ],
+  "passThreshold": 80
+}

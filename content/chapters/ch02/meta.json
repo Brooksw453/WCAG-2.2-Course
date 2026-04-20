@@ -1,0 +1,13 @@
+{
+  "chapterId": 2,
+  "title": "WCAG 2.2 Without the Jargon",
+  "weekNum": 2,
+  "reading": "Original content — no external textbook required",
+  "learningObjectives": [
+    "Explain the four WCAG principles (POUR) in plain language",
+    "Identify which of the 13 new WCAG 2.2 criteria are most relevant to faculty work",
+    "Recognize common WCAG violations in everyday course materials",
+    "Use WCAG success criteria numbers to communicate about specific issues"
+  ],
+  "sections": ["2.1", "2.2", "2.3"]
+}

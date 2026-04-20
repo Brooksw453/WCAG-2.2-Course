@@ -1,0 +1,59 @@
+{
+  "sectionId": "6.3",
+  "chapterId": 6,
+  "title": "Accessible Assessment Content",
+  "learningObjectives": [
+    "Write quiz questions with accessible formatting (images, math, tables in questions)",
+    "Provide alt text for images used in quiz questions",
+    "Handle mathematical notation, scientific formulas, and other specialized content in assessments"
+  ],
+  "keyTerms": [
+    {
+      "term": "Alt Text in Quiz Questions",
+      "definition": "Alternative text describing an image embedded in a quiz question. Unlike alt text in documents, quiz image alt text must be complete enough for a student to answer the question without seeing the visual. E.g., for a graph, include the title, axes, and key data points in the alt text."
+    },
+    {
+      "term": "MathML",
+      "definition": "Mathematical Markup Language, an XML-based standard for representing mathematical notation. Screen readers can read MathML-encoded equations aloud. Always preferable to an image of an equation, which a screen reader cannot read at all."
+    },
+    {
+      "term": "LaTeX",
+      "definition": "A document preparation system and markup language commonly used in mathematics and sciences. Can be rendered as MathML or displayed as formatted text. Canvas and some other platforms support LaTeX notation in quiz questions."
+    },
+    {
+      "term": "Image-Based Question",
+      "definition": "A quiz question that uses an image (graph, diagram, photo, chart) as the primary content or context for the question. Requires thorough alt text or long description so screen reader users can understand what the image shows."
+    },
+    {
+      "term": "Data Table in Quiz",
+      "definition": "A table (data organized in rows and columns) embedded in a quiz question. Must have proper header rows and logical structure so screen readers can announce which cell belongs to which row/column header."
+    }
+  ],
+  "contentBlocks": [
+    {
+      "type": "concept",
+      "title": "Images in Quiz Questions",
+      "body": "When you include an image in a quiz question, it needs alt text — just like an image in a course document. But the stakes are higher in a quiz: the alt text has to be complete enough for a screen reader user to answer the question correctly.\n\n**Different types of images in quizzes:**\n\n**Graphs and charts:**\nThe image shows a line graph of temperature over time. The question asks: \"In which month did the temperature peak?\"\n\nPoor alt text: \"Line graph\"\nGood alt text: \"Line graph showing average monthly temperature. Months January through December on the x-axis, temperature in degrees Celsius on the y-axis, range 0–35°C. The line peaks in July at approximately 28°C.\"\n\nThe good alt text includes the title, axis labels, and key data points. A student using a screen reader can now answer the question correctly.\n\n**Diagrams and scientific illustrations:**\nThe image is a labeled diagram of a plant cell. The question asks: \"Which structure is the mitochondrion?\"\n\nPoor alt text: \"Plant cell diagram\"\nGood alt text: \"Plant cell diagram with labeled structures: nucleus in the center, chloroplast in the upper left, mitochondrion in the lower right, cell wall around the perimeter, and vacuole filling the center.\"\n\nAgain, good alt text names the structures and their locations. A student can identify the mitochondrion from the description.\n\n**Photos and images without obvious data (e.g., art history, literature):**\nThe image is a photograph of a historical building. The question asks: \"What architectural style is this building?\"\n\nGood alt text: \"Photograph of a stone building with tall arched windows, a domed roof, and decorative columns at the entrance. The architectural style is Gothic Revival, with characteristic pointed arches and vertical emphasis.\"\n\nThis gives context and relevant details. A screen reader user can engage with the question.\n\n**Decorative images:**\nIf an image is purely decorative (e.g., a small ornament at the top of the quiz), mark it as decorative (or provide empty alt text: \"\"). Do not force screen reader users to listen to irrelevant descriptions.\n\n**How to add alt text in Canvas:**\n\n1. Open the quiz editor.\n2. Click on the question text area.\n3. In the rich text editor toolbar, click the image icon to insert an image.\n4. After uploading the image, click on the image in the editor and look for the alt text field (usually labeled \"Alternative Text\" or \"Description\").\n5. Write your alt text as described above.\n\nSame principle applies in Blackboard, though the interface differs slightly."
+    },
+    {
+      "type": "example",
+      "title": "A STEM Quiz, Made Accessible",
+      "body": "Let's walk through a chemistry quiz with three questions, each demonstrating a different accessibility challenge.\n\n**Question 1: Molecular Structure**\n\n\"The image shows the structural formula of glucose. How many oxygen atoms does glucose contain?\"\n\nThe image is a skeletal formula showing the carbon backbone and all atoms labeled. A student without vision cannot see this image.\n\n*Inaccessible approach:* No alt text. Screen reader: \"Image.\" The student cannot answer the question.\n\n*Accessible approach:* Alt text reads: \"Structural formula of glucose (C6H12O6). A six-carbon ring with an oxygen in position 1. Each carbon shows attached hydrogen and hydroxyl (OH) groups. Total of 6 oxygen atoms visible in the structure.\"\n\nNow the student can count the oxygens (or read the count provided) and answer: \"Six oxygen atoms.\"\n\n**Question 2: Balancing an Equation**\n\n\"Balance the following equation: 2H₂ + O₂ → H₂O\"\n\nThe equation uses subscript (H₂, O₂, H₂O). In a word processor, subscripts are fine. In a web-based quiz, the subscript might not be semantic.\n\n*Inaccessible approach:* Plain text with formatting: \"2H2 + O2 → H2O\" (subscripts lost in the data, just looks like \"H2\").\n\n*Accessible approach:* Use MathML or LaTeX notation. In Canvas, you can use LaTeX: \"2H$_{2}$ + O$_{2}$ → H$_{2}$O\". The platform renders it correctly, and assistive technology can interpret it. Or: Use plain text with clear notation: \"2H_{2} + O_{2} → H_{2}O\", and note that subscripts are indicated by curly braces.\n\nScreen reader user now hears: \"2 H-2 plus O-2 yields H-2 O\" (or similar, depending on the screen reader's math support). They can solve it.\n\n**Question 3: Interpreting Data**\n\n\"The table shows boiling points of common solvents. Which solvent has the highest boiling point?\"\n\nThe image is a table:\n| Solvent | Boiling Point (°C) |\n| Water | 100 |\n| Ethanol | 78 |\n| Acetone | 56 |\n| Benzene | 80 |\n\n*Inaccessible approach:* The table is embedded as an image with no alt text or long description. A screen reader cannot read the table.\n\n*Accessible approach:* Use a proper HTML table (or the LMS's native table tool) with a header row. Semantic markup ensures screen readers announce: \"Table with header row: Solvent, Boiling Point in degrees Celsius. Row 1: Water, 100. Row 2: Ethanol, 78. Row 3: Acetone, 56. Row 4: Benzene, 80.\" The student can identify water as the highest and answer correctly.\n\nAlternatively, if you must use an image of the table, provide a long description or an alternative text list: \"Boiling points: Water 100°C, Ethanol 78°C, Acetone 56°C, Benzene 80°C.\"\n\n**Lesson:** In STEM quizzes, the content is often the challenge. Alt text and semantic markup allow screen reader users to access that content and demonstrate their knowledge."
+    },
+    {
+      "type": "concept",
+      "title": "Specialized Content in Assessments",
+      "body": "Some disciplines have assessment content that doesn't fit neatly into standard quiz questions. Here is how to handle common cases.\n\n**Music courses:**\nYou want to assess whether students can identify intervals or chords by ear. Provide audio clips with full transcripts or descriptions.\n\n- Quiz question: \"Listen to this audio clip. Identify the interval.\"\n- Audio: [Plays two notes]\n- Alternative for screen reader users: \"Audio of a major third interval (C and E notes played in succession)\"\n\nA deaf or hard-of-hearing student might use visual music notation instead. Partner with Disability Services to create alternative assessments that test the same knowledge.\n\n**Foreign language courses:**\nSpeaking and listening are often core. Listening comprehension is challenging for deaf/hard-of-hearing students; speaking is challenging for deaf students and some with speech disabilities.\n\n- Best practice: Offer multiple modalities. A listening comprehension test could have an alternative version where students read a transcript and answer comprehension questions.\n- Extended time is especially important for language assessments. Reading a second language takes more cognitive load than reading a first language.\n\n**Art and design courses:**\nYou show an image and ask students to critique it or identify the artist's techniques. Descriptions of visual works are tricky because \"a red square\" might be Rothko, or it might be a toy. Provide enough detail.\n\n- Alt text: \"Painting titled 'Untitled (Red, Blue, Yellow)' by Ellsworth Kelly, 1963. Large vertical canvas divided into three color fields: red on the left, blue in the center, yellow on the right. Clean, sharp edges between colors. Minimalist, geometric composition.\" \n\nThis allows a student with vision loss to engage with the artwork and answer questions about color theory, composition, or period.\n\n**Writing and mathematics-heavy disciplines:**\nStudents with dyslexia might struggle with reading and writing speed. Consider:\n- Extended time for reading and writing\n- Text-to-speech tools (reading test content aloud)\n- Speech-to-text tools (responding to essay questions via voice recording, transcribed)\n- Offering formulas or reference sheets (reduces memory load, tests application rather than recall)\n\n**When to escalate:**\nSome assessment accommodations are beyond what you can manage alone. If a student's accommodation letter includes something like \"transcription services for essay exams\" or \"specialized proctoring,\" partner with Disability Services. They have the staff, equipment, and protocols. Do not try to jerry-rig a solution."
+    },
+    {
+      "type": "summary",
+      "body": "Include alt text for every image in a quiz question — make it detailed enough for a screen reader user to answer correctly. Use MathML or LaTeX for mathematical notation, never images of equations. Use proper table markup for data tables. For specialized content (music, languages, visual arts), partner with Disability Services to create equivalent assessments that test the same knowledge."
+    }
+  ],
+  "freeTextPrompt": {
+    "id": "ft-6.3",
+    "prompt": "If you use any images, graphs, equations, tables, or specialized content (music, art, languages, etc.) in your assessments, describe how you currently present them. Based on what you've learned, would a student using a screen reader be able to answer those questions? What changes would you make to ensure accessibility?",
+    "minWords": 100,
+    "rubric": "A strong response describes a specific, real assessment the faculty member actually uses (not hypothetical). It identifies the type of specialized content (e.g., 'graphs of data,' 'musical notation,' 'chemical equations'). It honestly assesses whether the current format is accessible to screen reader users. It proposes concrete changes (e.g., 'add detailed alt text to all graphs,' 'use LaTeX instead of equation images'). It shows understanding of why the change matters."
+  }
+}

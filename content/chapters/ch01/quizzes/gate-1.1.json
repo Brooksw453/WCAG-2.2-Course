@@ -1,0 +1,53 @@
+{
+  "sectionId": "1.1",
+  "chapterId": 1,
+  "questions": [
+    {
+      "id": "ch01-q01",
+      "question": "The DOJ's 2024 Title II final rule requires public colleges and universities to make their digital content conform to which specific standard?",
+      "options": [
+        {
+          "text": "Section 508 of the Rehabilitation Act",
+          "correct": false
+        },
+        {
+          "text": "WCAG 2.1, Level AA",
+          "correct": true
+        },
+        {
+          "text": "WCAG 2.2, Level AAA",
+          "correct": false
+        },
+        {
+          "text": "ADA Title III commercial website standards",
+          "correct": false
+        }
+      ],
+      "explanation": "The Title II final rule specifically requires conformance to WCAG 2.1 at the AA level. This includes all 30 Level A and 20 Level AA success criteria. While WCAG 2.2 exists and is considered best practice, the regulation references WCAG 2.1. Section 508 applies to federal agencies, not state and local governments. Title III covers private businesses, not public entities."
+    },
+    {
+      "id": "ch01-q02",
+      "question": "A faculty member at a public community college says, 'Our department is too small to worry about Title II compliance — those rules are for big universities.' Is this correct?",
+      "options": [
+        {
+          "text": "Yes — Title II only applies to institutions with more than 50,000 students",
+          "correct": false
+        },
+        {
+          "text": "Yes — community colleges are exempt from ADA requirements",
+          "correct": false
+        },
+        {
+          "text": "No — Title II applies to all public entities, but smaller institutions have a later deadline (April 2027)",
+          "correct": true
+        },
+        {
+          "text": "No — all institutions must comply by April 2026 regardless of size",
+          "correct": false
+        }
+      ],
+      "explanation": "Title II applies to all public entities, regardless of size. The rule does provide different compliance timelines: large entities (serving 50,000 or more people) must comply by April 24, 2026, while smaller entities have until April 26, 2027. But the requirement itself applies equally. Community colleges, as public institutions, are fully covered. The size distinction affects only the deadline, not whether the rule applies."
+    }
+  ],
+  "passThreshold": 80
+}

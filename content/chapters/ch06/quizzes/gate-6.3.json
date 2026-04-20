@@ -1,0 +1,53 @@
+{
+  "sectionId": "6.3",
+  "chapterId": 6,
+  "questions": [
+    {
+      "id": "ch06-q05",
+      "question": "You include a bar graph in a quiz question asking students to identify a trend. What must you provide so a screen reader user can answer the question?",
+      "options": [
+        {
+          "text": "Alt text saying 'Bar graph'",
+          "correct": false
+        },
+        {
+          "text": "Detailed alt text describing the graph title, axes, and key data points — or a long description providing equivalent information",
+          "correct": true
+        },
+        {
+          "text": "No alt text is needed because it is part of a quiz, not a document",
+          "correct": false
+        },
+        {
+          "text": "A link to the raw data in a spreadsheet",
+          "correct": false
+        }
+      ],
+      "explanation": "Images in quiz questions need alt text that is complete enough for a screen reader user to answer the question correctly. For a graph, this means including the title, what the axes represent, and the data points (or trends) needed to answer. Generic alt text like 'bar graph' does not provide enough information. A spreadsheet link might be helpful but is not a substitute for accessible alt text in the question itself."
+    },
+    {
+      "id": "ch06-q06",
+      "question": "Why should mathematical equations in quizzes be written using MathML or LaTeX notation rather than as images?",
+      "options": [
+        {
+          "text": "Images of equations take up too much space on the page",
+          "correct": false
+        },
+        {
+          "text": "Screen readers cannot read an image of an equation, but they can read MathML or LaTeX notation aloud",
+          "correct": true
+        },
+        {
+          "text": "MathML and LaTeX are easier to type than taking a screenshot",
+          "correct": false
+        },
+        {
+          "text": "Images are not allowed in quizzes according to WCAG standards",
+          "correct": false
+        }
+      ],
+      "explanation": "Screen readers can interpret MathML and LaTeX (or similar semantic markup) and read mathematical notation aloud in a way that makes sense. A screen reader cannot read an image of an equation — it just says 'image.' For a student using a screen reader to answer a math question, semantic notation is essential. While other reasons (file size, ease of typing) might favor semantic notation, the accessibility reason is the primary one."
+    }
+  ],
+  "passThreshold": 80
+}

@@ -1,0 +1,21 @@
+{
+  "chapterId": 4,
+  "weekNum": 4,
+  "title": "Course Materials and Discipline-Specific Challenges",
+  "prompt": "This module introduced accessibility strategies for the materials you create and assign — syllabi, handouts, slides, and readings. But accessibility looks different depending on what you teach. A mathematics professor faces different challenges than an art history professor. An engineering lab has different needs than a literature seminar.\n\nFor your initial post, describe a course material in your discipline that you think will be challenging to make accessible. Be specific: Is it highly visual content? Mathematical notation? Specialized vocabulary? A scanned legacy document? A third-party interactive tool?\n\nThen ask: Based on what you've learned in this module, how would you approach making it accessible? What would you try first? What resources would you need? You do not need to have the perfect answer — the goal is to think through the real accessibility challenges in your field.",
+  "requirements": {
+    "initialPost": {
+      "minWords": 150,
+      "maxWords": 250,
+      "dueDay": "Wednesday",
+      "dueTime": "11:59 PM ET"
+    },
+    "replies": {
+      "count": 2,
+      "minWords": 75,
+      "maxWords": 150,
+      "dueDay": "Sunday",
+      "dueTime": "11:59 PM ET"
+    }
+  }
+}

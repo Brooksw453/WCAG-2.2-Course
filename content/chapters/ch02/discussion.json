@@ -1,0 +1,21 @@
+{
+  "chapterId": 2,
+  "weekNum": 2,
+  "title": "WCAG Issues in Your Own Work",
+  "prompt": "You've now learned about POUR, the new WCAG 2.2 criteria, and the five most common accessibility violations. In this discussion, we'd like you to think about accessibility in your own teaching context.\n\nFor your initial post, reflect on this: Which single accessibility issue do you think is most widespread in your department's materials or your institution's course sites? Why do you think it persists — is it a knowledge gap, a tool limitation, a workload constraint, or something else? Is it one of the \"top five\" violations you learned about, or something different? What would it take to start fixing it?",
+  "requirements": {
+    "initialPost": {
+      "minWords": 150,
+      "maxWords": 250,
+      "dueDay": "Wednesday",
+      "dueTime": "11:59 PM ET"
+    },
+    "replies": {
+      "count": 2,
+      "minWords": 75,
+      "maxWords": 150,
+      "dueDay": "Sunday",
+      "dueTime": "11:59 PM ET"
+    }
+  }
+}

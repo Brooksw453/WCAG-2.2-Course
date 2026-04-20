@@ -1,0 +1,59 @@
+{
+  "sectionId": "6.2",
+  "chapterId": 6,
+  "title": "Extended Time, Accommodations, and Assessment Validity",
+  "learningObjectives": [
+    "Configure extended time accommodations correctly in your LMS",
+    "Design timed assessments that remain valid for students with extended time",
+    "Avoid assessment designs that penalize accommodation use or create unintended accessibility barriers"
+  ],
+  "keyTerms": [
+    {
+      "term": "Extended Time",
+      "definition": "An accommodation where a student receives additional time to complete an assessment, typically time-and-a-half (1.5×) or double time (2×) the standard allotment. Students with disabilities affecting processing speed, attention, or motor function often require extended time to demonstrate the same knowledge in the same amount of actual thinking time."
+    },
+    {
+      "term": "Accommodation Flag/Setting",
+      "definition": "A setting in Canvas, Blackboard, or other LMS that applies specific accommodations (extended time, reduced distraction environment, alternative format) to an individual student's account or to specific quizzes. Usually configured at the student level rather than per-quiz to avoid missing one."
+    },
+    {
+      "term": "Assessment Validity",
+      "definition": "The extent to which an assessment actually measures what it claims to measure. Adding extra time does not change validity — both the extended-time and standard-time student are answering the same questions. But a quiz that auto-submits after a fixed clock time may become invalid for extended-time students because they run out of time due to the accommodation, not due to knowledge gaps."
+    },
+    {
+      "term": "Auto-Submit Timer",
+      "definition": "A setting that automatically submits a quiz or exam when a preset time expires. Can create accessibility problems when combined with extended time — the student runs out of time according to the clock, not according to their accommodation."
+    },
+    {
+      "term": "Reduced Distraction Environment",
+      "definition": "An accommodation where a student takes an exam in a separate, quiet room (often the testing center) with minimal sensory input. The testing center staff monitor time and ensure extended-time accommodations are applied correctly."
+    }
+  ],
+  "contentBlocks": [
+    {
+      "type": "concept",
+      "title": "Setting Up Extended Time Correctly",
+      "body": "Extended time is one of the most common accommodations — and also one of the most frequently misconfigured. Here is what you need to know.\n\n**Where to set it:**\n\n- **Canvas:** Go to the quiz settings. Under \"Advanced Options,\" you will see \"Add Accommodation.\" You can add accommodations here. However, the *best* practice is to work with your Disability Services office to set accommodations at the student level (in your course SIS settings), so they apply to all quizzes automatically. This prevents accidentally missing one.\n- **Blackboard:** Similar structure. Accommodations can be set per quiz or at the student level. Check with your institution on the preferred method.\n\n**How time multipliers work:**\n\n- If your quiz is set for 50 minutes, and a student has \"1.5× time,\" they get 75 minutes.\n- If a student has \"double time,\" they get 100 minutes.\n- The LMS automatically calculates this. You just set the base time and trust the system.\n\n**Common mistakes:**\n\n1. **Setting accommodations per quiz instead of per student.** You create ten quizzes in the semester. You set extended time on quizzes 1, 2, 4, 6, 8, and 10 — but forget quizzes 3, 5, 7, and 9. The student gets extended time on some quizzes and standard time on others, creating an unfair and confusing experience.\n   - *Fix:* Use your institution's preferred student-level accommodation setting if available, or create a master checklist and set accommodations on every quiz.\n\n2. **Pairing extended time with a hard clock deadline.** Your quiz is open Monday 9 AM to Wednesday 5 PM. A student with double time starts at 4:30 PM on Wednesday. They have a 100-minute quiz (base time = 50 minutes, doubled). But the quiz locks at 5:00 PM. They get 30 minutes, not 100 minutes. Technically the accommodation was set, but it did not actually work.\n   - *Fix:* Extend the quiz deadline if students will be using extended time. If the quiz closes Wednesday 5 PM, close it Thursday 5 PM to give extended-time students enough room.\n\n3. **Using fixed auto-submit timers.** Some instructors set a quiz to \"auto-submit at 2:00 PM regardless of when the student started.\" This breaks extended-time accommodations. If a student with double time starts at 1:00 PM and gets 100 minutes, they should finish at 2:40 PM. But the auto-submit timer locks them out at 2:00 PM.\n   - *Fix:* Use relative time (\"auto-submit 50 minutes after the student starts\") instead of a fixed clock time. Or, better yet, avoid auto-submit entirely and manually lock quizzes down after-the-fact.\n\nAfter you configure extended time, test it with a test student account before publishing. Verify that the accommodation multiplier is actually calculating correctly."
+    },
+    {
+      "type": "example",
+      "title": "When Extended Time Breaks Your Design",
+      "body": "Here is a real scenario that happens more often than you might think.\n\n**The Scenario:**\n\nYou teach Biology 101, and the midterm exam is high-stakes. You want to make sure students take it seriously and do not procrastinate, so you set it up as follows:\n\n- 50 questions, 50 minutes (1 minute per question, standard pace)\n- Open Monday 8 AM through Friday 5 PM\n- Auto-submit at 5:00 PM on Friday (hard deadline)\n- No extended time available (you assume everyone gets the same experience)\n\nYou have a student, Jamie, with an accommodation letter stating \"extended time: double time on all exams.\" At 2:00 PM on Friday, Jamie sits down to take the exam. They need 100 minutes (50 × 2), which would be 3:40 PM. That is within the Friday 5 PM deadline — plenty of time.\n\nAt 3:30 PM, Jamie's screen goes black. The auto-submit timer hits 5:00 PM (the fixed clock time), and the quiz locks Jamie out. Jamie has only answered 30 of 50 questions. Jamie got a 60%, which is a fail, not because of lack of knowledge, but because the accommodation did not actually work.\n\nWhat went wrong? The accommodation was set (Jamie has double time on their record), but your assessment design made it impossible for the accommodation to be effective. The fixed auto-submit timer overrode the accommodation.\n\n**The Fix:**\n\nThere are several ways to prevent this:\n\n1. **Use relative time, not fixed time.** Instead of \"auto-submit at 5 PM,\" use \"auto-submit 50 minutes after the student opens the quiz.\" The student with double time gets 100 minutes from when they open it, then auto-submits. No collision.\n\n2. **Extend the hard deadline to accommodate extended time.** If you know Jamie has double time, and you set the quiz for 50 minutes, close the quiz at a time that allows 100 minutes plus some buffer. So if the latest someone could reasonably start is 3 PM (2 hours before Friday 5 PM), close the quiz at 4:45 PM Friday to give them 105 minutes.\n\n3. **Avoid auto-submit entirely.** Instead, announce \"Friday 5 PM is the deadline — no submissions after that time.\" Students submit by clicking a Submit button. You can then manually lock the quiz down after 5 PM if needed. This gives extended-time users the full accommodation without an arbitrary auto-submit.\n\n4. **Use a testing center.** Let Disability Services proctor the exam in a reduced-distraction environment. The testing center staff manage the time, not an automated timer. This is the gold standard for high-stakes exams and accommodations.\n\n**The lesson:** When you give extended time, the assessment design has to support it. Be proactive about how timing will work."
+    },
+    {
+      "type": "concept",
+      "title": "Proactive Assessment Design",
+      "body": "The easiest way to handle extended time is to build assessments that do not require time pressure in the first place.\n\n**Proactive design strategies:**\n\n**1. Generous base time.** If you design a 50-minute quiz that is actually completable in 40 minutes for most students, a student with extended time has even more cushion. Pressure decreases for everyone.\n\n**2. Untimed or nearly-untimed quizzes.** Open a quiz Monday-Friday with no auto-submit. Students access it whenever they want (in their own time zone, on their own schedule). No time pressure means no accommodation conflict. This aligns with Universal Design for Learning (UDL) principles: \"reduce anxiety, build autonomy.\"\n\n**3. Chunked assessments.** Instead of one 60-minute final exam, offer three 20-minute quizzes across the semester. Shorter quizzes are less anxiety-inducing and easier to schedule with extended time. They also give you more granular data on what students understand.\n\n**4. Take-home or asynchronous exams.** Students get the quiz on Friday, submit by Tuesday. They can work on their own schedule, take breaks, use notes (if the format allows), and use assistive technology without time pressure. Still assesses the same learning objectives, but in a more accessible way.\n\n**5. Project or performance-based alternatives.** Instead of a timed quiz, students produce a short paper, presentation, lab report, or demonstration of the skill. More inclusive, often more engaging, and time is not a barrier.\n\n**Why this matters:** When you build time pressure into every assessment, you are not testing whether students know the material — you are testing whether they can recall information quickly *and* type/click quickly *and* manage anxiety under pressure. For students with processing differences, motor disabilities, anxiety, or attention disabilities, speed is orthogonal to knowledge. Removing time pressure often reveals that the student *does* know the material.\n\nYou don't have to eliminate all timed assessments (some disciplines, like nursing licensing exams, require them). But look at your syllabus: if every single assessment is timed, that is a choice worth revisiting. What are you actually assessing?"
+    },
+    {
+      "type": "summary",
+      "body": "Set extended-time accommodations at the student level, not per-quiz. Use relative time instead of fixed clock deadlines. Extend the quiz window to accommodate the accommodation. Better yet: design assessments with generous time, no time pressure, or alternative formats (take-home, projects, asynchronous). This helps students with disabilities and benefits everyone."
+    }
+  ],
+  "freeTextPrompt": {
+    "id": "ft-6.2",
+    "prompt": "Review how you currently set up timed assessments in your course. Do you use auto-submit timers? What is your typical quiz window (how long is the quiz open)? Do you set extended-time accommodations? Describe one change you could make to your assessment setup to be more proactively accessible — and explain how it would work for both extended-time and standard-time students.",
+    "minWords": 100,
+    "rubric": "A strong response describes the faculty member's actual current practice (not hypothetical). It identifies at least one timing element (auto-submit, quiz window duration, whether they use extended-time accommodations). It suggests a concrete, feasible change (e.g., 'use relative time instead of a fixed deadline' or 'make quizzes untimed and open for a 3-day window'). It explains how the change supports accessibility without compromising assessment integrity."
+  }
+}

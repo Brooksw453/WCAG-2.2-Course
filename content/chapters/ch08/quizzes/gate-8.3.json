@@ -1,0 +1,53 @@
+{
+  "sectionId": "8.3",
+  "chapterId": 8,
+  "questions": [
+    {
+      "id": "ch08-q05",
+      "question": "In the 30-Day Action Plan, which should be your Week 1 priority?",
+      "options": [
+        {
+          "text": "Test all of your quizzes with keyboard navigation",
+          "correct": false
+        },
+        {
+          "text": "Check all of your videos for captions",
+          "correct": false
+        },
+        {
+          "text": "Fix your syllabus and one high-use document",
+          "correct": true
+        },
+        {
+          "text": "Share what you've learned with a colleague",
+          "correct": false
+        }
+      ],
+      "explanation": "The 30-Day Action Plan starts with the syllabus in Week 1 because the syllabus is the most-read document in a course. It has immediate, high impact. Fixing your syllabus and one other frequently-used document creates accessibility at the foundation of your course from day one. Weeks 2, 3, and 4 then add quizzes, videos, and broader engagement."
+    },
+    {
+      "id": "ch08-q06",
+      "question": "Why is accessibility considered an ongoing process rather than a one-time fix?",
+      "options": [
+        {
+          "text": "Because new tools keep being released and you have to learn them all",
+          "correct": false
+        },
+        {
+          "text": "Because standards evolve (WCAG 3.0 is coming), course materials change each semester, and new content needs evaluation",
+          "correct": true
+        },
+        {
+          "text": "Because there is no such thing as truly accessible materials",
+          "correct": false
+        },
+        {
+          "text": "Because accessibility is more important than good teaching",
+          "correct": false
+        }
+      ],
+      "explanation": "Accessibility is ongoing because: (1) Web Content Accessibility Guidelines evolve (WCAG 3.0 is in development), (2) you update your course materials every semester (new readings, new videos, redesigned assessments), and (3) new tools and third-party content emerge and require evaluation. You're not learning everything in perpetuity—you stay current by following 2-3 accessibility sources and attending your institution's annual training. But accessibility is never truly \"done.\""
+    }
+  ],
+  "passThreshold": 80
+}

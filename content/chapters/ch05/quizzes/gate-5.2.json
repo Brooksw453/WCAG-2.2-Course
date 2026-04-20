@@ -1,0 +1,53 @@
+{
+  "sectionId": "5.2",
+  "chapterId": 5,
+  "questions": [
+    {
+      "id": "ch05-q03",
+      "question": "A faculty member records a lecture where they describe every slide verbally as they present it, explaining the content, diagrams, and images in detail. The video is posted with captions. Does the video require a separate audio description track?",
+      "options": [
+        {
+          "text": "Generally no — the instructor is already providing audio descriptions by verbally describing the slides, so a separate AD track would be redundant",
+          "correct": true
+        },
+        {
+          "text": "Yes — all educational videos require a separate audio description track regardless of content",
+          "correct": false
+        },
+        {
+          "text": "Yes — audio description tracks are required for any video longer than 10 minutes",
+          "correct": false
+        },
+        {
+          "text": "No, but only if the instructor has a professional-quality microphone",
+          "correct": false
+        }
+      ],
+      "explanation": "Audio description is required only when there is visual-only information essential to understanding the content. If an instructor is already describing slides verbally during the presentation, they are providing real-time audio description. A separate AD track would be redundant. The video does need captions (for deaf/hard of hearing students) and should have a transcript available, but no additional AD is needed if content is being narrated."
+    },
+    {
+      "id": "ch05-q04",
+      "question": "You embed an interactive simulation in your course. When you try to use it with only the Tab, Enter, and Space keys (no mouse), you cannot navigate to the 'Submit' button. What does this indicate about the simulation's accessibility?",
+      "options": [
+        {
+          "text": "The simulation is not fully keyboard-accessible, which means students using screen readers or keyboard-only input devices will struggle to use it",
+          "correct": true
+        },
+        {
+          "text": "The simulation is designed for mouse users only and is perfectly acceptable for accessibility",
+          "correct": false
+        },
+        {
+          "text": "Keyboard accessibility is not required for interactive simulations",
+          "correct": false
+        },
+        {
+          "text": "The simulation is accessible, but students need to enable a special accessibility mode",
+          "correct": false
+        }
+      ],
+      "explanation": "Keyboard accessibility is a foundational requirement under WCAG. Interactive content must be operable using keyboard alone. If you cannot navigate to and interact with all elements using Tab, Enter, and Space keys, the content fails WCAG conformance. This affects students with motor disabilities, blind/low-vision users with screen readers, and others who rely on keyboard navigation. Contact the vendor, provide an alternative activity, or escalate to your Disability Services office."
+    }
+  ],
+  "passThreshold": 80
+}

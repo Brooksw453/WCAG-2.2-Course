@@ -1,0 +1,53 @@
+{
+  "sectionId": "4.1",
+  "chapterId": 4,
+  "questions": [
+    {
+      "id": "ch04-q01",
+      "question": "A faculty member's syllabus uses bold, large text for section titles instead of applying Heading styles in Word. Students can see the titles on screen, but what accessibility problem does this create?",
+      "options": [
+        {
+          "text": "Screen readers cannot detect the bold text as a heading, so keyboard-only users cannot navigate by jumping from section to section",
+          "correct": true
+        },
+        {
+          "text": "The PDF export will be too large to email to students",
+          "correct": false
+        },
+        {
+          "text": "Bold text causes eye strain for students with vision impairments",
+          "correct": false
+        },
+        {
+          "text": "There is no accessibility problem — if it looks right visually, it is accessible",
+          "correct": false
+        }
+      ],
+      "explanation": "Visual formatting like bold text does not communicate structure to assistive technology. A screen reader or keyboard user navigating by headings cannot find content organized with bold text. Actual Heading styles (Heading 1, Heading 2, etc.) tell screen readers and assistive technology what is a heading. This is the highest-impact fix for most documents."
+    },
+    {
+      "id": "ch04-q02",
+      "question": "A handout includes a schedule table with columns for Week, Topics, Readings, and Assignments. Students can read the table visually. What must be done for screen reader accessibility?",
+      "options": [
+        {
+          "text": "Mark the first row (Week, Topics, Readings, Assignments) as table headers so screen readers can announce column names as they read each cell",
+          "correct": true
+        },
+        {
+          "text": "Convert the table to a numbered list instead",
+          "correct": false
+        },
+        {
+          "text": "Add a title above the table explaining what the columns mean",
+          "correct": false
+        },
+        {
+          "text": "Export the handout as a PDF to lock the table structure",
+          "correct": false
+        }
+      ],
+      "explanation": "Tables without marked header rows are extremely difficult for screen reader users to navigate. When headers are marked (using the Table Design or Layout tab in Word), the screen reader announces the column name as it reads each cell: 'Week: 1, Topics: Introduction to accessibility, Readings: Chapter 1.' This makes the table intelligible."
+    }
+  ],
+  "passThreshold": 80
+}

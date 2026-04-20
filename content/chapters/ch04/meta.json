@@ -1,0 +1,13 @@
+{
+  "chapterId": 4,
+  "title": "Accessible Course Materials",
+  "weekNum": 4,
+  "reading": "Original content — no external textbook required",
+  "learningObjectives": [
+    "Apply accessibility principles to syllabi, handouts, slides, and assigned readings",
+    "Identify discipline-specific accessibility challenges and solutions",
+    "Evaluate third-party materials (textbook publisher content, OER) for accessibility",
+    "Build a simple accessibility checklist for course material review"
+  ],
+  "sections": ["4.1", "4.2", "4.3"]
+}

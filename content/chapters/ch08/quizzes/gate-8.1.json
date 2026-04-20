@@ -1,0 +1,53 @@
+{
+  "sectionId": "8.1",
+  "chapterId": 8,
+  "questions": [
+    {
+      "id": "ch08-q01",
+      "question": "According to the Deque Automated Accessibility Testing Coverage Report, approximately what percentage of WCAG success criteria can be fully automated (pass/fail)?",
+      "options": [
+        {
+          "text": "Approximately 10%",
+          "correct": false
+        },
+        {
+          "text": "Approximately 30%",
+          "correct": true
+        },
+        {
+          "text": "Approximately 60%",
+          "correct": false
+        },
+        {
+          "text": "Approximately 90%",
+          "correct": false
+        }
+      ],
+      "explanation": "Research shows that automated accessibility checkers can fully test approximately 30% of WCAG success criteria—the structural, machine-readable ones. About 45% are partially detectable, and about 42% cannot be detected by automated tools at all. This is why human review is always necessary. If a checker says \"no issues found,\" that does not mean the content is fully accessible."
+    },
+    {
+      "id": "ch08-q02",
+      "question": "A faculty member uses the Microsoft Accessibility Checker on a Word document. The checker reports \"no accessibility issues found.\" What should the faculty member conclude?",
+      "options": [
+        {
+          "text": "The document is fully accessible and ready to share with students",
+          "correct": false
+        },
+        {
+          "text": "The document has no structural violations that the checker can detect, but human review of alt text quality, clarity, and logic is still needed",
+          "correct": true
+        },
+        {
+          "text": "There might be accessibility issues, but they are not important enough to worry about",
+          "correct": false
+        },
+        {
+          "text": "The checker is not reliable and should be ignored",
+          "correct": false
+        }
+      ],
+      "explanation": "Automated checkers like the Microsoft Accessibility Checker flag structural issues (missing headings, missing alt text, low contrast, etc.), but they cannot evaluate the quality of alt text, whether content is written clearly, or whether the document's logical flow makes sense. A \"no issues\" message means the checker didn't find structural violations—not that the document is fully accessible. Always follow up with human judgment."
+    }
+  ],
+  "passThreshold": 80
+}

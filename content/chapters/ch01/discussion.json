@@ -1,0 +1,21 @@
+{
+  "chapterId": 1,
+  "weekNum": 1,
+  "title": "Your First Look at Your Own Materials",
+  "prompt": "This module introduced two big ideas: the legal reality of Title II compliance and the human reality of how inaccessible materials affect students.\n\nFor your initial post, share two things:\n\n1. One thing about Title II compliance or student accessibility that surprised you in this module — something you did not know before.\n\n2. One specific document or material in your current course that you suspect might have accessibility issues — and why you think so. (Don't worry about fixing it yet — that's coming in later modules.)\n\nBe specific. Name the document type (syllabus, slide deck, quiz, PDF reading, etc.) and describe what you think the issue might be (scanned image, no headings, no alt text, color-only formatting, etc.).",
+  "requirements": {
+    "initialPost": {
+      "minWords": 150,
+      "maxWords": 250,
+      "dueDay": "Wednesday",
+      "dueTime": "11:59 PM ET"
+    },
+    "replies": {
+      "count": 2,
+      "minWords": 75,
+      "maxWords": 150,
+      "dueDay": "Sunday",
+      "dueTime": "11:59 PM ET"
+    }
+  }
+}

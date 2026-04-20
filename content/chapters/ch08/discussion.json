@@ -1,0 +1,21 @@
+{
+  "chapterId": 8,
+  "weekNum": 8,
+  "title": "Your 30-Day Action Plan and Next Steps",
+  "prompt": "You've reached the end of this course, and you've created your personal 30-Day Action Plan. Now it's time to commit to it publicly.\n\nFor your initial post, share your 30-Day Action Plan — or a summary of it. Here's what to include:\n\n1. Your Week 1 priority: What specific document or syllabus will you fix first, and what accessibility issue will you address?\n\n2. Your biggest accessibility challenge: What do you think will be the hardest part of your plan to execute — is it finding time, getting comfortable with a tool, or something else?\n\n3. One thing that surprised you in this course: A concept, a tool, or a realization that changed how you think about accessibility in your teaching.\n\nThen, respond to at least two colleagues' posts. Look for someone whose action plan is different from yours (maybe they teach a different discipline or use different tools). Ask them a question, offer encouragement, or share a related experience. The goal is to build a small community of faculty who are committed to accessibility.",
+  "requirements": {
+    "initialPost": {
+      "minWords": 150,
+      "maxWords": 250,
+      "dueDay": "Wednesday",
+      "dueTime": "11:59 PM ET"
+    },
+    "replies": {
+      "count": 2,
+      "minWords": 75,
+      "maxWords": 150,
+      "dueDay": "Sunday",
+      "dueTime": "11:59 PM ET"
+    }
+  }
+}
