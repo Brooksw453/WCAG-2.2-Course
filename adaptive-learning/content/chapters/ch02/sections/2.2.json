@@ -1,0 +1,63 @@
+{
+  "sectionId": "2.2",
+  "chapterId": 2,
+  "title": "The 13 New Criteria in WCAG 2.2",
+  "learningObjectives": [
+    "List the WCAG 2.2 success criteria that are new since 2.1",
+    "Identify which new criteria most directly affect faculty-created materials",
+    "Explain Focus Appearance, Dragging Movements, and Accessible Authentication in plain language"
+  ],
+  "keyTerms": [
+    {
+      "term": "Focus indicator / Focus appearance",
+      "definition": "A visual marker (usually a border, outline, or highlight) that shows where you are when navigating by keyboard. Must be visible and at least 2 pixels thick under WCAG 2.2. Important for keyboard users who can't rely on a mouse cursor."
+    },
+    {
+      "term": "Dragging movements (alternative input)",
+      "definition": "A WCAG 2.2 criterion (2.5.7) that requires an alternative to drag-and-drop interactions. Students with motor disabilities may not be able to click and drag; they need a keyboard alternative like dropdowns, checkboxes, or buttons."
+    },
+    {
+      "term": "Accessible authentication",
+      "definition": "A WCAG 2.2 criterion (3.3.8) that requires login flows and CAPTCHAs to be accessible. No cognitive puzzles you must solve to log in, and alternatives to image-based CAPTCHAs must be available."
+    },
+    {
+      "term": "Target size (minimum)",
+      "definition": "A WCAG 2.2 criterion (2.5.8) that requires interactive elements (buttons, links, form fields) to be at least 24x24 pixels. Important for people with motor disabilities or who are using touch screens."
+    },
+    {
+      "term": "Consistent help",
+      "definition": "A WCAG 2.2 criterion (3.2.6) that asks for help mechanisms (a help button, search function, contact link) to be in the same location across a website or course. Consistency reduces cognitive load."
+    },
+    {
+      "term": "Redundant entry",
+      "definition": "A WCAG 2.2 criterion (3.3.7) that prohibits requiring the same information to be entered twice in a form unless it's for security (like a password). Duplicate entry creates barriers for people with motor disabilities or using assistive technology."
+    }
+  ],
+  "contentBlocks": [
+    {
+      "type": "concept",
+      "title": "What's New in 2.2 and Why It Matters",
+      "body": "WCAG 2.2 was published by the World Wide Web Consortium on [October 5, 2023](https://www.w3.org/WAI/standards-guidelines/wcag/new-in-22/). This is important: **Title II requires WCAG 2.1 AA, not 2.2.** However, institutions aiming for best practice are targeting WCAG 2.2 AA because the new criteria address real barriers that users experience.\n\nWCAG 2.2 added **nine new success criteria** and removed one outdated criterion (4.1.1 Parsing, which is no longer relevant to modern web technology). This means WCAG 2.2 has **86 total criteria**, compared to 78 in WCAG 2.1.\n\nWhy the new criteria? They address gaps. Over the 14 years between WCAG 2.1 (2018) and 2.2 (2023), web and course technology evolved. Things that weren't a problem in 2018 became barriers by 2023:\n\n- **Drag-and-drop interactions** became ubiquitous in learning platforms (Canvas, Blackboard, H5P), but they're not accessible by keyboard.\n- **Auto-advancing slideshows** became common in web design, but they trap users who can't navigate at their own speed.\n- **CAPTCHA puzzles** got more complex, creating barriers for people with cognitive disabilities.\n- **Focus indicators** got thinner or invisible in modern design, making keyboard navigation harder.\n- **Tiny buttons** on touch screens became an issue as mobile learning grew.\n\nThese new criteria are the WCAG authors saying, \"We now recognize these as barriers, and they need to be fixed.\"\n\nBreakdown of the new criteria:\n- **3 at Level A** (minimum conformance)\n- **5 at Level AA** (the Title II standard)\n- **1 at Level AAA** (the highest standard, rarely required)\n\nAs a faculty member, you'll encounter most of the Level AA criteria if you use interactive tools or design quizzes."
+    },
+    {
+      "type": "concept",
+      "title": "The Criteria That Matter Most for Faculty",
+      "body": "Not all nine new criteria will affect you equally. Some are mostly about website design (form consistency, help placement). Others directly impact the materials faculty create. Here are the four that matter most:\n\n**2.5.7 Dragging Movements (Level AA)** — \"The target of a user interface function can be activated by at least one input method where the activation does not rely on a dragging movement.\" In plain English: drag-and-drop is not allowed as the only way to complete a task. Your Canvas quiz has a drag-and-drop matching question? That's 2.5.7 non-compliance. A student with a motor disability can't click and drag. The fix: offer a dropdown or checkbox alternative, or redesign the quiz to avoid drag-and-drop.\n\n**2.4.11 Focus Appearance (Level AA)** — Focus indicators (the outline around the button you're about to click when navigating by keyboard) must be visible and at least 2 pixels thick. Some modern web design makes focus indicators nearly invisible or removes them entirely in pursuit of aesthetic minimalism. This harms keyboard users. If you build a course page with custom CSS, make sure the focus indicator is obvious — a contrasting outline at least 2 pixels wide.\n\n**3.3.8 Accessible Authentication (Level AA)** — Login systems and CAPTCHA puzzles must be accessible. If your course requires students to solve a \"select all the traffic lights\" CAPTCHA to log in, that's a barrier for people with vision disabilities or cognitive disabilities who struggle with the puzzle. The fix: offer an alternative, like a math problem or an audio CAPTCHA.\n\n**2.5.8 Target Size (Minimum)** (Level AA) — Interactive elements must be at least 24x24 pixels and have adequate spacing between them. In a PDF or document, this usually isn't a problem. But if you design a custom course page or a quiz with tiny buttons, you're creating a barrier for students with motor disabilities or using touch screens.\n\nThe other new criteria (focus not obscured, redundant entry, consistent help) are important but usually handled at the institutional/LMS level rather than the individual faculty level."
+    },
+    {
+      "type": "example",
+      "title": "Drag-and-Drop Quizzes: A 2.2 Case Study",
+      "body": "Let's walk through a real scenario that many faculty encounter.\n\nYou're teaching a biology course and need students to match parts of a plant cell to their functions. You create a quiz in Canvas with a drag-and-drop matching question:\n\n```\nDrag each structure to its function:\n\n[Mitochondrion] → [ ] Energy production\n[Chloroplast] → [ ] Photosynthesis\n[Nucleus] → [ ] DNA storage\n```\n\nThis is intuitive for most students. But a student using a screen reader or keyboard navigation cannot complete this question. They cannot drag. This violates WCAG 2.5.7. Canvas Ally will flag it as an accessibility issue.\n\n**How to fix it without changing the assessment:**\n\nRebuild the question as a **multiple-dropdown question**:\n\n```\nMitochondrion functions: [Dropdown: Energy production / Photosynthesis / DNA storage]\nChloroplast functions: [Dropdown: Energy production / Photosynthesis / DNA storage]\nNucleus functions: [Dropdown: Energy production / Photosynthesis / DNA storage]\n```\n\nOr as a **multiple-choice question with images**:\n\n```\n(Mitochondrion)\na) Energy production\nb) Photosynthesis\nc) DNA storage\n\n(Chloroplast)\na) Energy production\nb) Photosynthesis\nc) DNA storage\n\n(Nucleus)\na) Energy production\nb) Photosynthesis\nc) DNA storage\n```\n\nBoth alternatives assess the exact same knowledge — can students match structures to functions? — but they don't require dragging. The dropdown or multiple-choice version works for keyboard users, screen reader users, and touch-screen users. It's actually more inclusive and just as valid pedagogically.\n\nThis is the essence of WCAG 2.2 compliance: not lowering your standards, but achieving the same learning outcomes in a way that doesn't create barriers."
+    },
+    {
+      "type": "summary",
+      "body": "WCAG 2.2 added nine new success criteria to address accessibility barriers that weren't explicitly covered in 2.1. The most relevant for faculty are 2.5.7 (Dragging Movements), 2.4.11 (Focus Appearance), 3.3.8 (Accessible Authentication), and 2.5.8 (Target Size). Title II requires WCAG 2.1 AA, but 2.2 is best practice. Designing for WCAG 2.2 doesn't lower educational standards — it ensures everyone can access the material."
+    }
+  ],
+  "freeTextPrompt": {
+    "id": "ft-2.2",
+    "prompt": "Have you ever used a drag-and-drop quiz, a CAPTCHA, a focus indicator in your courses, or another interactive element covered by WCAG 2.2? Describe the interactive element and where it appears in your teaching. Based on what you've learned, do you think it would pass WCAG 2.2 criteria — and why or why not?",
+    "minWords": 100,
+    "rubric": "A strong response identifies a specific interactive element used in the faculty member's actual teaching (not hypothetical) and applies at least one WCAG 2.2 criterion to evaluate it. The response shows understanding of why the criterion matters (the barrier it prevents) and reflects on whether their current practice is compliant."
+  }
+}

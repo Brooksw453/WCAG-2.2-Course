@@ -1,0 +1,53 @@
+{
+  "sectionId": "6.1",
+  "chapterId": 6,
+  "questions": [
+    {
+      "id": "ch06-q01",
+      "question": "Which of the following quiz question types is most likely to create accessibility barriers for students using keyboard navigation or screen readers?",
+      "options": [
+        {
+          "text": "Multiple choice with clearly labeled radio buttons",
+          "correct": false
+        },
+        {
+          "text": "True/False questions",
+          "correct": false
+        },
+        {
+          "text": "Drag-and-drop matching questions",
+          "correct": true
+        },
+        {
+          "text": "Short answer text fields",
+          "correct": false
+        }
+      ],
+      "explanation": "Drag-and-drop matching requires users to interact via mouse-based dragging, which has no keyboard-accessible alternative. This violates WCAG 2.2 criterion 2.5.7 (Dragging Movements). Multiple choice, true/false, and short answer questions are all keyboard-accessible if properly implemented. The accessible alternative to drag-and-drop matching is to use separate multiple-choice questions — one for each term to be matched."
+    },
+    {
+      "id": "ch06-q02",
+      "question": "How can a faculty member quickly test whether their quiz is keyboard-accessible before publishing it?",
+      "options": [
+        {
+          "text": "Ask a colleague to review it for accessibility",
+          "correct": false
+        },
+        {
+          "text": "Run the Microsoft Accessibility Checker on the quiz file",
+          "correct": false
+        },
+        {
+          "text": "Try completing the entire quiz using only Tab, Shift+Tab, Enter, Space, and arrow keys — no mouse",
+          "correct": true
+        },
+        {
+          "text": "Check the LMS settings to see if accessibility is enabled",
+          "correct": false
+        }
+      ],
+      "explanation": "The most direct way to test keyboard accessibility is to experience the quiz as a keyboard-only user would. This 2-minute test reveals immediately whether focus is visible, Tab order works, and all question types can be answered without a mouse. If you get stuck during the test, your students using keyboard navigation will too. While colleague feedback and checking LMS settings are valuable, only hands-on testing reveals the actual user experience."
+    }
+  ],
+  "passThreshold": 80
+}

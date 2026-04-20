@@ -1,0 +1,53 @@
+{
+  "sectionId": "4.3",
+  "chapterId": 4,
+  "questions": [
+    {
+      "id": "ch04-q05",
+      "question": "You assigned a PDF reading from a journal article. You try to select text in the PDF with your mouse, but the entire page highlights as one object. What does this tell you about the PDF?",
+      "options": [
+        {
+          "text": "It is a scanned PDF (an image of a printed page), not a born-digital document. Text is not selectable, and a screen reader cannot read it without OCR processing first",
+          "correct": true
+        },
+        {
+          "text": "The PDF was created by Adobe and requires a special reader to open",
+          "correct": false
+        },
+        {
+          "text": "The publisher has intentionally locked the PDF to prevent copying",
+          "correct": false
+        },
+        {
+          "text": "There is an error in the PDF, and you should delete it and download a new version",
+          "correct": false
+        }
+      ],
+      "explanation": "When a PDF is scanned (created by photographing a printed page), it contains images of text, not actual text. Selecting returns nothing because the text is not there — only pixels. A born-digital PDF (created from a Word doc or layout software) allows text selection and is accessible to screen readers. Scanned PDFs require OCR (Optical Character Recognition) as a first step toward making them accessible."
+    },
+    {
+      "id": "ch04-q06",
+      "question": "You are considering adopting a new textbook. What document should you request from the publisher to evaluate whether the textbook is accessible before adoption?",
+      "options": [
+        {
+          "text": "A VPAT (Voluntary Product Accessibility Template) or Accessibility Conformance Report showing how the product conforms to WCAG success criteria",
+          "correct": true
+        },
+        {
+          "text": "A list of all fonts used in the textbook",
+          "correct": false
+        },
+        {
+          "text": "A bulk discount agreement showing how many copies you can order",
+          "correct": false
+        },
+        {
+          "text": "The publisher's customer service phone number for technical support",
+          "correct": false
+        }
+      ],
+      "explanation": "A VPAT (Voluntary Product Accessibility Template) or Accessibility Conformance Report is a standardized document that shows which WCAG success criteria a product fully conforms to, partially conforms to, or does not conform to. It includes specific remarks about features like alt text, keyboard navigation, captions, and more. This is the primary tool for evaluating third-party educational materials for accessibility before adoption."
+    }
+  ],
+  "passThreshold": 80
+}

@@ -1,0 +1,10 @@
+# Claude Code runtime (session state, local settings)
+.claude/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Editor
+.vscode/
+.idea/

@@ -1,0 +1,53 @@
+{
+  "sectionId": "2.3",
+  "chapterId": 2,
+  "questions": [
+    {
+      "id": "ch02-q05",
+      "question": "A faculty member writes descriptive link text: 'Download the syllabus (PDF)' instead of 'Click here.' Why does this matter for accessibility?",
+      "options": [
+        {
+          "text": "It helps colorblind students understand where the link goes",
+          "correct": false
+        },
+        {
+          "text": "Screen reader users often pull up a list of all links on a page; descriptive text makes the list useful instead of confusing",
+          "correct": true
+        },
+        {
+          "text": "It prevents students from clicking the wrong link by mistake",
+          "correct": false
+        },
+        {
+          "text": "It ensures the link will work on all browsers and devices",
+          "correct": false
+        }
+      ],
+      "explanation": "This is a fundamental accessibility practice. When a screen reader user navigates a page, they can bring up a list of all links without reading the surrounding context. If every link says 'click here,' the list is useless — the user has no idea where each link goes. Descriptive link text ('Download the syllabus,' 'See the attendance policy,' 'Email the instructor') makes the link list actionable. This is an Understandable principle issue — the user understands where the link goes."
+    },
+    {
+      "id": "ch02-q06",
+      "question": "The WebAIM Million 2026 Report identified low contrast text as the most common accessibility failure. What is the minimum contrast ratio required for normal-sized text under WCAG?",
+      "options": [
+        {
+          "text": "2:1",
+          "correct": false
+        },
+        {
+          "text": "3:1",
+          "correct": false
+        },
+        {
+          "text": "4.5:1",
+          "correct": true
+        },
+        {
+          "text": "7:1",
+          "correct": false
+        }
+      ],
+      "explanation": "The contrast ratio is the brightness difference between text and background. WCAG requires 4.5:1 for normal text (less than 18pt, or less than 14pt bold) and 3:1 for large text (18pt or larger, or 14pt bold or larger). This ratio is not about the visual preference of designers — it's about readability for people with low vision, color blindness, and those reading in bright sunlight on mobile devices. You can check contrast using a free tool like the [WebAIM Contrast Checker](https://webaim.org/resources/contrastchecker/)."
+    }
+  ],
+  "passThreshold": 80
+}

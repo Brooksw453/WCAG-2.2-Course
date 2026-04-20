@@ -1,0 +1,21 @@
+{
+  "chapterId": 3,
+  "weekNum": 3,
+  "title": "Auditing Your Own Materials",
+  "prompt": "You've now learned the practical skills to audit and fix document accessibility — headings, alt text, tables, links, color contrast, and the Accessibility Checker. In this discussion, we'd like you to reflect on what you found when auditing your own materials.\n\nFor your initial post, share: What was the most common accessibility issue you found in your own documents? (Choose one: missing headings, missing alt text, non-descriptive links, low contrast, missing table headers, or something else.) What do you think caused this issue — was it knowledge that was missing, a tool limitation, time pressure, or something else? Based on what you've learned in this module, do you know how to fix it, or would you need additional help? If you didn't have issues, what did the Accessibility Checker reveal about your documents — did any findings surprise you?",
+  "requirements": {
+    "initialPost": {
+      "minWords": 150,
+      "maxWords": 250,
+      "dueDay": "Wednesday",
+      "dueTime": "11:59 PM ET"
+    },
+    "replies": {
+      "count": 2,
+      "minWords": 75,
+      "maxWords": 150,
+      "dueDay": "Sunday",
+      "dueTime": "11:59 PM ET"
+    }
+  }
+}

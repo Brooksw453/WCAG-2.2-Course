@@ -1,0 +1,59 @@
+{
+  "sectionId": "2.3",
+  "chapterId": 2,
+  "title": "Spotting WCAG Issues in Your Materials",
+  "learningObjectives": [
+    "Identify the 5 most common WCAG violations in faculty-created documents",
+    "Use a simple mental checklist to evaluate any material for obvious issues",
+    "Distinguish between issues you can fix yourself and issues that need technical help"
+  ],
+  "keyTerms": [
+    {
+      "term": "Color contrast ratio",
+      "definition": "The mathematical ratio between the brightness of text and its background. WCAG requires 4.5:1 for normal text, 3:1 for large text. This ratio is measured by comparing the brightness (luminance) of the two colors. A contrast checker tool can calculate this for you."
+    },
+    {
+      "term": "Alternative text (alt text)",
+      "definition": "A brief description of an image that screen reader users read instead of seeing the image. Alt text should be concise (usually 1–2 sentences), describe what the image shows, and convey the purpose of the image in context."
+    },
+    {
+      "term": "Heading structure",
+      "definition": "The hierarchical use of heading levels (Heading 1, Heading 2, Heading 3, etc.) to organize a document. Proper heading structure helps screen reader users understand the document outline and navigate quickly. Headings should nest logically — no skipping levels like \"Heading 1\" to \"Heading 3.\""
+    },
+    {
+      "term": "Link text (descriptive vs. 'click here')",
+      "definition": "The visible text of a hyperlink. Descriptive link text tells you where the link goes (e.g., \"Download the syllabus\"); non-descriptive link text doesn't (e.g., \"click here\"). Screen reader users often pull up a list of links, so descriptive text is essential."
+    },
+    {
+      "term": "Reading order",
+      "definition": "The sequence in which content is presented, either visually or by a screen reader. In PDFs and PowerPoint, the reading order must match the visual order, or it creates confusion. In responsive web design, reading order is determined by the HTML structure."
+    }
+  ],
+  "contentBlocks": [
+    {
+      "type": "concept",
+      "title": "The Top 5 Issues (and Why They Keep Showing Up)",
+      "body": "The [WebAIM Million 2026 Report](https://webaim.org/projects/million/) analyzed the top 6 most common accessibility failures across the web. The same issues show up in faculty course materials. Understanding why they're so common helps you avoid them.\n\n**1. Low Contrast Text** — Found on 83.9% of pages with accessibility failures. Text that's the same color as the background, or has insufficient contrast, is hard or impossible to read for people with low vision, color blindness, or people reading in bright sunlight on mobile devices. This is the single most common failure. Why does it happen? Modern design prioritizes aesthetics — light gray text on white background looks sophisticated but is inaccessible. The fix is simple: ensure 4.5:1 contrast ratio for normal text, 3:1 for large text. Use a [free contrast checker](https://webaim.org/resources/contrastchecker/) to verify.\n\n**2. Missing Alt Text for Images** — The second most common failure. Every image that conveys information needs alt text. Why does this happen so often? Tools don't enforce it. In Word or PowerPoint, you can insert an image and never get a reminder to add alt text. The fix: develop a habit of right-clicking every image and adding a 1–2 sentence description of what it shows.\n\n**3. Missing Heading Structure** — Many documents use bold or large text to make section titles look like headings, but don't actually apply \"Heading\" styles. Screen readers can't detect formatting — they need semantic structure. A bold 16pt title is just bold text to a screen reader. Why? Formatting is faster than learning styles. The fix: use Word's Heading styles (Home tab → Styles) instead of manual formatting. It takes 5 seconds per heading and makes your document navigable.\n\n**4. Non-Descriptive Link Text** — \"Click here,\" \"Read more,\" and bare URLs (http://example.com) are all non-descriptive. Screen reader users often pull up a list of all links on a page — if they all say \"click here,\" the list is useless. Why does this happen? Habit and speed. It's faster to type \"click here.\" But it creates barriers. The fix: describe where the link goes. \"Download the syllabus (PDF)\" tells you exactly what to expect.\n\n**5. Missing Document Language** — A document that doesn't specify its language causes screen readers to mispronounce words and becomes harder to understand. If your document is in Spanish but marked as English, a screen reader will try to pronounce Spanish words using English rules. Why is this often missed? It's invisible to sighted users. The fix: In Word or PDF properties, set the document language to the language in which it's written."
+    },
+    {
+      "type": "example",
+      "title": "Before and After: A Real Handout",
+      "body": "Let's look at a hypothetical but realistic handout and see how it violates all five issues, then how to fix them.\n\n**BEFORE (Inaccessible):**\n\n```\n---\n**Course Expectations**\n\nStudents should participate actively. More information is available here: \nhttp://my-institution.edu/policies/participation\n\n(Image of a calendar — no alt text)\n\nKey Dates:\n**Important:** Classes meet on Mondays and Wednesdays\n\n**Deadlines:** Papers are due by 5 PM on the dates shown in the calendar above.\n\n**Color coding used in the calendar:** \nRed = assignment due dates\nGreen = holidays\n```\n\n**Accessibility issues:**\n1. **Low contrast:** \"Students should participate actively\" might be in gray text on light background (insufficient contrast).\n2. **Missing alt text:** The calendar image has no description.\n3. **Missing heading structure:** \"Course Expectations\" and \"Important\" are bold text, not proper Heading styles. A screen reader reads them as regular text, not headings.\n4. **Non-descriptive link text:** \"More information is available here\" is vague. Better: \"Participation policy details.\"\n5. **Missing document language:** If not specified, the screen reader won't know what language to use.\n6. **Bonus issue:** \"Red and green are used to code the calendar\" relies on color alone. A colorblind student can't distinguish them.\n\n**AFTER (Accessible):**\n\n```\n---\nCourse Expectations\n\nStudents should participate actively. For more details, see the \nParticipation policy document linked on our course page.\n\n[Calendar describing key dates]\nAlt text: \"Course calendar showing key assignment due dates in blue and \nholiday dates in gray.\"\n\nKey Dates\n\nMeeting Schedule\nClasses meet on Mondays and Wednesdays.\n\nAssignment Deadlines\nPapers are due by 5 PM on the following dates:\n• Paper 1: February 15\n• Paper 2: April 12\n• Final Project: May 10\n\nMark these dates in your calendar or set phone reminders.\n```\n\n**Fixes applied:**\n1. **Color contrast:** Increased from gray to dark gray or black; verified 4.5:1 ratio.\n2. **Alt text:** Added meaningful description of the calendar.\n3. **Heading structure:** Applied proper Heading styles (Heading 1 for \"Course Expectations\"; Heading 2 for \"Key Dates,\" \"Meeting Schedule,\" \"Assignment Deadlines\").\n4. **Descriptive links:** Changed \"here\" to \"Participation policy document linked on our course page.\"\n5. **Document language:** Marked the document as English in Word properties.\n6. **Color independence:** Replaced \"Red = assignment due, Green = holidays\" with text descriptions: \"assignment due dates in blue, holiday dates in gray.\"\n\nThe fixed version conveys the same information but is now perceivable, operable, understandable, and robust for all students."
+    },
+    {
+      "type": "concept",
+      "title": "The 60-Second Scan",
+      "body": "You don't need to run a formal accessibility audit on every document you create. A quick mental checklist takes about a minute and catches the most common issues:\n\n**Check 1: Headings**\n- Are there section titles in your document?\n- Are they formatted as Heading styles (not just bold or large text)?\n- Do they nest logically? (Heading 1 → Heading 2 → Heading 3, not Heading 1 → Heading 3)\n- **If you find formatting instead of styles:** Use Word's Styles pane to apply proper Heading styles. Takes 2 minutes per document.\n\n**Check 2: Images**\n- Does your document have images, charts, or diagrams?\n- Does each one have alt text?\n- **If no alt text:** Right-click the image, select \"Format Picture,\" go to Alt Text, and write a 1–2 sentence description.\n\n**Check 3: Links**\n- Are there hyperlinks in your document?\n- Do they describe where they go? (e.g., \"Download the syllabus PDF\" vs. \"click here\")\n- **If you find vague link text:** Edit the link and change the visible text to be descriptive.\n\n**Check 4: Color Contrast**\n- Is the text dark enough to read on its background?\n- Are you using color alone to convey meaning (\"red = required, blue = optional\")?\n- **If contrast seems low:** Use a [contrast checker tool](https://webaim.org/resources/contrastchecker/) to verify the ratio. If it's below 4.5:1, darken the text.\n\n**Check 5: Keyboard Navigation**\n- Can you navigate this document using only the keyboard (Tab key, arrow keys, Enter)?\n- Or is it a visual-only interactive element (like a dropdown in a PDF)?\n- **If it's interactive:** Verify it works with Tab and Enter, not just mouse clicks.\n\n**What to do when you find an issue:**\n- **Heading/link/alt text issue?** You can fix it right now in Word or your LMS.\n- **Contrast issue?** Adjust the colors or try a different color combination.\n- **Keyboard navigation issue in a PDF or interactive tool?** Might need help from your IT department or accessibility office.\n\nThe 60-Second Scan is a habit-forming tool. Run it on every document before you post it to your course. You'll catch most issues before students encounter them."
+    },
+    {
+      "type": "summary",
+      "body": "The five most common WCAG violations in course materials are low contrast text, missing alt text, missing heading structure, non-descriptive link text, and unspecified document language. The 60-Second Scan — checking for headings, images, links, contrast, and keyboard navigation — takes about a minute and catches most issues. Many faculty can fix these issues immediately using Word, PowerPoint, or your LMS. Some issues (like complex PDF accessibility) may need technical help from your institution's IT or accessibility office."
+    }
+  ],
+  "freeTextPrompt": {
+    "id": "ft-2.3",
+    "prompt": "Run the 60-Second Scan on one of your own documents — a syllabus, a handout, or a slide deck. Report what you found: which of the five checks passed, which failed, and what surprised you about the results? Did you notice anything you hadn't thought about before?",
+    "minWords": 100,
+    "rubric": "A strong response shows that the participant actually ran the scan on a real document (not hypothetical). It identifies specific findings for at least 3 of the 5 checks and describes what was found concretely (e.g., \"My syllabus has 7 images with no alt text\" rather than \"images don't have alt text\"). Bonus: reflection on why that issue wasn't caught or addressed before."
+  }
+}

@@ -1,0 +1,53 @@
+{
+  "sectionId": "7.1",
+  "chapterId": 7,
+  "questions": [
+    {
+      "id": "ch07-q01",
+      "question": "A student gives you an accommodation letter from Disability Services. Can you ask the student what their disability is?",
+      "options": [
+        {
+          "text": "Yes — you need to understand the disability to implement the accommodation correctly",
+          "correct": false
+        },
+        {
+          "text": "Yes — it is reasonable to ask so you can explain to other students",
+          "correct": false
+        },
+        {
+          "text": "No — under the ADA, you implement the listed accommodations without knowing the diagnosis",
+          "correct": true
+        },
+        {
+          "text": "Only if the student volunteers the information",
+          "correct": false
+        }
+      ],
+      "explanation": "The accommodation letter tells you everything you need to know: what accommodations to provide. The student's diagnosis is confidential information between them and Disability Services. You do not ask. Even if the student volunteers the information, you do not use it to judge, question, or modify the accommodation. Your role is to implement what the letter says, period."
+    },
+    {
+      "id": "ch07-q02",
+      "question": "An accommodation letter says 'extended time on exams' but does not specify whether it is 1.5× or 2×. What do you do?",
+      "options": [
+        {
+          "text": "Assume it is 1.5× and set that in Canvas",
+          "correct": false
+        },
+        {
+          "text": "Ask the student what they prefer",
+          "correct": false
+        },
+        {
+          "text": "Contact Disability Services to clarify the exact multiplier",
+          "correct": true
+        },
+        {
+          "text": "Tell the student that the letter is incomplete and ask them to get a new one",
+          "correct": false
+        }
+      ],
+      "explanation": "When an accommodation letter is ambiguous or incomplete, you contact the Disability Services office to clarify — not the student. The DS office issued the letter and can explain what 'extended time' means in this case. They might say '1.5× for all exams' or '2× for certain exams.' Once you clarify with DS, you implement what they specify."
+    }
+  ],
+  "passThreshold": 80
+}

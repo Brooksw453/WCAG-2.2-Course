@@ -1,0 +1,53 @@
+{
+  "sectionId": "3.3",
+  "chapterId": 3,
+  "questions": [
+    {
+      "id": "ch03-q05",
+      "question": "A syllabus uses a color-coded system: red text means 'required' and blue text means 'optional.' What accessibility issue does this create?",
+      "options": [
+        {
+          "text": "Screen readers cannot read colored text",
+          "correct": false
+        },
+        {
+          "text": "Students with red-green color blindness or other color vision deficiencies cannot distinguish between required and optional without additional indicators",
+          "correct": true
+        },
+        {
+          "text": "Color slows down document loading",
+          "correct": false
+        },
+        {
+          "text": "There is no accessibility issue; color is always helpful",
+          "correct": false
+        }
+      ],
+      "explanation": "Using color alone to convey information violates the WCAG principle of Distinguishable (and the Understandable principle). About 8% of people have color blindness, and many more have difficulty distinguishing certain colors. The fix is to pair color with another indicator: red text AND an asterisk for required, blue text AND the word 'optional,' or a different structure entirely (like a list or table that uses text to identify categories). Color can enhance understanding, but should never be the only way to understand the information."
+    },
+    {
+      "id": "ch03-q06",
+      "question": "What is the minimum color contrast ratio for normal-sized text under WCAG, and how can you check it?",
+      "options": [
+        {
+          "text": "2:1 ratio; visual inspection by eye",
+          "correct": false
+        },
+        {
+          "text": "4.5:1 ratio; using a free online contrast checker tool",
+          "correct": true
+        },
+        {
+          "text": "3:1 ratio for all text sizes; no tool needed",
+          "correct": false
+        },
+        {
+          "text": "7:1 ratio; measured with a special color meter device",
+          "correct": false
+        }
+      ],
+      "explanation": "WCAG requires 4.5:1 contrast for normal text and 3:1 for large text (18pt or larger). This ratio is measured mathematically and cannot be eyeballed — what looks readable to you may not meet the ratio. Free tools like the [WebAIM Contrast Checker](https://webaim.org/resources/contrastchecker/) let you input your text and background colors and instantly see the ratio. If it's below the required level, you need to adjust the colors (darken text or lighten background)."
+    }
+  ],
+  "passThreshold": 80
+}

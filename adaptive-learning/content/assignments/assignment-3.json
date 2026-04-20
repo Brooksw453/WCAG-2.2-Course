@@ -1,0 +1,80 @@
+{
+  "assignmentId": 3,
+  "title": "Your Accessibility Workflow and Action Plan",
+  "points": 150,
+  "description": "This final assignment turns everything you've learned into a personal accessibility workflow you'll actually use. You'll write your accommodation response plan, your semester-start checklist, your 30-day action plan, and your long-term learning path. Together, these become the operational backbone of your accessibility practice going forward.",
+  "relatedChapters": [7, 8],
+  "context": {
+    "purpose": "Courses end, but accessibility is ongoing. Without a written workflow, faculty tend to fall back into reactive mode — fixing one thing when a DRC letter arrives, forgetting the rest. The point of this assignment is to lock in systems so accessibility happens automatically, on your calendar, with the tools you've chosen. Everything you write here is for YOU, not for compliance paperwork.",
+    "goals": [
+      "Define your personal process for handling DRC accommodation letters",
+      "Build a semester-start checklist you'll actually use every term",
+      "Commit to a concrete 30-day plan for the month after the course",
+      "Identify your ongoing learning path so this isn't your last accessibility course",
+      "Complete the final portfolio artifacts"
+    ],
+    "whatToExpect": "The AI coach is looking for specificity and realism. Generic plans ('I'll make everything accessible') score lower than specific ones ('Week 1: Run Accessibility Checker on all three syllabi. Week 2: Re-record the Module 3 lecture with captions'). The coach will push back on plans that are too ambitious to finish in 30 days or too vague to execute. Treat this like writing a plan for your own future self — because that's what it is."
+  },
+  "sections": [
+    {
+      "key": "accommodation-response-plan",
+      "title": "Accommodation Response Plan",
+      "instructions": "Write your personal plan for handling accommodation letters. Include: (a) the specific steps you'll take when a letter arrives — acknowledge within 48 hours, review, contact DRC with questions, implement in LMS, (b) who at your institution you'll contact for common questions (DRC staff names/emails, your department's accessibility liaison if one exists), (c) how you'll implement the top 3 most common accommodations in YOUR LMS — extended time on quizzes, note-taker access, alternative format materials, (d) your syllabus accessibility statement. Reference Module 7 specifics. This becomes your go-to document the next time a letter arrives.",
+      "minWords": 100,
+      "maxWords": 400,
+      "rubric": "A strong response (1) has a concrete response workflow with timelines ('within 48 hours' not 'quickly'), (2) names specific people/offices at the faculty member's actual institution — 'Contact Sarah at DRC, drc@myu.edu', not 'contact DRC', (3) shows LMS-specific steps — the Canvas path for adding a per-student quiz extension is different from Blackboard; the response should reflect their actual LMS, (4) includes a usable syllabus accessibility statement — 3-5 sentences welcoming accommodations, pointing to DRC, inviting direct conversation, (5) addresses FERPA — accommodation letters are confidential; don't discuss in front of other students. Low scores come from 'I'll comply with letters' with no process, or generic LMS instructions.",
+      "tips": [
+        "The 48-hour acknowledgment is critical — students often wait anxiously, and silence feels like resistance",
+        "Keep a DRC contact card in your office and on your phone — when a letter arrives, you should not have to hunt for who to email",
+        "For extended-time quizzes — implement the extension BEFORE the quiz opens, not mid-exam. Mid-exam changes feel rushed and error-prone",
+        "Syllabus statement template is in Module 7.2 — start from there, but personalize it in your voice",
+        "Never ask the student to explain their disability — the letter is sufficient. You only need the accommodations, not the diagnosis"
+      ]
+    },
+    {
+      "key": "semester-start-checklist",
+      "title": "Your Semester-Start Accessibility Checklist",
+      "instructions": "Create a personalized accessibility checklist you'll use every semester, starting with the upcoming one. The checklist should include: (a) specific steps (not 'check accessibility' but 'run Microsoft Accessibility Checker on syllabus, slide decks, and handouts'), (b) which tools you'll use for each step (from Module 8 — Accessibility Checker, color contrast tool, keyboard test, screen reader spot check, LMS accessibility checker), (c) estimated time per step so you can actually schedule it, (d) when you'll do each step — before the first day? Week 1? Week 2? The checklist should be ~8-15 items, ordered by what happens first.",
+      "minWords": 100,
+      "maxWords": 400,
+      "rubric": "A strong response (1) has an actual checklist — numbered or bulleted steps, not prose, (2) includes time estimates — '15 min for syllabus audit, 45 min for slide decks' — so the plan is schedulable, (3) uses Module 8 tools by name, (4) is personalized to the faculty member's actual teaching — if they teach three courses, the checklist reflects three courses; if they teach one large lecture, that's different, (5) addresses both NEW materials (created for this semester) and INHERITED materials (from prior semesters, department-shared). Low scores come from vague items ('make course accessible'), no time estimates, or generic listings that could belong to any faculty member.",
+      "tips": [
+        "Week-by-week is often more realistic than 'day 1' — week 1 is for the syllabus, week 2 for the first quiz, etc.",
+        "Separate 'create accessibly' steps from 'audit existing materials' steps — different workflows",
+        "Calendar-block it — 'Tuesday 3-4pm = run Accessibility Checker on this week's materials' is more useful than 'be accessible'",
+        "Include one recurring step — e.g., 'every time I upload a new video, check captions before assigning'",
+        "Include a semester-end reflection — what didn't work? what got skipped? Feeds into next semester's checklist"
+      ]
+    },
+    {
+      "key": "thirty-day-action-plan",
+      "title": "Your 30-Day Action Plan",
+      "instructions": "Write a concrete, week-by-week plan for the first 30 days after completing this course. What will you fix, test, and share? The plan should include: Week 1 — the single most important thing you'll do first (audit and fix your next-semester syllabus? Remediate one specific course?). Week 2-3 — broader remediation across materials. Week 4 — share one thing with a colleague (a fix, a tool, a finding) to start building culture. This is not an aspirational plan; this is what you'll actually do. Keep the scope realistic — faculty who attempt to remediate 300 PDFs in 30 days burn out and give up.",
+      "minWords": 100,
+      "maxWords": 400,
+      "rubric": "A strong response (1) has week-by-week structure, not a dump of tasks, (2) is scoped realistically — 1-3 courses, not 'everything I've ever taught', (3) has a specific Week 1 kickoff — the most important first move, (4) includes a 'share' or 'teach someone' step, because individual knowledge that doesn't spread doesn't shift the department, (5) names artifacts from this course ('fix the syllabus I remediated in Assignment 1 one more time and use it Fall 2026', 'apply the keyboard test from Assignment 2 to my Final Exam'). Low scores come from overambitious plans (a promise to fix 10 years of materials in 30 days), or plans so vague they could be anyone's plan.",
+      "tips": [
+        "The 'Pareto principle' applies here — 20% of your materials are used 80% of the time. Fix those first",
+        "Week 1 win: pick something small enough that finishing it is realistic, important enough that finishing it matters",
+        "Week 4 'share' — even casually mentioning what you learned in a department meeting is sharing. Doesn't have to be formal",
+        "Write the plan as if you're delegating it to a colleague — 'By Friday, run Accessibility Checker on the three most-used handouts and fix any errors'",
+        "Include one 'test it' step — spot-check your own work against a keyboard-only user OR show a student the remediated syllabus and ask if anything is still confusing"
+      ]
+    },
+    {
+      "key": "looking-ahead",
+      "title": "Looking Ahead: Accessibility Beyond This Course",
+      "instructions": "Identify your ongoing accessibility learning and advocacy path. Answer: (a) What 2-3 resources (newsletters, blogs, podcasts, communities, conferences) will you follow for ongoing learning? Reference Module 8.3's resource roundup. (b) How will you advocate for accessibility in your department — department meetings, onboarding new adjuncts, offering to run a workshop, nudging your chair for training budget? (c) Where do you want your accessibility practice to be in 6 months and in 12 months? Set a goal that's ambitious but achievable. This is your professional development roadmap.",
+      "minWords": 75,
+      "maxWords": 300,
+      "rubric": "A strong response (1) names SPECIFIC resources with URLs or author names — 'WebAIM newsletter (webaim.org)', 'A11y Project', 'Knowbility podcast', not 'I'll follow some blogs', (2) has a concrete advocacy move — department meeting agenda item, offer to train new faculty, bring it up at next all-hands, (3) has time-bound goals — '6-month goal: all three of my courses have fully accessible syllabi and slides; 12-month goal: our department adopts a shared accessibility checklist'. Low scores come from generic resource lists, 'I'll just try to be better,' or no specific advocacy move.",
+      "tips": [
+        "WebAIM (webaim.org) and The A11y Project (a11yproject.com) are the two highest-signal free resources — start there",
+        "Peer accessibility — offer to be the 'accessibility peer' in your department. That single move shifts culture",
+        "6-month goals should be about YOUR teaching; 12-month goals can be about your DEPARTMENT or institution",
+        "Teaching an adjunct a 15-minute heading-styles trick is more impact than writing a 5-page white paper nobody reads",
+        "Put the follow-up in your calendar NOW — '6-month accessibility review' as a calendar event, before you finish this course"
+      ]
+    }
+  ]
+}

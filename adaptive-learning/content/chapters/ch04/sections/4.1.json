@@ -1,0 +1,63 @@
+{
+  "sectionId": "4.1",
+  "chapterId": 4,
+  "title": "Syllabi and Handouts",
+  "learningObjectives": [
+    "Identify the most common accessibility failures in syllabi and understand why they matter",
+    "Apply a syllabus accessibility checklist covering structure, links, tables, and language",
+    "Make handouts accessible regardless of discipline using consistent principles"
+  ],
+  "keyTerms": [
+    {
+      "term": "Syllabus",
+      "definition": "A faculty-created document that outlines the course scope, learning objectives, grading policies, and expectations. It is typically the first document students read and one of the most-referenced throughout the semester, making it a high-impact target for accessibility improvements."
+    },
+    {
+      "term": "Plain Language",
+      "definition": "Writing that is clear, concise, and direct, avoiding unnecessary jargon and complexity. Plain language benefits all learners but is especially important for students with cognitive disabilities or non-native speakers who may struggle with dense academic prose."
+    },
+    {
+      "term": "Readability Level",
+      "definition": "A measure of how difficult a text is to read, often expressed as a grade level (e.g., 8th grade, college level). Tools like Hemingway Editor or the Flesch-Kincaid index can estimate readability. Aiming for 10th–12th grade level is typical for college materials."
+    },
+    {
+      "term": "Document Properties",
+      "definition": "Metadata embedded in Word, PDF, and other files — including the document title, author, language (e.g., English), and subject. Setting these helps screen readers and search engines understand the document."
+    },
+    {
+      "term": "Form Field",
+      "definition": "An interactive element in a document where users can enter information (a text box, checkbox, dropdown). Form fields must be properly labeled and keyboard-accessible to work for all users."
+    },
+    {
+      "term": "Schedule Table",
+      "definition": "A table in a syllabus that organizes content by week or date (e.g., week 1 topics, readings, assignments). Schedule tables require clear header rows and descriptive column labels so screen reader users can understand the structure."
+    }
+  ],
+  "contentBlocks": [
+    {
+      "type": "concept",
+      "title": "The Syllabus: Your Most-Read Document",
+      "body": "Your syllabus is the single most frequently accessed document in your course. Students reference it throughout the semester — to understand grading policies, find office hours, check assignment deadlines, and navigate your expectations. In an accessible course, the syllabus must be one of your first accessibility targets.\n\nWhy? Because a broken syllabus creates barriers right away. A student who cannot read your grading policy, cannot locate your office hours, or cannot understand the course schedule is at an immediate disadvantage. And unlike a handout that might be used once, the syllabus is consulted repeatedly.\n\nThe most common syllabus accessibility failures are:\n\n- **Scanned PDFs or images**: A scanned syllabus (PDF created by photographing a printed page) is invisible to screen readers. Students with vision disabilities cannot access it at all. The solution: save it as a born-digital document from Word, not as an image.\n- **No heading structure**: The syllabus uses bold text for section titles (\"Grading,\" \"Office Hours\") instead of actual Heading styles. This looks fine visually, but screen readers cannot detect it as a heading, so users cannot navigate by jumping from section to section.\n- **Schedule tables without header rows**: A week-by-week schedule table might have columns for Week, Topics, Readings, and Assignments — but if these are not marked as headers, a screen reader user cannot understand what each column represents.\n- **\"Click here\" links**: Links to policies or department pages that say \"click here\" or \"link\" don't tell screen reader users where they go. A better practice: \"Course policies (PDF)\" or \"Academic integrity policy\".\n- **No alt text on logos or decorative images**: If your syllabus includes a department logo or your face, these need alt text — even if they're purely decorative (in which case, mark them as decorative and skip the alt text).\n- **Dense, jargon-heavy language**: Some course policies are written in complicated legalese. Simplifying them benefits all students, not just those with cognitive disabilities.\n- **Color-only formatting**: Using red text to indicate required readings and green text for optional ones. A colorblind student cannot distinguish them. Solution: use bold for required, or add a legend.\n\nThe good news: a syllabus is a straightforward document, and fixing these issues is entirely within your control. You do not need developer help or special tools — just Word, careful attention to structure, and about 20 minutes of your time."
+    },
+    {
+      "type": "example",
+      "title": "A Syllabus Makeover",
+      "body": "Let's walk through a real example (anonymized and composited from common patterns).\n\n**The Original Syllabus:**\n\nIt was a Word document, but a problematic one:\n- The title \"HIST 201: American History Since 1865\" was just bold, large text — not a Heading style.\n- Section titles (\"Course Description,\" \"Learning Objectives,\" \"Grading Policy\") were bold 12pt.\n- The schedule was a table with weeks and topics, but the column headers were not marked as headers.\n- Office hours were listed as a paragraph: \"I am in Caldwell 301, Tuesday and Thursday from 1–3 PM.\" Hard to spot.\n- Links to the university academic integrity policy and the disability services page said \"click here.\"\n- The syllabus included the department logo (decorative) with no alt text.\n\n**The Remediation:**\n\n1. **Applied Heading Styles**: The title became Heading 1. Section titles became Heading 2. This took 3 minutes and allowed screen reader users to navigate by jumping from section to section.\n\n2. **Fixed the Schedule Table**: Marked the column headers (Week, Topics, Readings, Assignments) as table headers using the Table Design tab in Word. Screen reader users can now understand the table structure.\n\n3. **Made Office Hours Discoverable**: Added a separate \"Office Hours\" heading with the information as a bulleted list: Tuesday 1–3 PM, Caldwell 301. Much easier to scan and screen-reader friendly.\n\n4. **Descriptive Links**: Changed \"click here\" to \"[Academic Integrity Policy](https://myuniversity.edu/academics/integrity)\" and \"[Disability Services](https://myuniversity.edu/disability-services).\"\n\n5. **Alt Text for Logo**: Marked the department logo as decorative (no alt text needed) since it provides no information.\n\n6. **Plain Language Pass**: Simplified the grading policy from \"Students' summative assessment is calculated as an aggregate of formative and summative evaluation metrics...\" to \"Your grade is based on participation (10%), assignments (40%), midterm (25%), and final exam (25%).\" Much clearer.\n\nTime spent: 25 minutes. Impact: The syllabus now works for every student, regardless of how they access it."
+    },
+    {
+      "type": "concept",
+      "title": "Handouts That Work for Everyone",
+      "body": "The same principles that make a syllabus accessible also apply to shorter documents — study guides, worksheets, reading guides, lab protocols, and any handout you give students.\n\nSome discipline-specific considerations:\n\n**Worksheets with Fill-in Blanks**: If students fill in blanks on a worksheet (\"Label the diagram,\" \"Complete the equation\"), consider:\n- Will a screen reader user be able to understand where to fill in answers? Will form fields have labels?\n- If the blank is in the middle of a sentence, is the sentence still intelligible aloud?\n- Is a text-based alternative available for students who cannot work with the visual format?\n\n**Heavily Formatted Documents**: Some disciplines use complex formatting — mathematics with equations, music with staff notation, chemistry with molecular diagrams. For these:\n- Use actual equation editors (MathType, the Word Equation Editor) rather than images of equations. Screen readers can read equations formatted this way.\n- For music notation or complex diagrams, provide a text-based description in addition to the visual.\n- Test with the Accessibility Checker (Module 3) before distributing.\n\n**Lab Protocols and Procedures**: Step-by-step lab procedures should use numbered lists, not paragraphs or narrative text. This helps all students follow the protocol, and it works much better with screen readers.\n\n**Handouts with Images**: If your handout includes images (photographs, diagrams, charts), apply the alt text principles from Module 3.2. Remember: alt text isn't just for web — documents need it too.\n\n**Discipline-Specific Vocabulary**: Philosophy papers, foreign language texts, STEM materials all use specialized terminology. The trade-off is clear: you cannot avoid the discipline's vocabulary. But you can:\n- Provide a glossary of key terms on the first page or in an appendix.\n- Use consistent terminology throughout.\n- Link to external resources (e.g., a math vocabulary site) if appropriate.\n\nThe underlying principle for all handouts is the same: **structure, clarity, and alternatives for complex content**. Run your handouts through the 60-Second Scan from Module 2.3 before posting them. If your handout passes, it's likely accessible."
+    },
+    {
+      "type": "summary",
+      "body": "Syllabi and handouts are high-impact course materials. The most common failures — missing heading structure, \"click here\" links, schedule tables without headers, and scanned PDFs — are all fixable in Word before you post the document. Apply the syllabus accessibility checklist to every course document you create: use Heading styles, mark table headers, write descriptive links, add alt text to images, and aim for plain language. A well-structured, accessible syllabus takes about 20 minutes to create and benefits every student you teach."
+    }
+  ],
+  "freeTextPrompt": {
+    "id": "ft-4.1",
+    "prompt": "Using the syllabus accessibility checklist from this section, audit your own syllabus (or a course handout if you do not have a syllabus readily available). Check: (1) Does it use proper Heading styles or just bold text? (2) Are all links descriptive (not 'click here')? (3) Do any tables have header rows marked? (4) Are there images, and do they have alt text? List three specific changes you would make and explain why each one matters for your students.",
+    "minWords": 100,
+    "rubric": "A strong response demonstrates that the participant actually opened and examined their own syllabus or handout. It identifies specific accessibility issues found (or notes what is working well) and lists concrete changes with explanations. It shows understanding of why each change matters — not just 'the rubric says to fix it,' but connecting it to student experience."
+  }
+}

@@ -1,0 +1,53 @@
+{
+  "sectionId": "8.2",
+  "chapterId": 8,
+  "questions": [
+    {
+      "id": "ch08-q03",
+      "question": "Which approach is more efficient for ensuring course materials are accessible: building accessibility in from the start as you create materials, or remediating materials after they've been published?",
+      "options": [
+        {
+          "text": "Remediating after publication is more efficient because you can see all the problems at once",
+          "correct": false
+        },
+        {
+          "text": "Building accessibility in from the start is more efficient because it takes the same amount of time but happens when you're organized, not panicked",
+          "correct": true
+        },
+        {
+          "text": "Both approaches take exactly the same amount of time and effort",
+          "correct": false
+        },
+        {
+          "text": "There is no difference — accessibility is equally expensive either way",
+          "correct": false
+        }
+      ],
+      "explanation": "Building accessible materials from the start—using correct heading styles as you write, adding alt text to images as you insert them, checking reading order before publishing—takes approximately the same total time as remediating later. The key difference is *when* you invest that time: upfront in July (when you're calm and organized) is vastly preferable to frantically in September (when you're overwhelmed). Additionally, upfront work is less stressful and means students have accessible materials on day one."
+    },
+    {
+      "id": "ch08-q04",
+      "question": "According to the semester-start workflow in this section, approximately how long should a comprehensive accessibility check of your course materials take before the semester begins?",
+      "options": [
+        {
+          "text": "20-30 minutes",
+          "correct": false
+        },
+        {
+          "text": "60-90 minutes",
+          "correct": true
+        },
+        {
+          "text": "2-3 hours",
+          "correct": false
+        },
+        {
+          "text": "An entire day (6-8 hours)",
+          "correct": false
+        }
+      ],
+      "explanation": "The semester-start workflow in this section breaks accessibility into six focused tasks (syllabus, documents, slides, video, quizzes, statement) that should total 60-90 minutes when done in July, before the semester begins. This is a realistic, one-time investment per course per semester. Done upfront, it eliminates panicked fixes later."
+    }
+  ],
+  "passThreshold": 80
+}

@@ -1,0 +1,63 @@
+{
+  "sectionId": "8.1",
+  "chapterId": 8,
+  "title": "Accessibility Checkers and What They Catch",
+  "learningObjectives": [
+    "Run the Microsoft Accessibility Checker and interpret its results",
+    "Understand what automated checkers catch and what they miss",
+    "Use free and institutional tools to evaluate your course materials"
+  ],
+  "keyTerms": [
+    {
+      "term": "Automated accessibility checking",
+      "definition": "The use of software tools to scan digital content and flag potential WCAG violations. These tools can detect structural issues like missing alt text or poor heading hierarchy, but cannot evaluate quality or context."
+    },
+    {
+      "term": "Microsoft Accessibility Checker",
+      "definition": "Built-in accessibility evaluation tool in Word, PowerPoint, and other Microsoft Office applications. Flags errors, warnings, and tips. Free to use for anyone with Microsoft 365 or Office installed."
+    },
+    {
+      "term": "Canvas Ally / Blackboard Ally",
+      "definition": "Institutional LMS integration that automatically scans course documents and provides accessibility scores. Shows faculty where issues exist and can generate alternative formats (like PDF to Accessible PDF)."
+    },
+    {
+      "term": "WAVE (Web Accessibility Evaluation Tool)",
+      "definition": "Free browser extension and web tool from WebAIM that evaluates web pages for WCAG compliance. Highlights errors, warnings, and structural elements on live web pages and LMS courses."
+    },
+    {
+      "term": "Document Ally Pro",
+      "definition": "Batch document remediation tool that allows faculty and departments to upload multiple documents at once, receive accessibility scores, and generate accessible versions in bulk."
+    },
+    {
+      "term": "False positive / false negative",
+      "definition": "False positive: tool flags an issue that isn't actually a violation. False negative: tool misses an issue that is a violation. No checker is 100% accurate."
+    }
+  ],
+  "contentBlocks": [
+    {
+      "type": "concept",
+      "title": "What Automated Checkers Can and Can't Do",
+      "body": "Here's the truth about accessibility checkers: they're useful tools, but they have real limits. Automated tools can detect approximately **30-40% of WCAG issues** — the structural, machine-readable ones. They excel at finding missing alt text, missing heading structure, low color contrast, and broken link syntax. What they cannot do is evaluate whether that alt text is *accurate and meaningful*, whether a heading hierarchy makes logical sense, or whether the content is written clearly enough for someone with cognitive disabilities to understand.\n\nThink of automated checkers like spell-check for documents. They catch typos reliably, but they can't tell you if your writing is clear, persuasive, or well-organized. You need human judgment for that.\n\nThe research is clear: [according to Deque's Automated Accessibility Testing Coverage Report](https://www.deque.com/automated-accessibility-testing-coverage/), approximately **30% of WCAG success criteria can be fully automated** (fully testable), about **45% are partially detectable**, and about **42% cannot be detected by automated tools at all**. The best practice is to use automated tools as a first pass — catch the low-hanging fruit — and then follow up with manual review and testing with actual assistive technology.\n\nThis is important for you to know because if the Microsoft Accessibility Checker says \"no issues found,\" that does *not* mean your document is fully accessible. It means the checker didn't find structural violations it knows how to detect. There could still be clarity issues, alt text quality problems, or logical sequencing that only a human — or a user with a disability testing the material — would catch."
+    },
+    {
+      "type": "example",
+      "title": "A Tool-by-Tool Walkthrough",
+      "body": "Let's walk through the most practical tools you'll encounter:\n\n**Microsoft Accessibility Checker** (built into Word, PowerPoint, Excel)\n- *When to use:* Every time you create a document in Office. It's always available.\n- *What it checks:* Heading structure, alt text presence, color contrast, link text, table headers, language declaration.\n- *What you'll see:* A panel on the right side showing Errors (fix these), Warnings (review these), and Tips (consider these). Click on any item to jump to it in your document.\n- *Limitation:* It flags \"missing alt text\" but can't tell if your alt text is good or just adequate.\n\n**Canvas Ally / Blackboard Ally** (institutional LMS tool)\n- *When to use:* When you upload documents to Canvas or Blackboard. Ally runs automatically in the background.\n- *What it shows:* A score (usually out of 100) for each uploaded file. Red highlights indicate specific issues.\n- *What it can do:* Generate alternative formats — for example, automatically convert a regular PDF into an \"Accessible PDF\" with tags.\n- *Limitation:* Ally's scores are helpful for getting started, but don't represent true compliance on their own.\n\n**WAVE Browser Extension** (free from WebAIM)\n- *When to use:* To evaluate web pages, course landing pages, or online content.\n- *What you'll see:* A toolbar that shows error counts and highlights issues directly on the page with small icons.\n- *What it's good for:* Quick audits of web content without needing to install anything.\n- *Download it here:* [WAVE Browser Extension](https://wave.webaim.org/extension/)\n\n**Document Ally Pro** (institutional license, sometimes available)\n- *When to use:* If your institution has a license. Allows batch uploads of 50+ documents at once.\n- *What it does:* Runs accessibility checks on all documents and creates a report showing which need remediation.\n- *Good for:* Department-wide compliance audits or preparing a course full of legacy materials.\n\n**WebAIM Contrast Checker** (free online tool)\n- *When to use:* To verify color contrast on specific text.\n- *How it works:* Enter foreground and background colors (or upload an image), and it tells you the contrast ratio and whether it meets WCAG standards.\n- *Link:* [WebAIM Contrast Checker](https://webaim.org/resources/contrastchecker/)"
+    },
+    {
+      "type": "concept",
+      "title": "Free Tools You Can Start Using Today",
+      "body": "The good news: you don't need an institutional license to start checking your materials for accessibility. Several powerful tools are free:\n\n**WAVE** — Install the browser extension (Chrome, Firefox, Edge). Click it on any web page or LMS course page to see an instant breakdown of accessibility issues. It's not fancy, but it's reliable.\n\n**Microsoft Accessibility Checker** — If you use Word or PowerPoint, it's already there. Just open the Review tab and click \"Check Accessibility.\"\n\n**WebAIM Contrast Checker** — Copy/paste hex color codes or use the eyedropper to pick colors from your screen. Instant pass/fail on the WCAG contrast ratio.\n\n**Hemingway Editor** (hemingwayapp.com) — Not specifically an accessibility tool, but it flags dense sentences and jargon, which helps with the \"Understandable\" principle. Paste your syllabus in and you'll see at a glance where you might have clarity issues.\n\nThese tools have gotten you far. When your institution provides Canvas Ally or Document Ally Pro, use those too — they automate the process and scale to your entire course load. But don't wait for institutional tools. Start with the free ones today.\n\nThe key mindset: **tools are helpful, not definitive**. Use them to catch obvious issues, then apply your human judgment. If a tool flags something you don't understand, look it up in earlier modules of this course or ask your institution's accessibility office."
+    },
+    {
+      "type": "summary",
+      "body": "Automated checkers catch about 30-40% of WCAG issues—the structural ones. Microsoft Accessibility Checker, Canvas Ally, WAVE, and Document Ally Pro are your practical options, ranging from free to institutional. Free tools like WAVE and the Contrast Checker are available today. Use checkers as a first pass, not a final answer. Always follow up with human review of alt text quality, clarity, and logic."
+    }
+  ],
+  "freeTextPrompt": {
+    "id": "ft-8.1",
+    "prompt": "Pick one tool from this section that you haven't used before (WAVE, WebAIM Contrast Checker, Microsoft Accessibility Checker, or Document Ally Pro if available at your institution). Install it or open it, and run it on one of your course materials — a syllabus, slide deck, or document. Describe: which tool you chose, what it found, and whether the results matched your expectations from the '60-Second Scan' you did in Module 2.",
+    "minWords": 100,
+    "rubric": "A strong response shows that the participant actually used the tool on their own materials, not hypothetically. It describes specific findings (e.g., \"WAVE found 3 low-contrast text issues\") and connects those findings to the 60-Second Scan framework from Module 2. If the tool's results surprised them, they explain why. If results matched expectations, they explain what they expected and why."
+  }
+}

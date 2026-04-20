@@ -1,0 +1,21 @@
+{
+  "chapterId": 6,
+  "weekNum": 6,
+  "title": "Testing Your Quizzes and Sharing What You Learn",
+  "prompt": "In this module, you learned that the best way to test whether your quiz is keyboard-accessible is to try navigating it yourself using only the keyboard — Tab, Shift+Tab, Enter, Space, and arrow keys. No mouse. For your initial post, I want you to take this test with one of your actual quizzes (or, if you don't have a quiz readily available, any interactive web form or survey).\n\nHere is what to report:\n\n1. **What you tested:** Which quiz or form did you try? What is it designed to assess?\n\n2. **What happened:** Could you complete every question using only keyboard navigation? Where did you get stuck? What question types worked smoothly, and which ones caused frustration?\n\n3. **What you learned:** What surprised you about the experience? How does this inform your thinking about how a student using a screen reader would interact with your quiz?\n\n4. **One change you would make:** Based on this test, what is one specific change you would make to improve keyboard accessibility?\n\nBe honest about what you found. The point is not to find a perfectly accessible quiz — it is to experience the barrier and understand why it matters.",
+  "requirements": {
+    "initialPost": {
+      "minWords": 150,
+      "maxWords": 250,
+      "dueDay": "Wednesday",
+      "dueTime": "11:59 PM ET"
+    },
+    "replies": {
+      "count": 2,
+      "minWords": 75,
+      "maxWords": 150,
+      "dueDay": "Sunday",
+      "dueTime": "11:59 PM ET"
+    }
+  }
+}

@@ -1,0 +1,80 @@
+{
+  "assignmentId": 2,
+  "title": "Build Accessible Course Materials, Multimedia, and an Assessment",
+  "points": 150,
+  "description": "Now you apply Modules 4-6 to the rest of your teaching stack: slide decks or handouts, video content, and one quiz or exam. You'll also experience what your students with disabilities experience by completing your own redesigned quiz using only the keyboard. These artifacts all go into your portfolio.",
+  "relatedChapters": [4, 5, 6],
+  "context": {
+    "purpose": "Syllabi are the opening move — but students spend more time with your slides, videos, and quizzes. These are also where the biggest accessibility failures usually hide: slides with text boxes instead of layouts, videos with auto-captions no one corrected, and quizzes that depend on drag-and-drop or tight time limits. Fixing these means you're not just compliant — your teaching actually works for every student who shows up.",
+    "goals": [
+      "Rebuild one slide deck or handout using accessible techniques from Module 4",
+      "Audit a video you actually assign and determine what it needs (captions, audio description, transcript)",
+      "Redesign one quiz or exam with accessibility baked in from Module 6",
+      "Experience keyboard-only navigation from the student side",
+      "Generate three more portfolio artifacts"
+    ],
+    "whatToExpect": "The AI coach evaluates each section against the specific techniques covered in the source module: built-in slide layouts and reading order (Module 4), captions + audio description standards (Module 5), and LMS quiz accessibility + extended time (Module 6). If you claim you 'fixed the slides,' the coach will ask which specific layouts you used and how you verified reading order. Be specific and you'll get strong feedback fast."
+  },
+  "sections": [
+    {
+      "key": "accessible-slide-deck",
+      "title": "Accessible Slide Deck or Handout",
+      "instructions": "Pick one slide deck (or multi-page handout) you use in class. Rebuild it for accessibility using the techniques from Module 4. Specifically: (a) use built-in slide layouts, not blank slides with text boxes, (b) every slide has a unique title — even if the title is hidden on export, (c) every image has alt text or is marked decorative, (d) reading order is verified in the Selection Pane or Reading Order pane, (e) color contrast passes 4.5:1 for body text, and (f) no information is conveyed by color alone. Describe each change you made, which Module 4 technique it came from, and how you verified it worked. Save as 'YourCourse-SlideDeck-Accessible.pptx' for your portfolio.",
+      "minWords": 100,
+      "maxWords": 400,
+      "rubric": "A strong response (1) demonstrates understanding that 'accessible slides' means structural rebuild, not just alt text — built-in layouts, unique titles, logical reading order, (2) names specific slides and what changed on each (e.g., 'Slide 7 had a chart as an image — I added alt text describing the trend, and I linked to the underlying spreadsheet'), (3) addresses the common slide traps: text boxes instead of placeholders, duplicate slide titles, invisible decorative shapes in reading order, low-contrast accent colors, (4) verifies with the Accessibility Checker and a reading-order walkthrough. Low scores come from 'I added alt text' with no structural changes, or skipping reading-order verification.",
+      "tips": [
+        "In PowerPoint: View → Outline View should show every slide title. If a slide is blank in outline view, its title isn't a real title",
+        "Reading order: Home → Arrange → Selection Pane shows the order a screen reader reads — bottom of the list is read first",
+        "For slides with a big background image + text box on top — mark the image decorative if the text conveys the content",
+        "Charts and diagrams need alt text that describes the takeaway, not the visual — 'Sales grew 40% YoY from $100K to $140K' beats 'Bar chart showing sales'",
+        "Animations and slide transitions can cause issues — keep them minimal; no flashing faster than 3 times per second"
+      ]
+    },
+    {
+      "key": "multimedia-audit",
+      "title": "Multimedia Accessibility Check",
+      "instructions": "Pick one video you assign in your course (YouTube embed, publisher video, or your own recording). Audit it: (a) Does it have captions? Open them and read along — are they accurate, or are they auto-captions riddled with errors? (b) Does the content rely on visuals that audio doesn't convey? If yes, it needs audio description or a visual-description alternative. (c) Is a transcript available? Report what you found and which tool you'd use to fix it (captioning service, YouTube's caption editor, 3Play, Rev, Panopto, etc.). Reference the captions/AD decision framework from Module 5.",
+      "minWords": 100,
+      "maxWords": 400,
+      "rubric": "A strong response (1) names the specific video (title, source, length) so the audit is real, not hypothetical, (2) actually plays the captions and evaluates accuracy — not just 'captions exist', (3) distinguishes between 'auto-generated' (starting point, usually wrong), 'corrected auto-generated' (usable baseline), and 'human-captioned' (standard), (4) correctly identifies whether audio description is needed — a talking-head video usually doesn't; a slideshow lecture or silent demo usually does, (5) names a specific remediation tool the faculty member could use next week. Low scores come from 'it has captions, so it's accessible' without checking accuracy, or suggesting no remediation when the video clearly needs work.",
+      "tips": [
+        "Play the video at 1x speed with captions on — do they match what's said? Do speaker names appear? Do they handle [music] and [applause] cues?",
+        "Auto-captions typically have 70-90% accuracy on clean audio, much worse on accented speech, field audio, or technical vocabulary",
+        "Audio description is needed when visual-only information is essential — a chemistry demo where the reaction's color matters needs AD; a lecture of a professor speaking to the camera doesn't",
+        "YouTube has a free caption editor — copy auto-captions, fix errors, publish the corrected version",
+        "For publisher videos you don't control, contact the publisher for a captioned version or a transcript — this is a reasonable accommodation request"
+      ]
+    },
+    {
+      "key": "accessible-quiz",
+      "title": "Accessible Assessment",
+      "instructions": "Pick one quiz or exam you give (LMS-based or paper-based). Redesign it for accessibility. Minimum required: (a) replace any drag-and-drop or hotspot questions with a keyboard-accessible alternative (multiple choice, matching, or text input), (b) add alt text to every image used in a question, (c) set time limits that accommodate extended-time accommodations — either disable time limits or make sure your LMS honors the per-student extension, (d) avoid questions that rely on color alone (e.g., 'which one is highlighted in red?'), (e) ensure every question is keyboard-reachable. Describe the original design, the accessibility issues you found, and the specific changes you made, referencing Module 6 techniques.",
+      "minWords": 100,
+      "maxWords": 400,
+      "rubric": "A strong response (1) identifies at least 2-3 specific accessibility issues in the original quiz — not just theoretical, but issues in THIS specific quiz, (2) applies specific Module 6 techniques — not 'I made it more accessible' but 'I replaced the drag-and-drop matching with a dropdown matching question', (3) addresses the timing issue explicitly (extended-time students are the single most common accommodation; a quiz with a hard 30-minute cap excludes them), (4) treats images in questions the same way as images in readings — alt text that describes the question-relevant content. Low scores come from vague changes, leaving inaccessible question types, or not addressing timing.",
+      "tips": [
+        "Canvas, Blackboard, and Moodle all support per-student time extensions — ask DRC which students need them and add the extension BEFORE the quiz opens",
+        "Drag-and-drop matching → dropdown matching (keyboard-accessible) is a common direct swap",
+        "For chemistry structures, diagrams, or images in questions — alt text should describe what's relevant to the QUESTION, not the whole image",
+        "If you must use a time limit, make it generous — a quiz that's a knowledge check shouldn't be a reading-speed test",
+        "Preview the quiz as a student — use your LMS's 'student view' and try it"
+      ]
+    },
+    {
+      "key": "keyboard-test-report",
+      "title": "Keyboard-Only Test Report",
+      "instructions": "Take your redesigned quiz from Section 3, but complete it using ONLY the keyboard. Unplug your mouse or put it behind your monitor where you can't reach it. Use Tab to move forward, Shift+Tab to move backward, Space or Enter to activate buttons/radios, and arrow keys for menus. Report: (a) Were you able to complete every question? (b) Did you get stuck anywhere — focus traps, invisible focus, unreachable controls? (c) Was the tab order logical, or did focus jump around? (d) What would this experience be like for a student who ALWAYS uses the keyboard? This is your first-person experience of what keyboard-only users face daily.",
+      "minWords": 75,
+      "maxWords": 300,
+      "rubric": "A strong response (1) shows evidence that the faculty member actually did the test — specific moments of friction or flow, (2) honestly reports what didn't work, even if it's embarrassing (a stuck focus is not a personal failure, it's a fix-list), (3) identifies at least one issue (there's almost always at least one), (4) connects the experience to the student impact — 'a keyboard-only user would have given up at Question 4', (5) lists what you'll change. Low scores come from 'everything worked fine' with no evidence, or not doing the test at all.",
+      "tips": [
+        "Visible focus indicator is critical — if you can't SEE where you are, you can't use it. Check if focus is visible on every control",
+        "Tab order should match visual order — top-to-bottom, left-to-right. If Tab jumps you from Question 1 to the submit button, something's wrong",
+        "Try Escape to close any modals/popups — some LMSs trap focus in modals that can't be escaped",
+        "If you can't complete a question via keyboard, that's a blocker — report it in detail",
+        "Screen reader test is bonus: NVDA (free on Windows), VoiceOver (Mac — Cmd+F5). Even 30 seconds with a screen reader is revealing"
+      ]
+    }
+  ]
+}

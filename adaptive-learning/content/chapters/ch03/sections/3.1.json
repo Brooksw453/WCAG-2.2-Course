@@ -1,0 +1,59 @@
+{
+  "sectionId": "3.1",
+  "chapterId": 3,
+  "title": "Headings, Structure, and Reading Order",
+  "learningObjectives": [
+    "Explain why heading structure matters for screen reader users",
+    "Apply Heading 1, 2, 3 styles correctly in Word (not just bold/large text)",
+    "Set and verify reading order in PowerPoint slides"
+  ],
+  "keyTerms": [
+    {
+      "term": "Heading hierarchy (H1–H6)",
+      "definition": "A logical nesting of heading levels from most important (H1) to least important (H6). A document outline should flow like a table of contents — you shouldn't skip levels (e.g., H1 to H3). Most documents only use H1–H3."
+    },
+    {
+      "term": "Semantic structure",
+      "definition": "Meaning conveyed by structure, not just visual formatting. A heading is semantically marked as 'Heading 1' — the software understands it's a heading, not just bold text that looks like one. Screen readers read semantic meaning, not visual appearance."
+    },
+    {
+      "term": "Reading order (in PowerPoint/PDF)",
+      "definition": "The sequence in which content is read aloud by a screen reader or presented to an assistive technology user. In PowerPoint, reading order is determined by the visual layout but can be customized. In PDFs, it's determined by the underlying structure."
+    },
+    {
+      "term": "Document outline",
+      "definition": "A navigational view of a document showing its heading structure. In Word, you can open the Navigator or use the 'Outline' view to see the document outline. Screen reader users can pull up the outline to navigate quickly."
+    },
+    {
+      "term": "Styles pane (in Word)",
+      "definition": "A panel in Word (Home tab → Styles panel) showing available formatting styles. You can apply Heading, Body Text, and custom styles from here. Using styles instead of manual formatting ensures consistency and accessibility."
+    }
+  ],
+  "contentBlocks": [
+    {
+      "type": "concept",
+      "title": "Why Headings Aren't Just Formatting",
+      "body": "Here's the core principle: a screen reader user cannot see your document layout. They rely entirely on the structure you've created in the document's code. If you make something look like a heading by making it bold and large, you've created a visual heading. But a screen reader will read it as regular text — because, to the screen reader, that's what it is.\n\nThis matters for several reasons:\n\n**Navigation:** Screen reader users often navigate by pulling up a list of all headings in a document. This list lets them jump to the section they want instead of listening to the entire document. If your section titles aren't marked as headings, the user can't use this navigation method. Imagine opening a book where you can't see the table of contents — you'd have to read every page to find what you're looking for.\n\n**Understanding structure:** A properly structured document tells the screen reader (and any assistive technology) how the content is organized. A student using a screen reader can understand that \"Attendance Policy\" is a main section and \"Definition of Excused Absences\" is a subsection underneath it. Without heading structure, all the text reads the same — flat and undifferentiated.\n\n**Accessibility Checker catches this:** Modern tools like the Microsoft Accessibility Checker will flag bold text that looks like a heading but isn't marked as a Heading style. This is your cue to apply the proper style.\n\n**The hierarchy matters:** Headings should nest logically. If your document has three main sections, all should be Heading 1. If a section has subsections, those should be Heading 2. You shouldn't skip levels — going from Heading 1 directly to Heading 3 confuses the document structure.\n\nThe fix is simple but requires a small mindset shift: instead of \"make this text bold and big,\" you're thinking \"this is a Heading 1 section.\" Once you develop the habit, it takes no longer than manual formatting — just 5 seconds per heading."
+    },
+    {
+      "type": "example",
+      "title": "Fixing a Real Syllabus",
+      "body": "Let's walk through a real syllabus remediation.\n\n**Before (Inaccessible):**\n\nYou open your syllabus in Word. The main sections — \"Course Description,\" \"Learning Objectives,\" \"Attendance Policy\" — are formatted as 14pt bold. Subsections like \"Definition of Excused Absences\" are 12pt bold. It looks organized and professional.\n\nA screen reader user opens the document and pulls up the Headings list. It's empty. The document has no headings marked. When they listen to the full document, everything sounds flat. There's no obvious structure.\n\n**Step-by-step fix:**\n\n1. Open Word and navigate to the Home tab.\n2. Look for the \"Styles\" panel on the right (or open it from Home → Styles if it's not visible).\n3. Click on the first section title (\"Course Description\").\n4. In the Styles panel, click \"Heading 1.\"\n5. Repeat for all main sections (\"Learning Objectives,\" \"Attendance Policy,\" etc.).\n6. For subsections (like \"Definition of Excused Absences\"), select them and click \"Heading 2.\"\n7. Optional but recommended: View → Outline to see the document outline. This shows you the heading hierarchy and helps you verify nesting is correct.\n\n**After (Accessible):**\n\nWhen a screen reader user pulls up the Headings list, they now see:\n- Course Description\n- Learning Objectives\n- Attendance Policy\n  - Definition of Excused Absences\n  - Examples of Excused Absences\n- Course Requirements\n  - Readings\n  - Assignments\n\nThe user can jump directly to \"Attendance Policy\" without listening to the entire document. The hierarchical structure shows what's a main section and what's a subsection. The document is now navigable.\n\n**Estimated time:** 5–10 minutes for a typical syllabus. You're not changing any text — just applying styles to text that already looked like headings. You might even notice the formatting improves slightly because Word's Heading styles are professionally designed."
+    },
+    {
+      "type": "concept",
+      "title": "Reading Order in PowerPoint",
+      "body": "PowerPoint slides have a visual layout (what you see on screen) and a reading order (the sequence in which a screen reader reads the content). These two things are often different because you place text boxes, images, and shapes visually to look good. But a screen reader reads them in the order they were added to the slide, not the visual order.\n\nFor example, imagine a slide with:\n- A large title at the top\n- Two columns below: left column has a text box with bullet points, right column has an image\n\nVisually, you read top to bottom, left to right. But if you added the image first, then the left-column text box, then the title, the screen reader will read: image → text box → title. Confusing!\n\n**How to check and fix reading order:**\n\n1. Open your PowerPoint presentation.\n2. Click the slide you want to fix.\n3. Go to the \"Home\" or \"Design\" tab and look for \"Accessibility\" or \"Selection Pane.\"\n4. In the Selection Pane, you'll see a list of all objects on the slide in reading order.\n5. Compare this list to the visual order. Do they match?\n6. To reorder, select an object in the Selection Pane and use the up/down arrows to move it.\n\nThe best practice is to use built-in slide layouts instead of building custom slides with text boxes. Built-in layouts automatically have correct reading order because they're designed by Microsoft.\n\n**Pro tip:** If you build a slide from scratch using blank slides and text boxes, you're fighting against the tool's accessibility features. Instead, use a built-in layout (Title and Content, Two Content, etc.) and modify it if needed. This ensures reading order and other accessibility features work by default.\n\nAfter you fix reading order, test it by navigating the slide with only the keyboard (Tab key). Each element should be readable in a logical sequence."
+    },
+    {
+      "type": "summary",
+      "body": "Heading structure is semantic organization, not just visual formatting. Apply Heading styles in Word instead of using bold/large text. A properly structured document lets screen reader users navigate by headings. In PowerPoint, verify reading order in the Selection Pane and ensure it matches the visual flow. Use built-in slide layouts whenever possible to maintain correct reading order by default. These practices take minutes and make your materials navigable for all students."
+    }
+  ],
+  "freeTextPrompt": {
+    "id": "ft-3.1",
+    "prompt": "Open a Word document or PowerPoint file you use in your teaching. Check: In Word, are the section titles using actual Heading styles, or just visual formatting (bold/large text)? In PowerPoint, open the Selection Pane and check the reading order for one slide — does it match the visual layout? Report what you found and whether you think the document/slide is currently accessible.",
+    "minWords": 100,
+    "rubric": "A strong response shows the participant actually opened their own course material and checked it. It describes specifically which style was applied (or not applied) to headings, or what reading order was found in the Selection Pane. It reflects on whether the current structure is accessible and notes any issues found (e.g., 'The headings are bold but not styled,' or 'The image reads before the title')."
+  }
+}

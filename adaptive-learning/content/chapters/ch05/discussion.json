@@ -1,0 +1,21 @@
+{
+  "chapterId": 5,
+  "weekNum": 5,
+  "title": "Multimedia Accessibility: The Hardest Part?",
+  "prompt": "Multimedia accessibility can feel overwhelming. Captions take time. Audio descriptions are technical. Interactive content is often out of your control — it is built by a third party, and you are not sure if it works with assistive technology. For many faculty, multimedia is the most daunting part of accessibility compliance.\n\nFor your initial post, identify one multimedia accessibility challenge in your own courses that you think will be hardest to solve. Is it:\n\n- Captioning lots of existing recorded lectures?\n- Evaluating whether a published video needs audio description?\n- A third-party interactive tool that students need but you are not sure is accessible?\n- Audio content (podcasts, recorded interviews, language practice files)?\n- Embedded video from sources you do not control?\n\nDescribe the specific challenge and what resources or support would make it easier to tackle. What would you need — time, funding, technical help, institutional training, a tool recommendation? Be honest about the barriers. Respond to a colleague's post and share what has worked for you, or ask a clarifying question.",
+  "requirements": {
+    "initialPost": {
+      "minWords": 150,
+      "maxWords": 250,
+      "dueDay": "Wednesday",
+      "dueTime": "11:59 PM ET"
+    },
+    "replies": {
+      "count": 2,
+      "minWords": 75,
+      "maxWords": 150,
+      "dueDay": "Sunday",
+      "dueTime": "11:59 PM ET"
+    }
+  }
+}

@@ -1,0 +1,53 @@
+{
+  "sectionId": "1.2",
+  "chapterId": 1,
+  "questions": [
+    {
+      "id": "ch01-q03",
+      "question": "According to the National Center for Education Statistics, approximately what percentage of undergraduates reported having a disability in the 2019–20 academic year?",
+      "options": [
+        {
+          "text": "About 5 percent",
+          "correct": false
+        },
+        {
+          "text": "About 11 percent",
+          "correct": false
+        },
+        {
+          "text": "About 21 percent",
+          "correct": true
+        },
+        {
+          "text": "About 35 percent",
+          "correct": false
+        }
+      ],
+      "explanation": "NCES data from 2019–20 shows that approximately 21 percent of undergraduates — roughly one in five — reported having a disability. This is higher than many faculty expect, partly because the majority of disabilities are non-visible. The 11 percent figure applies to postbaccalaureate (graduate) students, not undergraduates."
+    },
+    {
+      "id": "ch01-q04",
+      "question": "What is the key difference between an 'accommodation' and 'accessibility' as described in this section?",
+      "options": [
+        {
+          "text": "Accommodations are free; accessibility costs money",
+          "correct": false
+        },
+        {
+          "text": "Accommodations are reactive adjustments for individual students; accessibility is proactive design that works for everyone from the start",
+          "correct": true
+        },
+        {
+          "text": "Accommodations are required by law; accessibility is optional best practice",
+          "correct": false
+        },
+        {
+          "text": "Accommodations are handled by faculty; accessibility is handled by IT departments",
+          "correct": false
+        }
+      ],
+      "explanation": "Accommodations are reactive and individual — they respond to a specific student's documented needs after disclosure. Accessibility is proactive and universal — it means designing materials to work for everyone from the start, reducing the need for individual accommodations. Both are important, and both have legal backing. The key insight is that proactive accessibility reaches students who never request accommodations, is more efficient than retrofitting one document at a time, and benefits all students through the curb cut effect."
+    }
+  ],
+  "passThreshold": 80
+}

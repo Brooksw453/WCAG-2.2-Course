@@ -1,0 +1,13 @@
+{
+  "chapterId": 1,
+  "title": "Why Accessibility Matters in Higher Ed",
+  "weekNum": 1,
+  "reading": "Original content — no external textbook required",
+  "learningObjectives": [
+    "Explain what ADA Title II requires of public higher-ed institutions",
+    "Describe the real-world impact of inaccessible materials on students with disabilities",
+    "Identify the compliance timeline and what it means for your institution",
+    "Articulate the difference between accommodations and universal design"
+  ],
+  "sections": ["1.1", "1.2"]
+}

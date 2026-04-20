@@ -1,0 +1,63 @@
+{
+  "sectionId": "4.2",
+  "chapterId": 4,
+  "title": "Slides and Presentations",
+  "learningObjectives": [
+    "Build accessible slides using built-in layouts rather than blank slides with scattered text boxes",
+    "Apply slide-specific accessibility practices: alt text, reading order, and meaningful slide titles",
+    "Recognize when a slide deck needs a companion document to ensure equivalent content access"
+  ],
+  "keyTerms": [
+    {
+      "term": "Slide Layout",
+      "definition": "A pre-designed template in PowerPoint that structures content consistently (e.g., Title Slide, Title and Content, Two Content). Using built-in layouts ensures proper reading order and semantic structure, unlike blank slides where elements are positioned arbitrarily."
+    },
+    {
+      "term": "Blank Slide",
+      "definition": "A PowerPoint slide with no pre-defined layout structure. Faculty sometimes use blank slides to create custom designs, but this breaks reading order and makes the slide inaccessible to screen reader users."
+    },
+    {
+      "term": "Slide Master",
+      "definition": "A PowerPoint feature that controls the design, fonts, colors, and layout of all slides in a presentation. Using the Slide Master to enforce consistency improves both accessibility and visual design."
+    },
+    {
+      "term": "Speaker Notes",
+      "definition": "Text in PowerPoint that only the presenter sees — not displayed on the slide itself. Speaker notes can serve as an alternative format for students, providing detailed descriptions of slide content."
+    },
+    {
+      "term": "Animation and Transition",
+      "definition": "Visual effects in PowerPoint (slide transitions, text animations, auto-advancing slides). These can create accessibility barriers if they distract from content, auto-play too quickly, or prevent users from pausing and reviewing."
+    },
+    {
+      "term": "Reading Order",
+      "definition": "The sequence in which a screen reader announces slide elements. In a properly structured slide, reading order matches the logical flow of content. In a blank slide with scattered text boxes, reading order is often random."
+    }
+  ],
+  "contentBlocks": [
+    {
+      "type": "concept",
+      "title": "Why Simple Slides Are an Accessibility Feature",
+      "body": "Many faculty are drawn to PowerPoint's design flexibility. They create beautiful slides using blank layouts with custom positioning of text, images, and shapes — a design-centered approach that makes visual sense on a screen. The problem: this flexibility breaks accessibility.\n\nHere is why built-in layouts matter:\n\n**Reading Order**: When you use a built-in layout like \"Title and Content,\" PowerPoint knows the intended order: title first, then content. A screen reader follows this order. When you place text boxes, images, and shapes on a blank slide, there is no inherent order. PowerPoint reads them in the order they were created, which is almost never the order a screen reader user should encounter them.\n\n**Semantic Structure**: A title in a built-in layout is recognized as a title. Content in a content placeholder is recognized as content. On a blank slide, everything is just a floating text box. Screen readers cannot tell the difference between a title and a bullet point.\n\n**Consistency Across Slides**: Built-in layouts enforce consistent formatting across your presentation. Colors, fonts, heading hierarchy, and structure stay the same. This makes the deck easier to navigate for everyone — especially users with cognitive disabilities who benefit from predictable patterns.\n\n**Alt Text for Images**: When you insert an image into a built-in layout's content area, PowerPoint makes it obvious that you can (and should) add alt text. When you drop an image onto a blank slide, alt text is just another optional detail among many, and it is often forgotten.\n\nThe irony: a \"simple\" slide made with a built-in layout is not less visually polished than a custom-designed slide. Many of the most beautiful presentations use clean, consistent layouts. But even if a blank-slide design is visually striking, it fails for screen reader and keyboard-only users.\n\nFaculty often say, \"But the built-in layouts don't match my aesthetic.\" The answer: customize the Slide Master to match your preferred colors, fonts, and style — then apply the custom master to all slides. You get both visual consistency and accessibility."
+    },
+    {
+      "type": "example",
+      "title": "The Blank Slide Trap: A Real Example",
+      "body": "Consider a biology faculty member who teaches a lecture on cell structure. She creates a slide with:\n- A title in the top-left corner (20pt, bold)\n- A large diagram of a cell in the center\n- Three bullet-point labels positioned around the diagram (nucleus, mitochondria, endoplasmic reticulum)\n- A decorative border along the bottom\n\nVisually, it looks great. The diagram is the focal point, and the labels are positioned where students see them.\n\nBut here is what a screen reader user encounters:\n\n**What the screen reader announces** (roughly):\n1. \"Group, Decorative border shape\"\n2. \"Text box: nucleus\"\n3. \"Text box: mitochondria\"\n4. \"Image: cell diagram\" (with no alt text)\n5. \"Text box: endoplasmic reticulum\"\n6. \"Text box: Title goes here\"\n\nNotice: The title is announced last. The labels are announced before the diagram. The decorative border is announced first. And the diagram has no alt text, so a blind student learns nothing from it.\n\n**The Remediation**:\n\nThe faculty member rebuilds the slide using a built-in layout:\n1. Chooses \"Title and Picture\" layout from the built-in options\n2. Adds the title in the title placeholder\n3. Adds the cell diagram in the picture area\n4. Writes clear alt text for the diagram: \"Cell diagram showing nucleus at center, surrounded by mitochondria and endoplasmic reticulum in the cytoplasm.\"\n5. Uses Speaker Notes to provide a detailed description of each structure\n\nNow the screen reader announces:\n1. \"Title slide\"\n2. \"Image: cell diagram showing nucleus at center, surrounded by mitochondria and endoplasmic reticulum in the cytoplasm.\"\n3. (Speaker notes are available to the student if they request them)\n\nThe slide is still clear and professional. It is just structured correctly. The lesson: **built-in layouts are accessibility tools, not limitations**."
+    },
+    {
+      "type": "concept",
+      "title": "When Slides Need a Companion Document",
+      "body": "Some presentations are inherently visual — architectural renderings, art history lectures, design critiques, chemistry lab demonstrations. For these, slides alone may not provide equivalent content to sighted students.\n\n**When to Create a Companion Document**:\n\nIf your presentation relies heavily on:\n- **Complex diagrams or visual instruction**: A chemistry lecture with molecular structures, a physics presentation with apparatus diagrams, or an architecture class showing buildings. The visual is essential to understanding, but a screen reader user needs a text-based description.\n- **Photo essays or image-heavy content**: Art history, marketing case studies, historical image analyses. A slide that is \"just the photograph\" needs accompanying text explaining what students are seeing and why it matters.\n- **Live demos or performances**: A music class playing an instrument, a movement class demonstrating technique, a lab with live chemical reactions. The live experience is visual, but students who cannot see the demo need an equivalent learning experience.\n\n**What a Companion Document Includes**:\n\n- **Detailed descriptions of images and diagrams**: Not the kind of alt text you'd use in a document (which is brief), but fuller descriptions. Example: \"The photo shows a Civil Rights march in 1963, with hundreds of participants holding signs. The lead banner reads 'We Demand Equal Rights Now.'\"\n- **Narration of visual processes**: If you show a time-lapse video of plant growth or a step-by-step design process, describe what happens at each step.\n- **Transcript of any spoken content**: If you play an audio clip or video with dialogue during the presentation, provide a transcript.\n- **Information about color, layout, or visual arrangement**: If you show a complex diagram where the spatial arrangement matters (how molecules are bonded, how a building's wings relate to each other), describe that arrangement in words.\n\n**How to Provide It**:\n\n- Post a text document or PDF alongside the slide deck in your LMS, labeled \"Slide Descriptions\" or \"Presentation Transcript.\"\n- Include it in the course notes or reading materials.\n- Offer it in advance so students can review it before or alongside the live presentation.\n- Let students know during the first class: \"If you need a detailed description of the images in my presentations, download the slide descriptions document — or let me know, and I'll provide it.\"\n\n**The Bottom Line**: Accessibility does not mean you have to abandon visual teaching. It means recognizing when the visual is doing the teaching and providing an equivalent text-based alternative. For a straightforward conceptual lecture with a few diagrams, the slide deck itself (with good alt text and speaker notes) is often sufficient. For a image-intensive presentation, a companion document ensures every student can learn."
+    },
+    {
+      "type": "summary",
+      "body": "Accessible slide decks use built-in layouts, not blank slides, to ensure proper reading order and semantic structure. Every slide should have a unique, meaningful title. Images need alt text. Auto-advancing animations and very short transition times create barriers — give students control to advance at their own pace. For highly visual presentations, provide speaker notes or a companion document describing images and diagrams in detail. Test your slides by checking the Selection Pane to verify reading order, and run the Accessibility Checker before posting."
+    }
+  ],
+  "freeTextPrompt": {
+    "id": "ft-4.2",
+    "prompt": "Open one of your slide decks and conduct an accessibility audit. Check: (1) Are you using built-in slide layouts, or do some slides use blank layouts with custom-positioned text boxes? (2) Open the Selection Pane and check the reading order on one slide — does it match the logical flow of content? (3) Does every slide have a unique, descriptive title (even if hidden visually)? (4) Are any images present, and do they have alt text? Report what you found and describe one change you would make.",
+    "minWords": 100,
+    "rubric": "A strong response shows that the participant actually opened their slide deck and used the Selection Pane to check reading order (not a hypothetical analysis). It identifies specific layout choices (built-in vs. blank) and one or more accessibility gaps. It demonstrates understanding of how reading order and slide structure affect accessibility."
+  }
+}

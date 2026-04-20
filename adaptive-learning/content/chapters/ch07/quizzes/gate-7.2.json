@@ -1,0 +1,53 @@
+{
+  "sectionId": "7.2",
+  "chapterId": 7,
+  "questions": [
+    {
+      "id": "ch07-q03",
+      "question": "What is the most common reason accessibility-related complaints are filed against faculty in higher education?",
+      "options": [
+        {
+          "text": "Faculty gave accommodations that were too generous or unfair to other students",
+          "correct": false
+        },
+        {
+          "text": "Failure to implement accommodations in a timely manner, or implementing them late in the semester",
+          "correct": true
+        },
+        {
+          "text": "Faculty members refusing to work with Disability Services",
+          "correct": false
+        },
+        {
+          "text": "Faculty member asking the student too many questions about their disability",
+          "correct": false
+        }
+      ],
+      "explanation": "According to OCR complaints and resolution agreements, late or non-implementation of accommodations is the most common complaint. A student receives an accommodation letter in week 3, but extended time is not actually set up until week 6 — by then they have already taken multiple quizzes without the accommodation, affecting their grade. The fix: implement accommodations by the next assessment after you receive the letter, not 'sometime soon.'"
+    },
+    {
+      "id": "ch07-q04",
+      "question": "A student tells you, 'I cannot navigate your syllabus PDF with my screen reader.' Is this something you can handle, or should you refer to Disability Services?",
+      "options": [
+        {
+          "text": "Refer to Disability Services — they handle all accessibility issues",
+          "correct": false
+        },
+        {
+          "text": "Tell the student to use an accessibility tool or different software",
+          "correct": false
+        },
+        {
+          "text": "You can handle this — it is a document-level accessibility issue. Fix the PDF structure and re-upload it.",
+          "correct": true
+        },
+        {
+          "text": "Ask the student what format would work best and tell them when you have time to fix it",
+          "correct": false
+        }
+      ],
+      "explanation": "Document accessibility (syllabus, handouts, slides, readings) is your responsibility as the faculty member creating the content. You fix the PDF structure using Heading styles, alt text for images, and proper tagging — or you provide the document in an editable format (Word). This is not a Disability Services issue; it is a course materials accessibility issue that you learned about in Module 3. Fix it promptly."
+    }
+  ],
+  "passThreshold": 80
+}

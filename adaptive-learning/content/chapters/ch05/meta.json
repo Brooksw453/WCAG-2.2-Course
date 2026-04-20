@@ -1,0 +1,12 @@
+{
+  "chapterId": 5,
+  "title": "Accessible Multimedia",
+  "weekNum": 5,
+  "reading": "Original content — no external textbook required",
+  "learningObjectives": [
+    "Determine when captions, transcripts, and audio descriptions are required versus recommended",
+    "Evaluate the quality of auto-generated captions and edit them effectively",
+    "Apply accessibility principles to video, audio, and interactive media in courses"
+  ],
+  "sections": ["5.1", "5.2"]
+}

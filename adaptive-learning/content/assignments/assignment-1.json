@@ -1,0 +1,79 @@
+{
+  "assignmentId": 1,
+  "title": "Audit and Fix Your Own Course Materials",
+  "points": 150,
+  "description": "Apply what you've learned in Modules 1-3 to your own teaching. You'll establish a baseline, audit your syllabus using both the 60-Second Scan and the Microsoft Accessibility Checker, remediate every issue you find, and fix one additional document you use in class. The remediated syllabus becomes the first artifact in your portfolio.",
+  "relatedChapters": [1, 2, 3],
+  "context": {
+    "purpose": "Most faculty have never audited their own materials. The point of this assignment isn't to catch you — it's to give you a realistic baseline so you can see your own progress by the end of the course. Every faculty member finds issues in their first audit. That's expected, and it's the whole reason the course exists.",
+    "goals": [
+      "Establish an honest starting point for your accessibility practice",
+      "Run a real accessibility audit on materials you actually use with students",
+      "Produce a remediated syllabus that's ready to use next semester",
+      "Practice the POUR framework and Microsoft Accessibility Checker workflow",
+      "Generate the first piece of your portfolio"
+    ],
+    "whatToExpect": "The AI coach will read each response and give you targeted feedback based on the techniques in Modules 2-3 — heading styles, alt text, descriptive links, color contrast, and reading order. It's looking for specific issues and specific fixes, not perfection. If your audit missed something obvious, the coach will point you toward the tool that would have caught it. You can revise and resubmit as often as you like."
+  },
+  "sections": [
+    {
+      "key": "accessibility-self-assessment",
+      "title": "Accessibility Self-Assessment",
+      "instructions": "Before you audit anything, establish a baseline. Answer honestly: What did you know about digital accessibility before starting this course? What surprised you in Modules 1-3? Looking at the materials you use in your courses (syllabus, slides, handouts, PDFs, quizzes), which ones do you suspect have accessibility issues — and which ones are you most nervous to audit? You're not being graded on how much you already knew. You're being graded on the honesty and specificity of your self-assessment.",
+      "minWords": 75,
+      "maxWords": 300,
+      "rubric": "A strong response (1) names at least two specific things you learned in Modules 1-3 that changed how you think about accessibility, (2) identifies at least 2-3 specific materials you use (not 'my course' but 'my PSYC 101 syllabus' or 'my weekly slide decks'), (3) shows self-awareness about which types of issues you suspect exist, and (4) connects your current practice to the POUR principles from Module 2 or the Title II context from Module 1. Vague or defensive responses ('my stuff is probably fine') score lower than honest ones that name specific suspected issues.",
+      "tips": [
+        "Name the course — not 'my class' but 'ENG 102 Syllabus — Fall 2025'",
+        "Reference a specific moment from Modules 1-3 that shifted your thinking",
+        "It's fine to admit you used all-caps headings, colored text for emphasis, or image-only PDFs — that's the baseline we're establishing",
+        "Don't list every document you own — 3-5 specific ones is plenty"
+      ]
+    },
+    {
+      "key": "syllabus-audit",
+      "title": "Syllabus Accessibility Audit",
+      "instructions": "Open your current syllabus (the one students actually receive). Run two audits and report the results in this response. AUDIT 1 — The 60-Second Scan: check for real heading styles (not just bold/big text), descriptive link text (not 'click here'), alt text on every image, adequate color contrast, and logical reading order. AUDIT 2 — Microsoft Accessibility Checker (Review tab → Check Accessibility, or the equivalent in Google Docs / Pages). Copy/paste the list of issues it reports. Then categorize every issue you found under the relevant POUR principle (Perceivable, Operable, Understandable, Robust) and explain what each issue means for students — especially screen reader users, low-vision users, and keyboard-only users.",
+      "minWords": 100,
+      "maxWords": 400,
+      "rubric": "A strong response (1) reports the results of BOTH audits (not just one), (2) lists every issue found with enough detail that someone else could find the same issue, (3) correctly categorizes issues under POUR — headings are Perceivable, link text is Understandable, keyboard traps are Operable, (4) explains real student impact ('my screen reader user can't tell which text is a heading') rather than abstract compliance language, and (5) is honest about the number of issues. A syllabus with zero issues is suspicious; most faculty find 5-15 on first audit. If your 60-Second Scan and the Accessibility Checker disagree, that's fine — report both. Low scores come from skipping one audit, vague issue descriptions, or wrong POUR categorization.",
+      "tips": [
+        "Screenshot or copy the Accessibility Checker panel so your issue list is complete",
+        "If you used 'Bold + Font Size 14' instead of Heading 1, that's a Perceivable + Robust issue — screen readers skip it",
+        "'Click here for the textbook' is an Understandable issue — link text out of context is useless",
+        "Color contrast can be checked with webaim.org/resources/contrastchecker/ — paste your values",
+        "Reading order matters for PDFs and text boxes — reading order tools are in Acrobat Pro or Word (Accessibility Checker flags it)"
+      ]
+    },
+    {
+      "key": "syllabus-remediation",
+      "title": "Syllabus Remediation",
+      "instructions": "Fix every issue from your audit and describe each fix. For every change you made, tell me (1) what the original problem was, (2) what specific technique you used from Module 3 to fix it (heading styles, alt text decision tree, descriptive link rewrite, contrast fix, reading order reflow), and (3) how you verified the fix worked (rerun the Accessibility Checker, tab through with keyboard, etc.). Save the fixed file as 'YourCourseName-Syllabus-Accessible.docx' — this is the first artifact in your portfolio. Upload or paste the summary of your changes here.",
+      "minWords": 100,
+      "maxWords": 400,
+      "rubric": "A strong response (1) addresses EVERY issue from the audit — no issue should be left 'for later', (2) names the specific technique used (not 'I fixed the headings' but 'I applied Heading 1 via the Styles pane and Heading 2 for subsections'), (3) shows evidence of verification — reran the Accessibility Checker, tested with keyboard, used the Alt Text Decision Tree from Section 3.2, and (4) catches common traps: decorative images marked decorative (not given fake alt text), tables with proper header rows, hyperlinks with descriptive text, logical reading order in text boxes. Low scores come from fixing only the 'easy' issues, skipping the verification step, or using wrong techniques (e.g., adding alt text to a purely decorative border image).",
+      "tips": [
+        "For decorative images — mark them decorative, don't invent alt text",
+        "For the instructor photo — alt text: 'Photo of Professor [Your Name]' (describes the content, not 'headshot')",
+        "For 'click here for Canvas' — rewrite as 'Access the course Canvas page' with the link on the description",
+        "For contrast — if your accent color fails, darken it until it passes 4.5:1 for normal text",
+        "Re-run the Accessibility Checker AFTER your fixes — it should now show zero errors or very few warnings you've consciously accepted"
+      ]
+    },
+    {
+      "key": "document-fix",
+      "title": "Fix One Additional Document",
+      "instructions": "Pick one other document you use in teaching — a weekly handout, a reading, a policy document, or a worksheet. Audit it using the same approach as Section 2 (60-Second Scan + Accessibility Checker), remediate every issue, and describe what you fixed. This second document demonstrates that your Module 3 techniques generalize beyond the syllabus. Bonus credit if the document is a scanned PDF that you OCR'd using Acrobat or a free OCR tool — that's a common real-world fix for inherited course materials.",
+      "minWords": 100,
+      "maxWords": 400,
+      "rubric": "A strong response (1) chooses a non-trivial document (a one-page handout is fine; a single-slide announcement is too thin), (2) runs both audit methods again, (3) describes issues and fixes with the same specificity as the syllabus section, (4) notes anything different from the syllabus remediation — PDFs have reading-order issues Word files don't, spreadsheets have merged-cell traps, slides have slide-title and reading-order issues. Low scores come from picking a trivially simple document, skipping audit steps, or not connecting the fixes to specific Module 3 techniques.",
+      "tips": [
+        "Scanned PDFs need OCR first — without it, nothing is readable to screen readers regardless of other fixes",
+        "Slide decks — every slide needs a unique title (even if hidden), and the reading order pane matters",
+        "Spreadsheets — merged cells break screen readers; label the first row as 'header row'",
+        "If the document is someone else's (a chair-mandated template), note that in your response — remediating inherited docs is a real part of the workflow",
+        "Document naming matters — 'ENG102-Week3-Handout-Accessible.docx' tells future-you which version is remediated"
+      ]
+    }
+  ]
+}

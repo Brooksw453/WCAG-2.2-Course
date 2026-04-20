@@ -1,0 +1,21 @@
+{
+  "chapterId": 7,
+  "weekNum": 7,
+  "title": "Your Disability Services Office and What It Offers",
+  "prompt": "Many faculty members have never really explored what their institution's Disability Services office (or Office of Accessibility, or similar) actually offers. This module touched on accommodations, but DS offices often provide much more: trainings for faculty, accessibility evaluations of syllabi, technology support, student peer tutoring, and more.\n\nFor your initial post, visit your institution's Disability Services website and explore. Look for:\n\n1. **Contact information** — Where is the office? What are their office hours? Can you email them? (Note their contact info — you will want this.)\n\n2. **What they offer beyond accommodations** — Do they offer faculty training? Do they evaluate course materials? Do they have technology or assistive technology labs? Do they have a resource library?\n\n3. **What surprised you or what you didn't know about** — Did you learn something about your DS office that you didn't know before? What is one service you didn't realize they offered?\n\n4. **One way your DS office might help you beyond accommodations** — Based on what you found, how might partnering with them (beyond responding to accommodation letters) improve your course?\n\nIf your institution does not have a dedicated DS office, look for an Accessibility Services office, DEI office with accessibility focus, or ask your department chair who handles student accommodations at your institution.",
+  "requirements": {
+    "initialPost": {
+      "minWords": 150,
+      "maxWords": 250,
+      "dueDay": "Wednesday",
+      "dueTime": "11:59 PM ET"
+    },
+    "replies": {
+      "count": 2,
+      "minWords": 75,
+      "maxWords": 150,
+      "dueDay": "Sunday",
+      "dueTime": "11:59 PM ET"
+    }
+  }
+}

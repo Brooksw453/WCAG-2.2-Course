@@ -1,0 +1,28 @@
+// Simple in-memory rate limiter
+// Tracks requests per user within a time window
+const rateLimitMap = new Map<string, { count: number; resetTime: number }>();
+
+export function rateLimit(userId: string, maxRequests: number = 15, windowMs: number = 60000): { success: boolean; remaining: number } {
+  const now = Date.now();
+  const key = userId;
+  const entry = rateLimitMap.get(key);
+
+  // Clean up expired entries periodically
+  if (rateLimitMap.size > 10000) {
+    for (const [k, v] of rateLimitMap) {
+      if (now > v.resetTime) rateLimitMap.delete(k);
+    }
+  }
+
+  if (!entry || now > entry.resetTime) {
+    rateLimitMap.set(key, { count: 1, resetTime: now + windowMs });
+    return { success: true, remaining: maxRequests - 1 };
+  }
+
+  if (entry.count >= maxRequests) {
+    return { success: false, remaining: 0 };
+  }
+
+  entry.count++;
+  return { success: true, remaining: maxRequests - entry.count };
+}

@@ -1,0 +1,53 @@
+{
+  "sectionId": "4.2",
+  "chapterId": 4,
+  "questions": [
+    {
+      "id": "ch04-q03",
+      "question": "A faculty member builds slides by opening PowerPoint, selecting a blank slide, and then placing text boxes, images, and shapes anywhere on the slide. What is the main accessibility concern with this approach?",
+      "options": [
+        {
+          "text": "The reading order is unpredictable — screen readers may read elements in random order rather than the logical flow the instructor intended",
+          "correct": true
+        },
+        {
+          "text": "Blank slides are more difficult for students to print out",
+          "correct": false
+        },
+        {
+          "text": "Images on blank slides cannot have alt text added to them",
+          "correct": false
+        },
+        {
+          "text": "Using blank slides requires a paid PowerPoint license",
+          "correct": false
+        }
+      ],
+      "explanation": "Built-in slide layouts have a predefined structure and reading order. When you use a blank slide and place elements manually, PowerPoint reads them in creation order — not in the order you see them on screen. For example, a title placed last on the slide might be announced first by a screen reader. Using built-in layouts ensures correct reading order and semantic structure."
+    },
+    {
+      "id": "ch04-q04",
+      "question": "A faculty member's presentation includes many photographs and diagrams that are critical to understanding the content. Why might this presentation need a companion document for accessibility?",
+      "options": [
+        {
+          "text": "Because screen reader users cannot see images, and a companion document can provide detailed descriptions that make the visual content equivalent in text form",
+          "correct": true
+        },
+        {
+          "text": "Because companion documents are required by WCAG 2.2 for all presentations",
+          "correct": false
+        },
+        {
+          "text": "Because PowerPoint slides cannot include alt text",
+          "correct": false
+        },
+        {
+          "text": "Because students with disabilities are not allowed to attend live presentations",
+          "correct": false
+        }
+      ],
+      "explanation": "While alt text helps, a companion document provides fuller descriptions of complex visual content. For highly visual presentations (art history, architecture, design, science labs with demonstrations), a detailed companion — describing what happens in each image, how visual elements relate, and what students are meant to learn — ensures that students using screen readers or not attending live can access equivalent content."
+    }
+  ],
+  "passThreshold": 80
+}

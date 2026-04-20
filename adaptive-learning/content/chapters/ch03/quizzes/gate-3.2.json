@@ -1,0 +1,53 @@
+{
+  "sectionId": "3.2",
+  "chapterId": 3,
+  "questions": [
+    {
+      "id": "ch03-q03",
+      "question": "Which of these is the best alt text for a bar chart showing student enrollment by year?",
+      "options": [
+        {
+          "text": "Bar chart showing enrollment",
+          "correct": false
+        },
+        {
+          "text": "Image of a chart with numbers on the axes",
+          "correct": false
+        },
+        {
+          "text": "Bar chart showing enrollment increased from 500 students in 2018 to 750 in 2024, with the largest growth occurring between 2020 and 2022",
+          "correct": true
+        },
+        {
+          "text": "A very detailed description of every single data point and number in the chart in a long paragraph",
+          "correct": false
+        }
+      ],
+      "explanation": "Good alt text for a chart should summarize what the chart shows and highlight the key trend or insight (why it's in your course). It's not a generic description ('bar chart'), and it's not data overload (listing every number). The correct answer gives the trend (enrollment increased) and specific key points (from 500 to 750) that a student who can't see the chart would need to understand the main point. This allows a student using a screen reader to understand the data relationships."
+    },
+    {
+      "id": "ch03-q04",
+      "question": "A faculty member uses a table to organize office hours in two columns for visual layout. What is the accessibility concern?",
+      "options": [
+        {
+          "text": "There is no accessibility concern; tables are always the best way to organize information",
+          "correct": false
+        },
+        {
+          "text": "Screen readers expect rows and columns in tables to have semantic meaning; using a table just for layout confuses assistive technology users",
+          "correct": true
+        },
+        {
+          "text": "Tables are too slow to load and will delay students from accessing office hour information",
+          "correct": false
+        },
+        {
+          "text": "The table will not display on mobile devices",
+          "correct": false
+        }
+      ],
+      "explanation": "Layout tables violate accessibility principles because screen readers read tables cell-by-cell, expecting each cell to be part of a coherent data structure. When a table is used purely for visual formatting, the structure doesn't match the semantic meaning, confusing users relying on assistive technology. For office hours, a bulleted list, paragraph formatting, or definition list is more appropriate and naturally accessible. If data actually needs table structure (like a grade book), then a table is the right choice."
+    }
+  ],
+  "passThreshold": 80
+}

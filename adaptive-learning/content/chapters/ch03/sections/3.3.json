@@ -1,0 +1,69 @@
+{
+  "sectionId": "3.3",
+  "chapterId": 3,
+  "title": "Links, Color, and the Accessibility Checker",
+  "learningObjectives": [
+    "Convert 'click here' and bare URLs into descriptive hyperlinks",
+    "Check color contrast ratios and avoid using color as the sole conveyor of meaning",
+    "Run the built-in Accessibility Checker in Word, PowerPoint, and Acrobat",
+    "Interpret checker results and know which issues to fix first"
+  ],
+  "keyTerms": [
+    {
+      "term": "Descriptive link text",
+      "definition": "The visible text of a hyperlink that tells you where it goes or what it does. Examples: 'Download the syllabus,' 'University accessibility policy,' 'Email the instructor.' Not 'click here' or a bare URL."
+    },
+    {
+      "term": "Color contrast ratio (4.5:1 for normal text, 3:1 for large)",
+      "definition": "The ratio of brightness between text and background. WCAG requires 4.5:1 for normal text and 3:1 for large text (18pt+). This ratio is not a guess — it's measured mathematically and can be checked with a tool."
+    },
+    {
+      "term": "Color as sole indicator",
+      "definition": "Using color alone to communicate information (e.g., 'red means required, blue means optional'). This violates WCAG because colorblind users can't distinguish. Pair color with another indicator: bold, an asterisk, an icon, or text."
+    },
+    {
+      "term": "Microsoft Accessibility Checker",
+      "definition": "A built-in tool in Word, PowerPoint, and Excel that automatically scans for accessibility issues. Open it via Review → Check Accessibility. It reports errors (must fix), warnings (should fix), and tips (nice to fix). It catches ~30% of WCAG issues."
+    },
+    {
+      "term": "Adobe Acrobat Accessibility Checker",
+      "definition": "A similar tool in Adobe Acrobat that checks PDF accessibility. More sophisticated than the Microsoft checker because PDFs are more complex. Useful if you export documents to PDF."
+    },
+    {
+      "term": "PDF tags",
+      "definition": "Invisible structural markup in a PDF that tells a screen reader what each element is (heading, body text, image, table). A PDF with no tags is unreadable by screen reader. Tags are automatically created if you export from an accessible Word/PowerPoint document."
+    }
+  ],
+  "contentBlocks": [
+    {
+      "type": "concept",
+      "title": "Links That Make Sense",
+      "body": "Hyperlinks are essential to how students navigate your course. But a poorly written link creates confusion and frustration. Here's why descriptive link text matters and how to write it.\n\n**Why 'click here' fails:**\n\nScreen reader users often navigate by pulling up a list of all links on a page or in a document. This list lets them quickly find what they're looking for. But if every link says \"click here,\" the list is useless:\n\n```\nLinks found:\n- click here\n- click here\n- click here\n- click here\n```\n\nThe user has no idea what each link does. They have to listen to the surrounding context to figure it out, which defeats the purpose of a quick link list.\n\n**Good descriptive link text answers the question: \"Where does this link go or what does it do?\"**\n\n- ✓ \"Download the syllabus (PDF)\"\n- ✓ \"Attendance policy\"\n- ✓ \"Submit Assignment 1 on Canvas\"\n- ✓ \"Email me questions\"\n- ✗ \"click here\"\n- ✗ \"link\"\n- ✗ \"https://institution.edu/policies/attendance\"\n\n**Bare URLs are also bad:** Imagine a link that says \"https://example.com/data/q3-2024-report.pdf.\" A screen reader reads this letter by letter, and the user learns nothing about what the file contains. Much better: \"Q3 2024 Sales Report (PDF).\" The link can still point to the same URL, but the visible text tells the user what to expect.\n\n**How to edit link text in Word:**\n\n1. Right-click the link.\n2. Select \"Edit Hyperlink.\"\n3. In the \"Display Text\" field, change the text to something descriptive.\n4. Click OK.\n\n**How to edit link text in a web form or LMS:**\n\nWhen pasting a URL into a content editor (Canvas, your institution's website, etc.), the editor usually lets you enter both the URL and the display text separately. Enter the URL in the URL field and your descriptive text in the \"Link Text\" or \"Display Text\" field.\n\n**Context matters:** Sometimes the context makes the purpose clear. In a syllabus where you write \"For our attendance policy, see here,\" the word \"here\" links to the policy, and the surrounding text provides context. But the link text \"here\" still isn't descriptive for someone seeing only the link list. Better: \"For our attendance policy, see the [Attendance Policy document].\" The link text is now descriptive on its own."
+    },
+    {
+      "type": "concept",
+      "title": "Color Contrast and Color Meaning",
+      "body": "Two separate but related issues:\n\n**Issue 1: Insufficient color contrast.** Light gray text on white background looks elegant but is hard to read for people with low vision, color blindness, or anyone reading in bright sunlight on a mobile device. WCAG requires a **4.5:1 contrast ratio** for normal text and **3:1 for large text** (18pt or larger, or 14pt bold or larger).\n\nThis ratio is not subjective. It's measured mathematically by comparing the brightness (luminance) of the text color and background color. You can't eyeball it; you need a tool. Use the [WebAIM Contrast Checker](https://webaim.org/resources/contrastchecker/) (free, online) or any accessibility tool. Plug in your colors, and it tells you if you meet the ratio.\n\nWhy 4.5:1? It's the threshold where text becomes readable for people with moderate low vision. It's based on decades of research. If your contrast ratio is 3.2:1, you're not \"close enough\" — you're below the threshold, and the text is less readable for 10–15% of your users.\n\n**Issue 2: Using color as the sole indicator of meaning.** This is when you say \"red means required, blue means optional\" or \"green checkmark = correct, red X = incorrect.\" A person with red-green color blindness can't distinguish these colors. Some people might not see color at all (achromatic vision). These users can't understand your system.\n\nThe fix is to pair color with another indicator:\n- ✓ Red text AND an asterisk (*) = required\n- ✓ Blue background AND the word \"optional\"\n- ✓ Green checkmark AND the word \"correct\"\n- ✗ Just red text\n- ✗ Just blue background\n- ✗ Just green checkmark\n\nYou can use color — it's helpful as an additional cue. But don't rely on color alone.\n\n**Example in a syllabus:**\n\n**Not accessible:** \"Assignments marked in yellow are low-stakes; assignments in blue are high-stakes.\"\n\n**Accessible:** \"Low-stakes assignments (marked in yellow) include daily quizzes and discussion posts. High-stakes assignments (marked in blue) include the midterm exam and final paper.\"\n\nOr, if you prefer a table:\n\n```\n| Assignment Type      | Example             | % of Grade |\n|--------- ------------|---------------------|-----------|\n| Low-stakes (yellow)  | Daily quizzes       | 20%       |\n| High-stakes (blue)   | Midterm exam        | 30%       |\n| High-stakes (blue)   | Final paper         | 50%       |\n```\n\nNow the text explicitly states what each category is, and color just reinforces it."
+    },
+    {
+      "type": "example",
+      "title": "Running the Checker — What You'll See",
+      "body": "The Microsoft Accessibility Checker is your automated first line of defense. It won't catch everything (it catches about 30% of accessibility issues), but it catches the low-hanging fruit.\n\n**How to open the Accessibility Checker in Word:**\n\n1. Go to the Review tab.\n2. Click \"Check Accessibility.\"\n3. A pane opens on the right showing results.\n\n**Understanding the results:**\n\nThe checker sorts issues into three categories:\n\n**Errors (must fix):** These are definite accessibility violations that will break the document for some users.\n- \"Missing alt text\" — images have no descriptions\n- \"Hyperlink with no text\" — empty link\n- \"Table missing header row\" — data table without headers\n\n**Warnings (should fix):** These are likely issues that might create barriers.\n- \"Repeated blank lines\" — used for spacing instead of formatting\n- \"Very long link text\" — confusing for screen readers\n- \"Table has merged cells\" — confusing navigation\n\n**Tips (nice to fix):** These are suggestions for improvement.\n- \"Document not tagged with language\" — would help screen readers with pronunciation\n- \"Consider breaking up very long tables\" — readability issue\n\n**What to do with each finding:**\n\n1. **Click the finding in the list.** It highlights the problem in your document.\n2. **Assess:** Is this actually a problem in context? Sometimes the checker flags something that isn't an issue. For example, the checker might flag a title as missing alt text, but a title doesn't need alt text if it's text, not an image.\n3. **Fix it.** Most errors are straightforward:\n   - Missing alt text? Right-click the image → Format Picture → Alt Text → Add description.\n   - Hyperlink with no text? Right-click → Edit Hyperlink → Add display text.\n   - Table missing header row? Select the first row → Table Properties → Check \"Repeat as header row.\"\n4. **Rerun the checker.** Click \"Check Accessibility\" again to see if the issue is resolved.\n\n**A real example:**\n\nYou run the Accessibility Checker on your syllabus. Results:\n- **Error:** 7 images missing alt text\n- **Warning:** 6 hyperlinks have text \"click here\"\n- **Tip:** Document not tagged with language\n\nYou fix the errors first (alt text, 5 minutes). Then the warnings (descriptive link text, 5 minutes). The tips can wait or be skipped. Total remediation time: about 10 minutes.\n\n**Important caveat:** The Accessibility Checker is a helpful tool, but \"no errors found\" doesn't mean the document is fully accessible. The checker catches structural issues (missing alt text, no header rows) but can't evaluate the quality of alt text or whether your document is truly understandable. It's a first pass, not a final answer."
+    },
+    {
+      "type": "concept",
+      "title": "PDF Accessibility: The Hard Truth",
+      "body": "Many faculty ask: \"If I save my Word document as a PDF, is it automatically accessible?\"\n\nThe short answer: **It depends.**\n\nIf your Word document is well-structured (proper headings, alt text, no weird formatting), exporting to PDF preserves that structure. The PDF will be accessible.\n\nIf your Word document is poorly structured, exporting to PDF doesn't fix it. A scanned image (a PDF made from photographing a paper document) is not accessible unless you run OCR (Optical Character Recognition) on it first.\n\n**When PDFs work:**\n- A well-structured Word document exported to PDF using \"File → Save As → PDF\" (or \"File → Export as PDF\" in Word)\n- The original Word document had proper heading structure, alt text, and accessible formatting\n- The PDF was created digitally, not scanned\n\n**When PDFs fail:**\n- A scanned PDF (a photograph of a paper document). The PDF is just an image; it contains no text that a screen reader can read.\n- A Word document with poor structure (no headings, no alt text) exported to PDF. The problems carry over.\n- A complex PDF form. PDF forms require special tags and can be inaccessible.\n\n**What to do:**\n\n1. **If you're creating a document to distribute, keep it in Word (or PowerPoint/Excel) if possible.** These formats are easier for students to use with assistive technology.\n2. **If you must export to PDF, ensure the original document is accessible first.** Use the Accessibility Checker in Word before exporting.\n3. **If you have a scanned PDF (legacy course materials, old readings), consider alternative formats.** Ask your library's accessibility office if OCR is available. OCR runs text recognition on the scanned image, creating a PDF with underlying text.\n4. **For new documents, prefer Word or the original editable format.** Accessibility is easier to maintain and update.\n\nPDF accessibility is more complex than Word accessibility because PDFs require special tags and testing. If you have a PDF that students are struggling with, reach out to your institution's accessibility office — they may be able to help remediate it or suggest alternatives."
+    },
+    {
+      "type": "summary",
+      "body": "Descriptive link text helps all users, especially screen reader users who can pull up a list of links. Avoid 'click here' and bare URLs. Ensure text has 4.5:1 contrast ratio for readability. Never use color alone to convey meaning — pair it with text, icons, or other indicators. The Microsoft Accessibility Checker catches most structural issues (missing alt text, no header rows) automatically. Run it on every document before posting. PDFs are accessible if the original document was accessible; scanned PDFs need OCR. These practices combined make your documents both legally compliant and genuinely usable."
+    }
+  ],
+  "freeTextPrompt": {
+    "id": "ft-3.3",
+    "prompt": "Run the Microsoft Accessibility Checker on one of your Word documents or PowerPoint files. List the top three issues it found. For each issue, describe: (1) What the checker flagged, (2) Whether you know how to fix it based on what you've learned in this module, and (3) What you'd do to address it. If your checker found no issues, try running it on a document you suspect might have accessibility problems.",
+    "minWords": 100,
+    "rubric": "A strong response shows the participant actually ran the checker and lists specific findings (not hypothetical). For each finding, it demonstrates understanding of why it's a problem and how to fix it, or identifies barriers to fixing it (e.g., 'I'd need to learn how to add alt text'). Reflection on the checker's usefulness and limitations is a bonus."
+  }
+}
