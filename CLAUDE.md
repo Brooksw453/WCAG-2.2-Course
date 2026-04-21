@@ -1,268 +1,193 @@
-# WCAG 2.2 for Higher Ed — Course Build Instructions
+# WCAG 2.2 for Higher Ed — Project Guide
 
-> **For Claude Code**: This file contains everything you need to build the complete adaptive learning course from the content in this repo and the course-template from the Entrepreneurship repo.
+> **For Claude Code**: The course is built, deployed, and live. This file describes what exists, where it lives, and how to work with it. For the platform-level reference (every route, API, component, and migration), read `adaptive-learning/CLAUDE.md`.
 
 ---
 
 ## 1. Project Overview
 
-This is a self-paced, faculty-focused WCAG 2.2 accessibility course built on the same Next.js adaptive learning platform used by the Entrepreneurship course. The course content (8 modules, 21 sections, 42 quiz questions, 8 discussions, 3 assignments, and a capstone portfolio) has already been written as JSON files in the `content/` directory. Your job is to:
+A self-paced, faculty-focused WCAG 2.2 accessibility course built on the same Next.js adaptive-learning platform that powers the Entrepreneurship course. Content is original — no OER textbook source, no attribution needed.
 
-1. Fork the course platform from the Entrepreneurship repo's `course-template` directory
-2. Drop the content into it
-3. Customize the course configuration
-4. Build the 3 remaining assignment JSON files
-5. Validate everything works
+- **Audience**: Faculty, instructional designers, CTL staff at public higher-ed institutions. Assumes zero technical background (no HTML, CSS, ARIA).
+- **Length**: 4–6 hours, 8 modules, 21 sections, 3 assignments, 1 portfolio capstone.
+- **Business model**: $99 individual, $39/seat at 10+, bundled free with Document Ally Pro institutional licenses (see `ES_Designs_Marketing_Strategy_v4.docx`).
 
 ---
 
-## 2. Step-by-Step Build Instructions
+## 2. Current Status — Live
 
-### Step 1: Fork the Course Template
+| | |
+|---|---|
+| **Course app** | https://wcag-2-2-course.vercel.app (Vercel, auto-deploys from `main`) |
+| **GitHub repo** | https://github.com/Brooksw453/WCAG-2.2-Course |
+| **Dashboard slug** | `wcag-2-2-higher-ed` |
+| **Dashboard URL** | https://courses.esdesigns.org/courses/wcag-2-2-higher-ed |
+| **Tenant** | ES Designs (`dee02d2e-cc66-401c-8aa9-e1a778e1dc94`) |
+| **Price** | Currently $0 for testing (originally $99) — flip back with `UPDATE courses SET price_cents = 9900, stripe_price_id = '<id>' WHERE slug = 'wcag-2-2-higher-ed';` |
+| **Supabase** | Shared instance with other ES Designs courses (no per-course DB) |
 
+---
+
+## 3. Repo Layout
+
+```
+WCAG-2.2-Course/
+├── CLAUDE.md                           ← this file (project-level)
+├── WCAG-2.2-Course-Outline.md          ← module-by-section outline with LOs, key terms, quiz topics
+├── Source-Reference-Guide.md           ← 70+ curated sources + image creation plan
+├── content/                            ← authoring copy (canonical source of course content)
+│   ├── chapters/chNN/                  ← 8 modules, 21 section JSONs, 21 gate quizzes, 8 discussions
+│   └── assignments/                    ← 3 assignment JSONs
+└── adaptive-learning/                  ← the Next.js app (deploys to Vercel)
+    ├── CLAUDE.md                       ← platform reference (routes, APIs, components, DB schema)
+    ├── content/                        ← runtime copy (mirrored from ../content/)
+    │   ├── chapters/chNN/              ← same structure as ../content/chapters/
+    │   └── assignments/                ← same as ../content/assignments/
+    ├── public/images/chNN/             ← 12 original SVG diagrams (see §5)
+    ├── scripts/embed-svgs.py           ← idempotent helper that inserts image content blocks
+    ├── scripts/validate-content.ts     ← content validator — run after any JSON edit
+    └── src/lib/course.config.ts        ← course branding + AI tutor role + capstone labels
+```
+
+**Important**: `content/` at the repo root and `adaptive-learning/content/` should stay in sync. When editing course content, edit both — or edit one and `cp -r` the other.
+
+---
+
+## 4. Content Inventory
+
+All 8 modules are written, validated, deployed, and illustrated with original SVG diagrams.
+
+| Module | Dir | Sections | Gate quizzes | Discussion | Diagram |
+|--------|-----|----------|--------------|------------|---------|
+| 1. Why Accessibility Matters | ch01 | 1.1, 1.2 | 2 (4 Qs) | ✓ | Title II Timeline (1.1) |
+| 2. WCAG 2.2 Without the Jargon | ch02 | 2.1, 2.2, 2.3 | 3 (6 Qs) | ✓ | POUR (2.1), 60-Second Scan (2.3) |
+| 3. Accessible Documents | ch03 | 3.1, 3.2, 3.3 | 3 (6 Qs) | ✓ | Alt Text Decision Tree (3.2) |
+| 4. Accessible Course Materials | ch04 | 4.1, 4.2, 4.3 | 3 (6 Qs) | ✓ | Syllabus Checklist (4.1) |
+| 5. Accessible Multimedia | ch05 | 5.1, 5.2 | 2 (4 Qs) | ✓ | Captioning Tree (5.1), AD Tree (5.2) |
+| 6. Accessible Assessments & Quizzes | ch06 | 6.1, 6.2, 6.3 | 3 (6 Qs) | ✓ | Question Type Matrix (6.1) |
+| 7. Working with Disability Services | ch07 | 7.1, 7.2 | 2 (4 Qs) | ✓ | Escalation Tree (7.2) |
+| 8. Tools and Workflows | ch08 | 8.1, 8.2, 8.3 | 3 (6 Qs) | ✓ | Checkers Catch/Miss (8.1), Semester-Start (8.2), 30-Day Plan (8.3) |
+| **Totals** | | **21 sections** | **21 quizzes / 42 Qs** | **8** | **12 SVGs** |
+
+**Assignments** (all 4-section, 150 pts, with `context` + per-section `rubric` + `tips`):
+- `assignment-1.json` → appears after Ch 3 — Audit & Fix Your Own Course Materials (self-assessment, syllabus audit, syllabus remediation, one additional document)
+- `assignment-2.json` → appears after Ch 6 — Build Accessible Course Materials, Multimedia, Assessment (slide deck, multimedia audit, accessible quiz, keyboard test report)
+- `assignment-3.json` → appears after Ch 8 — Accessibility Workflow & Action Plan (accommodation response plan, semester-start checklist, 30-day action plan, looking ahead)
+
+Assignment placement is wired in `adaptive-learning/src/app/chapters/page.tsx` via `const assignmentAfterChapter: Record<number, number> = { 3: 1, 6: 2, 8: 3 };`.
+
+---
+
+## 5. SVG Diagrams (12 total)
+
+All diagrams are hand-authored, accessible, and embedded directly in the relevant sections.
+
+| # | File | Section | What it shows |
+|---|------|---------|---------------|
+| 1 | `ch01/title-ii-timeline.svg` | 1.1 | Title II compliance milestones: Apr 2024 rule → Apr 2026 large entity → Apr 2027 small entity |
+| 2 | `ch02/pour-principles.svg` | 2.1 | Four POUR principles with example violations |
+| 3 | `ch02/sixty-second-scan.svg` | 2.3 | 5-item quick accessibility check |
+| 4 | `ch03/alt-text-decision-tree.svg` | 3.2 | Flowchart: decorative → functional → complex → informative |
+| 5 | `ch04/syllabus-checklist.svg` | 4.1 | 10-item syllabus-specific checklist |
+| 6 | `ch05/captioning-decision-tree.svg` | 5.1 | 3-question caption-readiness flowchart |
+| 7 | `ch05/audio-description-decision-tree.svg` | 5.2 | 3-question AD flowchart |
+| 8 | `ch06/question-type-matrix.svg` | 6.1 | 10 question types × keyboard/screen-reader/time matrix |
+| 9 | `ch07/escalation-decision-tree.svg` | 7.2 | When to handle yourself vs. escalate to DRC |
+| 10 | `ch08/checkers-catch-vs-miss.svg` | 8.1 | Side-by-side of what automated tools catch vs. miss |
+| 11 | `ch08/semester-start-workflow.svg` | 8.2 | 6-step pre-semester workflow |
+| 12 | `ch08/thirty-day-action-plan.svg` | 8.3 | 4-week post-course action plan |
+
+**Style standards** (follow if adding more):
+- 900px wide, white background (renders as a card in dark mode too)
+- Real `<text>` elements — not rasterized, keeps content crisp at any zoom
+- `role="img"` + `<title>` + `<desc>` for screen reader use when inlined
+- Decorative shapes wrapped in `<g aria-hidden="true">`
+- Semantic color palette: blue (facts), green (positive/action), amber (caution), purple (tech)
+- 4.5:1+ contrast on every text element
+- One-line footer takeaway in italic
+
+To add/update images: drop the SVG in `adaptive-learning/public/images/chNN/`, add its entry to `adaptive-learning/scripts/embed-svgs.py`, and run `python scripts/embed-svgs.py` (idempotent — safe to re-run).
+
+---
+
+## 6. Customizations from the Template
+
+Notable deviations from the stock `course-template`:
+
+### `src/lib/course.config.ts`
+- `title: "WCAG 2.2 for Higher Ed"`, `subtitle: "Accessible Course Materials for Faculty"`
+- `textbook: { name: null, pdfFilename: null }` (original content)
+- `capstone.route = "/portfolio"`, `navLabel = "Portfolio"`, capstone labels re-themed around accessibility journey
+- `aiTutor.role = "a friendly accessibility specialist who has worked in higher-ed faculty development…"`
+- `attribution.enabled = false`, string fields set to `""` rather than `null` — the template's `Attribution.tsx` uses the fields in JSX and `strict: true` in tsconfig rejects `null` even when `enabled: false` short-circuits the component. Empty strings preserve types without affecting runtime behavior.
+- `COURSE_ID = 'wcag-2-2-higher-ed'`
+
+### `src/app/chapters/page.tsx`
+- `assignmentAfterChapter: Record<number, number> = { 3: 1, 6: 2, 8: 3 }` (swapped from the template's 4-assignment mapping).
+
+### TTS / audio player upgrades (synced from Entrepreneurship repo)
+Six files were carried over from `Brooksw453/Entrepreneurship/adaptive-learning/src/` because the stock template was behind on audio UX:
+
+| File | What it adds |
+|---|---|
+| `src/hooks/useTextToSpeech.ts` | Echo as default voice; keepalive persists across section navigation for Bluetooth/CarPlay continuity |
+| `src/components/TTSController.tsx` | Auto-starts playback when Listen is pressed (no separate Play step) |
+| `src/lib/openaiTTSPlayer.ts` | Cleanup lifecycle rewrites — session only fully releases on explicit Close |
+| `src/components/FreeTextPrompt.tsx` | Listen button at the top of every written response |
+| `src/components/QuizGate.tsx` | Listen button at the top of every quiz gate |
+| `src/app/chapter/[chapterId]/[sectionId]/SectionLearningFlow.tsx` | Listen button on the content step |
+
+Result: **Listen button appears at the top of content, quiz, and written-response pages**. Echo is default. Pressing Listen auto-plays. Playback stops cleanly at the end of each section.
+
+---
+
+## 7. Working on the Course
+
+### Edit content
+1. Edit the JSON in `adaptive-learning/content/chapters/chNN/` (or `content/chapters/chNN/` — keep them in sync)
+2. `cd adaptive-learning && npx tsx scripts/validate-content.ts` — must show 0 errors
+3. `npm run build` — catches TypeScript issues the validator doesn't
+4. Commit and push to `main` — Vercel auto-deploys in ~2 min
+
+### Edit visuals
+1. Edit the SVG in `adaptive-learning/public/images/chNN/`
+2. If adding a new diagram: also add an entry to `scripts/embed-svgs.py` and run it
+3. Validate + build + commit as above
+
+### Preview locally
+Pre-configured in `.claude/launch.json` (gitignored) — use the Claude Code Launch preview panel, or:
 ```bash
-# Clone the Entrepreneurship repo temporarily
-git clone https://github.com/Brooksw453/Entrepreneurship.git /tmp/entrepreneurship-source
-
-# Copy ONLY the course-template directory (NOT the adaptive-learning directory — that contains the Workplace Software course content)
-cp -r /tmp/entrepreneurship-source/course-template ./adaptive-learning
-
-# Clean up
-rm -rf /tmp/entrepreneurship-source
+cd adaptive-learning
+npm run dev    # autoPort enabled; will pick any free port if 3000 is taken
 ```
+Without a local `.env.local`, most pages return 500 because Supabase isn't configured — that's expected for local work.
 
-**IMPORTANT**: Read the `CLAUDE.md` inside the `adaptive-learning/` directory after copying — it contains the complete course creation template and platform documentation. Follow its instructions for any platform-level setup steps (dependencies, environment variables, database setup, etc.).
+### Dev server env
+Don't commit `.env.local`. Secrets live in Vercel Project Settings. Required env vars:
+`NEXT_PUBLIC_SUPABASE_URL`, `NEXT_PUBLIC_SUPABASE_ANON_KEY`, `SUPABASE_SERVICE_ROLE_KEY`, `ANTHROPIC_API_KEY`, `OPENAI_API_KEY` (optional, enables premium TTS voices), `DASHBOARD_SSO_SECRET`, `DASHBOARD_URL=https://courses.esdesigns.org`, `COURSE_SLUG=wcag-2-2-higher-ed`.
 
-### Step 2: Copy Content Into the Platform
-
-The `content/` directory in this repo contains all 8 modules of course content, already written and validated. Copy it into the platform's expected location:
-
-```bash
-# The platform expects content at adaptive-learning/content/
-cp -r ./content/* ./adaptive-learning/content/
-```
-
-### Step 3: Customize course.config.ts
-
-Locate `adaptive-learning/src/lib/course.config.ts` and update it with these values:
-
-```typescript
-export const courseConfig = {
-  // Core identity
-  title: "WCAG 2.2 for Higher Ed",
-  subtitle: "Accessible Course Materials for Faculty",
-  description: "A plain-English accessibility course built for faculty — not web developers. In 4–6 hours, faculty learn how to build accessible syllabi, slides, quizzes, and course materials. No crash-course in HTML or ARIA. Real examples from actual college classrooms. Completion certificate suitable for professional development credit.",
-
-  // Textbook info — this course is ORIGINAL CONTENT, no external textbook
-  textbook: {
-    name: null,
-    pdfFilename: null,
-  },
-
-  // Capstone configuration
-  capstone: {
-    enabled: true,
-    title: "Accessible Course Materials Portfolio",
-    route: "/portfolio",
-    navLabel: "Portfolio",
-    labels: {
-      finalTitle: "Accessible Course Materials Portfolio",
-      yourTitle: "Your Portfolio",
-      compileDescription: "Compile your accessible course materials into a professional portfolio",
-      previewButton: "Preview Portfolio",
-      printButton: "Print Portfolio",
-      assignmentTag: "Portfolio Component",
-      summaryPrompt: "Reflect on your accessibility journey this course. What was your biggest 'aha' moment? How has your understanding of student experience changed? What will you do differently starting next semester?",
-      summaryPlaceholder: "Write a reflective summary of your accessibility journey...",
-      introPrompt: "Introduce your portfolio. What courses do you teach? What was your accessibility knowledge before this course? What motivated you to complete it?",
-      introPlaceholder: "Introduce yourself and your motivation for this course...",
-    },
-  },
-
-  // AI tutor role
-  aiTutor: {
-    role: "a friendly accessibility specialist who has worked in higher-ed faculty development and understands the realities of teaching loads, LMS frustrations, and Title II compliance pressure",
-    tone: "warm, practical, and judgment-free — like a colleague who happens to know a lot about accessibility",
-  },
-
-  // Attribution — ORIGINAL CONTENT, no OER source
-  attribution: {
-    enabled: false,
-    sourceTitle: null,
-    sourceAuthors: null,
-    sourceUrl: null,
-    sourcePublisher: null,
-    license: null,
-    licenseUrl: null,
-    accessLine: null,
-    adaptedBy: "ES Designs",
-    adaptationNote: "Original content created by ES Designs for the WCAG 2.2 for Higher Ed course.",
-  },
-};
-```
-
-### Step 4: Build the 3 Assignment Files
-
-The content directory has the 8 modules but the assignments still need to be created. Create these 3 files in `content/assignments/`:
-
-#### Assignment 1: `content/assignments/assignment-1.json`
-- **Title**: "Audit and Fix Your Own Course Materials"
-- **Points**: 150
-- **relatedChapters**: [1, 2, 3]
-- **Appears after**: Module 3
-- **Sections** (4 parts):
-  1. `accessibility-self-assessment` — "Accessibility Self-Assessment": Faculty reflect on their starting point — what they knew before the course, what surprised them, and which of their materials they suspect have issues. (minWords: 75, maxWords: 300)
-  2. `syllabus-audit` — "Syllabus Accessibility Audit": Faculty run the 60-Second Scan AND the Microsoft Accessibility Checker on their syllabus. They report every issue found, categorize them by POUR principle, and explain what each issue means for students. (minWords: 100, maxWords: 400)
-  3. `syllabus-remediation` — "Syllabus Remediation": Faculty fix every issue identified in the audit — headings, alt text, links, color, reading order. They describe each change made and why. Upload the fixed syllabus. (minWords: 100, maxWords: 400)
-  4. `document-fix` — "Fix One Additional Document": Faculty choose one other document they use in teaching (handout, slide deck, PDF reading) and remediate it. They describe the issues found and fixes applied. (minWords: 100, maxWords: 400)
-- **Context/goals**: Establish baseline awareness, apply Module 2-3 skills to real materials, produce a remediated syllabus for the portfolio.
-- **Rubric for each section**: Should reference specific techniques from the course (heading styles, alt text decision tree, descriptive links, contrast ratios, Accessibility Checker).
-
-#### Assignment 2: `content/assignments/assignment-2.json`
-- **Title**: "Build Accessible Course Materials, Multimedia, and an Assessment"
-- **Points**: 150
-- **relatedChapters**: [4, 5, 6]
-- **Appears after**: Module 6
-- **Sections** (4 parts):
-  1. `accessible-slide-deck` — "Accessible Slide Deck or Handout": Faculty rebuild one slide deck or handout for accessibility — built-in layouts, unique slide titles, alt text, reading order, contrast. Describe the changes. (minWords: 100, maxWords: 400)
-  2. `multimedia-audit` — "Multimedia Accessibility Check": Faculty audit one video they use in their course for captions and audio description needs. Report: are captions present? Accurate? Does it need AD? What tool would they use to fix it? (minWords: 100, maxWords: 400)
-  3. `accessible-quiz` — "Accessible Assessment": Faculty redesign one quiz or exam for accessibility — no drag-and-drop, keyboard testable, images have alt text, time settings accommodate extended time. Describe the original design, what changed, and why. (minWords: 100, maxWords: 400)
-  4. `keyboard-test-report` — "Keyboard-Only Test Report": Faculty complete their redesigned quiz using only the keyboard (Tab, Enter, Space). Report what worked, what didn't, and any remaining issues. (minWords: 75, maxWords: 300)
-- **Context/goals**: Apply Modules 4-6 skills to real materials, produce accessible versions for the portfolio, experience keyboard-only navigation firsthand.
-
-#### Assignment 3: `content/assignments/assignment-3.json`
-- **Title**: "Your Accessibility Workflow and Action Plan"
-- **Points**: 150
-- **relatedChapters**: [7, 8]
-- **Appears after**: Module 8
-- **Sections** (4 parts):
-  1. `accommodation-response-plan` — "Accommodation Response Plan": Faculty write their plan for handling accommodation letters — step-by-step process, who to contact for questions, how to implement common accommodations in their LMS. Include their syllabus accessibility statement. (minWords: 100, maxWords: 400)
-  2. `semester-start-checklist` — "Your Semester-Start Accessibility Checklist": Faculty create a personalized checklist they'll use each semester — specific steps, tools, estimated time per step. Must reference tools from Module 8. (minWords: 100, maxWords: 400)
-  3. `thirty-day-action-plan` — "Your 30-Day Action Plan": Faculty write a concrete, week-by-week plan for the month after completing the course — what they'll fix, test, and share. (minWords: 100, maxWords: 400)
-  4. `looking-ahead` — "Looking Ahead: Accessibility Beyond This Course": Faculty identify 2-3 resources they'll follow for ongoing learning, describe how they'll advocate for accessibility in their department, and set a goal for where they want to be in 6 months. (minWords: 75, maxWords: 300)
-- **Context/goals**: Synthesize all course learning into actionable plans, create portfolio-ready workflow documents, prepare for ongoing accessibility practice.
-
-**Follow the exact JSON schema from the Entrepreneurship course's assignment files** — including the `context` object with `purpose`, `goals`, and `whatToExpect` fields, and `rubric` strings for each section.
-
-### Step 5: Configure Assignment Placement
-
-In the dashboard/chapters page component (likely `src/app/chapters/page.tsx` or similar — check the Entrepreneurship course for the exact location), set the `assignmentAfterChapter` mapping:
-
-```
-Assignment 1 → after Chapter 3
-Assignment 2 → after Chapter 6
-Assignment 3 → after Chapter 8
-```
-
-### Step 6: Validate Content
-
-Run the content validation script (if it exists in the template):
-```bash
-npx tsx scripts/validate-content.ts
-```
-
-If no validation script exists, verify:
-- All 8 `meta.json` files reference the correct sections
-- All 21 section files have valid JSON with the correct schema
-- All 21 gate quiz files have exactly 2 questions each
-- Question IDs are sequential: ch01-q01 through ch08-q06 (42 total)
-- All 8 discussion.json files have valid structure
-- All 3 assignment files follow the assignment schema
+### Course Dashboard
+Registration SQL was run once to link the course to the ES Designs tenant. If you ever need to re-run it (e.g., tenant change, price flip), the block lives in git history at commit `da65d4a`.
 
 ---
 
-## 3. Content Summary
+## 8. JSON Schemas (Quick Reference)
 
-### What's Already Built (in `content/` directory)
+For the full schema + platform docs read `adaptive-learning/CLAUDE.md`. Short version:
 
-| Module | Dir | Sections | Quizzes | Discussion | Words |
-|--------|-----|----------|---------|------------|-------|
-| 1. Why Accessibility Matters | ch01 | 1.1, 1.2 | 2 | ✅ | 2,447 |
-| 2. WCAG 2.2 Without the Jargon | ch02 | 2.1, 2.2, 2.3 | 3 | ✅ | 3,170 |
-| 3. Accessible Documents | ch03 | 3.1, 3.2, 3.3 | 3 | ✅ | 4,082 |
-| 4. Accessible Course Materials | ch04 | 4.1, 4.2, 4.3 | 3 | ✅ | 3,732 |
-| 5. Accessible Multimedia | ch05 | 5.1, 5.2 | 2 | ✅ | 3,851 |
-| 6. Accessible Assessments & Quizzes | ch06 | 6.1, 6.2, 6.3 | 3 | ✅ | 3,528 |
-| 7. Working with Disability Services | ch07 | 7.1, 7.2 | 2 | ✅ | 3,639 |
-| 8. Tools and Workflows | ch08 | 8.1, 8.2, 8.3 | 3 | ✅ | 3,475 |
-| **Totals** | | **21 sections** | **21 quizzes (42 Qs)** | **8** | **~27,900** |
-
-### What Still Needs to Be Built
-
-- [ ] 3 assignment JSON files (detailed specs in Step 4 above)
-- [ ] course.config.ts customization (values provided in Step 3 above)
-- [ ] Assignment placement mapping in the dashboard component
-
-### What Does NOT Need to Be Built
-
-- No textbook extraction (content is original, not adapted from OER)
-- No image extraction scripts (no source textbook PDF)
-- No OER attribution (original content by ES Designs)
+- **Section files**: `sectionId`, `chapterId`, `title`, `learningObjectives[]`, `keyTerms[{term, definition}]`, `contentBlocks[{type: concept|example|summary|image, title?, body, imageSrc?, imageAlt?, imageCaption?}]`, `freeTextPrompt{id, prompt, minWords, rubric}`
+- **Quiz files**: `sectionId`, `chapterId`, `questions[{id, question, options[{text, correct}], explanation}]`, `passThreshold: 80` (2 questions per quiz, 4 options each, exactly 1 correct)
+- **Discussion files**: `chapterId`, `weekNum`, `title`, `prompt`, `requirements{initialPost, replies}`
+- **Assignment files**: `assignmentId`, `title`, `points`, `description`, `relatedChapters[]`, `context{purpose, goals[], whatToExpect}`, `sections[{key, title, instructions, minWords, maxWords, rubric, tips[]}]`
 
 ---
 
-## 4. Course Architecture Reference
+## 9. Reference Documents
 
-### File Structure
-```
-content/
-├── chapters/
-│   ├── ch01/  (2 sections — Why Accessibility Matters)
-│   ├── ch02/  (3 sections — WCAG 2.2 Without the Jargon)
-│   ├── ch03/  (3 sections — Accessible Documents)
-│   ├── ch04/  (3 sections — Accessible Course Materials)
-│   ├── ch05/  (2 sections — Accessible Multimedia)
-│   ├── ch06/  (3 sections — Accessible Assessments & Quizzes)
-│   ├── ch07/  (2 sections — Working with Disability Services)
-│   └── ch08/  (3 sections — Tools and Workflows)
-└── assignments/
-    ├── assignment-1.json  (After Module 3 — Audit & fix syllabus + document)
-    ├── assignment-2.json  (After Module 6 — Accessible materials, multimedia, quiz)
-    └── assignment-3.json  (After Module 8 — Workflow & action plan)
-```
-
-Each chapter directory contains:
-```
-chNN/
-├── meta.json
-├── sections/
-│   ├── N.1.json
-│   ├── N.2.json
-│   └── N.3.json  (if applicable)
-├── quizzes/
-│   ├── gate-N.1.json
-│   ├── gate-N.2.json
-│   └── gate-N.3.json  (if applicable)
-└── discussion.json
-```
-
-### JSON Schemas
-
-**Section files** contain: sectionId, chapterId, title, learningObjectives, keyTerms (term + definition), contentBlocks (type: concept/example/summary with markdown body), freeTextPrompt (id, prompt, minWords, rubric).
-
-**Quiz files** contain: sectionId, chapterId, questions (2 per quiz, 4 options each, exactly 1 correct), passThreshold: 80.
-
-**Discussion files** contain: chapterId, weekNum, title, prompt, requirements (initialPost with word limits and due day, replies with count and word limits).
-
-**Assignment files** contain: assignmentId, title, points, description, relatedChapters, context (purpose, goals, whatToExpect), sections (key, title, instructions, minWords, maxWords, rubric).
-
----
-
-## 5. Additional Context
-
-### Target Audience
-Faculty, instructional designers, and CTL staff at public higher-ed institutions. The course assumes NO technical background — no HTML, CSS, ARIA, or web development knowledge. Every concept is explained in plain English with examples from real college classrooms.
-
-### Business Context
-This course is part of ES Designs' higher-ed accessibility product line. It's sold individually ($99), at departmental rates ($39/seat at 10+), and bundled free with institutional Document Ally Pro licenses (10 seats). It serves as both direct revenue and a cross-sell vehicle for Document Ally Pro. See `ES_Designs_Marketing_Strategy_v4.docx` for full business context.
-
-### Platform Notes
-- The platform is a Next.js app (App Router, React 19, TypeScript, Tailwind CSS 4) deployed on Vercel
-- Backend: Supabase (PostgreSQL + Auth with SSO)
-- AI: Claude API (Sonnet) for tutoring, quiz remediation, and assignment coaching
-- The same Supabase instance supports multiple courses — this course will be registered alongside the Entrepreneurship course
-- SSO is handled by a centralized Course Dashboard
-
-### Reference Documents in This Repo
-- `WCAG-2.2-Course-Outline.md` — The detailed module-by-section outline with learning objectives, key terms, content block descriptions, quiz topics, and image/source notes for every section
-- `Source-Reference-Guide.md` — 70+ curated sources (with URLs) mapped to each section, plus key statistics and an image creation plan
+| File | Purpose |
+|------|---------|
+| `adaptive-learning/CLAUDE.md` | **Primary platform reference** — every route, API, component, hook, migration |
+| `adaptive-learning/AGENTS.md` | Warning that Next.js 16 has breaking changes; read `node_modules/next/dist/docs/` before editing platform code |
+| `WCAG-2.2-Course-Outline.md` | Detailed module-by-section outline with LOs, key terms, content block descriptions |
+| `Source-Reference-Guide.md` | 70+ curated sources + the original image creation plan (12 diagrams now ✓) |
+| `ES_Designs_Marketing_Strategy_v4.docx` | Business model, pricing, positioning |
