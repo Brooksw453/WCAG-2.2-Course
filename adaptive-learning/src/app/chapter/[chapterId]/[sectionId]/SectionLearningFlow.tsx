@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useEffect, useCallback, useMemo } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import { useRouter } from 'next/navigation';
 import ContentRenderer from '@/components/ContentRenderer';
 import QuizGate from '@/components/QuizGate';
@@ -73,36 +73,14 @@ export default function SectionLearningFlow({
     return 0;
   });
 
-  // Compute TTS block indices for quiz and free-text auto-step (Improvement 3)
-  const quizStartIndex = useMemo(() => {
-    let idx = 1; // title
-    if (section.learningObjectives.length > 0) idx += 1;
-    idx += section.contentBlocks.length;
-    if (section.keyTerms.length > 0) idx += 1;
-    return idx;
-  }, [section]);
-
-  const freeTextStartIndex = useMemo(() => {
-    return quizStartIndex + 1 + (quiz?.questions.length || 0) + 1;
-  }, [quizStartIndex, quiz]);
-
-  // Auto-step to quiz when TTS reaches quiz blocks (Improvement 3)
+  // Auto-stop TTS when leaving content step
   useEffect(() => {
-    if (ttsBlockIndex !== undefined && ttsBlockIndex >= quizStartIndex && currentStep === 'content') {
-      handleReadyForQuiz();
+    if (currentStep !== 'content') {
+      setShowTTS(false);
+      setTTSBlockIndex(undefined);
+      setTTSChunkIndex(undefined);
     }
-  }, [ttsBlockIndex, quizStartIndex, currentStep]);
-
-  // Auto-step to free_text when TTS reaches free-text blocks (Improvement 3)
-  useEffect(() => {
-    if (ttsBlockIndex !== undefined && ttsBlockIndex >= freeTextStartIndex && currentStep === 'quiz') {
-      // Only auto-advance to free_text if quiz is already passed
-      if (quizScore !== null && quizScore >= quiz.passThreshold) {
-        setCurrentStep('free_text');
-        window.scrollTo({ top: 0, behavior: 'smooth' });
-      }
-    }
-  }, [ttsBlockIndex, freeTextStartIndex, currentStep, quizScore, quiz.passThreshold]);
+  }, [currentStep]);
 
   // Auto-advance countdown (Improvement 4)
   useEffect(() => {
@@ -384,11 +362,11 @@ export default function SectionLearningFlow({
         </div>
       )}
 
-      {/* TTS Controller - fixed bottom bar, persists across all steps */}
-      {showTTS && (
+      {/* TTS Controller - fixed bottom bar, content page only */}
+      {showTTS && currentStep === 'content' && (
         <TTSController
           section={section}
-          quiz={quiz}
+          autoPlay
           onBlockIndexChange={handleTTSBlockChange}
           onChunkIndexChange={handleTTSChunkChange}
           onClose={() => { setShowTTS(false); setTTSBlockIndex(undefined); setTTSChunkIndex(undefined); }}

@@ -1,7 +1,7 @@
 'use client';
 
 import { useState, useRef, useCallback, useEffect } from 'react';
-import { createTTSPlayer, type TTSPlayer } from '@/lib/openaiTTSPlayer';
+import { createTTSPlayer, shutdownKeepalive, type TTSPlayer } from '@/lib/openaiTTSPlayer';
 
 export interface TTSBlock {
   label: string;
@@ -252,7 +252,7 @@ export function useTextToSpeech(
         if (idx >= 0) return idx;
       }
     }
-    return 0; // Default: nova
+    return 3; // Default: echo
   });
 
   const blockIndexRef = useRef(0);
@@ -320,7 +320,9 @@ export function useTextToSpeech(
     const allChunks = chunksRef.current;
 
     if (blockIdx >= allChunks.length) {
-      // Done with all blocks
+      // Done with all blocks. Reset to start but keep the player AND the
+      // module-level keepalive alive so the next section (or a replay)
+      // still routes through Bluetooth on iOS.
       isPlayingRef.current = false;
       setIsPlaying(false);
       setIsPaused(false);
@@ -328,18 +330,22 @@ export function useTextToSpeech(
       setCurrentChunkIndex(0);
       blockIndexRef.current = 0;
       chunkIndexRef.current = 0;
-      player.cleanup();
-      ttsPlayerRef.current = null;
+      player.stopCurrent();
       updateMediaSession(null, '', null);
       return;
     }
 
     const blockChunks = allChunks[blockIdx];
     if (chunkIdx >= blockChunks.length) {
-      // Move to next block with a brief pause
+      // Move to next block with a brief pause. Don't publish an
+      // out-of-bounds block index — let the end-of-all guard handle it
+      // on the next tick so the UI / Media Session don't briefly show
+      // a stale "next section" label.
       blockIndexRef.current = blockIdx + 1;
       chunkIndexRef.current = 0;
-      setCurrentBlockIndex(blockIdx + 1);
+      if (blockIdx + 1 < allChunks.length) {
+        setCurrentBlockIndex(blockIdx + 1);
+      }
       setTimeout(() => speakChunkOpenAI(), 500);
       return;
     }
@@ -407,7 +413,7 @@ export function useTextToSpeech(
       setCurrentChunkIndex(0);
       blockIndexRef.current = 0;
       chunkIndexRef.current = 0;
-      stopSilentAudio();
+      // Keep silent audio alive so the next page still routes to Bluetooth
       updateMediaSession(null, '', null);
       return;
     }
@@ -416,7 +422,9 @@ export function useTextToSpeech(
     if (chunkIdx >= blockChunks.length) {
       blockIndexRef.current = blockIdx + 1;
       chunkIndexRef.current = 0;
-      setCurrentBlockIndex(blockIdx + 1);
+      if (blockIdx + 1 < allChunks.length) {
+        setCurrentBlockIndex(blockIdx + 1);
+      }
       setTimeout(() => speakChunkSpeechSynthesis(), 500);
       return;
     }
@@ -543,6 +551,9 @@ export function useTextToSpeech(
     if (useOpenAI && ttsPlayerRef.current) {
       ttsPlayerRef.current.cleanup();
       ttsPlayerRef.current = null;
+      // User explicitly closed the player — fully release the iOS
+      // audio session. (Not called on page navigation unmount.)
+      shutdownKeepalive();
     } else {
       window.speechSynthesis.cancel();
       stopSilentAudio();
@@ -693,10 +704,13 @@ export function useTextToSpeech(
     return () => {
       isPlayingRef.current = false;
       if (ttsPlayerRef.current) {
+        // cleanup() stops current chunk + clears cache but deliberately
+        // leaves the module-level keepalive running so the next section's
+        // TTS still routes through Bluetooth on iOS.
         ttsPlayerRef.current.cleanup();
         ttsPlayerRef.current = null;
       }
-      stopSilentAudio();
+      // Leave SpeechSynthesis keepalive running across navigation too
       updateMediaSession(null, '', null);
       if (typeof window !== 'undefined' && 'speechSynthesis' in window) {
         window.speechSynthesis.cancel();

@@ -20,6 +20,64 @@
 
 const MAX_CACHE_SIZE = 50;
 
+// Module-level silent keepalive: held across player instances and page
+// navigations. On iOS, this is what keeps the audio session active and
+// Bluetooth (A2DP) routing intact. If we tore it down between sections,
+// the next section's audio would be created outside any active session
+// and iOS would route it to the phone speaker instead of Bluetooth.
+let keepaliveAudio: HTMLAudioElement | null = null;
+
+function ensureKeepalive() {
+  if (keepaliveAudio) return;
+  if (typeof window === 'undefined') return;
+
+  const sampleRate = 8000;
+  const numSamples = sampleRate;
+  const buffer = new ArrayBuffer(44 + numSamples * 2);
+  const view = new DataView(buffer);
+
+  const writeStr = (off: number, str: string) => {
+    for (let i = 0; i < str.length; i++) view.setUint8(off + i, str.charCodeAt(i));
+  };
+  writeStr(0, 'RIFF');
+  view.setUint32(4, 36 + numSamples * 2, true);
+  writeStr(8, 'WAVE');
+  writeStr(12, 'fmt ');
+  view.setUint32(16, 16, true);
+  view.setUint16(20, 1, true);
+  view.setUint16(22, 1, true);
+  view.setUint32(24, sampleRate, true);
+  view.setUint32(28, sampleRate * 2, true);
+  view.setUint16(32, 2, true);
+  view.setUint16(34, 16, true);
+  writeStr(36, 'data');
+  view.setUint32(40, numSamples * 2, true);
+  for (let i = 0; i < numSamples; i++) {
+    view.setInt16(44 + i * 2, 1, true);
+  }
+
+  const blob = new Blob([buffer], { type: 'audio/wav' });
+  const url = URL.createObjectURL(blob);
+
+  keepaliveAudio = new Audio(url);
+  keepaliveAudio.loop = true;
+  keepaliveAudio.volume = 0.01;
+  keepaliveAudio.play().catch(() => {});
+}
+
+/**
+ * Fully tear down the module-level keepalive. Only call on explicit user
+ * "close player" — never on component unmount / natural section end, or
+ * Bluetooth routing will break on the next page.
+ */
+export function shutdownKeepalive() {
+  if (keepaliveAudio) {
+    keepaliveAudio.pause();
+    keepaliveAudio.src = '';
+    keepaliveAudio = null;
+  }
+}
+
 export interface TTSPlayer {
   /** Initialize audio — MUST be called from a user gesture (click/tap). */
   init(): void;
@@ -55,7 +113,6 @@ export interface TTSPlayer {
 
 export function createTTSPlayer(): TTSPlayer {
   let currentAudio: HTMLAudioElement | null = null;
-  let keepaliveAudio: HTMLAudioElement | null = null;
   let onEndedCallback: (() => void) | null = null;
   let playbackRate = 1.0;
   let currentVoice = 'nova';
@@ -139,57 +196,6 @@ export function createTTSPlayer(): TTSPlayer {
       currentAudio.pause();
       currentAudio.src = '';
       currentAudio = null;
-    }
-  }
-
-  /**
-   * Start a silent audio loop to keep the iOS audio session alive.
-   * Uses an <audio> element with a tiny generated WAV — this persists
-   * through lock screen and app switching (unlike AudioContext).
-   */
-  function startKeepalive() {
-    if (keepaliveAudio) return;
-
-    // Generate a 1-second near-silent WAV
-    const sampleRate = 8000;
-    const numSamples = sampleRate;
-    const buffer = new ArrayBuffer(44 + numSamples * 2);
-    const view = new DataView(buffer);
-
-    const writeStr = (off: number, str: string) => {
-      for (let i = 0; i < str.length; i++) view.setUint8(off + i, str.charCodeAt(i));
-    };
-    writeStr(0, 'RIFF');
-    view.setUint32(4, 36 + numSamples * 2, true);
-    writeStr(8, 'WAVE');
-    writeStr(12, 'fmt ');
-    view.setUint32(16, 16, true);
-    view.setUint16(20, 1, true);
-    view.setUint16(22, 1, true);
-    view.setUint32(24, sampleRate, true);
-    view.setUint32(28, sampleRate * 2, true);
-    view.setUint16(32, 2, true);
-    view.setUint16(34, 16, true);
-    writeStr(36, 'data');
-    view.setUint32(40, numSamples * 2, true);
-    for (let i = 0; i < numSamples; i++) {
-      view.setInt16(44 + i * 2, 1, true);
-    }
-
-    const blob = new Blob([buffer], { type: 'audio/wav' });
-    const url = URL.createObjectURL(blob);
-
-    keepaliveAudio = new Audio(url);
-    keepaliveAudio.loop = true;
-    keepaliveAudio.volume = 0.01;
-    keepaliveAudio.play().catch(() => {});
-  }
-
-  function stopKeepalive() {
-    if (keepaliveAudio) {
-      keepaliveAudio.pause();
-      keepaliveAudio.src = '';
-      keepaliveAudio = null;
     }
   }
 
@@ -285,12 +291,14 @@ export function createTTSPlayer(): TTSPlayer {
 
   /** Initialize — call from user gesture to unlock audio on iOS. */
   function init() {
-    startKeepalive();
+    ensureKeepalive();
   }
 
   function cleanup() {
     stopCurrent();
-    stopKeepalive();
+    // NOTE: deliberately do NOT stop the module-level keepalive here.
+    // Keeping it alive across player instances preserves the iOS audio
+    // session so subsequent sections still route through Bluetooth.
     onEndedCallback = null;
     for (const url of cache.values()) {
       URL.revokeObjectURL(url);
