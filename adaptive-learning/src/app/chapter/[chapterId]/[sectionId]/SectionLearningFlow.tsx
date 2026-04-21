@@ -82,6 +82,16 @@ export default function SectionLearningFlow({
     }
   }, [currentStep]);
 
+  // Every step transition should land the user at the top of the new view so
+  // the Listen / primary CTA is immediately visible. `behavior: 'smooth'` is
+  // unreliable on iOS Safari during React re-renders, so use instant. We run
+  // this in an effect (after render) so the new content height is laid out
+  // before we reset the scroll position.
+  useEffect(() => {
+    if (typeof window === 'undefined') return;
+    window.scrollTo(0, 0);
+  }, [currentStep]);
+
   // Auto-advance countdown (Improvement 4)
   useEffect(() => {
     if (currentStep !== 'completed' || !nextSectionUrl) return;

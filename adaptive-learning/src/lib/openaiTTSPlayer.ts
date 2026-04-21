@@ -28,7 +28,19 @@ const MAX_CACHE_SIZE = 50;
 let keepaliveAudio: HTMLAudioElement | null = null;
 
 function ensureKeepalive() {
-  if (keepaliveAudio) return;
+  if (keepaliveAudio) {
+    // Keepalive already exists from a previous section. Re-engage play()
+    // within the current user gesture so iOS refreshes the audio session
+    // routing decision — without this, subsequent sections can get stuck
+    // playing through the phone speaker while CarPlay/Bluetooth is still
+    // connected but iOS has silently downgraded routing during the idle
+    // gap between the previous section ending and the user tapping
+    // Listen on the next one.
+    try {
+      keepaliveAudio.play().catch(() => {});
+    } catch { /* best-effort */ }
+    return;
+  }
   if (typeof window === 'undefined') return;
 
   const sampleRate = 8000;
@@ -112,6 +124,13 @@ export interface TTSPlayer {
 }
 
 export function createTTSPlayer(): TTSPlayer {
+  // Single persistent <audio> element reused across chunks. Creating a new
+  // Audio() per chunk causes iOS to treat each chunk as a separate media
+  // resource, which after a long gap (e.g. user finished the previous
+  // section, walked through quiz + written response, then tapped Listen
+  // on the next section) can get routed to the phone speaker instead of
+  // the active Bluetooth/CarPlay output. Reusing one element gives iOS
+  // one continuous audio resource, keeping A2DP routing pinned.
   let currentAudio: HTMLAudioElement | null = null;
   let onEndedCallback: (() => void) | null = null;
   let playbackRate = 1.0;
@@ -194,8 +213,10 @@ export function createTTSPlayer(): TTSPlayer {
     if (currentAudio) {
       currentAudio.onended = null;
       currentAudio.pause();
-      currentAudio.src = '';
-      currentAudio = null;
+      // Don't tear down the element itself — clearing src stops playback;
+      // the element is reused on the next playChunk to keep iOS A2DP
+      // routing pinned to the active Bluetooth/CarPlay output.
+      try { currentAudio.removeAttribute('src'); } catch { /* noop */ }
     }
   }
 
@@ -208,17 +229,24 @@ export function createTTSPlayer(): TTSPlayer {
     // If generation changed while we were fetching, abort
     if (generation !== myGeneration) return;
 
-    const audio = new Audio(blobUrl);
+    // Lazily create the persistent audio element on first use. This runs in
+    // the same microtask chain as the user's Listen tap (via play() → init())
+    // so iOS treats it as user-initiated.
+    if (!currentAudio) {
+      currentAudio = new Audio();
+    }
+
+    const audio = currentAudio;
+    audio.onended = null;
+    audio.src = blobUrl;
     audio.playbackRate = playbackRate;
 
     audio.onended = () => {
       if (currentAudio === audio && generation === myGeneration) {
-        currentAudio = null;
         onEndedCallback?.();
       }
     };
 
-    currentAudio = audio;
     await audio.play();
   }
 

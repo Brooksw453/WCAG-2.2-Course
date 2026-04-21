@@ -24,9 +24,26 @@ export default function QuizGate({ quiz, chapterId, sectionId, onResult }: QuizG
   } | null>(null);
   const [showTTS, setShowTTS] = useState(false);
 
+  // Shuffle option order per-question, per-session. shuffledOrder[i] = original index
+  // at shuffled position i. The original correct index is preserved for API submission.
+  const shuffledQuestions = useMemo(() => {
+    return quiz.questions.map((q) => {
+      const order = q.options.map((_, i) => i);
+      for (let i = order.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [order[i], order[j]] = [order[j], order[i]];
+      }
+      return {
+        ...q,
+        shuffledOrder: order,
+        options: order.map((origIdx) => q.options[origIdx]),
+      };
+    });
+  }, [quiz.questions]);
+
   const ttsBlocks: TTSBlock[] = useMemo(() => {
-    if (quiz.questions.length === 0) return [];
-    return quiz.questions.map((q, i) => {
+    if (shuffledQuestions.length === 0) return [];
+    return shuffledQuestions.map((q, i) => {
       const optionsText = q.options
         .map((opt, j) => `Option ${String.fromCharCode(65 + j)}: ${opt.text}`)
         .join('. ');
@@ -35,12 +52,14 @@ export default function QuizGate({ quiz, chapterId, sectionId, onResult }: QuizG
         text: `Question ${i + 1}. ${q.question} ${optionsText}`,
       };
     });
-  }, [quiz.questions]);
+  }, [shuffledQuestions]);
 
-  const allAnswered = quiz.questions.length > 0 && Object.keys(answers).length === quiz.questions.length;
+  const allAnswered = shuffledQuestions.length > 0 && Object.keys(answers).length === shuffledQuestions.length;
 
   async function handleSubmit() {
     if (!allAnswered) return;
+    // Stop TTS immediately so audio doesn't bleed into the next screen.
+    setShowTTS(false);
     setLoading(true);
 
     try {
@@ -77,6 +96,8 @@ export default function QuizGate({ quiz, chapterId, sectionId, onResult }: QuizG
 
   function handleContinue() {
     if (results) {
+      // Stop TTS before transitioning.
+      setShowTTS(false);
       // Find which questions the student got wrong
       const missedIds = quiz.questions
         .filter((q) => answers[q.id] !== results.correctAnswers[q.id])
@@ -125,15 +146,19 @@ export default function QuizGate({ quiz, chapterId, sectionId, onResult }: QuizG
             </button>
           )}
           <span className="text-sm text-gray-500 dark:text-gray-400">
-            {quiz.questions.length} question{quiz.questions.length > 1 ? 's' : ''} &bull; {quiz.passThreshold}% to pass
+            {shuffledQuestions.length} question{shuffledQuestions.length > 1 ? 's' : ''} &bull; {quiz.passThreshold}% to pass
           </span>
         </div>
       </div>
 
-      {quiz.questions.map((question, qIndex) => {
-        const selectedOption = answers[question.id];
-        const isCorrect = results ? results.correctAnswers[question.id] === selectedOption : null;
-        const correctIdx = results?.correctAnswers[question.id];
+      {shuffledQuestions.map((question, qIndex) => {
+        const selectedOriginal = answers[question.id];
+        const isCorrect = results ? results.correctAnswers[question.id] === selectedOriginal : null;
+        const correctOriginalIdx = results?.correctAnswers[question.id];
+        // Translate the original correct index to its shuffled display position
+        const correctShuffledIdx = correctOriginalIdx !== undefined
+          ? question.shuffledOrder.indexOf(correctOriginalIdx)
+          : undefined;
 
         return (
           <div
@@ -152,8 +177,9 @@ export default function QuizGate({ quiz, chapterId, sectionId, onResult }: QuizG
 
             <div className="space-y-2" role="radiogroup" aria-labelledby={`question-${question.id}`}>
               {question.options.map((option, oIndex) => {
-                const isSelected = selectedOption === oIndex;
-                const isCorrectOption = submitted && correctIdx === oIndex;
+                const originalIdx = question.shuffledOrder[oIndex];
+                const isSelected = selectedOriginal === originalIdx;
+                const isCorrectOption = submitted && correctShuffledIdx === oIndex;
                 const isWrongSelection = submitted && isSelected && !isCorrectOption;
 
                 return (
@@ -177,7 +203,7 @@ export default function QuizGate({ quiz, chapterId, sectionId, onResult }: QuizG
                       checked={isSelected}
                       onChange={() => {
                         if (!submitted) {
-                          setAnswers((prev) => ({ ...prev, [question.id]: oIndex }));
+                          setAnswers((prev) => ({ ...prev, [question.id]: originalIdx }));
                         }
                       }}
                       disabled={submitted}

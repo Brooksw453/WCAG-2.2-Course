@@ -68,6 +68,8 @@ export default function FreeTextPrompt({
 
   async function handleSubmit() {
     if (!meetsMinimum) return;
+    // Stop TTS immediately so audio doesn't bleed into the evaluation screen.
+    setShowTTS(false);
     setLoading(true);
     setError(null);
 
@@ -102,6 +104,8 @@ export default function FreeTextPrompt({
 
   function handleContinue() {
     if (evaluation) {
+      // Stop TTS before transitioning to completion.
+      setShowTTS(false);
       onResult(passed, evaluation.score);
     }
   }
