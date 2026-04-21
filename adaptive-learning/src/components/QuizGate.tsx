@@ -1,7 +1,10 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useMemo } from 'react';
 import type { GateQuiz } from '@/lib/types';
+import type { TTSBlock } from '@/hooks/useTextToSpeech';
+import TTSController from '@/components/TTSController';
+import { courseConfig } from '@/lib/course.config';
 
 interface QuizGateProps {
   quiz: GateQuiz;
@@ -19,6 +22,20 @@ export default function QuizGate({ quiz, chapterId, sectionId, onResult }: QuizG
     passed: boolean;
     correctAnswers: Record<string, number>;
   } | null>(null);
+  const [showTTS, setShowTTS] = useState(false);
+
+  const ttsBlocks: TTSBlock[] = useMemo(() => {
+    if (quiz.questions.length === 0) return [];
+    return quiz.questions.map((q, i) => {
+      const optionsText = q.options
+        .map((opt, j) => `Option ${String.fromCharCode(65 + j)}: ${opt.text}`)
+        .join('. ');
+      return {
+        label: `Question ${i + 1}`,
+        text: `Question ${i + 1}. ${q.question} ${optionsText}`,
+      };
+    });
+  }, [quiz.questions]);
 
   const allAnswered = quiz.questions.length > 0 && Object.keys(answers).length === quiz.questions.length;
 
@@ -91,9 +108,26 @@ export default function QuizGate({ quiz, chapterId, sectionId, onResult }: QuizG
         <h3 className="text-xl font-semibold text-gray-900 dark:text-white">
           Knowledge Check
         </h3>
-        <span className="text-sm text-gray-500 dark:text-gray-400">
-          {quiz.questions.length} question{quiz.questions.length > 1 ? 's' : ''} &bull; {quiz.passThreshold}% to pass
-        </span>
+        <div className="flex items-center gap-3">
+          {courseConfig.features.textToSpeech && ttsBlocks.length > 0 && (
+            <button
+              onClick={() => setShowTTS(!showTTS)}
+              className={`inline-flex items-center gap-2 px-4 py-2 text-sm font-medium rounded-lg transition-colors ${
+                showTTS
+                  ? 'bg-blue-100 dark:bg-blue-900/40 text-blue-700 dark:text-blue-300 border border-blue-300 dark:border-blue-700'
+                  : 'bg-gray-100 dark:bg-gray-700 text-gray-600 dark:text-gray-300 hover:bg-blue-50 dark:hover:bg-blue-900/20 hover:text-blue-600 dark:hover:text-blue-400 border border-gray-200 dark:border-gray-600 animate-listen-glow'
+              }`}
+            >
+              <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
+                <path strokeLinecap="round" strokeLinejoin="round" d="M19.114 5.636a9 9 0 010 12.728M16.463 8.288a5.25 5.25 0 010 7.424M6.75 8.25l4.72-4.72a.75.75 0 011.28.53v15.88a.75.75 0 01-1.28.53l-4.72-4.72H4.51c-.88 0-1.704-.507-1.938-1.354A9.01 9.01 0 012.25 12c0-.83.112-1.633.322-2.396C2.806 8.756 3.63 8.25 4.51 8.25H6.75z" />
+              </svg>
+              {showTTS ? 'Close Player' : 'Listen'}
+            </button>
+          )}
+          <span className="text-sm text-gray-500 dark:text-gray-400">
+            {quiz.questions.length} question{quiz.questions.length > 1 ? 's' : ''} &bull; {quiz.passThreshold}% to pass
+          </span>
+        </div>
       </div>
 
       {quiz.questions.map((question, qIndex) => {
@@ -185,7 +219,7 @@ export default function QuizGate({ quiz, chapterId, sectionId, onResult }: QuizG
 
       {/* Submit / Results */}
       {!submitted ? (
-        <div className="flex justify-end">
+        <div className={`flex justify-end ${showTTS ? 'pb-20' : ''}`}>
           <button
             onClick={handleSubmit}
             disabled={!allAnswered || loading}
@@ -195,7 +229,7 @@ export default function QuizGate({ quiz, chapterId, sectionId, onResult }: QuizG
           </button>
         </div>
       ) : results && (
-        <div className={`rounded-lg p-6 text-center ${
+        <div className={`rounded-lg p-6 text-center ${showTTS ? 'mb-20' : ''} ${
           results.passed ? 'bg-green-50 dark:bg-green-900/30 border border-green-200 dark:border-green-800' : 'bg-orange-50 dark:bg-orange-900/30 border border-orange-200 dark:border-orange-800'
         }`}>
           <div className="text-3xl font-bold mb-2 dark:text-white">
@@ -220,6 +254,16 @@ export default function QuizGate({ quiz, chapterId, sectionId, onResult }: QuizG
             {results.passed ? 'Continue to Written Response' : 'Review Material'}
           </button>
         </div>
+      )}
+
+      {/* TTS Controller - fixed bottom bar */}
+      {showTTS && (
+        <TTSController
+          blocks={ttsBlocks}
+          mediaTitle="Knowledge Check"
+          autoPlay
+          onClose={() => setShowTTS(false)}
+        />
       )}
     </div>
   );
