@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 540" role="img" aria-labelledby="ckTitle ckDesc">
+  <title id="ckTitle">What Automated Checkers Catch vs. What They Miss</title>
+  <desc id="ckDesc">A side-by-side comparison of what automated accessibility checkers can and cannot detect. Checkers catch missing alt text, some color contrast failures, missing document language, empty table headers, and structural issues like missing headings. Checkers miss alt text quality, logical reading order, caption accuracy, keyboard operability, focus visibility, meaningful link text, complex table semantics, and whether color alone conveys information. Automated checkers catch roughly 30 to 40 percent of real accessibility issues. Manual testing and human review catch the rest.</desc>
+
+  <rect width="900" height="540" fill="#FFFFFF"/>
+
+  <text x="450" y="46" text-anchor="middle" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="24" font-weight="700" fill="#1F2937">Checkers vs. Manual Testing</text>
+  <text x="450" y="72" text-anchor="middle" font-family="system-ui, sans-serif" font-size="14" fill="#6B7280">Automated tools catch the obvious. Humans catch the rest.</text>
+
+  <!-- Left column: CATCH -->
+  <rect x="40" y="104" width="410" height="364" rx="10" fill="#ECFDF5" stroke="#047857" stroke-width="2"/>
+  <text x="245" y="140" text-anchor="middle" font-family="system-ui, sans-serif" font-size="16" font-weight="800" fill="#047857">CHECKERS CATCH</text>
+  <text x="245" y="162" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#6B7280">Roughly 30–40% of real issues</text>
+
+  <g font-family="system-ui, sans-serif" font-size="13" fill="#1F2937">
+    <text x="80" y="198">✓ Missing alt text on images</text>
+    <text x="80" y="224">✓ Obvious color contrast failures</text>
+    <text x="80" y="250">✓ Missing document language</text>
+    <text x="80" y="276">✓ Empty or missing table headers</text>
+    <text x="80" y="302">✓ Missing heading structure entirely</text>
+    <text x="80" y="328">✓ Missing form field labels</text>
+    <text x="80" y="354">✓ Duplicate slide titles (PowerPoint)</text>
+    <text x="80" y="380">✓ Scanned PDFs without OCR</text>
+    <text x="80" y="406">✓ Missing "Alt text" on decorative</text>
+    <text x="80" y="432">✓ Auto-playing media / reflow issues</text>
+  </g>
+
+  <!-- Right column: MISS -->
+  <rect x="460" y="104" width="400" height="364" rx="10" fill="#FFFBEB" stroke="#B45309" stroke-width="2"/>
+  <text x="660" y="140" text-anchor="middle" font-family="system-ui, sans-serif" font-size="16" font-weight="800" fill="#B45309">CHECKERS MISS</text>
+  <text x="660" y="162" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#6B7280">Requires manual or human review</text>
+
+  <g font-family="system-ui, sans-serif" font-size="13" fill="#1F2937">
+    <text x="500" y="198">✗ Alt text QUALITY ("image.jpg" passes)</text>
+    <text x="500" y="224">✗ Logical reading order</text>
+    <text x="500" y="250">✗ Caption accuracy on videos</text>
+    <text x="500" y="276">✗ Keyboard operability (full Tab test)</text>
+    <text x="500" y="302">✗ Visible focus indicators</text>
+    <text x="500" y="328">✗ Meaningful link text ("click here")</text>
+    <text x="500" y="354">✗ Complex table semantics</text>
+    <text x="500" y="380">✗ Whether color alone conveys info</text>
+    <text x="500" y="406">✗ Audio description needs</text>
+    <text x="500" y="432">✗ Plain-language readability</text>
+  </g>
+
+  <!-- Bottom verdict -->
+  <rect x="40" y="490" width="820" height="40" rx="6" fill="#F3F4F6"/>
+  <text x="450" y="514" text-anchor="middle" font-family="system-ui, sans-serif" font-size="13" fill="#374151">Run a checker for the 30%. Tab-test and spot-read for the rest — it takes 5 minutes per document.</text>
+</svg>

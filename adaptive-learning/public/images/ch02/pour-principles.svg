@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 600" role="img" aria-labelledby="pourTitle pourDesc">
+  <title id="pourTitle">The Four POUR Principles of WCAG</title>
+  <desc id="pourDesc">A two-by-two grid of the four WCAG principles. Perceivable — can every student perceive the content, example violation: a syllabus logo with no alt text. Operable — can every student navigate and interact, example violation: a drag-and-drop quiz that keyboard users cannot complete. Understandable — can every student comprehend the material, example violation: an attendance policy that only says "per university standard policy." Robust — does it work with assistive technology, example violation: a scanned PDF syllabus that a screen reader cannot read.</desc>
+
+  <rect width="900" height="600" fill="#FFFFFF"/>
+
+  <text x="450" y="46" text-anchor="middle" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="24" font-weight="700" fill="#1F2937">The Four POUR Principles</text>
+  <text x="450" y="74" text-anchor="middle" font-family="system-ui, sans-serif" font-size="14" fill="#6B7280">Every WCAG success criterion answers one of four questions</text>
+
+  <!-- Perceivable -->
+  <rect x="60" y="110" width="380" height="210" rx="10" fill="#EFF6FF" stroke="#1E3A8A" stroke-width="2"/>
+  <g aria-hidden="true">
+    <circle cx="110" cy="158" r="26" fill="#1E3A8A"/>
+    <text x="110" y="168" text-anchor="middle" font-family="system-ui, sans-serif" font-size="28" font-weight="800" fill="#FFFFFF">P</text>
+  </g>
+  <text x="154" y="152" font-family="system-ui, sans-serif" font-size="20" font-weight="700" fill="#1E3A8A">Perceivable</text>
+  <text x="154" y="174" font-family="system-ui, sans-serif" font-size="13" fill="#374151">Can every student perceive the content?</text>
+  <text x="78" y="220" font-family="system-ui, sans-serif" font-size="12" font-weight="700" fill="#1E3A8A" letter-spacing="0.5">EXAMPLE VIOLATION</text>
+  <text x="78" y="244" font-family="system-ui, sans-serif" font-size="13" fill="#1F2937">A syllabus logo with no alt text —</text>
+  <text x="78" y="262" font-family="system-ui, sans-serif" font-size="13" fill="#1F2937">a screen reader can't describe it.</text>
+  <text x="78" y="296" font-family="system-ui, sans-serif" font-size="12" fill="#6B7280">Covers: alt text, captions, color, contrast</text>
+
+  <!-- Operable -->
+  <rect x="460" y="110" width="380" height="210" rx="10" fill="#ECFDF5" stroke="#047857" stroke-width="2"/>
+  <g aria-hidden="true">
+    <circle cx="510" cy="158" r="26" fill="#047857"/>
+    <text x="510" y="168" text-anchor="middle" font-family="system-ui, sans-serif" font-size="28" font-weight="800" fill="#FFFFFF">O</text>
+  </g>
+  <text x="554" y="152" font-family="system-ui, sans-serif" font-size="20" font-weight="700" fill="#047857">Operable</text>
+  <text x="554" y="174" font-family="system-ui, sans-serif" font-size="13" fill="#374151">Can every student navigate and interact?</text>
+  <text x="478" y="220" font-family="system-ui, sans-serif" font-size="12" font-weight="700" fill="#047857" letter-spacing="0.5">EXAMPLE VIOLATION</text>
+  <text x="478" y="244" font-family="system-ui, sans-serif" font-size="13" fill="#1F2937">A drag-and-drop quiz question —</text>
+  <text x="478" y="262" font-family="system-ui, sans-serif" font-size="13" fill="#1F2937">keyboard-only users can't answer.</text>
+  <text x="478" y="296" font-family="system-ui, sans-serif" font-size="12" fill="#6B7280">Covers: keyboard, timing, navigation, focus</text>
+
+  <!-- Understandable -->
+  <rect x="60" y="350" width="380" height="210" rx="10" fill="#FFFBEB" stroke="#B45309" stroke-width="2"/>
+  <g aria-hidden="true">
+    <circle cx="110" cy="398" r="26" fill="#B45309"/>
+    <text x="110" y="408" text-anchor="middle" font-family="system-ui, sans-serif" font-size="28" font-weight="800" fill="#FFFFFF">U</text>
+  </g>
+  <text x="154" y="392" font-family="system-ui, sans-serif" font-size="20" font-weight="700" fill="#B45309">Understandable</text>
+  <text x="154" y="414" font-family="system-ui, sans-serif" font-size="13" fill="#374151">Can every student comprehend the material?</text>
+  <text x="78" y="460" font-family="system-ui, sans-serif" font-size="12" font-weight="700" fill="#B45309" letter-spacing="0.5">EXAMPLE VIOLATION</text>
+  <text x="78" y="484" font-family="system-ui, sans-serif" font-size="13" fill="#1F2937">An attendance policy that only says</text>
+  <text x="78" y="502" font-family="system-ui, sans-serif" font-size="13" fill="#1F2937">"per university standard policy."</text>
+  <text x="78" y="536" font-family="system-ui, sans-serif" font-size="12" fill="#6B7280">Covers: readability, predictability, error handling</text>
+
+  <!-- Robust -->
+  <rect x="460" y="350" width="380" height="210" rx="10" fill="#F5F3FF" stroke="#6D28D9" stroke-width="2"/>
+  <g aria-hidden="true">
+    <circle cx="510" cy="398" r="26" fill="#6D28D9"/>
+    <text x="510" y="408" text-anchor="middle" font-family="system-ui, sans-serif" font-size="28" font-weight="800" fill="#FFFFFF">R</text>
+  </g>
+  <text x="554" y="392" font-family="system-ui, sans-serif" font-size="20" font-weight="700" fill="#6D28D9">Robust</text>
+  <text x="554" y="414" font-family="system-ui, sans-serif" font-size="13" fill="#374151">Does it work with assistive technology?</text>
+  <text x="478" y="460" font-family="system-ui, sans-serif" font-size="12" font-weight="700" fill="#6D28D9" letter-spacing="0.5">EXAMPLE VIOLATION</text>
+  <text x="478" y="484" font-family="system-ui, sans-serif" font-size="13" fill="#1F2937">A scanned PDF syllabus — a screen</text>
+  <text x="478" y="502" font-family="system-ui, sans-serif" font-size="13" fill="#1F2937">reader gets nothing to read.</text>
+  <text x="478" y="536" font-family="system-ui, sans-serif" font-size="12" fill="#6B7280">Covers: screen readers, parsing, compatibility</text>
+
+  <text x="450" y="586" text-anchor="middle" font-family="system-ui, sans-serif" font-size="13" fill="#6B7280" font-style="italic">Yes to all four? Your material is likely accessible.</text>
+</svg>

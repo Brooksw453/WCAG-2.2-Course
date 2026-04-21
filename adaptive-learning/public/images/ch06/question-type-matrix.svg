@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 620" role="img" aria-labelledby="qtTitle qtDesc">
+  <title id="qtTitle">Question Type Accessibility Matrix</title>
+  <desc id="qtDesc">A matrix showing how well each common quiz question type supports accessibility across three dimensions: keyboard navigation, screen reader use, and extended-time accommodations. Multiple choice, true or false, short answer, essay, and dropdown matching are fully accessible. Fill-in-the-blank and button-based ordering are mostly accessible. Drag-and-drop, hotspot or image-clicking, and drag-based ordering are not keyboard accessible and should be replaced with alternatives.</desc>
+
+  <rect width="900" height="620" fill="#FFFFFF"/>
+
+  <text x="450" y="46" text-anchor="middle" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="24" font-weight="700" fill="#1F2937">Question Type Accessibility Matrix</text>
+  <text x="450" y="72" text-anchor="middle" font-family="system-ui, sans-serif" font-size="14" fill="#6B7280">How each question type performs on keyboard, screen reader, and extended-time</text>
+
+  <!-- Header row -->
+  <rect x="60" y="100" width="320" height="40" rx="4" fill="#1F2937"/>
+  <text x="76" y="125" font-family="system-ui, sans-serif" font-size="13" font-weight="700" fill="#FFFFFF">Question Type</text>
+  <rect x="382" y="100" width="120" height="40" rx="4" fill="#1F2937"/>
+  <text x="442" y="125" text-anchor="middle" font-family="system-ui, sans-serif" font-size="13" font-weight="700" fill="#FFFFFF">Keyboard</text>
+  <rect x="504" y="100" width="130" height="40" rx="4" fill="#1F2937"/>
+  <text x="569" y="125" text-anchor="middle" font-family="system-ui, sans-serif" font-size="13" font-weight="700" fill="#FFFFFF">Screen reader</text>
+  <rect x="636" y="100" width="134" height="40" rx="4" fill="#1F2937"/>
+  <text x="703" y="125" text-anchor="middle" font-family="system-ui, sans-serif" font-size="13" font-weight="700" fill="#FFFFFF">Extended time</text>
+  <rect x="772" y="100" width="68" height="40" rx="4" fill="#1F2937"/>
+  <text x="806" y="125" text-anchor="middle" font-family="system-ui, sans-serif" font-size="13" font-weight="700" fill="#FFFFFF">Overall</text>
+
+  <!-- Rows -->
+  <!-- Helper: green check, amber warn, red x in defs via symbols -->
+  <defs>
+    <g id="check">
+      <circle r="12" fill="#ECFDF5" stroke="#047857" stroke-width="1.5"/>
+      <path d="M -6 0 L -2 5 L 6 -5" stroke="#047857" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+    </g>
+    <g id="warn">
+      <circle r="12" fill="#FFFBEB" stroke="#B45309" stroke-width="1.5"/>
+      <text text-anchor="middle" y="4" font-family="system-ui, sans-serif" font-size="14" font-weight="800" fill="#B45309">!</text>
+    </g>
+    <g id="cross">
+      <circle r="12" fill="#FEF2F2" stroke="#B91C1C" stroke-width="1.5"/>
+      <path d="M -5 -5 L 5 5 M 5 -5 L -5 5" stroke="#B91C1C" stroke-width="2.5" stroke-linecap="round"/>
+    </g>
+  </defs>
+
+  <!-- Row helper positions: y for row i starts at 148 + i*44, label at 170, icons centered -->
+  <!-- Multiple Choice -->
+  <rect x="60" y="148" width="780" height="40" fill="#FFFFFF"/>
+  <text x="76" y="173" font-family="system-ui, sans-serif" font-size="13" fill="#1F2937">Multiple Choice</text>
+  <use href="#check" x="442" y="168"/><use href="#check" x="569" y="168"/><use href="#check" x="703" y="168"/><use href="#check" x="806" y="168"/>
+
+  <!-- True/False -->
+  <rect x="60" y="192" width="780" height="40" fill="#F9FAFB"/>
+  <text x="76" y="217" font-family="system-ui, sans-serif" font-size="13" fill="#1F2937">True / False</text>
+  <use href="#check" x="442" y="212"/><use href="#check" x="569" y="212"/><use href="#check" x="703" y="212"/><use href="#check" x="806" y="212"/>
+
+  <!-- Short Answer -->
+  <rect x="60" y="236" width="780" height="40" fill="#FFFFFF"/>
+  <text x="76" y="261" font-family="system-ui, sans-serif" font-size="13" fill="#1F2937">Short Answer (text input)</text>
+  <use href="#check" x="442" y="256"/><use href="#check" x="569" y="256"/><use href="#check" x="703" y="256"/><use href="#check" x="806" y="256"/>
+
+  <!-- Essay -->
+  <rect x="60" y="280" width="780" height="40" fill="#F9FAFB"/>
+  <text x="76" y="305" font-family="system-ui, sans-serif" font-size="13" fill="#1F2937">Essay (long-form text)</text>
+  <use href="#check" x="442" y="300"/><use href="#check" x="569" y="300"/><use href="#check" x="703" y="300"/><use href="#check" x="806" y="300"/>
+
+  <!-- Dropdown Matching -->
+  <rect x="60" y="324" width="780" height="40" fill="#FFFFFF"/>
+  <text x="76" y="349" font-family="system-ui, sans-serif" font-size="13" fill="#1F2937">Dropdown Matching</text>
+  <use href="#check" x="442" y="344"/><use href="#check" x="569" y="344"/><use href="#check" x="703" y="344"/><use href="#check" x="806" y="344"/>
+
+  <!-- Fill in the blank -->
+  <rect x="60" y="368" width="780" height="40" fill="#F9FAFB"/>
+  <text x="76" y="393" font-family="system-ui, sans-serif" font-size="13" fill="#1F2937">Fill-in-the-Blank</text>
+  <use href="#check" x="442" y="388"/><use href="#check" x="569" y="388"/><use href="#warn" x="703" y="388"/><use href="#warn" x="806" y="388"/>
+
+  <!-- Ordering (buttons) -->
+  <rect x="60" y="412" width="780" height="40" fill="#FFFFFF"/>
+  <text x="76" y="437" font-family="system-ui, sans-serif" font-size="13" fill="#1F2937">Ordering (button-based)</text>
+  <use href="#check" x="442" y="432"/><use href="#check" x="569" y="432"/><use href="#check" x="703" y="432"/><use href="#check" x="806" y="432"/>
+
+  <!-- Drag and Drop -->
+  <rect x="60" y="456" width="780" height="40" fill="#F9FAFB"/>
+  <text x="76" y="481" font-family="system-ui, sans-serif" font-size="13" fill="#1F2937">Drag-and-Drop</text>
+  <use href="#cross" x="442" y="476"/><use href="#warn" x="569" y="476"/><use href="#check" x="703" y="476"/><use href="#cross" x="806" y="476"/>
+
+  <!-- Hotspot -->
+  <rect x="60" y="500" width="780" height="40" fill="#FFFFFF"/>
+  <text x="76" y="525" font-family="system-ui, sans-serif" font-size="13" fill="#1F2937">Hotspot / Image-click</text>
+  <use href="#cross" x="442" y="520"/><use href="#cross" x="569" y="520"/><use href="#check" x="703" y="520"/><use href="#cross" x="806" y="520"/>
+
+  <!-- Ordering (drag) -->
+  <rect x="60" y="544" width="780" height="40" fill="#F9FAFB"/>
+  <text x="76" y="569" font-family="system-ui, sans-serif" font-size="13" fill="#1F2937">Ordering (drag-based)</text>
+  <use href="#cross" x="442" y="564"/><use href="#warn" x="569" y="564"/><use href="#check" x="703" y="564"/><use href="#cross" x="806" y="564"/>
+
+  <text x="450" y="606" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#6B7280" font-style="italic">Red = replace. Amber = verify in your LMS. Green = safe to use.</text>
+</svg>

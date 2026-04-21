@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 460" role="img" aria-labelledby="swTitle swDesc">
+  <title id="swTitle">Semester-Start Accessibility Workflow</title>
+  <desc id="swDesc">A six-step process to run before classes begin. Step one: audit syllabus with Microsoft Accessibility Checker, about 15 minutes. Step two: audit slide templates across all weeks, about 45 minutes. Step three: run Accessibility Checker on all week-one materials, about 30 minutes. Step four: check DRC accommodation letters in your LMS and apply extensions, about 15 minutes per student. Step five: verify captions on any assigned videos, about 10 minutes per video. Step six: monitor the first quiz for issues and fix immediately, about 30 minutes. Total roughly two hours before classes start.</desc>
+
+  <rect width="900" height="460" fill="#FFFFFF"/>
+
+  <text x="450" y="46" text-anchor="middle" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="24" font-weight="700" fill="#1F2937">Semester-Start Workflow</text>
+  <text x="450" y="72" text-anchor="middle" font-family="system-ui, sans-serif" font-size="14" fill="#6B7280">About two hours of work before classes begin. Calendar-block it.</text>
+
+  <!-- 6 step boxes in 2 rows of 3 -->
+  <!-- Row 1 -->
+  <rect x="40" y="110" width="260" height="130" rx="10" fill="#EFF6FF" stroke="#1E3A8A" stroke-width="2"/>
+  <g aria-hidden="true">
+    <circle cx="72" cy="142" r="18" fill="#1E3A8A"/>
+    <text x="72" y="150" text-anchor="middle" font-family="system-ui, sans-serif" font-size="16" font-weight="800" fill="#FFFFFF">1</text>
+  </g>
+  <text x="102" y="136" font-family="system-ui, sans-serif" font-size="14" font-weight="700" fill="#1E3A8A">Audit the syllabus</text>
+  <text x="102" y="154" font-family="system-ui, sans-serif" font-size="12" fill="#6B7280">~15 minutes</text>
+  <text x="60" y="184" font-family="system-ui, sans-serif" font-size="12" fill="#374151">Run Microsoft Accessibility</text>
+  <text x="60" y="200" font-family="system-ui, sans-serif" font-size="12" fill="#374151">Checker. Fix headings, alt text,</text>
+  <text x="60" y="216" font-family="system-ui, sans-serif" font-size="12" fill="#374151">link text, contrast. Target: 0</text>
+  <text x="60" y="232" font-family="system-ui, sans-serif" font-size="12" fill="#374151">Errors in the Checker panel.</text>
+
+  <!-- arrow -->
+  <line x1="300" y1="175" x2="320" y2="175" stroke="#6B7280" stroke-width="2" marker-end="url(#arrSW)"/>
+
+  <rect x="320" y="110" width="260" height="130" rx="10" fill="#EFF6FF" stroke="#1E3A8A" stroke-width="2"/>
+  <g aria-hidden="true">
+    <circle cx="352" cy="142" r="18" fill="#1E3A8A"/>
+    <text x="352" y="150" text-anchor="middle" font-family="system-ui, sans-serif" font-size="16" font-weight="800" fill="#FFFFFF">2</text>
+  </g>
+  <text x="382" y="136" font-family="system-ui, sans-serif" font-size="14" font-weight="700" fill="#1E3A8A">Audit slide templates</text>
+  <text x="382" y="154" font-family="system-ui, sans-serif" font-size="12" fill="#6B7280">~45 minutes</text>
+  <text x="340" y="184" font-family="system-ui, sans-serif" font-size="12" fill="#374151">Use built-in layouts. Unique</text>
+  <text x="340" y="200" font-family="system-ui, sans-serif" font-size="12" fill="#374151">slide titles. Verify reading</text>
+  <text x="340" y="216" font-family="system-ui, sans-serif" font-size="12" fill="#374151">order in the Selection Pane.</text>
+  <text x="340" y="232" font-family="system-ui, sans-serif" font-size="12" fill="#374151">Alt text on every image.</text>
+
+  <line x1="580" y1="175" x2="600" y2="175" stroke="#6B7280" stroke-width="2" marker-end="url(#arrSW)"/>
+
+  <rect x="600" y="110" width="260" height="130" rx="10" fill="#EFF6FF" stroke="#1E3A8A" stroke-width="2"/>
+  <g aria-hidden="true">
+    <circle cx="632" cy="142" r="18" fill="#1E3A8A"/>
+    <text x="632" y="150" text-anchor="middle" font-family="system-ui, sans-serif" font-size="16" font-weight="800" fill="#FFFFFF">3</text>
+  </g>
+  <text x="662" y="136" font-family="system-ui, sans-serif" font-size="14" font-weight="700" fill="#1E3A8A">Week-1 materials</text>
+  <text x="662" y="154" font-family="system-ui, sans-serif" font-size="12" fill="#6B7280">~30 minutes</text>
+  <text x="620" y="184" font-family="system-ui, sans-serif" font-size="12" fill="#374151">Run Accessibility Checker on</text>
+  <text x="620" y="200" font-family="system-ui, sans-serif" font-size="12" fill="#374151">handouts, readings, and any</text>
+  <text x="620" y="216" font-family="system-ui, sans-serif" font-size="12" fill="#374151">PDFs posted for week one.</text>
+  <text x="620" y="232" font-family="system-ui, sans-serif" font-size="12" fill="#374151">OCR scanned PDFs first.</text>
+
+  <!-- Row 2 -->
+  <rect x="40" y="260" width="260" height="130" rx="10" fill="#ECFDF5" stroke="#047857" stroke-width="2"/>
+  <g aria-hidden="true">
+    <circle cx="72" cy="292" r="18" fill="#047857"/>
+    <text x="72" y="300" text-anchor="middle" font-family="system-ui, sans-serif" font-size="16" font-weight="800" fill="#FFFFFF">4</text>
+  </g>
+  <text x="102" y="286" font-family="system-ui, sans-serif" font-size="14" font-weight="700" fill="#047857">DRC letters in LMS</text>
+  <text x="102" y="304" font-family="system-ui, sans-serif" font-size="12" fill="#6B7280">~15 min per student</text>
+  <text x="60" y="334" font-family="system-ui, sans-serif" font-size="12" fill="#374151">Apply per-student quiz time</text>
+  <text x="60" y="350" font-family="system-ui, sans-serif" font-size="12" fill="#374151">extensions. Note-taker access.</text>
+  <text x="60" y="366" font-family="system-ui, sans-serif" font-size="12" fill="#374151">Alt-format materials ready.</text>
+  <text x="60" y="382" font-family="system-ui, sans-serif" font-size="12" fill="#374151">Send welcome note to student.</text>
+
+  <line x1="300" y1="325" x2="320" y2="325" stroke="#6B7280" stroke-width="2" marker-end="url(#arrSW)"/>
+
+  <rect x="320" y="260" width="260" height="130" rx="10" fill="#ECFDF5" stroke="#047857" stroke-width="2"/>
+  <g aria-hidden="true">
+    <circle cx="352" cy="292" r="18" fill="#047857"/>
+    <text x="352" y="300" text-anchor="middle" font-family="system-ui, sans-serif" font-size="16" font-weight="800" fill="#FFFFFF">5</text>
+  </g>
+  <text x="382" y="286" font-family="system-ui, sans-serif" font-size="14" font-weight="700" fill="#047857">Verify video captions</text>
+  <text x="382" y="304" font-family="system-ui, sans-serif" font-size="12" fill="#6B7280">~10 min per video</text>
+  <text x="340" y="334" font-family="system-ui, sans-serif" font-size="12" fill="#374151">Play captions at 1x. Spot-</text>
+  <text x="340" y="350" font-family="system-ui, sans-serif" font-size="12" fill="#374151">check accuracy. Fix errors in</text>
+  <text x="340" y="366" font-family="system-ui, sans-serif" font-size="12" fill="#374151">YouTube editor or request a</text>
+  <text x="340" y="382" font-family="system-ui, sans-serif" font-size="12" fill="#374151">captioned copy from publisher.</text>
+
+  <line x1="580" y1="325" x2="600" y2="325" stroke="#6B7280" stroke-width="2" marker-end="url(#arrSW)"/>
+
+  <rect x="600" y="260" width="260" height="130" rx="10" fill="#ECFDF5" stroke="#047857" stroke-width="2"/>
+  <g aria-hidden="true">
+    <circle cx="632" cy="292" r="18" fill="#047857"/>
+    <text x="632" y="300" text-anchor="middle" font-family="system-ui, sans-serif" font-size="16" font-weight="800" fill="#FFFFFF">6</text>
+  </g>
+  <text x="662" y="286" font-family="system-ui, sans-serif" font-size="14" font-weight="700" fill="#047857">First quiz monitor</text>
+  <text x="662" y="304" font-family="system-ui, sans-serif" font-size="12" fill="#6B7280">~30 minutes</text>
+  <text x="620" y="334" font-family="system-ui, sans-serif" font-size="12" fill="#374151">Preview as student. Tab-test</text>
+  <text x="620" y="350" font-family="system-ui, sans-serif" font-size="12" fill="#374151">every question. Confirm time</text>
+  <text x="620" y="366" font-family="system-ui, sans-serif" font-size="12" fill="#374151">extensions applied before the</text>
+  <text x="620" y="382" font-family="system-ui, sans-serif" font-size="12" fill="#374151">quiz opens to students.</text>
+
+  <text x="450" y="430" text-anchor="middle" font-family="system-ui, sans-serif" font-size="13" fill="#6B7280" font-style="italic">Blue = content. Green = people and delivery. One session on the calendar = done.</text>
+
+  <defs>
+    <marker id="arrSW" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#6B7280"/>
+    </marker>
+  </defs>
+</svg>

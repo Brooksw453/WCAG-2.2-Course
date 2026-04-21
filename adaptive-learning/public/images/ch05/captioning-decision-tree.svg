@@ -1,0 +1,77 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 620" role="img" aria-labelledby="capTitle capDesc">
+  <title id="capTitle">Captioning Decision Tree</title>
+  <desc id="capDesc">A decision flowchart for evaluating video captions. Step one: does the video have captions at all? If no, add them — either generate auto-captions and correct them, or use a captioning service. If yes, step two: are captions accurate, with less than five percent errors? If no, fix via the YouTube caption editor or a paid service. If yes, step three: do captions include speaker labels and non-speech sounds? If no, enhance by adding these. If yes, the video is caption-ready.</desc>
+
+  <rect width="900" height="620" fill="#FFFFFF"/>
+
+  <text x="450" y="46" text-anchor="middle" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="24" font-weight="700" fill="#1F2937">Captioning Decision Tree</text>
+  <text x="450" y="72" text-anchor="middle" font-family="system-ui, sans-serif" font-size="14" fill="#6B7280">Three questions for every video you assign</text>
+
+  <!-- Start -->
+  <rect x="350" y="100" width="200" height="50" rx="25" fill="#1F2937"/>
+  <text x="450" y="131" text-anchor="middle" font-family="system-ui, sans-serif" font-size="14" font-weight="700" fill="#FFFFFF">Video in your course</text>
+
+  <line x1="450" y1="150" x2="450" y2="184" stroke="#6B7280" stroke-width="2" marker-end="url(#arrCap)"/>
+
+  <!-- Q1 -->
+  <rect x="310" y="188" width="280" height="66" rx="10" fill="#EFF6FF" stroke="#1E3A8A" stroke-width="2"/>
+  <text x="450" y="216" text-anchor="middle" font-family="system-ui, sans-serif" font-size="14" font-weight="700" fill="#1E3A8A">1. Are captions present?</text>
+  <text x="450" y="238" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#374151">Look for CC button or "Subtitles" track</text>
+
+  <line x1="590" y1="221" x2="700" y2="221" stroke="#B45309" stroke-width="2" marker-end="url(#arrCapOrange)"/>
+  <text x="645" y="211" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" font-weight="700" fill="#B45309">No</text>
+  <rect x="700" y="191" width="170" height="60" rx="10" fill="#FFFBEB" stroke="#B45309" stroke-width="2"/>
+  <text x="785" y="214" text-anchor="middle" font-family="system-ui, sans-serif" font-size="13" font-weight="700" fill="#B45309">Add captions</text>
+  <text x="785" y="232" text-anchor="middle" font-family="system-ui, sans-serif" font-size="11" fill="#374151">Auto-generate + correct</text>
+
+  <line x1="450" y1="254" x2="450" y2="286" stroke="#047857" stroke-width="2" marker-end="url(#arrCapGreen)"/>
+  <text x="462" y="274" font-family="system-ui, sans-serif" font-size="12" font-weight="700" fill="#047857">Yes</text>
+
+  <!-- Q2 -->
+  <rect x="310" y="290" width="280" height="66" rx="10" fill="#EFF6FF" stroke="#1E3A8A" stroke-width="2"/>
+  <text x="450" y="318" text-anchor="middle" font-family="system-ui, sans-serif" font-size="14" font-weight="700" fill="#1E3A8A">2. Are captions accurate?</text>
+  <text x="450" y="340" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#374151">Play at 1x with CC on. Under 5% errors?</text>
+
+  <line x1="590" y1="323" x2="700" y2="323" stroke="#B45309" stroke-width="2" marker-end="url(#arrCapOrange)"/>
+  <text x="645" y="313" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" font-weight="700" fill="#B45309">No</text>
+  <rect x="700" y="293" width="170" height="60" rx="10" fill="#FFFBEB" stroke="#B45309" stroke-width="2"/>
+  <text x="785" y="316" text-anchor="middle" font-family="system-ui, sans-serif" font-size="13" font-weight="700" fill="#B45309">Fix them</text>
+  <text x="785" y="334" text-anchor="middle" font-family="system-ui, sans-serif" font-size="11" fill="#374151">YouTube editor or service</text>
+
+  <line x1="450" y1="356" x2="450" y2="388" stroke="#047857" stroke-width="2" marker-end="url(#arrCapGreen)"/>
+  <text x="462" y="376" font-family="system-ui, sans-serif" font-size="12" font-weight="700" fill="#047857">Yes</text>
+
+  <!-- Q3 -->
+  <rect x="310" y="392" width="280" height="72" rx="10" fill="#EFF6FF" stroke="#1E3A8A" stroke-width="2"/>
+  <text x="450" y="420" text-anchor="middle" font-family="system-ui, sans-serif" font-size="14" font-weight="700" fill="#1E3A8A">3. Do captions include speaker</text>
+  <text x="450" y="440" text-anchor="middle" font-family="system-ui, sans-serif" font-size="14" font-weight="700" fill="#1E3A8A">labels and non-speech sounds?</text>
+
+  <line x1="590" y1="427" x2="700" y2="427" stroke="#B45309" stroke-width="2" marker-end="url(#arrCapOrange)"/>
+  <text x="645" y="417" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" font-weight="700" fill="#B45309">No</text>
+  <rect x="700" y="397" width="170" height="60" rx="10" fill="#FFFBEB" stroke="#B45309" stroke-width="2"/>
+  <text x="785" y="420" text-anchor="middle" font-family="system-ui, sans-serif" font-size="13" font-weight="700" fill="#B45309">Enhance</text>
+  <text x="785" y="438" text-anchor="middle" font-family="system-ui, sans-serif" font-size="11" fill="#374151">Add [music], [laughter], names</text>
+
+  <line x1="450" y1="464" x2="450" y2="496" stroke="#047857" stroke-width="2" marker-end="url(#arrCapGreen)"/>
+  <text x="462" y="484" font-family="system-ui, sans-serif" font-size="12" font-weight="700" fill="#047857">Yes</text>
+
+  <!-- End -->
+  <rect x="310" y="500" width="280" height="70" rx="10" fill="#ECFDF5" stroke="#047857" stroke-width="2"/>
+  <text x="450" y="530" text-anchor="middle" font-family="system-ui, sans-serif" font-size="14" font-weight="700" fill="#047857">✓ Video is caption-ready</text>
+  <text x="450" y="552" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#374151">Now check: does it need audio description?</text>
+
+  <text x="450" y="600" text-anchor="middle" font-family="system-ui, sans-serif" font-size="13" fill="#6B7280" font-style="italic">Auto-captions on clean audio: ~90% accurate. On accented speech or technical terms: often 70% or worse.</text>
+
+  <defs>
+    <marker id="arrCap" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#6B7280"/>
+    </marker>
+    <marker id="arrCapGreen" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#047857"/>
+    </marker>
+    <marker id="arrCapOrange" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#B45309"/>
+    </marker>
+  </defs>
+</svg>

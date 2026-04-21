@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 620" role="img" aria-labelledby="escTitle escDesc">
+  <title id="escTitle">Accommodation Escalation Decision Tree</title>
+  <desc id="escDesc">A flowchart for deciding whether to handle an accommodation request yourself or escalate to the Disability Resource Center. Step one: is the accommodation documented in the student's DRC letter? If no, contact DRC for documentation before acting. If yes, step two: can you implement it in your LMS or materials? If no, contact DRC for guidance. If yes, step three: does it conflict with an essential course function? If yes, work with DRC on alternatives. If no, implement within 48 hours and confirm in writing with the student.</desc>
+
+  <rect width="900" height="620" fill="#FFFFFF"/>
+
+  <text x="450" y="46" text-anchor="middle" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="24" font-weight="700" fill="#1F2937">When to Escalate to DRC</text>
+  <text x="450" y="72" text-anchor="middle" font-family="system-ui, sans-serif" font-size="14" fill="#6B7280">Three questions for every accommodation request</text>
+
+  <!-- Start -->
+  <rect x="350" y="100" width="200" height="50" rx="25" fill="#1F2937"/>
+  <text x="450" y="131" text-anchor="middle" font-family="system-ui, sans-serif" font-size="14" font-weight="700" fill="#FFFFFF">Request received</text>
+
+  <line x1="450" y1="150" x2="450" y2="184" stroke="#6B7280" stroke-width="2" marker-end="url(#arrEsc)"/>
+
+  <!-- Q1 -->
+  <rect x="310" y="188" width="280" height="70" rx="10" fill="#EFF6FF" stroke="#1E3A8A" stroke-width="2"/>
+  <text x="450" y="218" text-anchor="middle" font-family="system-ui, sans-serif" font-size="14" font-weight="700" fill="#1E3A8A">Is it documented in the DRC letter?</text>
+  <text x="450" y="240" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#374151">Check the official accommodations list from DRC</text>
+
+  <!-- No branch out to escalate -->
+  <line x1="590" y1="223" x2="700" y2="223" stroke="#B45309" stroke-width="2" marker-end="url(#arrEscOrange)"/>
+  <text x="645" y="213" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" font-weight="700" fill="#B45309">No</text>
+  <rect x="700" y="193" width="170" height="60" rx="10" fill="#FFFBEB" stroke="#B45309" stroke-width="2"/>
+  <text x="785" y="218" text-anchor="middle" font-family="system-ui, sans-serif" font-size="13" font-weight="700" fill="#B45309">Contact DRC</text>
+  <text x="785" y="236" text-anchor="middle" font-family="system-ui, sans-serif" font-size="11" fill="#374151">Request documentation</text>
+
+  <!-- Yes down -->
+  <line x1="450" y1="258" x2="450" y2="290" stroke="#047857" stroke-width="2" marker-end="url(#arrEscGreen)"/>
+  <text x="462" y="278" font-family="system-ui, sans-serif" font-size="12" font-weight="700" fill="#047857">Yes</text>
+
+  <!-- Q2 -->
+  <rect x="310" y="294" width="280" height="70" rx="10" fill="#EFF6FF" stroke="#1E3A8A" stroke-width="2"/>
+  <text x="450" y="324" text-anchor="middle" font-family="system-ui, sans-serif" font-size="14" font-weight="700" fill="#1E3A8A">Can you implement it yourself?</text>
+  <text x="450" y="346" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#374151">Extended time in LMS, alt format, note-taker, etc.</text>
+
+  <line x1="590" y1="329" x2="700" y2="329" stroke="#B45309" stroke-width="2" marker-end="url(#arrEscOrange)"/>
+  <text x="645" y="319" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" font-weight="700" fill="#B45309">No</text>
+  <rect x="700" y="299" width="170" height="60" rx="10" fill="#FFFBEB" stroke="#B45309" stroke-width="2"/>
+  <text x="785" y="324" text-anchor="middle" font-family="system-ui, sans-serif" font-size="13" font-weight="700" fill="#B45309">Contact DRC</text>
+  <text x="785" y="342" text-anchor="middle" font-family="system-ui, sans-serif" font-size="11" fill="#374151">Ask for guidance</text>
+
+  <line x1="450" y1="364" x2="450" y2="396" stroke="#047857" stroke-width="2" marker-end="url(#arrEscGreen)"/>
+  <text x="462" y="384" font-family="system-ui, sans-serif" font-size="12" font-weight="700" fill="#047857">Yes</text>
+
+  <!-- Q3 -->
+  <rect x="310" y="400" width="280" height="70" rx="10" fill="#EFF6FF" stroke="#1E3A8A" stroke-width="2"/>
+  <text x="450" y="430" text-anchor="middle" font-family="system-ui, sans-serif" font-size="14" font-weight="700" fill="#1E3A8A">Does it conflict with an</text>
+  <text x="450" y="450" text-anchor="middle" font-family="system-ui, sans-serif" font-size="14" font-weight="700" fill="#1E3A8A">essential course function?</text>
+
+  <line x1="590" y1="435" x2="700" y2="435" stroke="#B45309" stroke-width="2" marker-end="url(#arrEscOrange)"/>
+  <text x="645" y="425" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" font-weight="700" fill="#B45309">Yes</text>
+  <rect x="700" y="405" width="170" height="60" rx="10" fill="#FFFBEB" stroke="#B45309" stroke-width="2"/>
+  <text x="785" y="430" text-anchor="middle" font-family="system-ui, sans-serif" font-size="13" font-weight="700" fill="#B45309">Work with DRC</text>
+  <text x="785" y="448" text-anchor="middle" font-family="system-ui, sans-serif" font-size="11" fill="#374151">Find alternatives</text>
+
+  <line x1="450" y1="470" x2="450" y2="502" stroke="#047857" stroke-width="2" marker-end="url(#arrEscGreen)"/>
+  <text x="462" y="490" font-family="system-ui, sans-serif" font-size="12" font-weight="700" fill="#047857">No</text>
+
+  <!-- End -->
+  <rect x="310" y="506" width="280" height="72" rx="10" fill="#ECFDF5" stroke="#047857" stroke-width="2"/>
+  <text x="450" y="534" text-anchor="middle" font-family="system-ui, sans-serif" font-size="14" font-weight="700" fill="#047857">Implement within 48 hours</text>
+  <text x="450" y="554" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#374151">Confirm in writing with the student</text>
+  <text x="450" y="570" text-anchor="middle" font-family="system-ui, sans-serif" font-size="11" fill="#6B7280">Ask only about accommodations, never diagnosis</text>
+
+  <text x="450" y="606" text-anchor="middle" font-family="system-ui, sans-serif" font-size="13" fill="#6B7280" font-style="italic">When in doubt, loop in DRC early — they answer fast and protect you legally.</text>
+
+  <defs>
+    <marker id="arrEsc" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#6B7280"/>
+    </marker>
+    <marker id="arrEscGreen" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#047857"/>
+    </marker>
+    <marker id="arrEscOrange" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#B45309"/>
+    </marker>
+  </defs>
+</svg>

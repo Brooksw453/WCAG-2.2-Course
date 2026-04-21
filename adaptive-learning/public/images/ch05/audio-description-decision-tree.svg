@@ -1,0 +1,74 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 620" role="img" aria-labelledby="adTitle adDesc">
+  <title id="adTitle">Audio Description Decision Tree</title>
+  <desc id="adDesc">A decision flowchart for evaluating whether a video needs audio description. Step one: does the video convey essential information visually that the audio does not cover? For a talking-head lecture, no — captions alone are sufficient. If yes, step two: can you rewrite or re-record the video to have the narrator describe what they show? If yes, re-record with self-describing narration. If no, step three: add an audio description track as a separate WebVTT file or an alternate AD version of the video. The result meets WCAG requirements for audio description.</desc>
+
+  <rect width="900" height="620" fill="#FFFFFF"/>
+
+  <text x="450" y="46" text-anchor="middle" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="24" font-weight="700" fill="#1F2937">Audio Description Decision Tree</text>
+  <text x="450" y="72" text-anchor="middle" font-family="system-ui, sans-serif" font-size="14" fill="#6B7280">When video content depends on visuals that audio alone doesn't convey</text>
+
+  <!-- Start -->
+  <rect x="350" y="100" width="200" height="50" rx="25" fill="#1F2937"/>
+  <text x="450" y="131" text-anchor="middle" font-family="system-ui, sans-serif" font-size="14" font-weight="700" fill="#FFFFFF">Captioned video</text>
+
+  <line x1="450" y1="150" x2="450" y2="184" stroke="#6B7280" stroke-width="2" marker-end="url(#arrAD)"/>
+
+  <!-- Q1 -->
+  <rect x="270" y="188" width="360" height="72" rx="10" fill="#EFF6FF" stroke="#1E3A8A" stroke-width="2"/>
+  <text x="450" y="216" text-anchor="middle" font-family="system-ui, sans-serif" font-size="14" font-weight="700" fill="#1E3A8A">1. Does the video show essential info</text>
+  <text x="450" y="236" text-anchor="middle" font-family="system-ui, sans-serif" font-size="14" font-weight="700" fill="#1E3A8A">that the audio doesn't cover?</text>
+  <text x="450" y="253" text-anchor="middle" font-family="system-ui, sans-serif" font-size="11" fill="#6B7280">Silent demos, slides, charts, visual experiments</text>
+
+  <!-- No branch: captions sufficient -->
+  <line x1="270" y1="223" x2="180" y2="223" stroke="#047857" stroke-width="2" marker-end="url(#arrADGreen)"/>
+  <text x="225" y="213" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" font-weight="700" fill="#047857">No</text>
+  <rect x="20" y="193" width="160" height="60" rx="10" fill="#ECFDF5" stroke="#047857" stroke-width="2"/>
+  <text x="100" y="218" text-anchor="middle" font-family="system-ui, sans-serif" font-size="13" font-weight="700" fill="#047857">Captions suffice</text>
+  <text x="100" y="236" text-anchor="middle" font-family="system-ui, sans-serif" font-size="11" fill="#374151">No AD needed</text>
+
+  <line x1="450" y1="260" x2="450" y2="294" stroke="#B45309" stroke-width="2" marker-end="url(#arrADOrange)"/>
+  <text x="462" y="282" font-family="system-ui, sans-serif" font-size="12" font-weight="700" fill="#B45309">Yes</text>
+
+  <!-- Q2 -->
+  <rect x="270" y="298" width="360" height="72" rx="10" fill="#EFF6FF" stroke="#1E3A8A" stroke-width="2"/>
+  <text x="450" y="326" text-anchor="middle" font-family="system-ui, sans-serif" font-size="14" font-weight="700" fill="#1E3A8A">2. Can you re-narrate to describe</text>
+  <text x="450" y="346" text-anchor="middle" font-family="system-ui, sans-serif" font-size="14" font-weight="700" fill="#1E3A8A">the visuals as they happen?</text>
+  <text x="450" y="363" text-anchor="middle" font-family="system-ui, sans-serif" font-size="11" fill="#6B7280">"The compound turns red" instead of silent demo</text>
+
+  <line x1="630" y1="333" x2="720" y2="333" stroke="#047857" stroke-width="2" marker-end="url(#arrADGreen)"/>
+  <text x="675" y="323" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" font-weight="700" fill="#047857">Yes</text>
+  <rect x="720" y="303" width="160" height="60" rx="10" fill="#ECFDF5" stroke="#047857" stroke-width="2"/>
+  <text x="800" y="326" text-anchor="middle" font-family="system-ui, sans-serif" font-size="13" font-weight="700" fill="#047857">Re-record</text>
+  <text x="800" y="344" text-anchor="middle" font-family="system-ui, sans-serif" font-size="11" fill="#374151">Self-describing narration</text>
+
+  <line x1="450" y1="370" x2="450" y2="404" stroke="#B45309" stroke-width="2" marker-end="url(#arrADOrange)"/>
+  <text x="462" y="392" font-family="system-ui, sans-serif" font-size="12" font-weight="700" fill="#B45309">No</text>
+
+  <!-- Q3 -->
+  <rect x="270" y="408" width="360" height="72" rx="10" fill="#EFF6FF" stroke="#1E3A8A" stroke-width="2"/>
+  <text x="450" y="436" text-anchor="middle" font-family="system-ui, sans-serif" font-size="14" font-weight="700" fill="#1E3A8A">3. Add an audio description track</text>
+  <text x="450" y="458" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#374151">WebVTT description file, or an alternate AD version</text>
+  <text x="450" y="474" text-anchor="middle" font-family="system-ui, sans-serif" font-size="11" fill="#6B7280">Services: 3Play Media, Rev, Descript, YouDescribe (free)</text>
+
+  <line x1="450" y1="480" x2="450" y2="512" stroke="#6B7280" stroke-width="2" marker-end="url(#arrAD)"/>
+
+  <!-- End -->
+  <rect x="310" y="516" width="280" height="66" rx="10" fill="#F5F3FF" stroke="#6D28D9" stroke-width="2"/>
+  <text x="450" y="544" text-anchor="middle" font-family="system-ui, sans-serif" font-size="14" font-weight="700" fill="#6D28D9">✓ Meets WCAG AD requirement</text>
+  <text x="450" y="566" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#374151">Video is fully perceivable for blind and low-vision students</text>
+
+  <text x="450" y="606" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#6B7280" font-style="italic">Most talking-head lectures don't need AD. Silent demos, slide-heavy lectures, and visual experiments usually do.</text>
+
+  <defs>
+    <marker id="arrAD" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#6B7280"/>
+    </marker>
+    <marker id="arrADGreen" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#047857"/>
+    </marker>
+    <marker id="arrADOrange" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto">
+      <path d="M 0 0 L 10 5 L 0 10 z" fill="#B45309"/>
+    </marker>
+  </defs>
+</svg>

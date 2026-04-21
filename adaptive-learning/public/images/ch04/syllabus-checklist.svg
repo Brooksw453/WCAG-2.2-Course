@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 620" role="img" aria-labelledby="sylTitle sylDesc">
+  <title id="sylTitle">Syllabus Accessibility Checklist</title>
+  <desc id="sylDesc">A ten-item checklist specific to syllabi. Items include: institution logo has alt text or is marked decorative; section headings use Heading 1, 2, and 3 styles; meeting times are text, not an image or screenshot; policy links have descriptive text; the schedule table has a designated header row; an accessibility statement is included; disability resource center contact info is visible; important dates are plain text; color is not the only indicator for required items; and the file is saved as an accessible Word document or properly tagged PDF.</desc>
+
+  <rect width="900" height="620" fill="#FFFFFF"/>
+
+  <text x="450" y="46" text-anchor="middle" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="24" font-weight="700" fill="#1F2937">Syllabus Accessibility Checklist</text>
+  <text x="450" y="72" text-anchor="middle" font-family="system-ui, sans-serif" font-size="14" fill="#6B7280">Ten checks before you post or distribute your syllabus</text>
+
+  <!-- Two columns of items -->
+  <g font-family="system-ui, sans-serif">
+    <!-- Left column -->
+    <rect x="60" y="100" width="380" height="50" rx="6" fill="#F9FAFB" stroke="#E5E7EB" stroke-width="1"/>
+    <rect x="76" y="116" width="18" height="18" rx="3" fill="#FFFFFF" stroke="#047857" stroke-width="2"/>
+    <path d="M 80 124 L 84 129 L 90 119" stroke="#047857" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+    <text x="108" y="122" font-size="13" font-weight="700" fill="#1F2937">Institution logo has alt text</text>
+    <text x="108" y="140" font-size="12" fill="#6B7280">Or is explicitly marked decorative</text>
+
+    <rect x="60" y="162" width="380" height="50" rx="6" fill="#F9FAFB" stroke="#E5E7EB" stroke-width="1"/>
+    <rect x="76" y="178" width="18" height="18" rx="3" fill="#FFFFFF" stroke="#047857" stroke-width="2"/>
+    <path d="M 80 186 L 84 191 L 90 181" stroke="#047857" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+    <text x="108" y="184" font-size="13" font-weight="700" fill="#1F2937">Real Heading 1/2/3 styles</text>
+    <text x="108" y="202" font-size="12" fill="#6B7280">Not just bold or larger font size</text>
+
+    <rect x="60" y="224" width="380" height="50" rx="6" fill="#F9FAFB" stroke="#E5E7EB" stroke-width="1"/>
+    <rect x="76" y="240" width="18" height="18" rx="3" fill="#FFFFFF" stroke="#047857" stroke-width="2"/>
+    <path d="M 80 248 L 84 253 L 90 243" stroke="#047857" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+    <text x="108" y="246" font-size="13" font-weight="700" fill="#1F2937">Meeting times as text</text>
+    <text x="108" y="264" font-size="12" fill="#6B7280">Not a screenshot or image of a schedule</text>
+
+    <rect x="60" y="286" width="380" height="50" rx="6" fill="#F9FAFB" stroke="#E5E7EB" stroke-width="1"/>
+    <rect x="76" y="302" width="18" height="18" rx="3" fill="#FFFFFF" stroke="#047857" stroke-width="2"/>
+    <path d="M 80 310 L 84 315 L 90 305" stroke="#047857" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+    <text x="108" y="308" font-size="13" font-weight="700" fill="#1F2937">Descriptive link text</text>
+    <text x="108" y="326" font-size="12" fill="#6B7280">"Access the course Canvas page" — not "click here"</text>
+
+    <rect x="60" y="348" width="380" height="50" rx="6" fill="#F9FAFB" stroke="#E5E7EB" stroke-width="1"/>
+    <rect x="76" y="364" width="18" height="18" rx="3" fill="#FFFFFF" stroke="#047857" stroke-width="2"/>
+    <path d="M 80 372 L 84 377 L 90 367" stroke="#047857" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+    <text x="108" y="370" font-size="13" font-weight="700" fill="#1F2937">Schedule table has a header row</text>
+    <text x="108" y="388" font-size="12" fill="#6B7280">First row designated as Header Row in table properties</text>
+
+    <!-- Right column -->
+    <rect x="460" y="100" width="380" height="50" rx="6" fill="#F9FAFB" stroke="#E5E7EB" stroke-width="1"/>
+    <rect x="476" y="116" width="18" height="18" rx="3" fill="#FFFFFF" stroke="#047857" stroke-width="2"/>
+    <path d="M 480 124 L 484 129 L 490 119" stroke="#047857" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+    <text x="508" y="122" font-size="13" font-weight="700" fill="#1F2937">Accessibility statement included</text>
+    <text x="508" y="140" font-size="12" fill="#6B7280">3–5 sentences welcoming accommodations</text>
+
+    <rect x="460" y="162" width="380" height="50" rx="6" fill="#F9FAFB" stroke="#E5E7EB" stroke-width="1"/>
+    <rect x="476" y="178" width="18" height="18" rx="3" fill="#FFFFFF" stroke="#047857" stroke-width="2"/>
+    <path d="M 480 186 L 484 191 L 490 181" stroke="#047857" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+    <text x="508" y="184" font-size="13" font-weight="700" fill="#1F2937">DRC contact info is visible</text>
+    <text x="508" y="202" font-size="12" fill="#6B7280">Name or office, email, phone — on the first page</text>
+
+    <rect x="460" y="224" width="380" height="50" rx="6" fill="#F9FAFB" stroke="#E5E7EB" stroke-width="1"/>
+    <rect x="476" y="240" width="18" height="18" rx="3" fill="#FFFFFF" stroke="#047857" stroke-width="2"/>
+    <path d="M 480 248 L 484 253 L 490 243" stroke="#047857" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+    <text x="508" y="246" font-size="13" font-weight="700" fill="#1F2937">Important dates in plain text</text>
+    <text x="508" y="264" font-size="12" fill="#6B7280">Not buried in an image, PDF screenshot, or calendar picture</text>
+
+    <rect x="460" y="286" width="380" height="50" rx="6" fill="#F9FAFB" stroke="#E5E7EB" stroke-width="1"/>
+    <rect x="476" y="302" width="18" height="18" rx="3" fill="#FFFFFF" stroke="#047857" stroke-width="2"/>
+    <path d="M 480 310 L 484 315 L 490 305" stroke="#047857" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+    <text x="508" y="308" font-size="13" font-weight="700" fill="#1F2937">Color is not the only indicator</text>
+    <text x="508" y="326" font-size="12" fill="#6B7280">Required items marked with word or symbol, not just red</text>
+
+    <rect x="460" y="348" width="380" height="50" rx="6" fill="#F9FAFB" stroke="#E5E7EB" stroke-width="1"/>
+    <rect x="476" y="364" width="18" height="18" rx="3" fill="#FFFFFF" stroke="#047857" stroke-width="2"/>
+    <path d="M 480 372 L 484 377 L 490 367" stroke="#047857" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+    <text x="508" y="370" font-size="13" font-weight="700" fill="#1F2937">File saved in accessible format</text>
+    <text x="508" y="388" font-size="12" fill="#6B7280">Word .docx or properly tagged PDF — never a scan</text>
+  </g>
+
+  <!-- Final verification card -->
+  <rect x="60" y="430" width="780" height="130" rx="10" fill="#ECFDF5" stroke="#047857" stroke-width="2"/>
+  <text x="80" y="458" font-family="system-ui, sans-serif" font-size="14" font-weight="700" fill="#047857">Final verification</text>
+  <text x="80" y="484" font-family="system-ui, sans-serif" font-size="13" fill="#1F2937">• Run Microsoft Accessibility Checker (Review → Check Accessibility). Target: 0 Errors.</text>
+  <text x="80" y="506" font-family="system-ui, sans-serif" font-size="13" fill="#1F2937">• Tab through the document from top to bottom — focus should move in reading order.</text>
+  <text x="80" y="528" font-family="system-ui, sans-serif" font-size="13" fill="#1F2937">• Save as "CourseName-Syllabus-Accessible.docx" so you can tell the remediated version apart.</text>
+  <text x="80" y="550" font-family="system-ui, sans-serif" font-size="13" fill="#1F2937">• Preview in student view or share with a colleague for a 30-second look.</text>
+
+  <text x="450" y="600" text-anchor="middle" font-family="system-ui, sans-serif" font-size="13" fill="#6B7280" font-style="italic">Ten checks, one Accessibility Checker run, one tab-through. About 20 minutes start to finish.</text>
+</svg>

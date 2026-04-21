@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 520" role="img" aria-labelledby="scanTitle scanDesc">
+  <title id="scanTitle">The 60-Second Accessibility Scan</title>
+  <desc id="scanDesc">A five-item checklist you can run on any document in under a minute. One, does every section heading use real Heading styles rather than bold or larger font? Two, does every meaningful image have alt text, and are decorative images marked as such? Three, are links descriptive rather than saying "click here"? Four, does body text meet at least 4.5 to 1 contrast against its background? Five, can you navigate the document using Tab and Shift-Tab alone?</desc>
+
+  <rect width="900" height="520" fill="#FFFFFF"/>
+
+  <text x="450" y="46" text-anchor="middle" font-family="system-ui, -apple-system, 'Segoe UI', sans-serif" font-size="24" font-weight="700" fill="#1F2937">The 60-Second Accessibility Scan</text>
+  <text x="450" y="72" text-anchor="middle" font-family="system-ui, sans-serif" font-size="14" fill="#6B7280">Five questions you can answer in under a minute on any document</text>
+
+  <!-- Item 1 -->
+  <rect x="60" y="100" width="780" height="64" rx="8" fill="#F9FAFB" stroke="#E5E7EB" stroke-width="1"/>
+  <g aria-hidden="true">
+    <circle cx="100" cy="132" r="20" fill="#1E3A8A"/>
+    <text x="100" y="140" text-anchor="middle" font-family="system-ui, sans-serif" font-size="18" font-weight="800" fill="#FFFFFF">1</text>
+  </g>
+  <text x="138" y="126" font-family="system-ui, sans-serif" font-size="15" font-weight="700" fill="#1F2937">Do headings use real Heading styles?</text>
+  <text x="138" y="148" font-family="system-ui, sans-serif" font-size="13" fill="#6B7280">Not just bold or larger font — actual Heading 1, 2, 3 from the Styles menu</text>
+
+  <!-- Item 2 -->
+  <rect x="60" y="178" width="780" height="64" rx="8" fill="#F9FAFB" stroke="#E5E7EB" stroke-width="1"/>
+  <g aria-hidden="true">
+    <circle cx="100" cy="210" r="20" fill="#1E3A8A"/>
+    <text x="100" y="218" text-anchor="middle" font-family="system-ui, sans-serif" font-size="18" font-weight="800" fill="#FFFFFF">2</text>
+  </g>
+  <text x="138" y="204" font-family="system-ui, sans-serif" font-size="15" font-weight="700" fill="#1F2937">Does every meaningful image have alt text?</text>
+  <text x="138" y="226" font-family="system-ui, sans-serif" font-size="13" fill="#6B7280">Decorative images are explicitly marked decorative, not given fake alt</text>
+
+  <!-- Item 3 -->
+  <rect x="60" y="256" width="780" height="64" rx="8" fill="#F9FAFB" stroke="#E5E7EB" stroke-width="1"/>
+  <g aria-hidden="true">
+    <circle cx="100" cy="288" r="20" fill="#1E3A8A"/>
+    <text x="100" y="296" text-anchor="middle" font-family="system-ui, sans-serif" font-size="18" font-weight="800" fill="#FFFFFF">3</text>
+  </g>
+  <text x="138" y="282" font-family="system-ui, sans-serif" font-size="15" font-weight="700" fill="#1F2937">Is link text descriptive on its own?</text>
+  <text x="138" y="304" font-family="system-ui, sans-serif" font-size="13" fill="#6B7280">"Download the syllabus" beats "click here" — link text must make sense out of context</text>
+
+  <!-- Item 4 -->
+  <rect x="60" y="334" width="780" height="64" rx="8" fill="#F9FAFB" stroke="#E5E7EB" stroke-width="1"/>
+  <g aria-hidden="true">
+    <circle cx="100" cy="366" r="20" fill="#1E3A8A"/>
+    <text x="100" y="374" text-anchor="middle" font-family="system-ui, sans-serif" font-size="18" font-weight="800" fill="#FFFFFF">4</text>
+  </g>
+  <text x="138" y="360" font-family="system-ui, sans-serif" font-size="15" font-weight="700" fill="#1F2937">Does body text meet 4.5:1 contrast?</text>
+  <text x="138" y="382" font-family="system-ui, sans-serif" font-size="13" fill="#6B7280">Gray-on-white and light-color accents are the most common failures</text>
+
+  <!-- Item 5 -->
+  <rect x="60" y="412" width="780" height="64" rx="8" fill="#F9FAFB" stroke="#E5E7EB" stroke-width="1"/>
+  <g aria-hidden="true">
+    <circle cx="100" cy="444" r="20" fill="#1E3A8A"/>
+    <text x="100" y="452" text-anchor="middle" font-family="system-ui, sans-serif" font-size="18" font-weight="800" fill="#FFFFFF">5</text>
+  </g>
+  <text x="138" y="438" font-family="system-ui, sans-serif" font-size="15" font-weight="700" fill="#1F2937">Can you navigate with Tab alone?</text>
+  <text x="138" y="460" font-family="system-ui, sans-serif" font-size="13" fill="#6B7280">Tab and Shift-Tab should move through every interactive element in logical order</text>
+
+  <text x="450" y="504" text-anchor="middle" font-family="system-ui, sans-serif" font-size="13" fill="#6B7280" font-style="italic">One "no" = one thing to fix. Five "yes" answers = you've cleared the basics.</text>
+</svg>
