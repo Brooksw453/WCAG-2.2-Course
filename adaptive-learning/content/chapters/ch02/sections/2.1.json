@@ -40,7 +40,7 @@
       "title": "The Four POUR Principles",
       "body": "",
       "imageSrc": "/images/ch02/pour-principles.svg",
-      "imageAlt": "Two-by-two grid of the four WCAG principles. Perceivable asks whether every student can perceive the content; example violation: a syllabus logo with no alt text. Operable asks whether every student can navigate and interact; example violation: a drag-and-drop quiz keyboard users cannot complete. Understandable asks whether every student can comprehend the material; example violation: a vague attendance policy. Robust asks whether the material works with assistive technology; example violation: a scanned PDF syllabus a screen reader cannot read.",
+      "imageAlt": "Two-by-two grid of the four WCAG principles — Perceivable, Operable, Understandable, and Robust — each paired with a common classroom example of a failure. The first letters form the acronym POUR.",
       "imageCaption": "Every WCAG success criterion answers one of four POUR questions."
     },
     {

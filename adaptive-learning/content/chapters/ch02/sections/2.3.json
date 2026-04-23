@@ -50,7 +50,7 @@
       "title": "The 60-Second Accessibility Scan",
       "body": "",
       "imageSrc": "/images/ch02/sixty-second-scan.svg",
-      "imageAlt": "Five-item checklist you can run on any document in under a minute. One: do headings use real Heading styles? Two: does every meaningful image have alt text? Three: is link text descriptive on its own? Four: does body text meet 4.5:1 contrast? Five: can you navigate with Tab alone?",
+      "imageAlt": "Five-item quick check for any document: real heading styles, alt text on meaningful images, descriptive link text, 4.5-to-1 contrast on body text, and tab-only keyboard navigation. A document that passes all five is mostly accessible.",
       "imageCaption": "Five questions you can answer in under a minute on any document."
     },
     {

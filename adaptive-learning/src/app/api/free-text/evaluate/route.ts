@@ -142,6 +142,20 @@ Respond with ONLY valid JSON in this exact format (no other text):
           },
           { onConflict: 'user_id,course_id,chapter_id,section_id' }
         );
+
+      // Best-effort activity log for section completion
+      await supabase.from('activity_log').insert({
+        user_id: user.id,
+        course_id: COURSE_ID,
+        activity_type: 'section_complete',
+        details: {
+          chapter_id: chapterId,
+          section_id: sectionId,
+          section_name: `${sectionId} ${section.title}`,
+          mastery: Math.round(masteryScore),
+          score: Math.round(evaluation.score),
+        },
+      }).then(() => {}, () => {});
     }
 
     // Log the AI interaction

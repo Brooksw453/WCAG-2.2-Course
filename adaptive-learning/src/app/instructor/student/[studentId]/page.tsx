@@ -11,6 +11,8 @@ interface ProgressRow {
   section_id: string;
   status: string;
   mastery_score: number | null;
+  started_at: string | null;
+  completed_at: string | null;
   updated_at: string;
 }
 
@@ -189,7 +191,7 @@ export default async function StudentDetailPage({
     { data: draftData },
     { data: aiData },
   ] = await Promise.all([
-    supabase.from('section_progress').select('chapter_id, section_id, status, mastery_score, updated_at').eq('user_id', studentId).eq('course_id', COURSE_ID).order('chapter_id').order('section_id'),
+    supabase.from('section_progress').select('chapter_id, section_id, status, mastery_score, started_at, completed_at, updated_at').eq('user_id', studentId).eq('course_id', COURSE_ID).order('chapter_id').order('section_id'),
     supabase.from('quiz_attempts').select('chapter_id, section_id, score, passed, attempt_number, submitted_at').eq('user_id', studentId).eq('course_id', COURSE_ID).order('submitted_at', { ascending: false }),
     supabase.from('free_text_responses').select('chapter_id, section_id, response_text, ai_evaluation, ai_model, submitted_at').eq('user_id', studentId).eq('course_id', COURSE_ID).order('submitted_at', { ascending: false }),
     supabase.from('assignment_drafts').select('assignment_id, section_key, draft_number, content, ai_feedback, submitted_at').eq('user_id', studentId).eq('course_id', COURSE_ID).order('submitted_at', { ascending: false }),
@@ -202,7 +204,8 @@ export default async function StudentDetailPage({
   const drafts = (draftData || []) as DraftRow[];
   const aiInteractions = (aiData || []) as AIInteractionRow[];
 
-  // Load activity log (table may not exist)
+  // Load activity log (table may not exist). Pull a wider window so the
+  // per-day density chart has something to draw.
   let studentActivities: ActivityRow[] = [];
   try {
     const { data: activityData } = await supabase
@@ -211,13 +214,95 @@ export default async function StudentDetailPage({
       .eq('user_id', studentId)
       .eq('course_id', COURSE_ID)
       .order('created_at', { ascending: false })
-      .limit(20);
+      .limit(200);
     if (activityData) {
       studentActivities = activityData;
     }
   } catch {
     // Table may not exist yet
   }
+
+  // ── Estimated study time (blended — matches student dashboard formula) ──
+  const SECTION_MIN_CREDIT = 3;
+  const SECTION_DEFAULT = 10;
+  const SECTION_MAX_CREDIT = 30;
+  const IN_PROGRESS_CREDIT = 5;
+  const ASSIGNMENT_SECTION_CREDIT = 15;
+
+  let totalMinutes = 0;
+  progress.forEach(p => {
+    if (p.status === 'completed' && p.started_at && p.completed_at) {
+      const diffMin = (new Date(p.completed_at).getTime() - new Date(p.started_at).getTime()) / 60000;
+      totalMinutes += (diffMin >= SECTION_MIN_CREDIT && diffMin <= SECTION_MAX_CREDIT) ? diffMin : SECTION_DEFAULT;
+    } else if (p.status === 'completed') {
+      totalMinutes += SECTION_DEFAULT;
+    } else if (p.status === 'in_progress' || p.status === 'needs_remediation') {
+      totalMinutes += IN_PROGRESS_CREDIT;
+    }
+  });
+  const latestDraftsAll = new Map<string, DraftRow>();
+  drafts.forEach(d => {
+    const key = `${d.assignment_id}:${d.section_key}`;
+    const existing = latestDraftsAll.get(key);
+    if (!existing || d.draft_number > existing.draft_number) latestDraftsAll.set(key, d);
+  });
+  let submittedAssignmentSections = 0;
+  latestDraftsAll.forEach(d => {
+    if (d.ai_feedback && d.assignment_id !== 0) submittedAssignmentSections += 1;
+  });
+  totalMinutes += submittedAssignmentSections * ASSIGNMENT_SECTION_CREDIT;
+  const totalHours = Math.floor(totalMinutes / 60);
+  const remainingMinutes = Math.round(totalMinutes % 60);
+  const timeStudiedLabel = totalMinutes > 0
+    ? (totalHours > 0 ? `${totalHours}h ${remainingMinutes}m` : `${remainingMinutes}m`)
+    : '\u2014';
+
+  // ── Daily activity density (last 14 days) ──
+  const DAYS_BACK = 14;
+  const dayBuckets: Array<{ dateKey: string; label: string; events: number; minutes: number }> = [];
+  const today = new Date();
+  today.setHours(0, 0, 0, 0);
+  for (let i = DAYS_BACK - 1; i >= 0; i--) {
+    const d = new Date(today);
+    d.setDate(today.getDate() - i);
+    dayBuckets.push({
+      dateKey: d.toDateString(),
+      label: d.toLocaleDateString('en-US', { month: 'numeric', day: 'numeric' }),
+      events: 0,
+      minutes: 0,
+    });
+  }
+  const dayIndex = new Map(dayBuckets.map((b, i) => [b.dateKey, i]));
+  // Count activity events per day
+  studentActivities.forEach(a => {
+    const key = new Date(a.created_at).toDateString();
+    const idx = dayIndex.get(key);
+    if (idx !== undefined) dayBuckets[idx].events += 1;
+  });
+  // Attribute section minutes to the day they were completed
+  progress.forEach(p => {
+    if (p.status !== 'completed' || !p.completed_at) return;
+    const key = new Date(p.completed_at).toDateString();
+    const idx = dayIndex.get(key);
+    if (idx === undefined) return;
+    let mins = SECTION_DEFAULT;
+    if (p.started_at) {
+      const diff = (new Date(p.completed_at).getTime() - new Date(p.started_at).getTime()) / 60000;
+      mins = (diff >= SECTION_MIN_CREDIT && diff <= SECTION_MAX_CREDIT) ? diff : SECTION_DEFAULT;
+    }
+    dayBuckets[idx].minutes += mins;
+  });
+  // Attribute assignment minutes to the day they were submitted
+  latestDraftsAll.forEach(d => {
+    if (!d.ai_feedback || d.assignment_id === 0 || !d.submitted_at) return;
+    const key = new Date(d.submitted_at).toDateString();
+    const idx = dayIndex.get(key);
+    if (idx === undefined) return;
+    dayBuckets[idx].minutes += ASSIGNMENT_SECTION_CREDIT;
+  });
+  const peakEvents = Math.max(1, ...dayBuckets.map(b => b.events));
+  const peakMinutes = Math.max(1, ...dayBuckets.map(b => b.minutes));
+  const activeDays = dayBuckets.filter(b => b.events > 0 || b.minutes > 0).length;
 
   // ── Compute summary stats ──
   const totalSections = chapters.reduce((sum, ch) => sum + ch.sections.length, 0);
@@ -366,7 +451,7 @@ export default async function StudentDetailPage({
 
       <main className="max-w-6xl mx-auto px-4 py-8">
         {/* Summary Stats */}
-        <div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-7 gap-3 mb-8">
+        <div className="grid grid-cols-2 sm:grid-cols-4 lg:grid-cols-8 gap-3 mb-8">
           <div className="bg-white dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700 shadow-sm p-4 text-center">
             <div className="text-2xl font-bold text-blue-600">{completedSections}/{totalSections}</div>
             <div className="text-xs text-gray-500 dark:text-gray-400 mt-1">Sections Done</div>
@@ -400,6 +485,12 @@ export default async function StudentDetailPage({
           <div className="bg-white dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700 shadow-sm p-4 text-center">
             <div className="text-2xl font-bold text-amber-600">{aiInteractions.length}</div>
             <div className="text-xs text-gray-500 dark:text-gray-400 mt-1">AI Interactions</div>
+          </div>
+          <div className="bg-white dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700 shadow-sm p-4 text-center">
+            <div className={`text-2xl font-bold ${totalMinutes > 0 ? 'text-purple-600' : 'text-gray-400'}`}>
+              {timeStudiedLabel}
+            </div>
+            <div className="text-xs text-gray-500 dark:text-gray-400 mt-1">Time Studied</div>
           </div>
         </div>
 
@@ -815,13 +906,49 @@ export default async function StudentDetailPage({
           title="Activity Timeline"
           icon={<ClockIcon />}
           defaultOpen={false}
-          badge={studentActivities.length > 0 ? `${studentActivities.length} recent` : null}
+          badge={activeDays > 0 ? `${activeDays}/${DAYS_BACK} active days` : null}
           badgeColor="bg-gray-100 text-gray-600"
         >
+          {/* Daily density chart — events + minutes per day, last 14 days */}
+          <div className="px-4 py-4 bg-gray-50 dark:bg-gray-900 border-b border-gray-100 dark:border-gray-700">
+            <div className="flex items-center justify-between mb-2">
+              <div className="text-xs font-semibold text-gray-600 dark:text-gray-400 uppercase tracking-wide">
+                Last {DAYS_BACK} days
+              </div>
+              <div className="flex items-center gap-3 text-xs text-gray-500 dark:text-gray-400">
+                <span className="flex items-center gap-1"><span className="w-2.5 h-2.5 rounded-sm bg-blue-500" aria-hidden="true" />events</span>
+                <span className="flex items-center gap-1"><span className="w-2.5 h-2.5 rounded-sm bg-purple-500" aria-hidden="true" />minutes</span>
+                <span>total {timeStudiedLabel}</span>
+              </div>
+            </div>
+            <div className="grid gap-1" style={{ gridTemplateColumns: `repeat(${DAYS_BACK}, minmax(0, 1fr))` }}>
+              {dayBuckets.map(b => {
+                const eventsPct = (b.events / peakEvents) * 100;
+                const minutesPct = (b.minutes / peakMinutes) * 100;
+                return (
+                  <div key={b.dateKey} className="flex flex-col items-center" title={`${b.label}: ${b.events} event${b.events !== 1 ? 's' : ''}, ${Math.round(b.minutes)} min`}>
+                    <div className="w-full h-16 flex items-end gap-0.5 bg-white dark:bg-gray-800 rounded border border-gray-200 dark:border-gray-700 p-0.5">
+                      <div
+                        className="flex-1 bg-blue-500 rounded-sm"
+                        style={{ height: `${Math.max(b.events > 0 ? 8 : 0, eventsPct)}%` }}
+                        aria-label={`${b.events} events on ${b.label}`}
+                      />
+                      <div
+                        className="flex-1 bg-purple-500 rounded-sm"
+                        style={{ height: `${Math.max(b.minutes > 0 ? 8 : 0, minutesPct)}%` }}
+                        aria-label={`${Math.round(b.minutes)} minutes on ${b.label}`}
+                      />
+                    </div>
+                    <div className="text-[10px] text-gray-500 dark:text-gray-400 mt-1">{b.label}</div>
+                  </div>
+                );
+              })}
+            </div>
+          </div>
           {studentActivities.length === 0 ? (
             <div className="px-4 py-8 text-center text-sm text-gray-500">
               <p>No activity recorded yet.</p>
-              <p className="text-xs text-gray-400 mt-1">Activity tracking may not be enabled for this student.</p>
+              <p className="text-xs text-gray-400 mt-1">Activity events appear once the student starts sections, submits quizzes, or submits assignments.</p>
             </div>
           ) : (
             <div className="relative">

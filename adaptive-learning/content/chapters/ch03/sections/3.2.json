@@ -44,7 +44,7 @@
       "title": "Alt Text Decision Tree",
       "body": "",
       "imageSrc": "/images/ch03/alt-text-decision-tree.svg",
-      "imageAlt": "Decision flowchart with four questions for writing alt text. If the image is purely decorative, use empty alt or mark decorative. If it is functional (a link or button), describe the action. If it is complex (chart, diagram, map), add a short alt plus a long description nearby. Otherwise write concise informative alt text describing what the image shows.",
+      "imageAlt": "Decision flowchart with four questions — is the image decorative, functional, complex, or informative — each branching to a different alt-text strategy. The first 'yes' answer tells you which kind of alt text the image needs.",
       "imageCaption": "Four questions in order — the first 'yes' tells you what kind of alt text to write."
     },
     {

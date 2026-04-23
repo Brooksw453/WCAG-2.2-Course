@@ -98,6 +98,18 @@ export default async function SectionPage({
       status: 'in_progress',
       started_at: new Date().toISOString(),
     });
+
+    // Best-effort activity log — don't block the page if the table is missing
+    await supabase.from('activity_log').insert({
+      user_id: user.id,
+      course_id: COURSE_ID,
+      activity_type: 'section_start',
+      details: {
+        chapter_id: chapterId,
+        section_id: sectionId,
+        section_name: `${sectionId} ${section.title}`,
+      },
+    }).then(() => {}, () => {});
   }
 
   return (

@@ -44,7 +44,7 @@
       "title": "Syllabus Accessibility Checklist",
       "body": "",
       "imageSrc": "/images/ch04/syllabus-checklist.svg",
-      "imageAlt": "Ten-item checklist for syllabus accessibility, covering logo alt text, real heading styles, meeting times as text, descriptive link text, table header rows, an accessibility statement, visible DRC contact info, plain-text dates, color not being the only indicator, and saving in an accessible format. Plus a final verification step: run Microsoft Accessibility Checker, tab through the document, save with an accessible filename.",
+      "imageAlt": "Ten syllabus-specific accessibility checks covering logos, headings, meeting times, links, tables, the accessibility statement, DRC contact info, color use, and file format, plus a final three-step verification using the Microsoft Accessibility Checker.",
       "imageCaption": "Ten checks, one Accessibility Checker run, one tab-through — about twenty minutes start to finish."
     },
     {

@@ -54,7 +54,7 @@
       "title": "Captioning Decision Tree",
       "body": "",
       "imageSrc": "/images/ch05/captioning-decision-tree.svg",
-      "imageAlt": "Three-question flowchart for video captions. One: are captions present? If no, add them via auto-caption plus correction or a captioning service. Two: are captions accurate, under five percent errors? If no, fix via the YouTube editor or a service. Three: do captions include speaker labels and non-speech sounds? If no, enhance them. When all three are yes, the video is caption-ready.",
+      "imageAlt": "Three-question flowchart for video captions: are captions present, are they accurate under five percent errors, and do they include speaker labels and non-speech sounds. A 'yes' to all three means the video is caption-ready.",
       "imageCaption": "Three questions for every video you assign — captions present, accurate, and complete."
     },
     {

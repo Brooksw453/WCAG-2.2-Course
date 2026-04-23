@@ -63,6 +63,21 @@ export async function POST(request: Request) {
       passed,
     });
 
+    // Best-effort activity log — don't fail the submit if the table is missing
+    await supabase.from('activity_log').insert({
+      user_id: user.id,
+      course_id: COURSE_ID,
+      activity_type: 'quiz_attempt',
+      details: {
+        chapter_id: chapterId,
+        section_id: sectionId,
+        section_name: sectionId,
+        attempt_number: attemptNumber,
+        score: Math.round(score),
+        passed,
+      },
+    }).then(() => {}, () => {});
+
     // Update section progress
     if (passed) {
       await supabase

@@ -51,7 +51,7 @@
       "title": "Accommodation Escalation Decision Tree",
       "body": "",
       "imageSrc": "/images/ch07/escalation-decision-tree.svg",
-      "imageAlt": "Flowchart for handling accommodation requests. One: is the accommodation documented in the DRC letter? If no, contact DRC for documentation. Two: can you implement it yourself? If no, contact DRC for guidance. Three: does it conflict with an essential course function? If yes, work with DRC on alternatives. If no, implement within 48 hours and confirm in writing with the student.",
+      "imageAlt": "Flowchart for handling accommodation requests in three checks: the accommodation is documented in the DRC letter, you can implement it yourself, and it does not conflict with an essential course function. Any 'no' means loop in DRC.",
       "imageCaption": "When in doubt, loop in DRC early — they answer fast and protect you legally."
     },
     {

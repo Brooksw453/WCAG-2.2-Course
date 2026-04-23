@@ -60,7 +60,7 @@ export default async function ChaptersPage() {
     supabase.from('section_progress').select('*').eq('user_id', user.id).eq('course_id', COURSE_ID),
     supabase.from('quiz_attempts').select('score, passed, chapter_id, section_id').eq('user_id', user.id).eq('course_id', COURSE_ID),
     supabase.from('free_text_responses').select('ai_evaluation, chapter_id, section_id').eq('user_id', user.id).eq('course_id', COURSE_ID),
-    supabase.from('assignment_drafts').select('assignment_id, section_key, draft_number, ai_feedback').eq('user_id', user.id).eq('course_id', COURSE_ID),
+    supabase.from('assignment_drafts').select('assignment_id, section_key, draft_number, ai_feedback, submitted_at').eq('user_id', user.id).eq('course_id', COURSE_ID),
   ]);
 
 
@@ -285,22 +285,98 @@ export default async function ChaptersPage() {
     return chProgress.filter(p => p.status === 'completed').length === ch.sections.length;
   }).length;
 
-  // Time tracking (estimate from section timestamps)
-  const completedWithTimes = (progressData || []).filter(
-    (p: SectionProgress) => p.started_at && p.completed_at
-  );
+  // Time tracking — blended estimate from section progress + assignment work.
+  //
+  // Wall-clock (completed_at - started_at) is unreliable on its own: a student
+  // who starts a section, closes the tab, and finishes it the next day has a
+  // diff of 24+ hours, which would either inflate or get dropped entirely.
+  // And it misses assignment and in-progress time completely.
+  //
+  // Strategy: use wall-clock only when it falls in a plausible single-session
+  // range; otherwise credit a per-section default. Partial credit for
+  // in-progress sections, plus credit per submitted assignment section.
+  const SECTION_MIN_CREDIT = 3;          // below this, wall-clock is probably a skim / reopen
+  const SECTION_DEFAULT = 10;            // credit when wall-clock is missing or implausible
+  const SECTION_MAX_CREDIT = 30;         // cap — anything longer is an idle tab
+  const IN_PROGRESS_CREDIT = 5;          // partial credit for sections still in progress
+  const ASSIGNMENT_SECTION_CREDIT = 15;  // per submitted assignment section with AI feedback
+
   let totalMinutes = 0;
-  completedWithTimes.forEach((p: SectionProgress) => {
-    const start = new Date(p.started_at!).getTime();
-    const end = new Date(p.completed_at!).getTime();
-    const diffMin = (end - start) / (1000 * 60);
-    // Cap at 60 min per section (ignore idle sessions)
-    if (diffMin > 0 && diffMin < 60) {
-      totalMinutes += diffMin;
+  (progressData || []).forEach((p: SectionProgress) => {
+    if (p.status === 'completed' && p.started_at && p.completed_at) {
+      const diffMin = (new Date(p.completed_at).getTime() - new Date(p.started_at).getTime()) / (1000 * 60);
+      if (diffMin >= SECTION_MIN_CREDIT && diffMin <= SECTION_MAX_CREDIT) {
+        totalMinutes += diffMin;
+      } else {
+        totalMinutes += SECTION_DEFAULT;
+      }
+    } else if (p.status === 'completed') {
+      totalMinutes += SECTION_DEFAULT;
+    } else if (p.status === 'in_progress') {
+      totalMinutes += IN_PROGRESS_CREDIT;
     }
   });
+
+  const assignmentSectionsSubmitted = Array.from(assignmentProgress.values())
+    .reduce((sum, p) => sum + p.submitted, 0);
+  totalMinutes += assignmentSectionsSubmitted * ASSIGNMENT_SECTION_CREDIT;
   const totalHours = Math.floor(totalMinutes / 60);
   const remainingMinutes = Math.round(totalMinutes % 60);
+  const timeStudiedLabel = totalMinutes > 0
+    ? (totalHours > 0 ? `${totalHours}h ${remainingMinutes}m` : `${remainingMinutes}m`)
+    : '—';
+
+  // Daily activity density for the last 14 days — shared with the Activity
+  // Timeline chart so students see events + minutes per day linked together.
+  const DAYS_BACK = 14;
+  const activityDayBuckets: Array<{ dateKey: string; label: string; events: number; minutes: number }> = [];
+  {
+    const start = new Date();
+    start.setHours(0, 0, 0, 0);
+    for (let i = DAYS_BACK - 1; i >= 0; i--) {
+      const d = new Date(start);
+      d.setDate(start.getDate() - i);
+      activityDayBuckets.push({
+        dateKey: d.toDateString(),
+        label: d.toLocaleDateString('en-US', { month: 'numeric', day: 'numeric' }),
+        events: 0,
+        minutes: 0,
+      });
+    }
+    const idxMap = new Map(activityDayBuckets.map((b, i) => [b.dateKey, i]));
+    recentActivities.forEach(a => {
+      const idx = idxMap.get(new Date(a.created_at).toDateString());
+      if (idx !== undefined) activityDayBuckets[idx].events += 1;
+    });
+    (progressData || []).forEach((p: SectionProgress) => {
+      if (p.status !== 'completed' || !p.completed_at) return;
+      const idx = idxMap.get(new Date(p.completed_at).toDateString());
+      if (idx === undefined) return;
+      let mins = SECTION_DEFAULT;
+      if (p.started_at) {
+        const diff = (new Date(p.completed_at).getTime() - new Date(p.started_at).getTime()) / 60000;
+        mins = (diff >= SECTION_MIN_CREDIT && diff <= SECTION_MAX_CREDIT) ? diff : SECTION_DEFAULT;
+      }
+      activityDayBuckets[idx].minutes += mins;
+    });
+    // Attribute assignment minutes to the day of each submitted section's
+    // latest draft (only drafts that received AI feedback count, matching
+    // how totalMinutes is computed).
+    interface DraftWithTime { assignment_id: number; section_key: string; draft_number: number; ai_feedback: AssignmentDraft['ai_feedback']; submitted_at: string }
+    const latestPerSection = new Map<string, DraftWithTime>();
+    (assignmentDraftsData || []).forEach((d: DraftWithTime) => {
+      if (d.assignment_id === 0) return;
+      const key = `${d.assignment_id}:${d.section_key}`;
+      const existing = latestPerSection.get(key);
+      if (!existing || d.draft_number > existing.draft_number) latestPerSection.set(key, d);
+    });
+    latestPerSection.forEach(d => {
+      if (!d.ai_feedback || !d.submitted_at) return;
+      const idx = idxMap.get(new Date(d.submitted_at).toDateString());
+      if (idx === undefined) return;
+      activityDayBuckets[idx].minutes += ASSIGNMENT_SECTION_CREDIT;
+    });
+  }
 
   // Daily streak: consecutive days with at least 1 section completed
   const completionDates = new Set<string>();
@@ -916,7 +992,11 @@ export default async function ChaptersPage() {
 
         {/* Activity Timeline */}
         <div className="mt-6">
-          <ActivityTimeline initialActivities={recentActivities} />
+          <ActivityTimeline
+            initialActivities={recentActivities}
+            dayBuckets={activityDayBuckets}
+            totalLabel={timeStudiedLabel}
+          />
         </div>
       </main>
     </div>

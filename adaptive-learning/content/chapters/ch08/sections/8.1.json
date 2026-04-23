@@ -44,7 +44,7 @@
       "title": "What Checkers Catch vs. What They Miss",
       "body": "",
       "imageSrc": "/images/ch08/checkers-catch-vs-miss.svg",
-      "imageAlt": "Side-by-side comparison. Automated checkers catch missing alt text, obvious contrast failures, missing document language, empty table headers, missing heading structure, missing form labels, duplicate slide titles, scanned PDFs, and auto-playing media. They miss alt text quality, logical reading order, caption accuracy, keyboard operability, visible focus, meaningful link text, complex table semantics, whether color alone conveys info, audio description needs, and plain-language readability.",
+      "imageAlt": "Two-column comparison of what automated accessibility checkers catch — missing alt text, contrast failures, missing document language, empty headers — versus what they miss: alt-text quality, reading order, caption accuracy, keyboard operability, and plain-language readability.",
       "imageCaption": "Automated tools catch the obvious 30–40%. The rest takes a five-minute manual pass."
     },
     {

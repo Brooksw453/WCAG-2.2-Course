@@ -9,8 +9,63 @@ interface Activity {
   created_at: string;
 }
 
+interface DayBucket {
+  dateKey: string;
+  label: string;
+  events: number;
+  minutes: number;
+}
+
 interface ActivityTimelineProps {
   initialActivities: Activity[];
+  dayBuckets?: DayBucket[];
+  totalLabel?: string;
+}
+
+function DailyDensityChart({ buckets, totalLabel }: { buckets: DayBucket[]; totalLabel?: string }) {
+  const peakEvents = Math.max(1, ...buckets.map(b => b.events));
+  const peakMinutes = Math.max(1, ...buckets.map(b => b.minutes));
+  const activeDays = buckets.filter(b => b.events > 0 || b.minutes > 0).length;
+
+  return (
+    <div className="px-3 sm:px-4 py-3 bg-gray-50 dark:bg-gray-900 border-b border-gray-100 dark:border-gray-700">
+      <div className="flex items-center justify-between mb-2 flex-wrap gap-2">
+        <div className="text-xs font-semibold text-gray-600 dark:text-gray-400 uppercase tracking-wide">
+          Last {buckets.length} days · {activeDays} active
+        </div>
+        <div className="flex items-center gap-3 text-xs text-gray-500 dark:text-gray-400">
+          <span className="flex items-center gap-1"><span className="w-2.5 h-2.5 rounded-sm bg-blue-500" aria-hidden="true" />events</span>
+          <span className="flex items-center gap-1"><span className="w-2.5 h-2.5 rounded-sm bg-purple-500" aria-hidden="true" />minutes</span>
+          {totalLabel && totalLabel !== '—' && <span>total {totalLabel}</span>}
+        </div>
+      </div>
+      <div className="grid gap-1" style={{ gridTemplateColumns: `repeat(${buckets.length}, minmax(0, 1fr))` }}>
+        {buckets.map(b => {
+          const eventsPct = (b.events / peakEvents) * 100;
+          const minutesPct = (b.minutes / peakMinutes) * 100;
+          return (
+            <div
+              key={b.dateKey}
+              className="flex flex-col items-center"
+              title={`${b.label}: ${b.events} event${b.events !== 1 ? 's' : ''}, ${Math.round(b.minutes)} min`}
+            >
+              <div className="w-full h-12 sm:h-14 flex items-end gap-0.5 bg-white dark:bg-gray-800 rounded border border-gray-200 dark:border-gray-700 p-0.5">
+                <div
+                  className="flex-1 bg-blue-500 rounded-sm"
+                  style={{ height: `${Math.max(b.events > 0 ? 8 : 0, eventsPct)}%` }}
+                />
+                <div
+                  className="flex-1 bg-purple-500 rounded-sm"
+                  style={{ height: `${Math.max(b.minutes > 0 ? 8 : 0, minutesPct)}%` }}
+                />
+              </div>
+              <div className="text-[10px] text-gray-500 dark:text-gray-400 mt-1">{b.label}</div>
+            </div>
+          );
+        })}
+      </div>
+    </div>
+  );
 }
 
 function getActivityIcon(type: string): React.ReactNode {
@@ -121,7 +176,7 @@ function groupByDate(activities: Activity[]): Map<string, Activity[]> {
   return groups;
 }
 
-export default function ActivityTimeline({ initialActivities }: ActivityTimelineProps) {
+export default function ActivityTimeline({ initialActivities, dayBuckets, totalLabel }: ActivityTimelineProps) {
   const [collapsed, setCollapsed] = useState(true);
   const [activities, setActivities] = useState(initialActivities);
   const [loadingMore, setLoadingMore] = useState(false);
@@ -129,6 +184,8 @@ export default function ActivityTimeline({ initialActivities }: ActivityTimeline
 
   const displayActivities = collapsed ? activities.slice(0, 10) : activities;
   const grouped = groupByDate(displayActivities);
+  const hasDensity = !!dayBuckets && dayBuckets.length > 0;
+  const hasAnyData = activities.length > 0 || (hasDensity && dayBuckets!.some(b => b.events > 0 || b.minutes > 0));
 
   const loadMore = async () => {
     setLoadingMore(true);
@@ -146,7 +203,7 @@ export default function ActivityTimeline({ initialActivities }: ActivityTimeline
     setLoadingMore(false);
   };
 
-  if (activities.length === 0) return (
+  if (!hasAnyData) return (
     <div className="bg-white dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700 shadow-sm mb-6">
       <div className="p-3 sm:p-4 flex items-center gap-2">
         <svg className="w-5 h-5 text-blue-600" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
@@ -176,6 +233,11 @@ export default function ActivityTimeline({ initialActivities }: ActivityTimeline
           <span className="text-xs text-gray-500 dark:text-gray-400 bg-gray-100 dark:bg-gray-700 px-2 py-0.5 rounded-full">
             {activities.length} events
           </span>
+          {totalLabel && totalLabel !== '—' && (
+            <span className="text-xs text-purple-700 dark:text-purple-400 bg-purple-100 dark:bg-purple-900/30 px-2 py-0.5 rounded-full">
+              {totalLabel} studied
+            </span>
+          )}
         </div>
         <svg
           className={`w-4 h-4 text-gray-400 transition-transform ${collapsed ? '' : 'rotate-180'}`}
@@ -189,7 +251,14 @@ export default function ActivityTimeline({ initialActivities }: ActivityTimeline
       </button>
 
       {!collapsed && (
-        <div className="p-3 sm:p-4">
+        <div>
+          {hasDensity && <DailyDensityChart buckets={dayBuckets!} totalLabel={totalLabel} />}
+          <div className="p-3 sm:p-4">
+          {activities.length === 0 && (
+            <p className="text-sm text-gray-500 dark:text-gray-400 text-center py-4">
+              Daily progress is tracked above. Event-level activity will appear here as you move through sections.
+            </p>
+          )}
           {Array.from(grouped.entries()).map(([dateKey, dateActivities]) => (
             <div key={dateKey} className="mb-4 last:mb-0" role="list" aria-label={formatDateHeader(dateActivities[0].created_at)}>
               <div className="text-xs font-semibold text-gray-500 dark:text-gray-400 uppercase tracking-wide mb-2">
@@ -224,6 +293,7 @@ export default function ActivityTimeline({ initialActivities }: ActivityTimeline
               {loadingMore ? 'Loading...' : 'Show more'}
             </button>
           )}
+          </div>
         </div>
       )}
     </div>

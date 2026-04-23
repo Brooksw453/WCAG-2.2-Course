@@ -145,6 +145,22 @@ Respond in this exact JSON format:
       ai_feedback: evaluation,
     });
 
+    // Best-effort activity log for assignment submission
+    await supabase.from('activity_log').insert({
+      user_id: user.id,
+      course_id: COURSE_ID,
+      activity_type: 'assignment_submit',
+      details: {
+        assignment_id: assignmentId,
+        section_key: sectionKey,
+        section_name: section.title,
+        assignment_name: assignment.title,
+        draft_number: draftNumber,
+        score: Math.round(evaluation.score || 0),
+        word_count: wordCount,
+      },
+    }).then(() => {}, () => {});
+
     // Log AI interaction
     await supabase.from('ai_interactions').insert({
       user_id: user.id,

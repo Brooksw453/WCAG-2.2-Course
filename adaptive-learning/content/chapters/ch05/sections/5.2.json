@@ -45,7 +45,7 @@
       "title": "Audio Description Decision Tree",
       "body": "",
       "imageSrc": "/images/ch05/audio-description-decision-tree.svg",
-      "imageAlt": "Three-question flowchart for audio description. One: does the video convey essential info visually that audio does not cover? If no, captions are sufficient. If yes, two: can you re-narrate to describe the visuals? If yes, re-record with self-describing narration. If no, three: add a separate audio description track via WebVTT or an alternate AD version. Result: meets WCAG AD requirements.",
+      "imageAlt": "Three-question flowchart for audio description: does the video carry essential visual information, can you re-narrate it yourself, or do you need a separate description track. Most talking-head lectures skip AD entirely; silent demos usually need it.",
       "imageCaption": "Most talking-head lectures don't need AD. Silent demos and visual experiments usually do."
     },
     {

@@ -42,6 +42,30 @@ export default function TTSController({ section, blocks: externalBlocks, mediaTi
 
     // Content blocks
     for (const block of section.contentBlocks) {
+      // Image blocks have an empty body; read the alt text and caption so
+      // the audio describes the diagram instead of just announcing the
+      // title. This also reinforces the course's own lesson about writing
+      // meaningful alt text — students literally hear what good alt text
+      // sounds like.
+      if (block.type === 'image') {
+        const alt = (block.imageAlt || '').trim();
+        const caption = (block.imageCaption || '').trim();
+        // De-duplicate: if the caption is a prefix/suffix of the alt (or
+        // vice versa), only read the longer one.
+        const parts: string[] = [];
+        if (block.title) parts.push(block.title);
+        if (alt) parts.push(alt);
+        if (caption && caption !== alt && !alt.includes(caption)) parts.push(caption);
+        const text = parts.join('. ');
+        if (text) {
+          result.push({
+            label: block.title || 'Figure',
+            text,
+          });
+        }
+        continue;
+      }
+
       const title = block.title || (block.type === 'summary' ? 'Summary' : 'Content');
       const plainBody = stripMarkdown(block.body);
       result.push({

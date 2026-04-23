@@ -27,6 +27,24 @@ const MAX_CACHE_SIZE = 50;
 // and iOS would route it to the phone speaker instead of Bluetooth.
 let keepaliveAudio: HTMLAudioElement | null = null;
 
+// Module-level persistent MP3 element: also held across player instances.
+// Creating a new <audio> element per section — especially inside the async
+// leg of playChunk, after `await fetchAndCache()` — puts the element
+// outside the user-gesture call stack. After the idle gap between finishing
+// one section, walking through the congrats screen, and tapping Listen on
+// the next section, iOS silently re-evaluates routing for "new" media
+// resources and pushes them to the phone speaker even while CarPlay/A2DP
+// is connected. Reusing one element across sections gives iOS a single
+// continuous media resource and keeps Bluetooth routing pinned.
+let persistentAudio: HTMLAudioElement | null = null;
+
+function ensurePersistentAudio() {
+  if (persistentAudio) return;
+  if (typeof window === 'undefined') return;
+  persistentAudio = new Audio();
+  persistentAudio.preload = 'auto';
+}
+
 function ensureKeepalive() {
   if (keepaliveAudio) {
     // Keepalive already exists from a previous section. Re-engage play()
@@ -88,6 +106,12 @@ export function shutdownKeepalive() {
     keepaliveAudio.src = '';
     keepaliveAudio = null;
   }
+  if (persistentAudio) {
+    persistentAudio.onended = null;
+    persistentAudio.pause();
+    try { persistentAudio.removeAttribute('src'); } catch { /* noop */ }
+    persistentAudio = null;
+  }
 }
 
 export interface TTSPlayer {
@@ -124,14 +148,9 @@ export interface TTSPlayer {
 }
 
 export function createTTSPlayer(): TTSPlayer {
-  // Single persistent <audio> element reused across chunks. Creating a new
-  // Audio() per chunk causes iOS to treat each chunk as a separate media
-  // resource, which after a long gap (e.g. user finished the previous
-  // section, walked through quiz + written response, then tapped Listen
-  // on the next section) can get routed to the phone speaker instead of
-  // the active Bluetooth/CarPlay output. Reusing one element gives iOS
-  // one continuous audio resource, keeping A2DP routing pinned.
-  let currentAudio: HTMLAudioElement | null = null;
+  // NOTE: the <audio> element itself is module-level (`persistentAudio`)
+  // so it survives across player instances and page navigations. See the
+  // comment on `persistentAudio` above for why that matters on iOS.
   let onEndedCallback: (() => void) | null = null;
   let playbackRate = 1.0;
   let currentVoice = 'nova';
@@ -210,18 +229,25 @@ export function createTTSPlayer(): TTSPlayer {
   function stopCurrent() {
     generation++;
 
-    if (currentAudio) {
-      currentAudio.onended = null;
-      currentAudio.pause();
+    if (persistentAudio) {
+      persistentAudio.onended = null;
+      persistentAudio.pause();
       // Don't tear down the element itself — clearing src stops playback;
       // the element is reused on the next playChunk to keep iOS A2DP
       // routing pinned to the active Bluetooth/CarPlay output.
-      try { currentAudio.removeAttribute('src'); } catch { /* noop */ }
+      try { persistentAudio.removeAttribute('src'); } catch { /* noop */ }
     }
   }
 
   async function playChunk(text: string): Promise<void> {
     stopCurrent();
+
+    // Ensure the persistent audio element exists. init() (called from the
+    // user gesture in play()) primes this; this is a defensive fallback
+    // for any code path that reaches playChunk without going through init.
+    ensurePersistentAudio();
+    const audio = persistentAudio;
+    if (!audio) return;
 
     const myGeneration = generation;
     const blobUrl = await fetchAndCache(text);
@@ -229,20 +255,12 @@ export function createTTSPlayer(): TTSPlayer {
     // If generation changed while we were fetching, abort
     if (generation !== myGeneration) return;
 
-    // Lazily create the persistent audio element on first use. This runs in
-    // the same microtask chain as the user's Listen tap (via play() → init())
-    // so iOS treats it as user-initiated.
-    if (!currentAudio) {
-      currentAudio = new Audio();
-    }
-
-    const audio = currentAudio;
     audio.onended = null;
     audio.src = blobUrl;
     audio.playbackRate = playbackRate;
 
     audio.onended = () => {
-      if (currentAudio === audio && generation === myGeneration) {
+      if (generation === myGeneration) {
         onEndedCallback?.();
       }
     };
@@ -259,8 +277,8 @@ export function createTTSPlayer(): TTSPlayer {
   }
 
   function pausePlayback() {
-    if (currentAudio) {
-      currentAudio.pause();
+    if (persistentAudio) {
+      persistentAudio.pause();
     }
     // keepalive keeps running
   }
@@ -270,19 +288,19 @@ export function createTTSPlayer(): TTSPlayer {
   }
 
   function pause() {
-    if (currentAudio) {
-      currentAudio.pause();
+    if (persistentAudio) {
+      persistentAudio.pause();
     }
   }
 
   function resume() {
-    if (currentAudio) {
-      currentAudio.play().catch(() => {});
+    if (persistentAudio) {
+      persistentAudio.play().catch(() => {});
     }
   }
 
   function isPaused(): boolean {
-    return currentAudio?.paused || false;
+    return persistentAudio?.paused || false;
   }
 
   function setOnEnded(cb: (() => void) | null) {
@@ -291,8 +309,8 @@ export function createTTSPlayer(): TTSPlayer {
 
   function setPlaybackRate(rate: number) {
     playbackRate = rate;
-    if (currentAudio) {
-      currentAudio.playbackRate = rate;
+    if (persistentAudio) {
+      persistentAudio.playbackRate = rate;
     }
   }
 
@@ -320,6 +338,12 @@ export function createTTSPlayer(): TTSPlayer {
   /** Initialize — call from user gesture to unlock audio on iOS. */
   function init() {
     ensureKeepalive();
+    // Create the persistent <audio> element inside the user gesture's
+    // synchronous call stack. Lazily creating it later inside playChunk
+    // (after `await fetchAndCache()`) puts it outside the gesture and
+    // iOS can route the new element to the phone speaker even while
+    // Bluetooth/CarPlay is connected.
+    ensurePersistentAudio();
   }
 
   function cleanup() {

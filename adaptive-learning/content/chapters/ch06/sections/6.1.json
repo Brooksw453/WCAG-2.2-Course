@@ -40,7 +40,7 @@
       "title": "Question Type Accessibility Matrix",
       "body": "",
       "imageSrc": "/images/ch06/question-type-matrix.svg",
-      "imageAlt": "Matrix showing how common quiz question types perform on keyboard, screen reader, and extended-time accommodations. Multiple choice, true or false, short answer, essay, dropdown matching, and button-based ordering are fully accessible. Fill-in-the-blank is mostly accessible with caveats. Drag-and-drop, hotspot or image-click, and drag-based ordering fail keyboard and should be replaced with alternatives.",
+      "imageAlt": "Matrix of ten common quiz question types rated on keyboard, screen reader, and extended-time access. Green types like multiple choice and essay are safe to use; amber types like fill-in-the-blank need LMS verification; red types like drag-and-drop and hotspot should be replaced.",
       "imageCaption": "Red = replace. Amber = verify in your LMS. Green = safe to use."
     },
     {
