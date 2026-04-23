@@ -87,13 +87,13 @@ export default function StudentRoster({ students, classes }: StudentRosterProps)
         <table className="w-full min-w-[600px]" aria-label="Student roster">
           <thead>
             <tr className="bg-gray-50 dark:bg-gray-800 text-left">
-              <th className="px-4 py-3 text-xs font-semibold text-gray-600 dark:text-gray-400 uppercase">Student</th>
-              <th className="px-4 py-3 text-xs font-semibold text-gray-600 dark:text-gray-400 uppercase text-center">Progress</th>
-              <th className="px-4 py-3 text-xs font-semibold text-gray-600 dark:text-gray-400 uppercase text-center">Mastery</th>
-              <th className="px-4 py-3 text-xs font-semibold text-gray-600 dark:text-gray-400 uppercase text-center">Quiz Avg</th>
-              <th className="px-4 py-3 text-xs font-semibold text-gray-600 dark:text-gray-400 uppercase text-center">Assignments</th>
-              <th className="px-4 py-3 text-xs font-semibold text-gray-600 dark:text-gray-400 uppercase text-center">Status</th>
-              <th className="px-4 py-3 text-xs font-semibold text-gray-600 dark:text-gray-400 uppercase text-center"></th>
+              <th scope="col" className="px-4 py-3 text-xs font-semibold text-gray-600 dark:text-gray-400 uppercase">Student</th>
+              <th scope="col" className="px-4 py-3 text-xs font-semibold text-gray-600 dark:text-gray-400 uppercase text-center">Progress</th>
+              <th scope="col" className="px-4 py-3 text-xs font-semibold text-gray-600 dark:text-gray-400 uppercase text-center">Mastery</th>
+              <th scope="col" className="px-4 py-3 text-xs font-semibold text-gray-600 dark:text-gray-400 uppercase text-center">Quiz Avg</th>
+              <th scope="col" className="px-4 py-3 text-xs font-semibold text-gray-600 dark:text-gray-400 uppercase text-center">Assignments</th>
+              <th scope="col" className="px-4 py-3 text-xs font-semibold text-gray-600 dark:text-gray-400 uppercase text-center">Status</th>
+              <th scope="col" className="px-4 py-3 text-xs font-semibold text-gray-600 dark:text-gray-400 uppercase text-center"></th>
             </tr>
           </thead>
           <tbody className="divide-y divide-gray-100 dark:divide-gray-700">

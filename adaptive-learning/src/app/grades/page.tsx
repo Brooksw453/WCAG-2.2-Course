@@ -351,10 +351,10 @@ export default async function GradesPage() {
             <table className="w-full min-w-[500px]">
               <thead>
                 <tr className="bg-gray-50 dark:bg-gray-700/50 text-left">
-                  <th className="px-4 py-3 text-xs font-semibold text-gray-600 dark:text-gray-400 uppercase">Chapter</th>
-                  <th className="px-4 py-3 text-xs font-semibold text-gray-600 dark:text-gray-400 uppercase text-center">Sections</th>
-                  <th className="px-4 py-3 text-xs font-semibold text-gray-600 dark:text-gray-400 uppercase text-center">Mastery</th>
-                  <th className="px-4 py-3 text-xs font-semibold text-gray-600 dark:text-gray-400 uppercase text-center">Quiz Score</th>
+                  <th scope="col" className="px-4 py-3 text-xs font-semibold text-gray-600 dark:text-gray-400 uppercase">Chapter</th>
+                  <th scope="col" className="px-4 py-3 text-xs font-semibold text-gray-600 dark:text-gray-400 uppercase text-center">Sections</th>
+                  <th scope="col" className="px-4 py-3 text-xs font-semibold text-gray-600 dark:text-gray-400 uppercase text-center">Mastery</th>
+                  <th scope="col" className="px-4 py-3 text-xs font-semibold text-gray-600 dark:text-gray-400 uppercase text-center">Quiz Score</th>
                 </tr>
               </thead>
               <tbody className="divide-y divide-gray-100 dark:divide-gray-700">
@@ -412,9 +412,9 @@ export default async function GradesPage() {
             <table className="w-full min-w-[500px]">
               <thead>
                 <tr className="bg-gray-50 dark:bg-gray-700/50 text-left">
-                  <th className="px-4 py-3 text-xs font-semibold text-gray-600 dark:text-gray-400 uppercase">Assignment</th>
-                  <th className="px-4 py-3 text-xs font-semibold text-gray-600 dark:text-gray-400 uppercase text-center">Sections Submitted</th>
-                  <th className="px-4 py-3 text-xs font-semibold text-gray-600 dark:text-gray-400 uppercase text-center">Average Score</th>
+                  <th scope="col" className="px-4 py-3 text-xs font-semibold text-gray-600 dark:text-gray-400 uppercase">Assignment</th>
+                  <th scope="col" className="px-4 py-3 text-xs font-semibold text-gray-600 dark:text-gray-400 uppercase text-center">Sections Submitted</th>
+                  <th scope="col" className="px-4 py-3 text-xs font-semibold text-gray-600 dark:text-gray-400 uppercase text-center">Average Score</th>
                 </tr>
               </thead>
               <tbody className="divide-y divide-gray-100 dark:divide-gray-700">

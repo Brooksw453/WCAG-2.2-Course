@@ -422,7 +422,7 @@ export default async function StudentDetailPage({
             <div>
               <Link
                 href="/instructor"
-                className="text-sm text-indigo-200 hover:text-white flex items-center gap-1 mb-2 transition-colors"
+                className="text-sm text-indigo-100 hover:text-white flex items-center gap-1 mb-2 transition-colors"
               >
                 <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
                   <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M15 19l-7-7 7-7" />
@@ -430,14 +430,14 @@ export default async function StudentDetailPage({
                 Back to Dashboard
               </Link>
               <h1 className="text-2xl font-bold">{student.full_name}</h1>
-              <p className="text-indigo-200 text-sm">{student.email}</p>
-              <p className="text-indigo-300 text-xs mt-1">
+              <p className="text-indigo-100 text-sm">{student.email}</p>
+              <p className="text-indigo-100 text-xs mt-1">
                 Enrolled {new Date(student.created_at).toLocaleDateString()} &middot; Last active {lastActive}
               </p>
             </div>
             <div className="text-right">
               <div className="text-4xl font-bold">{progressPercent}%</div>
-              <div className="text-indigo-200 text-sm">Overall Progress</div>
+              <div className="text-indigo-100 text-sm">Overall Progress</div>
               <div className="w-32 bg-indigo-900/30 rounded-full h-2 mt-2">
                 <div
                   className="h-2 rounded-full bg-white/80 transition-all"
@@ -506,11 +506,11 @@ export default async function StudentDetailPage({
             <table className="w-full min-w-[600px]">
               <thead>
                 <tr className="bg-gray-50 dark:bg-gray-800 text-left">
-                  <th className="px-4 py-3 text-xs font-semibold text-gray-600 dark:text-gray-400 uppercase">Chapter</th>
-                  <th className="px-4 py-3 text-xs font-semibold text-gray-600 dark:text-gray-400 uppercase text-center">Progress</th>
-                  <th className="px-4 py-3 text-xs font-semibold text-gray-600 dark:text-gray-400 uppercase text-center">Mastery</th>
-                  <th className="px-4 py-3 text-xs font-semibold text-gray-600 dark:text-gray-400 uppercase text-center">Quizzes</th>
-                  <th className="px-4 py-3 text-xs font-semibold text-gray-600 dark:text-gray-400 uppercase text-center">Status</th>
+                  <th scope="col" className="px-4 py-3 text-xs font-semibold text-gray-600 dark:text-gray-400 uppercase">Chapter</th>
+                  <th scope="col" className="px-4 py-3 text-xs font-semibold text-gray-600 dark:text-gray-400 uppercase text-center">Progress</th>
+                  <th scope="col" className="px-4 py-3 text-xs font-semibold text-gray-600 dark:text-gray-400 uppercase text-center">Mastery</th>
+                  <th scope="col" className="px-4 py-3 text-xs font-semibold text-gray-600 dark:text-gray-400 uppercase text-center">Quizzes</th>
+                  <th scope="col" className="px-4 py-3 text-xs font-semibold text-gray-600 dark:text-gray-400 uppercase text-center">Status</th>
                 </tr>
               </thead>
               <tbody className="divide-y divide-gray-100 dark:divide-gray-700">
@@ -710,12 +710,12 @@ export default async function StudentDetailPage({
                 <table className="w-full min-w-[500px]">
                   <thead>
                     <tr className="bg-gray-50 dark:bg-gray-800 text-left">
-                      <th className="px-4 py-3 text-xs font-semibold text-gray-600 dark:text-gray-400 uppercase">Chapter</th>
-                      <th className="px-4 py-3 text-xs font-semibold text-gray-600 dark:text-gray-400 uppercase">Section</th>
-                      <th className="px-4 py-3 text-xs font-semibold text-gray-600 dark:text-gray-400 uppercase text-center">Attempt</th>
-                      <th className="px-4 py-3 text-xs font-semibold text-gray-600 dark:text-gray-400 uppercase text-center">Score</th>
-                      <th className="px-4 py-3 text-xs font-semibold text-gray-600 dark:text-gray-400 uppercase text-center">Result</th>
-                      <th className="px-4 py-3 text-xs font-semibold text-gray-600 dark:text-gray-400 uppercase text-right">Date</th>
+                      <th scope="col" className="px-4 py-3 text-xs font-semibold text-gray-600 dark:text-gray-400 uppercase">Chapter</th>
+                      <th scope="col" className="px-4 py-3 text-xs font-semibold text-gray-600 dark:text-gray-400 uppercase">Section</th>
+                      <th scope="col" className="px-4 py-3 text-xs font-semibold text-gray-600 dark:text-gray-400 uppercase text-center">Attempt</th>
+                      <th scope="col" className="px-4 py-3 text-xs font-semibold text-gray-600 dark:text-gray-400 uppercase text-center">Score</th>
+                      <th scope="col" className="px-4 py-3 text-xs font-semibold text-gray-600 dark:text-gray-400 uppercase text-center">Result</th>
+                      <th scope="col" className="px-4 py-3 text-xs font-semibold text-gray-600 dark:text-gray-400 uppercase text-right">Date</th>
                     </tr>
                   </thead>
                   <tbody className="divide-y divide-gray-100 dark:divide-gray-700">

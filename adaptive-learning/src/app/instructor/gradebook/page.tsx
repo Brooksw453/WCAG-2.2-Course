@@ -185,7 +185,7 @@ export default async function InstructorGradebook() {
           <div className="flex items-center justify-between">
             <div>
               <h1 className="text-2xl font-bold">Gradebook</h1>
-              <p className="text-indigo-200 text-sm">{courseConfig.title} &bull; Final Grade Report</p>
+              <p className="text-indigo-100 text-sm">{courseConfig.title} &bull; Final Grade Report</p>
             </div>
             <div className="flex items-center gap-4">
               <Link
@@ -201,7 +201,7 @@ export default async function InstructorGradebook() {
                 Export CSV
               </a>
               <form action={signOut}>
-                <button type="submit" className="text-sm text-indigo-200 hover:text-white transition-colors">
+                <button type="submit" className="text-sm text-indigo-100 hover:text-white transition-colors">
                   Sign Out
                 </button>
               </form>

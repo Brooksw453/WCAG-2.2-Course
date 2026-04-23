@@ -319,7 +319,7 @@ export default async function InstructorDashboard() {
           <div className="flex items-center justify-between">
             <div>
               <h1 className="text-xl sm:text-2xl font-bold">Instructor Dashboard</h1>
-              <p className="text-indigo-200 text-xs sm:text-sm">{courseConfig.title} &bull; {courseConfig.subtitle}</p>
+              <p className="text-indigo-100 text-xs sm:text-sm">{courseConfig.title} &bull; {courseConfig.subtitle}</p>
             </div>
             <div className="flex flex-wrap items-center gap-2 sm:gap-4">
               <a
@@ -340,9 +340,9 @@ export default async function InstructorDashboard() {
               >
                 Export Grades (CSV)
               </a>
-              <ThemeToggle compact className="text-indigo-200 hover:text-white hover:bg-white/10" />
+              <ThemeToggle compact className="text-indigo-100 hover:text-white hover:bg-white/10" />
               <form action={signOut}>
-                <button type="submit" className="text-xs sm:text-sm text-indigo-200 hover:text-white transition-colors">
+                <button type="submit" className="text-xs sm:text-sm text-indigo-100 hover:text-white transition-colors">
                   Sign Out
                 </button>
               </form>
@@ -423,11 +423,11 @@ export default async function InstructorDashboard() {
             <table className="w-full min-w-[500px]" role="table" aria-label="Chapter analytics">
               <thead>
                 <tr className="bg-gray-50 dark:bg-gray-800 text-left">
-                  <th className="px-4 py-3 text-xs font-semibold text-gray-600 dark:text-gray-400 uppercase">Chapter</th>
-                  <th className="px-4 py-3 text-xs font-semibold text-gray-600 dark:text-gray-400 uppercase text-center">Sections</th>
-                  <th className="px-4 py-3 text-xs font-semibold text-gray-600 dark:text-gray-400 uppercase text-center">Started</th>
-                  <th className="px-4 py-3 text-xs font-semibold text-gray-600 dark:text-gray-400 uppercase text-center">Completed</th>
-                  <th className="px-4 py-3 text-xs font-semibold text-gray-600 dark:text-gray-400 uppercase text-center">Avg Mastery</th>
+                  <th scope="col" className="px-4 py-3 text-xs font-semibold text-gray-600 dark:text-gray-400 uppercase">Chapter</th>
+                  <th scope="col" className="px-4 py-3 text-xs font-semibold text-gray-600 dark:text-gray-400 uppercase text-center">Sections</th>
+                  <th scope="col" className="px-4 py-3 text-xs font-semibold text-gray-600 dark:text-gray-400 uppercase text-center">Started</th>
+                  <th scope="col" className="px-4 py-3 text-xs font-semibold text-gray-600 dark:text-gray-400 uppercase text-center">Completed</th>
+                  <th scope="col" className="px-4 py-3 text-xs font-semibold text-gray-600 dark:text-gray-400 uppercase text-center">Avg Mastery</th>
                 </tr>
               </thead>
               <tbody className="divide-y divide-gray-100 dark:divide-gray-700">
@@ -470,10 +470,10 @@ export default async function InstructorDashboard() {
               <table className="w-full min-w-[500px]" role="table" aria-label="Content insights">
                 <thead>
                   <tr className="bg-gray-50 dark:bg-gray-800 text-left">
-                    <th className="px-4 py-3 text-xs font-semibold text-gray-600 dark:text-gray-400 uppercase">Section</th>
-                    <th className="px-4 py-3 text-xs font-semibold text-gray-600 dark:text-gray-400 uppercase text-center">Students</th>
-                    <th className="px-4 py-3 text-xs font-semibold text-gray-600 dark:text-gray-400 uppercase text-center">Avg Remediation Attempts</th>
-                    <th className="px-4 py-3 text-xs font-semibold text-gray-600 dark:text-gray-400 uppercase text-center">Difficulty</th>
+                    <th scope="col" className="px-4 py-3 text-xs font-semibold text-gray-600 dark:text-gray-400 uppercase">Section</th>
+                    <th scope="col" className="px-4 py-3 text-xs font-semibold text-gray-600 dark:text-gray-400 uppercase text-center">Students</th>
+                    <th scope="col" className="px-4 py-3 text-xs font-semibold text-gray-600 dark:text-gray-400 uppercase text-center">Avg Remediation Attempts</th>
+                    <th scope="col" className="px-4 py-3 text-xs font-semibold text-gray-600 dark:text-gray-400 uppercase text-center">Difficulty</th>
                   </tr>
                 </thead>
                 <tbody className="divide-y divide-gray-100 dark:divide-gray-700">

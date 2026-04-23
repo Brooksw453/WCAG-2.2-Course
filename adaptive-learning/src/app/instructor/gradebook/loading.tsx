@@ -56,7 +56,7 @@ export default function Loading() {
               <thead>
                 <tr className="border-b border-gray-200 bg-gray-50">
                   {['w-36', 'w-20', 'w-20', 'w-24', 'w-16', 'w-12'].map((w, i) => (
-                    <th key={i} className="text-left py-3 px-4">
+                    <th scope="col" key={i} className="text-left py-3 px-4">
                       <div className={`h-4 ${w} bg-gray-200 rounded animate-pulse`} />
                     </th>
                   ))}

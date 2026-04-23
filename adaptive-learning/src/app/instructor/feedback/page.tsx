@@ -95,7 +95,7 @@ export default async function InstructorFeedbackPage() {
           <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-4">
             <div>
               <h1 className="text-xl sm:text-2xl font-bold">Student Feedback</h1>
-              <p className="text-indigo-200 text-xs sm:text-sm">{courseConfig.title} -- {courseConfig.subtitle}</p>
+              <p className="text-indigo-100 text-xs sm:text-sm">{courseConfig.title} -- {courseConfig.subtitle}</p>
             </div>
             <div className="flex items-center gap-4">
               <Link
@@ -105,7 +105,7 @@ export default async function InstructorFeedbackPage() {
                 Dashboard
               </Link>
               <form action={signOut}>
-                <button type="submit" className="text-sm text-indigo-200 hover:text-white transition-colors">
+                <button type="submit" className="text-sm text-indigo-100 hover:text-white transition-colors">
                   Sign Out
                 </button>
               </form>

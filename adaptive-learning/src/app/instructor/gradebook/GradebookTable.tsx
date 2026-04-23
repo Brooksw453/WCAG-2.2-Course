@@ -72,7 +72,7 @@ export default function GradebookTable({ students }: { students: StudentGrade[] 
   });
 
   const SortHeader = ({ label, sortKeyName }: { label: string; sortKeyName: SortKey }) => (
-    <th
+    <th scope="col"
       className="px-4 py-3 text-xs font-semibold text-gray-600 dark:text-gray-400 uppercase cursor-pointer hover:bg-gray-100 dark:hover:bg-gray-700 select-none"
       onClick={() => handleSort(sortKeyName)}
     >

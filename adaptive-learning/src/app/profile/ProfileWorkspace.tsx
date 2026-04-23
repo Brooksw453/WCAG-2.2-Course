@@ -165,6 +165,7 @@ export default function ProfileWorkspace({
                   <input
                     id="display-name"
                     type="text"
+                    autoComplete="name"
                     value={nameInput}
                     onChange={(e) => setNameInput(e.target.value)}
                     className="flex-1 rounded-lg border border-gray-300 dark:border-gray-600 px-3 py-2 text-sm text-gray-900 dark:text-white dark:bg-gray-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
