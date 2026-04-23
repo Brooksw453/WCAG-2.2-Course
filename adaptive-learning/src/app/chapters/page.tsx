@@ -736,12 +736,21 @@ export default async function ChaptersPage() {
             <h3 className="text-sm font-semibold text-gray-700 dark:text-gray-300 uppercase tracking-wide mb-3">Achievements</h3>
             <div className="flex flex-wrap gap-3">
               {achievements.map((a, i) => (
-                <div key={i} className="relative group">
+                <div
+                  key={i}
+                  className="relative group focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 rounded-lg"
+                  tabIndex={0}
+                  role="group"
+                  aria-label={`Achievement: ${a.label}. ${a.desc}`}
+                >
                   <div className="flex items-center gap-2 bg-yellow-50 dark:bg-yellow-900/30 border border-yellow-200 dark:border-yellow-700 rounded-lg px-3 py-2 cursor-default">
-                    <span className="text-lg">{a.icon}</span>
+                    <span className="text-lg" aria-hidden="true">{a.icon}</span>
                     <span className="text-sm font-medium text-yellow-800 dark:text-yellow-400">{a.label}</span>
                   </div>
-                  <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 px-3 py-2 bg-gray-900 text-white text-xs rounded-lg shadow-lg whitespace-nowrap opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-10">
+                  <div
+                    className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 px-3 py-2 bg-gray-900 text-white text-xs rounded-lg shadow-lg whitespace-nowrap opacity-0 invisible group-hover:opacity-100 group-hover:visible group-focus-within:opacity-100 group-focus-within:visible transition-all duration-200 z-10"
+                    aria-hidden="true"
+                  >
                     <div className="font-semibold mb-0.5">{a.label}</div>
                     <div className="text-gray-300">{a.desc}</div>
                     <div className="absolute top-full left-1/2 -translate-x-1/2 -mt-px border-4 border-transparent border-t-gray-900" />
@@ -749,12 +758,21 @@ export default async function ChaptersPage() {
                 </div>
               ))}
               {lockedAchievements.map((a, i) => (
-                <div key={`locked-${i}`} className="relative group">
+                <div
+                  key={`locked-${i}`}
+                  className="relative group focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 rounded-lg"
+                  tabIndex={0}
+                  role="group"
+                  aria-label={`Locked achievement: ${a.label}. ${a.desc}`}
+                >
                   <div className="flex items-center gap-2 bg-gray-50 dark:bg-gray-700 border border-gray-200 dark:border-gray-600 rounded-lg px-3 py-2 opacity-50 cursor-default">
-                    <span className="text-lg">{a.icon}</span>
+                    <span className="text-lg" aria-hidden="true">{a.icon}</span>
                     <span className="text-sm font-medium text-gray-500 dark:text-gray-400">{a.label}</span>
                   </div>
-                  <div className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 px-3 py-2 bg-gray-900 text-white text-xs rounded-lg shadow-lg whitespace-nowrap opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200 z-10">
+                  <div
+                    className="absolute bottom-full left-1/2 -translate-x-1/2 mb-2 px-3 py-2 bg-gray-900 text-white text-xs rounded-lg shadow-lg whitespace-nowrap opacity-0 invisible group-hover:opacity-100 group-hover:visible group-focus-within:opacity-100 group-focus-within:visible transition-all duration-200 z-10"
+                    aria-hidden="true"
+                  >
                     <div className="font-semibold mb-0.5">{a.label}</div>
                     <div className="text-gray-300">{a.desc}</div>
                     <div className="absolute top-full left-1/2 -translate-x-1/2 -mt-px border-4 border-transparent border-t-gray-900" />

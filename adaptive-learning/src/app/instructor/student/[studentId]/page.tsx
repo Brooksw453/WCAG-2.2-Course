@@ -921,25 +921,30 @@ export default async function StudentDetailPage({
                 <span>total {timeStudiedLabel}</span>
               </div>
             </div>
-            <div className="grid gap-1" style={{ gridTemplateColumns: `repeat(${DAYS_BACK}, minmax(0, 1fr))` }}>
+            <div className="grid gap-1" role="list" style={{ gridTemplateColumns: `repeat(${DAYS_BACK}, minmax(0, 1fr))` }}>
               {dayBuckets.map(b => {
                 const eventsPct = (b.events / peakEvents) * 100;
                 const minutesPct = (b.minutes / peakMinutes) * 100;
+                const ariaLabel = `${b.label}: ${b.events} event${b.events !== 1 ? 's' : ''}, ${Math.round(b.minutes)} minute${b.minutes !== 1 ? 's' : ''}`;
                 return (
-                  <div key={b.dateKey} className="flex flex-col items-center" title={`${b.label}: ${b.events} event${b.events !== 1 ? 's' : ''}, ${Math.round(b.minutes)} min`}>
-                    <div className="w-full h-16 flex items-end gap-0.5 bg-white dark:bg-gray-800 rounded border border-gray-200 dark:border-gray-700 p-0.5">
+                  <div
+                    key={b.dateKey}
+                    className="flex flex-col items-center rounded focus:outline-none focus-visible:ring-2 focus-visible:ring-indigo-500"
+                    role="listitem"
+                    tabIndex={0}
+                    aria-label={ariaLabel}
+                  >
+                    <div className="w-full h-16 flex items-end gap-0.5 bg-white dark:bg-gray-800 rounded border border-gray-200 dark:border-gray-700 p-0.5" aria-hidden="true">
                       <div
                         className="flex-1 bg-blue-500 rounded-sm"
                         style={{ height: `${Math.max(b.events > 0 ? 8 : 0, eventsPct)}%` }}
-                        aria-label={`${b.events} events on ${b.label}`}
                       />
                       <div
                         className="flex-1 bg-purple-500 rounded-sm"
                         style={{ height: `${Math.max(b.minutes > 0 ? 8 : 0, minutesPct)}%` }}
-                        aria-label={`${Math.round(b.minutes)} minutes on ${b.label}`}
                       />
                     </div>
-                    <div className="text-[10px] text-gray-500 dark:text-gray-400 mt-1">{b.label}</div>
+                    <div className="text-[10px] text-gray-500 dark:text-gray-400 mt-1" aria-hidden="true">{b.label}</div>
                   </div>
                 );
               })}
