@@ -450,7 +450,7 @@ export default async function InstructorDashboard() {
                           {ch.avgMastery}%
                         </span>
                       ) : (
-                        <span className="text-sm text-gray-400">—</span>
+                        <span className="text-sm text-gray-500 dark:text-gray-400">—</span>
                       )}
                     </td>
                   </tr>

@@ -38,13 +38,13 @@ export default function Attribution({ variant = 'footer' }: { variant?: 'footer'
 
   // Compact footer variant
   return (
-    <footer className="print:hidden text-center py-4 px-4 text-xs text-gray-400 dark:text-gray-500 border-t border-gray-200 dark:border-gray-800">
+    <footer className="print:hidden text-center py-4 px-4 text-xs text-gray-500 dark:text-gray-400 dark:text-gray-500 border-t border-gray-200 dark:border-gray-800">
       Content adapted from{' '}
-      <a href={attr.sourceUrl} target="_blank" rel="noopener noreferrer" className="underline hover:text-gray-600 dark:hover:text-gray-400">
+      <a href={attr.sourceUrl} target="_blank" rel="noopener noreferrer" className="underline hover:text-gray-600 dark:hover:text-gray-500 dark:text-gray-400">
         {attr.sourceTitle}
       </a>{' '}
       by {attr.sourceAuthors} ({attr.sourcePublisher}) |{' '}
-      <a href={attr.licenseUrl} target="_blank" rel="noopener noreferrer" className="underline hover:text-gray-600 dark:hover:text-gray-400">
+      <a href={attr.licenseUrl} target="_blank" rel="noopener noreferrer" className="underline hover:text-gray-600 dark:hover:text-gray-500 dark:text-gray-400">
         {attr.license}
       </a>{' '}
       | {attr.accessLine}

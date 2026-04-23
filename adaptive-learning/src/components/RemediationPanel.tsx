@@ -114,7 +114,7 @@ export default function RemediationPanel({
         <div role="status" aria-live="polite" className="flex flex-col items-center justify-center py-12">
           <div className="animate-spin rounded-full h-10 w-10 border-b-2 border-blue-600 mb-4"></div>
           <p className="text-gray-600 dark:text-gray-400">Generating personalized study material...</p>
-          <p className="text-gray-400 dark:text-gray-500 text-sm mt-1">This takes a few seconds</p>
+          <p className="text-gray-500 dark:text-gray-400 dark:text-gray-500 text-sm mt-1">This takes a few seconds</p>
         </div>
       )}
 

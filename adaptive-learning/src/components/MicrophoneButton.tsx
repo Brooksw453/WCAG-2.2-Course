@@ -65,7 +65,7 @@ export default function MicrophoneButton({ onTranscript, disabled, className = '
             aria-label={isListening ? 'Stop recording' : 'Start voice input'}
             className={`flex items-center justify-center w-11 h-11 rounded-full transition-all ${
               disabled
-                ? 'bg-gray-100 dark:bg-gray-700 text-gray-400 cursor-not-allowed'
+                ? 'bg-gray-100 dark:bg-gray-700 text-gray-500 dark:text-gray-400 cursor-not-allowed'
                 : isListening
                   ? 'bg-red-100 dark:bg-red-900/40 text-red-600 dark:text-red-400 hover:bg-red-200 dark:hover:bg-red-900/60 ring-2 ring-red-300 dark:ring-red-700 animate-pulse'
                   : 'bg-gray-100 dark:bg-gray-700 text-gray-500 dark:text-gray-400 hover:bg-blue-100 dark:hover:bg-blue-900/40 hover:text-blue-600 dark:hover:text-blue-400'
@@ -95,7 +95,7 @@ export default function MicrophoneButton({ onTranscript, disabled, className = '
             </span>
           )}
           {isListening && interimTranscript && (
-            <span className="text-gray-400 dark:text-gray-500 italic truncate">
+            <span className="text-gray-500 dark:text-gray-400 dark:text-gray-500 italic truncate">
               {interimTranscript}
             </span>
           )}

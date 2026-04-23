@@ -82,7 +82,7 @@ export default function FeedbackFilter({ feedbackList, triggerPoints }: Feedback
                     <p className="text-sm text-gray-600 dark:text-gray-400 mt-1">{f.comment}</p>
                   )}
                 </div>
-                <span className="text-xs text-gray-400 flex-shrink-0">
+                <span className="text-xs text-gray-500 dark:text-gray-400 flex-shrink-0">
                   {new Date(f.createdAt).toLocaleDateString('en-US', {
                     month: 'short',
                     day: 'numeric',

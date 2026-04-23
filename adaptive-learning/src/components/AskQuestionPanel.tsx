@@ -269,7 +269,7 @@ export default function AskQuestionPanel({
 
         {/* Turns remaining indicator */}
         {messages.length > 0 && (
-          <div className="px-4 py-1 text-xs text-gray-400 text-center border-t border-gray-100 dark:border-gray-700">
+          <div className="px-4 py-1 text-xs text-gray-500 dark:text-gray-400 text-center border-t border-gray-100 dark:border-gray-700">
             {turnsRemaining > 0
               ? `${turnsRemaining} question${turnsRemaining !== 1 ? 's' : ''} remaining in this conversation`
               : 'No more questions available — try a different concept'}

@@ -24,7 +24,7 @@ function getGradeColor(letter: string | null): string {
     case 'C': return 'text-yellow-600';
     case 'D': return 'text-orange-600';
     case 'F': return 'text-red-600';
-    default: return 'text-gray-400';
+    default: return 'text-gray-500 dark:text-gray-400';
   }
 }
 
@@ -142,7 +142,7 @@ export default function GradebookTable({ students }: { students: StudentGrade[] 
                       {student.letterGrade}
                     </span>
                   ) : (
-                    <span className="text-sm text-gray-400">{'\u2014'}</span>
+                    <span className="text-sm text-gray-500 dark:text-gray-400">{'\u2014'}</span>
                   )}
                 </td>
               </tr>

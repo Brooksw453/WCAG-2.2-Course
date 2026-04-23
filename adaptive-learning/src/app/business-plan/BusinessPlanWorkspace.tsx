@@ -289,7 +289,7 @@ export default function BusinessPlanWorkspace({
                           {s.content}
                         </div>
                       ) : (
-                        <p className="text-gray-400 italic text-lg">[Section not yet completed]</p>
+                        <p className="text-gray-500 dark:text-gray-400 italic text-lg">[Section not yet completed]</p>
                       )}
                     </div>
                   ))}
@@ -457,7 +457,7 @@ export default function BusinessPlanWorkspace({
                   </div>
                   <svg
                     aria-hidden="true"
-                    className={`w-5 h-5 text-gray-400 transition-transform ${isExpanded ? 'rotate-180' : ''}`}
+                    className={`w-5 h-5 text-gray-500 dark:text-gray-400 transition-transform ${isExpanded ? 'rotate-180' : ''}`}
                     fill="none"
                     viewBox="0 0 24 24"
                     stroke="currentColor"
@@ -487,7 +487,7 @@ export default function BusinessPlanWorkspace({
                             {s.content}
                           </p>
                         ) : (
-                          <p className="text-sm text-gray-400 dark:text-gray-500 italic">Not yet completed</p>
+                          <p className="text-sm text-gray-500 dark:text-gray-400 dark:text-gray-500 italic">Not yet completed</p>
                         )}
                       </div>
                     ))}

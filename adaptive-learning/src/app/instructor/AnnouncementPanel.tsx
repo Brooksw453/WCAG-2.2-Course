@@ -294,7 +294,7 @@ export default function AnnouncementPanel({ classes, students }: AnnouncementPan
                       {readCounts[ann.id] || 0}/{totalStudents} read
                     </span>
                   )}
-                  <span className="text-xs text-gray-400">
+                  <span className="text-xs text-gray-500 dark:text-gray-400">
                     {new Date(ann.created_at).toLocaleDateString()}
                   </span>
                 </div>

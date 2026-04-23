@@ -349,7 +349,7 @@ export default async function CertificatePage() {
 
                 {/* Verification code */}
                 <div className="mt-8 text-center">
-                  <p className="text-[10px] tracking-wider text-gray-400" style={{ fontFamily: 'monospace' }}>
+                  <p className="text-[10px] tracking-wider text-gray-500 dark:text-gray-400" style={{ fontFamily: 'monospace' }}>
                     Verification ID: {user.id.slice(0, 8).toUpperCase()}-{Math.abs(completionDate.getTime() % 9999).toString().padStart(4, '0')}
                   </p>
                 </div>

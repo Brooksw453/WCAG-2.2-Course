@@ -135,7 +135,7 @@ export default async function SectionPage({
             </div>
           </div>
           <div className="flex items-center gap-2 text-sm text-gray-500 dark:text-gray-400">
-            <ThemeToggle compact className="text-gray-400 dark:text-gray-400 hover:text-gray-600 dark:hover:text-white hover:bg-gray-100 dark:hover:bg-gray-700" />
+            <ThemeToggle compact className="text-gray-500 dark:text-gray-400 hover:text-gray-600 dark:hover:text-white hover:bg-gray-100 dark:hover:bg-gray-700" />
             {prevSection && (
               <Link
                 href={`/chapter/${chapterId}/${prevSection}`}

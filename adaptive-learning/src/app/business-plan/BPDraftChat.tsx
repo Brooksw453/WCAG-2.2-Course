@@ -220,7 +220,7 @@ export default function BPDraftChat({
                       </svg>
                       Use This Draft
                     </button>
-                    <span className="text-xs text-gray-400 self-center">Inserts into your text area</span>
+                    <span className="text-xs text-gray-500 dark:text-gray-400 self-center">Inserts into your text area</span>
                   </div>
                 )}
               </div>
@@ -288,7 +288,7 @@ export default function BPDraftChat({
               className={`flex-shrink-0 p-2.5 min-w-[44px] min-h-[44px] rounded-xl transition-colors ${
                 input.trim() && !loading
                   ? 'bg-purple-600 text-white hover:bg-purple-700'
-                  : 'bg-gray-200 dark:bg-gray-600 text-gray-400 cursor-not-allowed'
+                  : 'bg-gray-200 dark:bg-gray-600 text-gray-500 dark:text-gray-400 cursor-not-allowed'
               }`}
             >
               <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
@@ -296,7 +296,7 @@ export default function BPDraftChat({
               </svg>
             </button>
           </div>
-          <p className="text-xs text-gray-400 dark:text-gray-500 mt-1.5 px-1">Press Enter to send</p>
+          <p className="text-xs text-gray-500 dark:text-gray-400 dark:text-gray-500 mt-1.5 px-1">Press Enter to send</p>
         </div>
       </div>
     </>

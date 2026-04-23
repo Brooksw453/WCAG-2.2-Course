@@ -240,7 +240,7 @@ export default function ActivityTimeline({ initialActivities, dayBuckets, totalL
           )}
         </div>
         <svg
-          className={`w-4 h-4 text-gray-400 transition-transform ${collapsed ? '' : 'rotate-180'}`}
+          className={`w-4 h-4 text-gray-500 dark:text-gray-400 transition-transform ${collapsed ? '' : 'rotate-180'}`}
           fill="none"
           viewBox="0 0 24 24"
           stroke="currentColor"
@@ -275,7 +275,7 @@ export default function ActivityTimeline({ initialActivities, dayBuckets, totalL
                         {getActivityLabel(activity.activity_type, activity.details)}
                       </span>
                     </div>
-                    <span className="text-xs text-gray-400 dark:text-gray-500 flex-shrink-0">
+                    <span className="text-xs text-gray-500 dark:text-gray-400 dark:text-gray-500 flex-shrink-0">
                       {formatTime(activity.created_at)}
                     </span>
                   </div>

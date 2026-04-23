@@ -246,7 +246,7 @@ export default function AssignmentWorkspace({ assignment, savedDrafts, scoreHist
                   </svg>
                   Draft with AI
                 </button>
-                <span className="text-xs text-gray-400 dark:text-gray-500 self-center">Use AI to help you build your response through guided questions</span>
+                <span className="text-xs text-gray-500 dark:text-gray-400 dark:text-gray-500 self-center">Use AI to help you build your response through guided questions</span>
               </div>
 
               {showRubric === section.key && section.rubric && (
@@ -276,10 +276,10 @@ export default function AssignmentWorkspace({ assignment, savedDrafts, scoreHist
             <div className="bg-white dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700 shadow-sm p-5 mb-4">
               <div className="flex items-center justify-between mb-3">
                 <label className="text-sm font-medium text-gray-700 dark:text-gray-300">
-                  Your Response {currentDraftNum > 0 && <span className="text-gray-400">(Draft {currentDraftNum})</span>}
+                  Your Response {currentDraftNum > 0 && <span className="text-gray-500 dark:text-gray-400">(Draft {currentDraftNum})</span>}
                 </label>
                 <div className={`text-xs font-medium ${
-                  wordCount < section.minWords ? 'text-gray-400' :
+                  wordCount < section.minWords ? 'text-gray-500 dark:text-gray-400' :
                   wordCount > section.maxWords ? 'text-red-500 dark:text-red-400' :
                   'text-green-600 dark:text-green-400'
                 }`}>
@@ -334,7 +334,7 @@ export default function AssignmentWorkspace({ assignment, savedDrafts, scoreHist
                     submitting
                       ? 'bg-gray-300 text-gray-500 cursor-wait'
                       : wordCount < Math.floor(section.minWords * 0.5)
-                      ? 'bg-gray-200 text-gray-400 cursor-not-allowed'
+                      ? 'bg-gray-200 text-gray-500 dark:text-gray-400 cursor-not-allowed'
                       : currentFeedback
                       ? 'bg-blue-600 text-white hover:bg-blue-700'
                       : 'bg-green-600 text-white hover:bg-green-700'
@@ -387,7 +387,7 @@ export default function AssignmentWorkspace({ assignment, savedDrafts, scoreHist
                           Draft {entry.draft}: {entry.score}%
                         </span>
                         {i < scoreHistory[section.key].length - 1 && (
-                          <svg className="w-4 h-4 text-gray-400 mx-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                          <svg className="w-4 h-4 text-gray-500 dark:text-gray-400 mx-1" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 7l5 5m0 0l-5 5m5-5H6" />
                           </svg>
                         )}
@@ -450,7 +450,7 @@ export default function AssignmentWorkspace({ assignment, savedDrafts, scoreHist
                     </svg>
                     Ask about this feedback
                   </button>
-                  <p className="text-xs text-gray-400 dark:text-gray-500">
+                  <p className="text-xs text-gray-500 dark:text-gray-400 dark:text-gray-500">
                     Revise and resubmit as many times as you like.
                   </p>
                 </div>

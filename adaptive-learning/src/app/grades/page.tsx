@@ -379,7 +379,7 @@ export default async function GradesPage() {
                           {ch.mastery}%
                         </span>
                       ) : (
-                        <span className="text-sm text-gray-400">{'\u2014'}</span>
+                        <span className="text-sm text-gray-500 dark:text-gray-400">{'\u2014'}</span>
                       )}
                     </td>
                     <td className="px-4 py-3 text-center">
@@ -393,7 +393,7 @@ export default async function GradesPage() {
                           {ch.quizScore}%
                         </span>
                       ) : (
-                        <span className="text-sm text-gray-400">{'\u2014'}</span>
+                        <span className="text-sm text-gray-500 dark:text-gray-400">{'\u2014'}</span>
                       )}
                     </td>
                   </tr>
@@ -437,7 +437,7 @@ export default async function GradesPage() {
                           {a.avgScore}%
                         </span>
                       ) : (
-                        <span className="text-sm text-gray-400">{'\u2014'}</span>
+                        <span className="text-sm text-gray-500 dark:text-gray-400">{'\u2014'}</span>
                       )}
                     </td>
                   </tr>

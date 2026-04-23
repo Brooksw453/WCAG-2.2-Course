@@ -168,7 +168,7 @@ export default function FreeTextPrompt({
           {showRubric && (
             <div className="px-4 pb-4 border-t border-gray-200 dark:border-gray-700 pt-3">
               <p className="text-sm text-gray-600 dark:text-gray-400 leading-relaxed">{prompt.rubric}</p>
-              <p className="text-xs text-gray-400 dark:text-gray-500 mt-2">
+              <p className="text-xs text-gray-500 dark:text-gray-400 dark:text-gray-500 mt-2">
                 Focus on demonstrating understanding — spelling and grammar are not graded.
               </p>
             </div>
@@ -187,7 +187,7 @@ export default function FreeTextPrompt({
             disabled={!!evaluation}
             rows={8}
             aria-describedby="word-count"
-            className="w-full px-4 py-3 pr-16 border border-gray-300 dark:border-gray-600 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 disabled:bg-gray-50 dark:disabled:bg-gray-800 disabled:text-gray-600 dark:disabled:text-gray-400 resize-y text-gray-900 dark:text-white dark:bg-gray-700 dark:placeholder-gray-400 text-base sm:text-sm"
+            className="w-full px-4 py-3 pr-16 border border-gray-300 dark:border-gray-600 rounded-lg shadow-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-blue-500 disabled:bg-gray-50 dark:disabled:bg-gray-800 disabled:text-gray-600 dark:disabled:text-gray-500 dark:text-gray-400 resize-y text-gray-900 dark:text-white dark:bg-gray-700 dark:placeholder-gray-400 text-base sm:text-sm"
             placeholder="Type or tap the mic to speak your response..."
           />
           <MicrophoneButton

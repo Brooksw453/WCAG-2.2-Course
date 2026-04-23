@@ -190,7 +190,7 @@ export default async function InstructorFeedbackPage() {
                           />
                         </div>
                         <div className="text-xs text-gray-600 dark:text-gray-400 text-center font-medium">{stage.label}</div>
-                        <div className="text-xs text-gray-400 dark:text-gray-500">{stage.count} responses</div>
+                        <div className="text-xs text-gray-500 dark:text-gray-400 dark:text-gray-500">{stage.count} responses</div>
                         {diff !== 0 && (
                           <span className={`text-xs font-medium ${diff > 0 ? 'text-green-600' : 'text-red-600'}`}>
                             {diff > 0 ? '+' : ''}{diff.toFixed(1)}

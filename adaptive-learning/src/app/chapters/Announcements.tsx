@@ -94,7 +94,7 @@ export default function Announcements({ initialAnnouncements }: AnnouncementsPro
               )}
               <div className="flex items-start justify-between mb-1">
                 <h3 className="text-sm font-semibold text-gray-900 dark:text-white">{ann.title}</h3>
-                <span className="text-xs text-gray-400 dark:text-gray-500 flex-shrink-0 ml-4">
+                <span className="text-xs text-gray-500 dark:text-gray-400 dark:text-gray-500 flex-shrink-0 ml-4">
                   {new Date(ann.created_at).toLocaleDateString()}
                 </span>
               </div>

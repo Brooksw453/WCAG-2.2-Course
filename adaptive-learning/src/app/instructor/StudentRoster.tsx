@@ -132,7 +132,7 @@ export default function StudentRoster({ students, classes }: StudentRosterProps)
                   <span className={`text-sm font-medium ${
                     student.mastery >= 80 ? 'text-green-600' :
                     student.mastery >= 70 ? 'text-yellow-600' :
-                    student.mastery > 0 ? 'text-red-600' : 'text-gray-400'
+                    student.mastery > 0 ? 'text-red-600' : 'text-gray-500 dark:text-gray-400'
                   }`}>
                     {student.mastery > 0 ? `${student.mastery}%` : '\u2014'}
                   </span>
@@ -141,7 +141,7 @@ export default function StudentRoster({ students, classes }: StudentRosterProps)
                   <span className={`text-sm font-medium ${
                     student.quizAvg >= 80 ? 'text-green-600' :
                     student.quizAvg >= 70 ? 'text-yellow-600' :
-                    student.quizAvg > 0 ? 'text-red-600' : 'text-gray-400'
+                    student.quizAvg > 0 ? 'text-red-600' : 'text-gray-500 dark:text-gray-400'
                   }`}>
                     {student.quizAvg > 0 ? `${student.quizAvg}%` : '\u2014'}
                   </span>

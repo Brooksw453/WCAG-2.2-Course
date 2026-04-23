@@ -50,7 +50,7 @@ function SentenceHighlightedText({ body, activeChunkIndex, blockTitle }: {
             i === activeChunkIndex
               ? 'bg-blue-100 dark:bg-blue-900/50 text-gray-900 dark:text-white rounded px-0.5 underline decoration-blue-400 decoration-2 underline-offset-2'
               : i < activeChunkIndex
-                ? 'text-gray-400 dark:text-gray-500'
+                ? 'text-gray-500 dark:text-gray-400 dark:text-gray-500'
                 : ''
           }`}
         >

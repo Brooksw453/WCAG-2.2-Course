@@ -457,13 +457,13 @@ export default async function StudentDetailPage({
             <div className="text-xs text-gray-500 dark:text-gray-400 mt-1">Sections Done</div>
           </div>
           <div className="bg-white dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700 shadow-sm p-4 text-center">
-            <div className={`text-2xl font-bold ${avgMastery >= 80 ? 'text-green-600' : avgMastery >= 70 ? 'text-yellow-600' : avgMastery > 0 ? 'text-red-600' : 'text-gray-400'}`}>
+            <div className={`text-2xl font-bold ${avgMastery >= 80 ? 'text-green-600' : avgMastery >= 70 ? 'text-yellow-600' : avgMastery > 0 ? 'text-red-600' : 'text-gray-500 dark:text-gray-400'}`}>
               {avgMastery > 0 ? `${avgMastery}%` : '\u2014'}
             </div>
             <div className="text-xs text-gray-500 dark:text-gray-400 mt-1">Avg Mastery</div>
           </div>
           <div className="bg-white dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700 shadow-sm p-4 text-center">
-            <div className={`text-2xl font-bold ${avgQuizScore >= 80 ? 'text-green-600' : avgQuizScore >= 70 ? 'text-yellow-600' : avgQuizScore > 0 ? 'text-red-600' : 'text-gray-400'}`}>
+            <div className={`text-2xl font-bold ${avgQuizScore >= 80 ? 'text-green-600' : avgQuizScore >= 70 ? 'text-yellow-600' : avgQuizScore > 0 ? 'text-red-600' : 'text-gray-500 dark:text-gray-400'}`}>
               {avgQuizScore > 0 ? `${avgQuizScore}%` : '\u2014'}
             </div>
             <div className="text-xs text-gray-500 dark:text-gray-400 mt-1">Avg Quiz</div>
@@ -473,7 +473,7 @@ export default async function StudentDetailPage({
             <div className="text-xs text-gray-500 dark:text-gray-400 mt-1">Quiz Attempts</div>
           </div>
           <div className="bg-white dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700 shadow-sm p-4 text-center">
-            <div className={`text-2xl font-bold ${quizPassRate >= 80 ? 'text-green-600' : quizPassRate >= 60 ? 'text-yellow-600' : quizPassRate > 0 ? 'text-red-600' : 'text-gray-400'}`}>
+            <div className={`text-2xl font-bold ${quizPassRate >= 80 ? 'text-green-600' : quizPassRate >= 60 ? 'text-yellow-600' : quizPassRate > 0 ? 'text-red-600' : 'text-gray-500 dark:text-gray-400'}`}>
               {quizzes.length > 0 ? `${quizPassRate}%` : '\u2014'}
             </div>
             <div className="text-xs text-gray-500 dark:text-gray-400 mt-1">Pass Rate</div>
@@ -487,7 +487,7 @@ export default async function StudentDetailPage({
             <div className="text-xs text-gray-500 dark:text-gray-400 mt-1">AI Interactions</div>
           </div>
           <div className="bg-white dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700 shadow-sm p-4 text-center">
-            <div className={`text-2xl font-bold ${totalMinutes > 0 ? 'text-purple-600' : 'text-gray-400'}`}>
+            <div className={`text-2xl font-bold ${totalMinutes > 0 ? 'text-purple-600' : 'text-gray-500 dark:text-gray-400'}`}>
               {timeStudiedLabel}
             </div>
             <div className="text-xs text-gray-500 dark:text-gray-400 mt-1">Time Studied</div>
@@ -544,14 +544,14 @@ export default async function StudentDetailPage({
                             {ch.avgMastery}%
                           </span>
                         ) : (
-                          <span className="text-sm text-gray-400">{'\u2014'}</span>
+                          <span className="text-sm text-gray-500 dark:text-gray-400">{'\u2014'}</span>
                         )}
                       </td>
                       <td className="px-4 py-3 text-center">
                         {chQuizzes.length > 0 ? (
                           <span className="text-sm text-purple-600 font-medium">{chQuizzes.length}</span>
                         ) : (
-                          <span className="text-sm text-gray-400">{'\u2014'}</span>
+                          <span className="text-sm text-gray-500 dark:text-gray-400">{'\u2014'}</span>
                         )}
                       </td>
                       <td className="px-4 py-3 text-center">
@@ -640,16 +640,16 @@ export default async function StudentDetailPage({
                           </p>
                         )}
                         {!s.hasContent && (
-                          <p className="text-xs text-gray-400 mt-1">Not started</p>
+                          <p className="text-xs text-gray-500 dark:text-gray-400 mt-1">Not started</p>
                         )}
                         {s.hasContent && s.score === null && (
                           <p className="text-xs text-blue-500 mt-1">Draft saved (Draft {s.draftNumber})</p>
                         )}
                         {s.score !== null && (
-                          <p className="text-xs text-gray-400 mt-1">Draft {s.draftNumber}</p>
+                          <p className="text-xs text-gray-500 dark:text-gray-400 mt-1">Draft {s.draftNumber}</p>
                         )}
                         {s.hasContent && (
-                          <div className="flex items-center gap-2 mt-1 text-xs text-gray-400">
+                          <div className="flex items-center gap-2 mt-1 text-xs text-gray-500 dark:text-gray-400">
                             <span>{s.wordCount} words</span>
                             {s.updatedAt && (
                               <>
@@ -736,7 +736,7 @@ export default async function StudentDetailPage({
                             <span className="inline-flex px-2 py-0.5 text-xs font-medium rounded-full bg-red-100 text-red-700 dark:bg-red-900/30 dark:text-red-400">Fail</span>
                           )}
                         </td>
-                        <td className="px-4 py-3 text-xs text-gray-400 text-right">
+                        <td className="px-4 py-3 text-xs text-gray-500 dark:text-gray-400 text-right">
                           {new Date(q.submitted_at).toLocaleDateString()}
                         </td>
                       </tr>
@@ -745,7 +745,7 @@ export default async function StudentDetailPage({
                 </table>
               </div>
               {quizzes.length > 20 && (
-                <div className="px-4 py-2 text-xs text-gray-400 text-center border-t border-gray-100">
+                <div className="px-4 py-2 text-xs text-gray-500 dark:text-gray-400 text-center border-t border-gray-100">
                   Showing 20 of {quizzes.length} attempts
                 </div>
               )}
@@ -786,7 +786,7 @@ export default async function StudentDetailPage({
                         </span>
                       )}
                     </div>
-                    <span className="text-xs text-gray-400">
+                    <span className="text-xs text-gray-500 dark:text-gray-400">
                       {new Date(ft.submitted_at).toLocaleDateString()}
                     </span>
                   </div>
@@ -809,7 +809,7 @@ export default async function StudentDetailPage({
                 );
               })}
               {freeTexts.length > 15 && (
-                <div className="px-4 py-2 text-xs text-gray-400 text-center">
+                <div className="px-4 py-2 text-xs text-gray-500 dark:text-gray-400 text-center">
                   Showing 15 of {freeTexts.length} responses
                 </div>
               )}
@@ -842,7 +842,7 @@ export default async function StudentDetailPage({
                   );
                 })}
                 {totalTokens > 0 && (
-                  <span className="text-xs text-gray-400 dark:text-gray-500 ml-auto">
+                  <span className="text-xs text-gray-500 dark:text-gray-400 dark:text-gray-500 ml-auto">
                     {totalTokens.toLocaleString()} tokens used
                   </span>
                 )}
@@ -869,10 +869,10 @@ export default async function StudentDetailPage({
                             <span className="text-xs text-gray-500 dark:text-gray-400">{contextStr}</span>
                           )}
                           {ai.tokens_used && (
-                            <span className="text-xs text-gray-400 dark:text-gray-500">{ai.tokens_used.toLocaleString()} tokens</span>
+                            <span className="text-xs text-gray-500 dark:text-gray-400 dark:text-gray-500">{ai.tokens_used.toLocaleString()} tokens</span>
                           )}
                         </div>
-                        <span className="text-xs text-gray-400">{formatRelativeTime(ai.created_at)}</span>
+                        <span className="text-xs text-gray-500 dark:text-gray-400">{formatRelativeTime(ai.created_at)}</span>
                       </div>
                       {/* Prompt */}
                       <div className="bg-blue-50 dark:bg-blue-900/20 rounded-lg p-3 mb-2">
@@ -893,7 +893,7 @@ export default async function StudentDetailPage({
                 })}
               </div>
               {aiInteractions.length > 25 && (
-                <div className="px-4 py-2 text-xs text-gray-400 text-center border-t border-gray-100 dark:border-gray-700">
+                <div className="px-4 py-2 text-xs text-gray-500 dark:text-gray-400 text-center border-t border-gray-100 dark:border-gray-700">
                   Showing 25 of {aiInteractions.length} interactions
                 </div>
               )}
@@ -948,7 +948,7 @@ export default async function StudentDetailPage({
           {studentActivities.length === 0 ? (
             <div className="px-4 py-8 text-center text-sm text-gray-500">
               <p>No activity recorded yet.</p>
-              <p className="text-xs text-gray-400 mt-1">Activity events appear once the student starts sections, submits quizzes, or submits assignments.</p>
+              <p className="text-xs text-gray-500 dark:text-gray-400 mt-1">Activity events appear once the student starts sections, submits quizzes, or submits assignments.</p>
             </div>
           ) : (
             <div className="relative">
@@ -995,7 +995,7 @@ export default async function StudentDetailPage({
                               <span className="text-sm text-gray-700 dark:text-gray-300 ml-2">{detailStr}</span>
                             )}
                           </div>
-                          <span className="text-xs text-gray-400 flex-shrink-0">
+                          <span className="text-xs text-gray-500 dark:text-gray-400 flex-shrink-0">
                             {formatRelativeTime(activity.created_at)}
                           </span>
                         </div>
