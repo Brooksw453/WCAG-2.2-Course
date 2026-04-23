@@ -344,7 +344,11 @@ export default function DraftChat({
         {/* Input area */}
         <div className="border-t border-gray-200 dark:border-gray-700 p-3 flex-shrink-0">
           <div className="flex items-end gap-2">
+            <label htmlFor="draftchat-input" className="sr-only">
+              Message the AI drafting assistant
+            </label>
             <textarea
+              id="draftchat-input"
               ref={inputRef}
               value={input}
               onChange={(e) => setInput(e.target.value)}

@@ -279,7 +279,11 @@ export default function AskQuestionPanel({
         {/* Input Area */}
         <div className="p-3 pb-12 border-t border-gray-200 dark:border-gray-700 flex-shrink-0">
           <div className="flex gap-2">
+            <label htmlFor="ask-question-input" className="sr-only">
+              Type your question
+            </label>
             <textarea
+              id="ask-question-input"
               ref={inputRef}
               value={input}
               onChange={(e) => setInput(e.target.value)}
