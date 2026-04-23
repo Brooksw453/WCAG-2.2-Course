@@ -56,6 +56,25 @@ body {
 /* Smooth scrolling for anchor navigation */
 html {
   scroll-behavior: smooth;
+  /* WCAG 2.4.11 Focus Not Obscured: reserve space at the bottom so the
+     fixed TTS player bar (~80px when open) doesn't cover focused elements
+     when the user tabs near the bottom of the viewport. */
+  scroll-padding-bottom: 6rem;
+}
+
+/* WCAG 2.3.3 — respect the user's motion preference. AAA for 2.3.3, but
+   highly recommended for any AA site because vestibular-sensitive users
+   have no other opt-out. Reduces animations + transitions to effectively
+   instant; does not disable them (so functional state changes still show). */
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
 }
 
 /* Touch targets: ensure minimum 44px for mobile */
