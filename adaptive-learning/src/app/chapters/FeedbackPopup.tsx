@@ -1,6 +1,7 @@
 'use client';
 
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
+import { useDialogA11y } from '@/hooks/useDialogA11y';
 
 interface FeedbackPopupProps {
   triggerPoint: string;
@@ -32,6 +33,13 @@ export default function FeedbackPopup({ triggerPoint, completedFeedbackPoints }:
   const [comment, setComment] = useState('');
   const [submitting, setSubmitting] = useState(false);
   const [submitted, setSubmitted] = useState(false);
+  const panelRef = useRef<HTMLDivElement>(null);
+
+  // Dialog a11y: Escape to dismiss, Tab focus trap, focus return on close
+  useDialogA11y(visible, () => {
+    sessionStorage.setItem(`feedback-dismissed-${triggerPoint}`, 'true');
+    setVisible(false);
+  }, panelRef);
 
   useEffect(() => {
     // Don't show if already given feedback for this trigger point
@@ -75,7 +83,13 @@ export default function FeedbackPopup({ triggerPoint, completedFeedbackPoints }:
 
   return (
     <div className="fixed inset-0 z-50 flex items-end sm:items-center justify-center bg-black/40 animate-fadeIn">
-      <div className="bg-white dark:bg-gray-800 rounded-t-2xl sm:rounded-2xl shadow-2xl max-w-md w-full sm:mx-4 p-5 sm:p-6 animate-scaleIn" role="dialog" aria-label="Student feedback">
+      <div
+        ref={panelRef}
+        role="dialog"
+        aria-modal="true"
+        aria-label="Student feedback"
+        className="bg-white dark:bg-gray-800 rounded-t-2xl sm:rounded-2xl shadow-2xl max-w-md w-full sm:mx-4 p-5 sm:p-6 animate-scaleIn"
+      >
         {submitted ? (
           <div className="text-center py-6">
             <div className="w-14 h-14 bg-green-100 dark:bg-green-900/30 rounded-full flex items-center justify-center mx-auto mb-3">

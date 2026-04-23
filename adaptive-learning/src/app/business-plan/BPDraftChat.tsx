@@ -2,6 +2,7 @@
 
 import { useState, useRef, useEffect } from 'react';
 import { courseConfig } from '@/lib/course.config';
+import { useDialogA11y } from '@/hooks/useDialogA11y';
 
 interface ChatMessage {
   role: 'user' | 'assistant';
@@ -32,7 +33,11 @@ export default function BPDraftChat({
   const [draftInserted, setDraftInserted] = useState(false);
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLTextAreaElement>(null);
+  const panelRef = useRef<HTMLDivElement>(null);
   const prevSectionRef = useRef(sectionType);
+
+  // Dialog a11y: Escape to close, Tab focus trap, focus return on close
+  useDialogA11y(isOpen, onClose, panelRef);
 
   useEffect(() => {
     if (prevSectionRef.current !== sectionType) {
@@ -139,11 +144,17 @@ export default function BPDraftChat({
   return (
     <>
       {isOpen && (
-        <div className="fixed inset-0 bg-black/20 z-40 transition-opacity" onClick={onClose} />
+        <div
+          aria-hidden="true"
+          className="fixed inset-0 bg-black/20 z-40 transition-opacity"
+          onClick={onClose}
+        />
       )}
 
       <div
+        ref={panelRef}
         role="dialog"
+        aria-modal="true"
         aria-label="AI drafting assistant"
         className={`fixed inset-y-0 right-0 w-full sm:w-[440px] bg-white dark:bg-gray-800 shadow-2xl border-l border-gray-200 dark:border-gray-700 transform transition-transform z-50 flex flex-col ${
           isOpen ? 'translate-x-0' : 'translate-x-full'
@@ -159,7 +170,11 @@ export default function BPDraftChat({
               <p className="text-xs text-purple-200">{sectionTitle}</p>
             </div>
           </div>
-          <button onClick={onClose} className="text-white/80 hover:text-white transition-colors p-1">
+          <button
+            onClick={onClose}
+            aria-label="Close AI drafting assistant"
+            className="text-white/80 hover:text-white transition-colors min-w-[44px] min-h-[44px] flex items-center justify-center"
+          >
             <svg className="w-5 h-5" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
             </svg>
