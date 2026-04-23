@@ -20,46 +20,15 @@
 
 const MAX_CACHE_SIZE = 50;
 
-// Module-level silent keepalive: held across player instances and page
-// navigations. On iOS, this is what keeps the audio session active and
-// Bluetooth (A2DP) routing intact. If we tore it down between sections,
-// the next section's audio would be created outside any active session
-// and iOS would route it to the phone speaker instead of Bluetooth.
-let keepaliveAudio: HTMLAudioElement | null = null;
+// Module-level silent WAV blob URL — reused by both the keepalive element
+// AND as the "idle" src for the persistent playback element. Created once
+// on first use, held for the lifetime of the page (never revoked during
+// session navigation).
+let silentBlobUrl: string | null = null;
 
-// Module-level persistent MP3 element: also held across player instances.
-// Creating a new <audio> element per section — especially inside the async
-// leg of playChunk, after `await fetchAndCache()` — puts the element
-// outside the user-gesture call stack. After the idle gap between finishing
-// one section, walking through the congrats screen, and tapping Listen on
-// the next section, iOS silently re-evaluates routing for "new" media
-// resources and pushes them to the phone speaker even while CarPlay/A2DP
-// is connected. Reusing one element across sections gives iOS a single
-// continuous media resource and keeps Bluetooth routing pinned.
-let persistentAudio: HTMLAudioElement | null = null;
-
-function ensurePersistentAudio() {
-  if (persistentAudio) return;
-  if (typeof window === 'undefined') return;
-  persistentAudio = new Audio();
-  persistentAudio.preload = 'auto';
-}
-
-function ensureKeepalive() {
-  if (keepaliveAudio) {
-    // Keepalive already exists from a previous section. Re-engage play()
-    // within the current user gesture so iOS refreshes the audio session
-    // routing decision — without this, subsequent sections can get stuck
-    // playing through the phone speaker while CarPlay/Bluetooth is still
-    // connected but iOS has silently downgraded routing during the idle
-    // gap between the previous section ending and the user tapping
-    // Listen on the next one.
-    try {
-      keepaliveAudio.play().catch(() => {});
-    } catch { /* best-effort */ }
-    return;
-  }
-  if (typeof window === 'undefined') return;
+function getSilentBlobUrl(): string | null {
+  if (silentBlobUrl) return silentBlobUrl;
+  if (typeof window === 'undefined') return null;
 
   const sampleRate = 8000;
   const numSamples = sampleRate;
@@ -87,8 +56,75 @@ function ensureKeepalive() {
   }
 
   const blob = new Blob([buffer], { type: 'audio/wav' });
-  const url = URL.createObjectURL(blob);
+  silentBlobUrl = URL.createObjectURL(blob);
+  return silentBlobUrl;
+}
 
+// Module-level silent keepalive: held across player instances and page
+// navigations. On iOS, this is what keeps the audio session active and
+// Bluetooth (A2DP) routing intact.
+let keepaliveAudio: HTMLAudioElement | null = null;
+
+// Module-level persistent MP3 element: the actual playback surface for
+// real TTS chunks. KEY INSIGHT from repeated Bluetooth/CarPlay debugging:
+// iOS drops Bluetooth routing during ANY gap where the primary audio
+// element has no src or isn't actively playing. Even with keepaliveAudio
+// looping silently, the persistent element's idle state (paused, no src)
+// makes iOS treat the session as "ready to release."
+//
+// Fix: keep persistentAudio CONTINUOUSLY PLAYING across section
+// transitions by swapping between the silent WAV (volume 0, looping) when
+// idle and the real MP3 chunk when speaking. From iOS's perspective the
+// element never stops — it's always associated with the active A2DP
+// output, so routing stays pinned from section N to section N+1 with no
+// opportunity for the phone speaker to reclaim output.
+let persistentAudio: HTMLAudioElement | null = null;
+
+/** Put persistentAudio into its "idle" silent-loop state. */
+function parkPersistentAudio() {
+  const audio = persistentAudio;
+  if (!audio) return;
+  const url = getSilentBlobUrl();
+  if (!url) {
+    // No silent blob available (SSR or pre-init) — fall back to pause.
+    audio.pause();
+    return;
+  }
+  audio.onended = null;
+  audio.loop = true;
+  audio.volume = 0;
+  // Only reassign src if it's not already the silent URL (avoids an
+  // unnecessary reload that could briefly unhook the output device).
+  if (audio.src !== url) {
+    audio.src = url;
+  }
+  audio.playbackRate = 1.0;
+  audio.play().catch(() => {});
+}
+
+function ensurePersistentAudio() {
+  if (persistentAudio) {
+    // Re-engage play() inside the current user gesture so iOS refreshes
+    // routing decisions when a new section starts.
+    try { persistentAudio.play().catch(() => {}); } catch { /* best-effort */ }
+    return;
+  }
+  if (typeof window === 'undefined') return;
+  persistentAudio = new Audio();
+  persistentAudio.preload = 'auto';
+  // Immediately park into silent-loop state so the element is "actively
+  // playing" from the first user gesture onward. This is what makes iOS
+  // treat it as a persistent A2DP-routed media source.
+  parkPersistentAudio();
+}
+
+function ensureKeepalive() {
+  if (keepaliveAudio) {
+    try { keepaliveAudio.play().catch(() => {}); } catch { /* best-effort */ }
+    return;
+  }
+  const url = getSilentBlobUrl();
+  if (!url) return;
   keepaliveAudio = new Audio(url);
   keepaliveAudio.loop = true;
   keepaliveAudio.volume = 0.01;
@@ -96,9 +132,9 @@ function ensureKeepalive() {
 }
 
 /**
- * Fully tear down the module-level keepalive. Only call on explicit user
- * "close player" — never on component unmount / natural section end, or
- * Bluetooth routing will break on the next page.
+ * Fully tear down the module-level audio resources. Only call on explicit
+ * user "close player" — never on component unmount / natural section end,
+ * or Bluetooth routing will break on the next page.
  */
 export function shutdownKeepalive() {
   if (keepaliveAudio) {
@@ -111,6 +147,10 @@ export function shutdownKeepalive() {
     persistentAudio.pause();
     try { persistentAudio.removeAttribute('src'); } catch { /* noop */ }
     persistentAudio = null;
+  }
+  if (silentBlobUrl) {
+    URL.revokeObjectURL(silentBlobUrl);
+    silentBlobUrl = null;
   }
 }
 
@@ -228,15 +268,13 @@ export function createTTSPlayer(): TTSPlayer {
 
   function stopCurrent() {
     generation++;
-
-    if (persistentAudio) {
-      persistentAudio.onended = null;
-      persistentAudio.pause();
-      // Don't tear down the element itself — clearing src stops playback;
-      // the element is reused on the next playChunk to keep iOS A2DP
-      // routing pinned to the active Bluetooth/CarPlay output.
-      try { persistentAudio.removeAttribute('src'); } catch { /* noop */ }
-    }
+    // Park persistentAudio into its silent-loop idle state instead of
+    // pausing/clearing src. This keeps the element "actively playing"
+    // (at zero volume) so iOS doesn't release Bluetooth/CarPlay routing
+    // during section-to-section navigation. Critical: a pause+empty-src
+    // gap is enough for iOS to hand audio back to the phone speaker on
+    // the next section's first real chunk.
+    parkPersistentAudio();
   }
 
   async function playChunk(text: string): Promise<void> {
@@ -256,6 +294,11 @@ export function createTTSPlayer(): TTSPlayer {
     if (generation !== myGeneration) return;
 
     audio.onended = null;
+    // Swap from silent-loop idle state to the real chunk. iOS sees this
+    // as a continuous media resource — same element, just a new source —
+    // so Bluetooth routing stays pinned.
+    audio.loop = false;
+    audio.volume = 1.0;
     audio.src = blobUrl;
     audio.playbackRate = playbackRate;
 
