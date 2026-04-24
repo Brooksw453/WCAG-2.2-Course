@@ -79,7 +79,8 @@ export default async function CertificatePage() {
       remainingItems.push(`Submit Assignment${ungradedAssignments.length > 1 ? 's' : ''} ${ungradedAssignments.join(', ')}`);
     }
     if (!portfolioSubmitted) {
-      remainingItems.push('Submit your Final Business Plan (capstone)');
+      const capstoneLabel = courseConfig.capstone.navLabel || courseConfig.capstone.title || 'capstone';
+      remainingItems.push(`Submit your ${capstoneLabel}`);
     }
 
     return (

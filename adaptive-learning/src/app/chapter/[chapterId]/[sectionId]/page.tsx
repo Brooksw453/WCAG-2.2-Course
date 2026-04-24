@@ -1,5 +1,5 @@
 import { createClient } from '@/lib/supabase/server';
-import { getSectionContent, getGateQuiz, getChapterMeta } from '@/lib/content';
+import { getSectionContent, getGateQuiz, getChapterMeta, getAllChapters } from '@/lib/content';
 import { redirect } from 'next/navigation';
 import Link from 'next/link';
 import SectionLearningFlow from './SectionLearningFlow';
@@ -57,6 +57,19 @@ export default async function SectionPage({
   // Determine next and previous sections
   const prevSection = sectionIndex > 0 ? chapter.sections[sectionIndex - 1] : null;
   const nextSection = sectionIndex < chapter.sections.length - 1 ? chapter.sections[sectionIndex + 1] : null;
+
+  // If we're on the last section of this chapter, compute the URL of the
+  // next chapter's first section. Lets the completion screen offer a
+  // "Next Chapter" button so students don't have to navigate home → module
+  // → next chapter manually — and so the iOS audio session stays alive
+  // across the chapter boundary (long idle gaps re-route TTS to the
+  // phone speaker on Bluetooth/CarPlay).
+  const allChapters = getAllChapters();
+  const chapterIdx = allChapters.findIndex(c => c.chapterId === chapterId);
+  const nextChapter = !nextSection && chapterIdx >= 0 ? allChapters[chapterIdx + 1] : null;
+  const nextChapterUrl = nextChapter && nextChapter.sections.length > 0
+    ? `/chapter/${nextChapter.chapterId}/${nextChapter.sections[0]}`
+    : null;
 
   // Check if student already passed the quiz for this section
   const { data: passedQuiz } = await supabase
@@ -152,6 +165,14 @@ export default async function SectionPage({
                 Next &rarr;
               </Link>
             )}
+            {!nextSection && nextChapterUrl && progress?.status === 'completed' && (
+              <Link
+                href={nextChapterUrl}
+                className="px-3 py-1 bg-blue-600 text-white rounded hover:bg-blue-700 transition-colors min-w-[44px] min-h-[44px] flex items-center justify-center"
+              >
+                Next Chapter &rarr;
+              </Link>
+            )}
           </div>
         </div>
       </header>
@@ -167,6 +188,8 @@ export default async function SectionPage({
           hasPassedFreeText={!!hasPassedFreeText}
           savedQuizScore={passedQuiz?.score || null}
           nextSectionUrl={nextSection ? `/chapter/${chapterId}/${nextSection}` : null}
+          nextChapterUrl={nextChapterUrl}
+          nextChapterTitle={nextChapter ? nextChapter.title : null}
           chapterUrl={`/chapter/${chapterId}`}
         />
       </main>

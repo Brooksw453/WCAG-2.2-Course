@@ -22,6 +22,8 @@ interface Props {
   hasPassedFreeText: boolean;
   savedQuizScore: number | null;
   nextSectionUrl: string | null;
+  nextChapterUrl: string | null;
+  nextChapterTitle: string | null;
   chapterUrl: string;
 }
 
@@ -35,6 +37,8 @@ export default function SectionLearningFlow({
   hasPassedFreeText,
   savedQuizScore,
   nextSectionUrl,
+  nextChapterUrl,
+  nextChapterTitle,
   chapterUrl,
 }: Props) {
   const router = useRouter();
@@ -92,22 +96,27 @@ export default function SectionLearningFlow({
     window.scrollTo(0, 0);
   }, [currentStep]);
 
-  // Auto-advance countdown (Improvement 4)
+  // Auto-advance countdown (Improvement 4) — also fires for chapter
+  // transitions so the iOS audio session stays alive across chapter
+  // boundaries. Without this, students had to manually navigate
+  // home → module → next chapter, and the long gap let iOS re-route
+  // TTS to the phone speaker on the next Listen tap.
+  const autoAdvanceTarget = nextSectionUrl || nextChapterUrl;
   useEffect(() => {
-    if (currentStep !== 'completed' || !nextSectionUrl) return;
+    if (currentStep !== 'completed' || !autoAdvanceTarget) return;
     setAutoAdvanceCountdown(5);
     const timer = setInterval(() => {
       setAutoAdvanceCountdown(prev => {
         if (prev === null || prev <= 1) {
           clearInterval(timer);
-          router.push(nextSectionUrl);
+          router.push(autoAdvanceTarget);
           return null;
         }
         return prev - 1;
       });
     }, 1000);
     return () => clearInterval(timer);
-  }, [currentStep, nextSectionUrl, router]);
+  }, [currentStep, autoAdvanceTarget, router]);
 
   const handleTTSBlockChange = useCallback((index: number) => {
     setTTSBlockIndex(index);
@@ -308,10 +317,10 @@ export default function SectionLearningFlow({
       {currentStep === 'completed' && (
         <div className="space-y-6">
           {/* Auto-advance banner (Improvement 4) */}
-          {autoAdvanceCountdown !== null && nextSectionUrl && (
+          {autoAdvanceCountdown !== null && autoAdvanceTarget && (
             <div className="bg-blue-50 dark:bg-blue-900/20 border border-blue-200 dark:border-blue-800 rounded-lg p-4 flex items-center justify-between">
               <p className="text-sm text-blue-700 dark:text-blue-300">
-                Continuing to next section in {autoAdvanceCountdown}...
+                Continuing to {nextSectionUrl ? 'next section' : `next chapter${nextChapterTitle ? ` (${nextChapterTitle})` : ''}`} in {autoAdvanceCountdown}...
               </p>
               <button onClick={() => setAutoAdvanceCountdown(null)}
                 className="text-sm text-blue-600 font-medium hover:text-blue-800">
@@ -357,6 +366,14 @@ export default function SectionLearningFlow({
                   className="px-6 py-3 bg-green-600 hover:bg-green-700 text-white font-medium rounded-lg transition-colors"
                 >
                   Next Section &rarr;
+                </button>
+              )}
+              {!nextSectionUrl && nextChapterUrl && (
+                <button
+                  onClick={() => router.push(nextChapterUrl)}
+                  className="px-6 py-3 bg-green-600 hover:bg-green-700 text-white font-medium rounded-lg transition-colors"
+                >
+                  Next Chapter{nextChapterTitle ? `: ${nextChapterTitle}` : ''} &rarr;
                 </button>
               )}
             </div>
