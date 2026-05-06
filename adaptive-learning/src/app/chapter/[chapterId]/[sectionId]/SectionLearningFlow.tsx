@@ -104,6 +104,13 @@ export default function SectionLearningFlow({
   const autoAdvanceTarget = nextSectionUrl || nextChapterUrl;
   useEffect(() => {
     if (currentStep !== 'completed' || !autoAdvanceTarget) return;
+    // Pause auto-advance while the student reviews completed content,
+    // either via the breadcrumb "Read" pill or the "Review Content" button.
+    // When review closes the effect re-runs and the countdown restarts at 5.
+    if (reviewingContent || showReviewContent) {
+      setAutoAdvanceCountdown(null);
+      return;
+    }
     setAutoAdvanceCountdown(5);
     const timer = setInterval(() => {
       setAutoAdvanceCountdown(prev => {
@@ -116,7 +123,7 @@ export default function SectionLearningFlow({
       });
     }, 1000);
     return () => clearInterval(timer);
-  }, [currentStep, autoAdvanceTarget, router]);
+  }, [currentStep, autoAdvanceTarget, router, reviewingContent, showReviewContent]);
 
   const handleTTSBlockChange = useCallback((index: number) => {
     setTTSBlockIndex(index);
