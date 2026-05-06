@@ -38,15 +38,15 @@
           "correct": false
         },
         {
-          "text": "No — Title II applies to all public entities, but smaller institutions have a later deadline (April 2027)",
+          "text": "No — Title II applies to all public entities, but smaller institutions have a later deadline (April 2028)",
           "correct": true
         },
         {
-          "text": "No — all institutions must comply by April 2026 regardless of size",
+          "text": "No — all institutions must comply by April 2027 regardless of size",
           "correct": false
         }
       ],
-      "explanation": "Title II applies to all public entities, regardless of size. The rule does provide different compliance timelines: large entities (serving 50,000 or more people) must comply by April 24, 2026, while smaller entities have until April 26, 2027. But the requirement itself applies equally. Community colleges, as public institutions, are fully covered. The size distinction affects only the deadline, not whether the rule applies."
+      "explanation": "Title II applies to all public entities, regardless of size. The rule does provide different compliance timelines: large entities (serving 50,000 or more people) must comply by April 26, 2027, while smaller entities have until April 26, 2028. (DOJ extended both original deadlines by one year via an Interim Final Rule in April 2026.) But the requirement itself applies equally. Community colleges, as public institutions, are fully covered. The size distinction affects only the deadline, not whether the rule applies."
     }
   ],
   "passThreshold": 80

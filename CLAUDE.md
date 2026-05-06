@@ -84,7 +84,7 @@ All diagrams are hand-authored, accessible, and embedded directly in the relevan
 
 | # | File | Section | What it shows |
 |---|------|---------|---------------|
-| 1 | `ch01/title-ii-timeline.svg` | 1.1 | Title II compliance milestones: Apr 2024 rule → Apr 2026 large entity → Apr 2027 small entity |
+| 1 | `ch01/title-ii-timeline.svg` | 1.1 | Title II compliance milestones: Apr 2024 rule → Apr 2027 large entity → Apr 2028 small entity (both extended one year by DOJ April 2026 IFR) |
 | 2 | `ch02/pour-principles.svg` | 2.1 | Four POUR principles with example violations |
 | 3 | `ch02/sixty-second-scan.svg` | 2.3 | 5-item quick accessibility check |
 | 4 | `ch03/alt-text-decision-tree.svg` | 3.2 | Flowchart: decorative → functional → complex → informative |

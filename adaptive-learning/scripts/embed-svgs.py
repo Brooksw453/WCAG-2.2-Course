@@ -23,7 +23,7 @@ IMAGE_INSERTIONS = [
         "title": "ADA Title II Digital Accessibility Timeline",
         "body": "",
         "imageSrc": "/images/ch01/title-ii-timeline.svg",
-        "imageAlt": "Timeline of three ADA Title II digital accessibility milestones: the Department of Justice rule published in April 2024, the April 2026 compliance deadline for public entities serving 50,000 or more people, and the April 2027 deadline for smaller entities. All must meet WCAG 2.1 Level AA.",
+        "imageAlt": "Timeline of three ADA Title II digital accessibility milestones: the Department of Justice rule published in April 2024, the April 2027 compliance deadline for public entities serving 50,000 or more people, and the April 2028 deadline for smaller entities. All must meet WCAG 2.1 Level AA.",
         "imageCaption": "Title II compliance milestones at a glance — two deadlines, one required standard.",
     }),
     ("ch02/sections/2.1.json", 0, {

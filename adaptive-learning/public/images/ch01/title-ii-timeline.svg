@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 360" role="img" aria-labelledby="tiiTitle tiiDesc">
   <title id="tiiTitle">ADA Title II Digital Accessibility Compliance Timeline</title>
-  <desc id="tiiDesc">Three milestones on a horizontal timeline. April 24, 2024 — the U.S. Department of Justice published its final Title II web rule. April 24, 2026 — large public entities serving 50,000 or more people must comply. April 26, 2027 — smaller public entities must comply. The required standard is WCAG 2.1 Level AA.</desc>
+  <desc id="tiiDesc">Three milestones on a horizontal timeline. April 24, 2024 — the U.S. Department of Justice published its final Title II web rule. April 26, 2027 — large public entities serving 50,000 or more people must comply. April 26, 2028 — smaller public entities must comply. (DOJ extended both compliance dates by one year via an Interim Final Rule in April 2026.) The required standard is WCAG 2.1 Level AA.</desc>
 
   <rect width="900" height="360" fill="#FFFFFF"/>
 
@@ -22,7 +22,7 @@
     <circle cx="450" cy="190" r="18" fill="#047857"/>
     <circle cx="450" cy="190" r="7" fill="#FFFFFF"/>
   </g>
-  <text x="450" y="150" text-anchor="middle" font-family="system-ui, sans-serif" font-size="15" font-weight="700" fill="#047857">Apr 24, 2026</text>
+  <text x="450" y="150" text-anchor="middle" font-family="system-ui, sans-serif" font-size="15" font-weight="700" fill="#047857">Apr 26, 2027</text>
   <text x="450" y="228" text-anchor="middle" font-family="system-ui, sans-serif" font-size="14" font-weight="600" fill="#1F2937">Large entities must comply</text>
   <text x="450" y="248" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#6B7280">Population ≥ 50,000</text>
 
@@ -30,7 +30,7 @@
     <circle cx="740" cy="190" r="18" fill="#B45309"/>
     <circle cx="740" cy="190" r="7" fill="#FFFFFF"/>
   </g>
-  <text x="740" y="150" text-anchor="middle" font-family="system-ui, sans-serif" font-size="15" font-weight="700" fill="#B45309">Apr 26, 2027</text>
+  <text x="740" y="150" text-anchor="middle" font-family="system-ui, sans-serif" font-size="15" font-weight="700" fill="#B45309">Apr 26, 2028</text>
   <text x="740" y="228" text-anchor="middle" font-family="system-ui, sans-serif" font-size="14" font-weight="600" fill="#1F2937">Small entities must comply</text>
   <text x="740" y="248" text-anchor="middle" font-family="system-ui, sans-serif" font-size="12" fill="#6B7280">Population &lt; 50,000</text>
 

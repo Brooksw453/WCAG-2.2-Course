@@ -16,8 +16,8 @@
 | WCAG issues automated checkers can detect | ~30% of success criteria (pass/fail); ~57% partial | [Deque Automated Coverage Report](https://www.deque.com/automated-accessibility-testing-coverage/) |
 | WCAG 2.2 total success criteria | 86 (vs. 78 in 2.1) | [W3C What's New in WCAG 2.2](https://www.w3.org/WAI/standards-guidelines/wcag/new-in-22/) |
 | WCAG 2.2 became W3C standard | October 5, 2023 | [W3C What's New in WCAG 2.2](https://www.w3.org/WAI/standards-guidelines/wcag/new-in-22/) |
-| Title II large entity deadline | April 24, 2026 | [ADA.gov Fact Sheet](https://www.ada.gov/resources/2024-03-08-web-rule/) |
-| Title II small entity deadline | April 26, 2027 | [ADA.gov Fact Sheet](https://www.ada.gov/resources/2024-03-08-web-rule/) |
+| Title II large entity deadline | April 26, 2027 (extended via DOJ April 2026 IFR from April 24, 2026) | [ADA.gov Fact Sheet](https://www.ada.gov/resources/2024-03-08-web-rule/), [DOJ IFR (Apr 2026)](https://www.federalregister.gov/documents/2026/04/20/2026-07663/nondiscrimination-on-the-basis-of-disability-accessibility-of-web-information-and-services-of-state) |
+| Title II small entity deadline | April 26, 2028 (extended via DOJ April 2026 IFR from April 26, 2027) | [ADA.gov Fact Sheet](https://www.ada.gov/resources/2024-03-08-web-rule/), [DOJ IFR (Apr 2026)](https://www.federalregister.gov/documents/2026/04/20/2026-07663/nondiscrimination-on-the-basis-of-disability-accessibility-of-web-information-and-services-of-state) |
 | OCR disability resolutions (Jan–Jul 2025) | 35 of 53 total resolutions | [Grand River Solutions OCR Overview](https://grandriversolutions.com/ocr-demonstrates-robust-enforcement-overview-of-2025-resolutions-on-disability/) |
 
 ---
@@ -36,7 +36,7 @@
 | **NYSBA — Title II for In-House Counsel** | https://nysba.org/new-americans-with-disabilities-act-title-ii-accessibility-requirements-for-public-colleges-and-universities-what-in-house-counsel-should-do-now/ | Legal perspective for the "what the deadline actually means" content. |
 
 **Image opportunities:**
-- Create: Timeline infographic (DOJ final rule April 2024 → Large entity deadline April 2026 → Small entity deadline April 2027)
+- Create: Timeline infographic (DOJ final rule April 2024 → Large entity deadline April 2027 → Small entity deadline April 2028; both extended one year via DOJ April 2026 IFR)
 - Create: "What's covered" scope diagram (websites, documents, LMS content, mobile apps, third-party tools)
 
 ---

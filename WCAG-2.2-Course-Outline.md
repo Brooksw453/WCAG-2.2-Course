@@ -99,7 +99,7 @@ tone: "warm, practical, and judgment-free — like a colleague who happens to kn
 - Undue burden (and why it's not the escape hatch people think)
 
 **Content Blocks:**
-1. `concept` — "What Title II Actually Says": The DOJ final rule in plain language. What changed in 2024. Why this isn't optional anymore. The two deadlines (April 2026 for large entities, April 2027 for small).
+1. `concept` — "What Title II Actually Says": The DOJ final rule in plain language. What changed in 2024. Why this isn't optional anymore. The two deadlines (April 2027 for large entities, April 2028 for small — both extended one year by the DOJ April 2026 Interim Final Rule).
 2. `concept` — "What This Means for Your Institution": Who is covered (all public colleges and universities). What must be accessible (websites, documents, course materials, LMS content). What "WCAG 2.1 AA conformance" means in practice.
 3. `example` — "A Real Compliance Timeline": Walk through what a mid-size state university's compliance journey actually looks like — the audit, the remediation plan, the training mandate.
 4. `summary`
