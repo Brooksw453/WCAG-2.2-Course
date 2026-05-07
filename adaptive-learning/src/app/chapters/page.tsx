@@ -490,7 +490,7 @@ export default async function ChaptersPage() {
 
   // Determine milestone
   const milestoneDefinitions = [
-    { type: 'course-complete', title: 'Course Complete!', message: "Congratulations! You've finished all 16 chapters!", check: () => completedSections >= totalSections && totalSections > 0 },
+    { type: 'course-complete', title: 'Course Complete!', message: `Congratulations! You've finished all ${chapters.length} chapters!`, check: () => completedSections >= totalSections && totalSections > 0 },
     { type: 'three-quarter', title: '75% Complete!', message: "You're in the home stretch!", check: () => completedSections >= Math.floor(totalSections * 0.75) },
     { type: 'half', title: 'Halfway There!', message: "You've completed half the course. Incredible progress!", check: () => completedSections >= Math.floor(totalSections * 0.5) },
     { type: 'quarter', title: '25% Complete!', message: "You're a quarter of the way through the course!", check: () => completedSections >= Math.floor(totalSections * 0.25) },

@@ -32,7 +32,7 @@ export async function POST(request: NextRequest) {
     const capLabel = courseConfig.capstone.navLabel.toLowerCase();
 
     if (sectionType === 'exec-summary') {
-      systemPrompt = `You are an AI drafting assistant helping a community college student write the Executive Summary for their ${capLabel}.
+      systemPrompt = `You are an AI drafting assistant helping a learner write the Executive Summary for their ${capLabel}.
 
 Here is the full content of their ${capLabel} sections:
 ${planContent}
@@ -59,12 +59,12 @@ PHASE 3 (Refining): If they want changes, generate an updated draft with the sam
 
 IMPORTANT:
 - Use ONLY details from their actual sections — don't invent facts
-- Write at a community college level — professional but not overly formal
+- Tone is professional but not overly formal
 - Keep it 200-500 words
 - Keep non-draft conversation brief`;
     } else {
       // Introduction — focused on reflection
-      systemPrompt = `You are an AI drafting assistant helping a community college student write the Introduction for their ${capLabel}.
+      systemPrompt = `You are an AI drafting assistant helping a learner write the Introduction for their ${capLabel}.
 
 The introduction should be a personal, reflective piece (150-300 words) about their journey creating this ${capLabel}.
 

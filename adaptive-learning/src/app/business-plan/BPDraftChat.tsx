@@ -185,7 +185,7 @@ export default function BPDraftChat({
           <p className="text-xs text-purple-700 dark:text-purple-300">
             <span className="font-semibold">
               {sectionType === 'exec-summary'
-                ? 'I\'ll synthesize your full business plan into a compelling summary.'
+                ? `I'll synthesize your full ${courseConfig.capstone.navLabel.toLowerCase()} into a compelling summary.`
                 : 'Answer my questions and I\'ll help you write a reflective introduction.'}
             </span>
             {' '}Click &quot;Use This Draft&quot; to insert it.
@@ -257,7 +257,7 @@ export default function BPDraftChat({
             <div className="flex flex-wrap gap-1.5">
               {(sectionType === 'exec-summary'
                 ? ['Draft my executive summary now', 'What should I emphasize?']
-                : ['I chose this business because...', 'The most surprising thing I learned was...']
+                : ['I chose this topic because...', 'The most surprising thing I learned was...']
               ).map((suggestion, i) => (
                 <button
                   key={i}

@@ -57,8 +57,8 @@ export default function DraftChat({
       const welcome: ChatMessage = {
         role: 'assistant',
         content: currentDraft
-          ? `I can see you've already started writing for "${sectionTitle}". Would you like me to help refine what you have, or would you prefer to start fresh? Tell me about your business idea and I'll help you build a strong response.`
-          : `Let's build your response for "${sectionTitle}" together! I'll ask you some questions, and then use your answers to draft content that goes directly into your response box.\n\nTo get started: What business are you creating? Give me a quick description of your product or service idea.`,
+          ? `I can see you've already started writing for "${sectionTitle}". Would you like me to help refine what you have, or would you prefer to start fresh? Tell me a bit about what you're working on and I'll help you build a strong response.`
+          : `Let's build your response for "${sectionTitle}" together! I'll ask you some questions, and then use your answers to draft content that goes directly into your response box.\n\nTo get started: tell me about the course or materials you'll be drawing on for this section. A quick description is enough — I'll ask follow-ups from there.`,
       };
       setMessages([welcome]);
     }
@@ -320,8 +320,8 @@ export default function DraftChat({
           <div className="px-4 pb-2 flex-shrink-0">
             <div className="flex flex-wrap gap-1.5">
               {[
-                'Help me brainstorm a business idea',
-                'I have an idea, ask me questions',
+                'Help me brainstorm what to write',
+                'I have ideas, ask me questions',
                 currentDraft ? 'Improve my current draft' : null,
               ]
                 .filter(Boolean)

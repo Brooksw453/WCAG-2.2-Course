@@ -82,7 +82,7 @@ ${previousFeedback ? `PREVIOUS FEEDBACK (draft ${draftNumber - 1}): The student 
 ${JSON.stringify(previousFeedback)}` : ''}
 
 GRADING GUIDELINES:
-- This is a community college course. Be encouraging and constructive.
+- Be encouraging and constructive.
 - Score on a scale of 0-100:
   - 90-100: Excellent — meets all rubric criteria with depth and specificity
   - 80-89: Good — meets most criteria, minor gaps

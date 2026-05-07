@@ -1,6 +1,6 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { createClient } from '@/lib/supabase/server';
-import { COURSE_ID } from '@/lib/course.config';
+import { COURSE_ID, courseConfig } from '@/lib/course.config';
 
 export async function GET() {
   try {
@@ -33,7 +33,7 @@ export async function GET() {
     });
   } catch (error) {
     console.error('Business plan GET error:', error);
-    return NextResponse.json({ error: 'Failed to load business plan data' }, { status: 500 });
+    return NextResponse.json({ error: `Failed to load ${courseConfig.capstone.navLabel.toLowerCase()} data` }, { status: 500 });
   }
 }
 
@@ -82,6 +82,6 @@ export async function POST(request: NextRequest) {
     return NextResponse.json({ success: true, draftNumber });
   } catch (error) {
     console.error('Business plan POST error:', error);
-    return NextResponse.json({ error: 'Failed to save business plan data' }, { status: 500 });
+    return NextResponse.json({ error: `Failed to save ${courseConfig.capstone.navLabel.toLowerCase()} data` }, { status: 500 });
   }
 }

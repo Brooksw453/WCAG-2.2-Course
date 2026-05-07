@@ -158,7 +158,7 @@ export default function SearchPage() {
             </div>
             <h2 className="text-lg font-semibold text-gray-900 dark:text-white mb-2">Search Course Content</h2>
             <p className="text-gray-500 dark:text-gray-400 max-w-md mx-auto">
-              Search across all 16 chapters of course content. Find key terms, concepts, and topics instantly.
+              Search the full course. Find key terms, concepts, and topics instantly.
             </p>
           </div>
         )}
