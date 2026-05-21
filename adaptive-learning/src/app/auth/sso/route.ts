@@ -34,6 +34,17 @@ export async function GET(request: NextRequest) {
 
   const response = NextResponse.redirect(`${origin}${landingPage}`);
 
+  // Carry the dashboard theme into the course as the default. ThemeProvider
+  // treats an in-course choice (localStorage) as the override that wins.
+  const ssoTheme = payload.theme ?? searchParams.get('theme') ?? undefined;
+  if (ssoTheme === 'light' || ssoTheme === 'dark' || ssoTheme === 'system') {
+    response.cookies.set('theme', ssoTheme, {
+      path: '/',
+      maxAge: 31536000,
+      sameSite: 'lax',
+    });
+  }
+
   const supabase = createServerClient(
     process.env.NEXT_PUBLIC_SUPABASE_URL!,
     process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!,

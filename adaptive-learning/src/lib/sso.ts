@@ -10,6 +10,7 @@ export interface SSOPayload {
   course_id: string;
   tenant_id?: string;
   tenant_slug?: string;
+  theme?: 'light' | 'dark' | 'system';
 }
 
 export async function verifySSOToken(token: string): Promise<SSOPayload> {
