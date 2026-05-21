@@ -41,7 +41,7 @@ export default function RootLayout({
       <head>
         <script async src="https://www.googletagmanager.com/gtag/js?id=G-1J3K52PMLD" />
         <script dangerouslySetInnerHTML={{ __html: `window.dataLayer=window.dataLayer||[];function gtag(){dataLayer.push(arguments);}gtag('js',new Date());gtag('config','G-1J3K52PMLD');` }} />
-        <script dangerouslySetInnerHTML={{ __html: `try{const t=localStorage.getItem('theme');const d=t==='dark'||(!t||t==='system')&&window.matchMedia('(prefers-color-scheme:dark)').matches;if(d)document.documentElement.classList.add('dark')}catch{}` }} />
+        <script dangerouslySetInnerHTML={{ __html: `try{var ck=(document.cookie.match(/(?:^|; )theme=([^;]+)/)||[])[1];var t=localStorage.getItem('theme')||ck;var d=t==='dark'||(!t||t==='system')&&window.matchMedia('(prefers-color-scheme:dark)').matches;if(d)document.documentElement.classList.add('dark')}catch{}` }} />
       </head>
       <body className="min-h-full flex flex-col bg-gray-50 dark:bg-gray-900 text-gray-900 dark:text-gray-100 transition-colors">
         <ThemeProvider>

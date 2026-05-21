@@ -23,9 +23,18 @@ export default function ThemeProvider({ children }: { children: ReactNode }) {
   const [resolvedTheme, setResolvedTheme] = useState<'light' | 'dark'>('light');
 
   useEffect(() => {
-    const stored = localStorage.getItem('theme') as Theme | null;
-    if (stored && ['light', 'dark', 'system'].includes(stored)) {
-      setThemeState(stored);
+    // In-course choice (localStorage) wins; otherwise fall back to the theme
+    // the dashboard passed via SSO (cookie set by /auth/sso).
+    const isTheme = (v: string | undefined): v is Theme =>
+      v === 'light' || v === 'dark' || v === 'system';
+    const stored = localStorage.getItem('theme') ?? undefined;
+    const fromSSO = document.cookie.match(/(?:^|; )theme=([^;]+)/)?.[1];
+    const initial = [stored, fromSSO].find(isTheme);
+    if (initial) {
+      // Mount-only hydration from localStorage / SSO cookie — a lazy useState
+      // initializer can't read these during SSR without a hydration flash.
+      // eslint-disable-next-line react-hooks/set-state-in-effect
+      setThemeState(initial);
     }
   }, []);
 
