@@ -1,10 +1,12 @@
 'use client';
 
-import { useState, useCallback } from 'react';
+import { useState, useCallback, useMemo, useEffect } from 'react';
 import { useRouter } from 'next/navigation';
 import type { AssignmentConfig, AssignmentDraft } from '@/lib/types';
+import type { TTSBlock } from '@/hooks/useTextToSpeech';
 import DraftChat from './DraftChat';
 import MicrophoneButton from '@/components/MicrophoneButton';
+import TTSController from '@/components/TTSController';
 import { courseConfig } from '@/lib/course.config';
 import { getScoreColor } from '@/lib/scoreUtils';
 
@@ -44,6 +46,7 @@ export default function AssignmentWorkspace({ assignment, savedDrafts, scoreHist
   const [error, setError] = useState<string | null>(null);
   const [showTips, setShowTips] = useState<string | null>(null);
   const [showRubric, setShowRubric] = useState<string | null>(null);
+  const [showTTS, setShowTTS] = useState<string | null>(null);
   const [showGuide, setShowGuide] = useState(true);
   const [showChat, setShowChat] = useState(false);
   const [chatInitialMessage, setChatInitialMessage] = useState<string | undefined>(undefined);
@@ -53,6 +56,17 @@ export default function AssignmentWorkspace({ assignment, savedDrafts, scoreHist
   const wordCount = currentContent.trim() ? currentContent.trim().split(/\s+/).length : 0;
   const currentFeedback = feedback[section.key];
   const currentDraftNum = draftNumbers[section.key] || 0;
+
+  // Listen button reads the active section's title + instructions aloud.
+  const ttsBlocks: TTSBlock[] = useMemo(
+    () => [{ label: section.title, text: `${section.title}. ${section.instructions}` }],
+    [section.title, section.instructions],
+  );
+
+  // Stop audio when the student moves to a different section.
+  useEffect(() => {
+    setShowTTS(null);
+  }, [activeSection]);
 
   const handleSubmitSection = useCallback(async () => {
     if (submitting) return;
@@ -213,14 +227,30 @@ export default function AssignmentWorkspace({ assignment, savedDrafts, scoreHist
           <div className="flex-1 min-w-0">
             {/* Section Header */}
             <div className="bg-white dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700 shadow-sm p-5 mb-4">
-              <div className="flex items-start justify-between">
+              <div className="flex flex-col gap-3 sm:flex-row sm:items-start sm:justify-between">
                 <div>
                   <h2 className="text-lg font-bold text-gray-900 dark:text-white mb-1">
                     {activeSection + 1}. {section.title}
                   </h2>
                   <p className="text-sm text-gray-700 dark:text-gray-300 leading-relaxed">{section.instructions}</p>
                 </div>
-                <div className="flex-shrink-0 ml-4 flex gap-2">
+                <div className="flex flex-wrap gap-2 sm:flex-shrink-0">
+                  {courseConfig.features.textToSpeech && (
+                    <button
+                      onClick={() => setShowTTS(showTTS === section.key ? null : section.key)}
+                      aria-pressed={showTTS === section.key}
+                      className={`inline-flex items-center gap-1.5 px-3 py-1.5 text-xs font-medium rounded-lg transition-colors ${
+                        showTTS === section.key
+                          ? 'text-blue-800 bg-blue-200 dark:bg-blue-800/50 dark:text-blue-200'
+                          : 'text-blue-600 bg-blue-50 dark:bg-blue-900/30 dark:text-blue-400 hover:bg-blue-100 dark:hover:bg-blue-900/50'
+                      }`}
+                    >
+                      <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2} aria-hidden="true">
+                        <path strokeLinecap="round" strokeLinejoin="round" d="M19.114 5.636a9 9 0 010 12.728M16.463 8.288a5.25 5.25 0 010 7.424M6.75 8.25l4.72-4.72a.75.75 0 011.28.53v15.88a.75.75 0 01-1.28.53l-4.72-4.72H4.51c-.88 0-1.704-.507-1.938-1.354A9.01 9.01 0 012.25 12c0-.83.112-1.633.322-2.396C2.806 8.756 3.63 8.25 4.51 8.25H6.75z" />
+                      </svg>
+                      {showTTS === section.key ? 'Close Player' : 'Listen'}
+                    </button>
+                  )}
                   <button
                     onClick={() => setShowRubric(showRubric === section.key ? null : section.key)}
                     className="px-3 py-1.5 text-xs font-medium text-indigo-600 bg-indigo-50 dark:bg-indigo-900/30 dark:text-indigo-400 rounded-lg hover:bg-indigo-100 dark:hover:bg-indigo-900/50 transition-colors"
@@ -470,6 +500,16 @@ export default function AssignmentWorkspace({ assignment, savedDrafts, scoreHist
         onInsertDraft={(text) => setDrafts(prev => ({ ...prev, [section.key]: text }))}
         initialMessage={chatInitialMessage}
       />
+
+      {/* TTS Controller - fixed bottom bar */}
+      {showTTS === section.key && (
+        <TTSController
+          blocks={ttsBlocks}
+          mediaTitle="Assignment Section"
+          autoPlay
+          onClose={() => setShowTTS(null)}
+        />
+      )}
     </div>
   );
 }

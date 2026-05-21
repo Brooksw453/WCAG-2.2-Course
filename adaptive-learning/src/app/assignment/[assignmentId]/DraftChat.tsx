@@ -2,6 +2,9 @@
 
 import { useState, useRef, useEffect } from 'react';
 import { useDialogA11y } from '@/hooks/useDialogA11y';
+import { useMessageSpeech } from '@/hooks/useMessageSpeech';
+import MicrophoneButton from '@/components/MicrophoneButton';
+import { courseConfig } from '@/lib/course.config';
 
 interface ChatMessage {
   role: 'user' | 'assistant';
@@ -41,6 +44,14 @@ export default function DraftChat({
 
   // Dialog a11y: Escape to close, Tab focus trap, focus return on close
   useDialogA11y(isOpen, onClose, panelRef);
+
+  // Per-message text-to-speech (one message plays at a time).
+  const { speakingIndex, isPlaying, toggle: toggleSpeech, stopSpeech } = useMessageSpeech();
+
+  // Stop reading aloud when the panel closes.
+  useEffect(() => {
+    if (!isOpen) stopSpeech();
+  }, [isOpen, stopSpeech]);
 
   // Reset when section changes
   useEffect(() => {
@@ -268,19 +279,46 @@ export default function DraftChat({
                   ))}
                 </div>
 
-                {/* Insert draft button for draft messages */}
-                {msg.isDraft && msg.role === 'assistant' && (
-                  <div className="mt-2 flex gap-2">
-                    <button
-                      onClick={() => handleInsertDraft(msg.content)}
-                      className="px-3 py-1.5 min-h-[44px] text-xs font-semibold text-white bg-purple-600 rounded-lg hover:bg-purple-700 transition-colors flex items-center gap-1.5 shadow-sm"
-                    >
-                      <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
-                        <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
-                      </svg>
-                      Use This Draft
-                    </button>
-                    <span className="text-xs text-gray-500 dark:text-gray-400 self-center">Inserts into your response box</span>
+                {/* Listen + insert-draft actions for assistant messages */}
+                {msg.role === 'assistant' && (
+                  <div className="mt-2 flex flex-wrap items-center gap-2">
+                    {courseConfig.features.textToSpeech && (
+                      <button
+                        onClick={() => toggleSpeech(i, msg.content)}
+                        aria-pressed={speakingIndex === i && isPlaying}
+                        aria-label={speakingIndex === i && isPlaying ? 'Stop reading this message' : 'Listen to this message'}
+                        className={`px-3 py-1.5 min-h-[44px] text-xs font-semibold rounded-lg transition-colors flex items-center gap-1.5 ${
+                          speakingIndex === i && isPlaying
+                            ? 'text-blue-700 dark:text-blue-300 bg-blue-100 dark:bg-blue-900/40'
+                            : 'text-gray-700 dark:text-gray-300 bg-gray-100 dark:bg-gray-700 hover:bg-gray-200 dark:hover:bg-gray-600'
+                        }`}
+                      >
+                        {speakingIndex === i && isPlaying ? (
+                          <svg className="w-3.5 h-3.5" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true">
+                            <rect x="6" y="6" width="12" height="12" rx="2" />
+                          </svg>
+                        ) : (
+                          <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2} aria-hidden="true">
+                            <path strokeLinecap="round" strokeLinejoin="round" d="M19.114 5.636a9 9 0 010 12.728M16.463 8.288a5.25 5.25 0 010 7.424M6.75 8.25l4.72-4.72a.75.75 0 011.28.53v15.88a.75.75 0 01-1.28.53l-4.72-4.72H4.51c-.88 0-1.704-.507-1.938-1.354A9.01 9.01 0 012.25 12c0-.83.112-1.633.322-2.396C2.806 8.756 3.63 8.25 4.51 8.25H6.75z" />
+                          </svg>
+                        )}
+                        {speakingIndex === i && isPlaying ? 'Stop' : 'Listen'}
+                      </button>
+                    )}
+                    {msg.isDraft && (
+                      <>
+                        <button
+                          onClick={() => handleInsertDraft(msg.content)}
+                          className="px-3 py-1.5 min-h-[44px] text-xs font-semibold text-white bg-purple-600 rounded-lg hover:bg-purple-700 transition-colors flex items-center gap-1.5 shadow-sm"
+                        >
+                          <svg className="w-3.5 h-3.5" fill="none" viewBox="0 0 24 24" stroke="currentColor" aria-hidden="true">
+                            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" />
+                          </svg>
+                          Use This Draft
+                        </button>
+                        <span className="text-xs text-gray-500 dark:text-gray-400 self-center">Inserts into your response box</span>
+                      </>
+                    )}
                   </div>
                 )}
               </div>
@@ -356,6 +394,9 @@ export default function DraftChat({
               placeholder="Describe your ideas or answer the questions..."
               rows={2}
               className="flex-1 resize-none rounded-xl border border-gray-300 dark:border-gray-600 px-3 py-2 text-base sm:text-sm text-gray-900 dark:text-white dark:bg-gray-700 placeholder-gray-400 dark:placeholder-gray-400 focus:ring-2 focus:ring-purple-500 focus:border-purple-500 outline-none"
+            />
+            <MicrophoneButton
+              onTranscript={(t) => setInput(prev => prev + (prev && !prev.endsWith(' ') ? ' ' : '') + t)}
             />
             <button
               onClick={sendMessage}

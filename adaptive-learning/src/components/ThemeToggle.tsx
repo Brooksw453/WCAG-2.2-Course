@@ -13,7 +13,7 @@ export default function ThemeToggle({ className = '', compact = false }: { class
     return (
       <button
         onClick={toggle}
-        className={`p-1.5 rounded-md transition-colors ${className}`}
+        className={`inline-flex items-center justify-center p-2 rounded-md transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 ${className}`}
         aria-label={isDark ? 'Switch to light mode' : 'Switch to dark mode'}
         title={isDark ? 'Light mode' : 'Dark mode'}
       >
@@ -34,7 +34,7 @@ export default function ThemeToggle({ className = '', compact = false }: { class
   return (
     <button
       onClick={toggle}
-      className={`inline-flex items-center gap-1.5 px-2 py-1 rounded-md text-xs font-medium transition-colors ${className}`}
+      className={`inline-flex items-center gap-1.5 px-2 py-1 rounded-md text-xs font-medium transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-blue-500 ${className}`}
       aria-label={isDark ? 'Switch to light mode' : 'Switch to dark mode'}
     >
       {isDark ? (
