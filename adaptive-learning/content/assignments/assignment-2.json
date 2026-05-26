@@ -2,15 +2,14 @@
   "assignmentId": 2,
   "title": "Build Accessible Course Materials, Multimedia, and an Assessment",
   "points": 150,
-  "description": "Now you apply Modules 4-6 to the rest of your teaching stack: slide decks or handouts, video content, and one quiz or exam. You'll also experience what your students with disabilities experience by completing your own redesigned quiz using only the keyboard. These artifacts all go into your portfolio.",
+  "description": "Now you apply Modules 4-6 to the rest of your teaching stack: slide decks or handouts, video content, and one quiz or exam. As part of the quiz redesign, you'll also experience what your students with disabilities experience by completing your own redesigned quiz using only the keyboard. These artifacts all go into your portfolio.",
   "relatedChapters": [4, 5, 6],
   "context": {
     "purpose": "Syllabi are the opening move — but students spend more time with your slides, videos, and quizzes. These are also where the biggest accessibility failures usually hide: slides with text boxes instead of layouts, videos with auto-captions no one corrected, and quizzes that depend on drag-and-drop or tight time limits. Fixing these means you're not just compliant — your teaching actually works for every student who shows up.",
     "goals": [
       "Rebuild one slide deck or handout using accessible techniques from Module 4",
       "Audit a video you actually assign and determine what it needs (captions, audio description, transcript)",
-      "Redesign one quiz or exam with accessibility baked in from Module 6",
-      "Experience keyboard-only navigation from the student side",
+      "Redesign one quiz or exam with accessibility baked in from Module 6, then test it using keyboard-only navigation",
       "Generate three more portfolio artifacts"
     ],
     "whatToExpect": "The AI coach evaluates each section against the specific techniques covered in the source module: built-in slide layouts and reading order (Module 4), captions + audio description standards (Module 5), and LMS quiz accessibility + extended time (Module 6). If you claim you 'fixed the slides,' the coach will ask which specific layouts you used and how you verified reading order. Be specific and you'll get strong feedback fast."
@@ -48,31 +47,20 @@
     },
     {
       "key": "accessible-quiz",
-      "title": "Accessible Assessment",
-      "instructions": "Pick one quiz or exam you give (LMS-based or paper-based). Redesign it for accessibility. Minimum required: (a) replace any drag-and-drop or hotspot questions with a keyboard-accessible alternative (multiple choice, matching, or text input), (b) add alt text to every image used in a question, (c) set time limits that accommodate extended-time accommodations — either disable time limits or make sure your LMS honors the per-student extension, (d) avoid questions that rely on color alone (e.g., 'which one is highlighted in red?'), (e) ensure every question is keyboard-reachable. Describe the original design, the accessibility issues you found, and the specific changes you made, referencing Module 6 techniques.",
-      "minWords": 100,
-      "maxWords": 400,
-      "rubric": "A strong response (1) identifies at least 2-3 specific accessibility issues in the original quiz — not just theoretical, but issues in THIS specific quiz, (2) applies specific Module 6 techniques — not 'I made it more accessible' but 'I replaced the drag-and-drop matching with a dropdown matching question', (3) addresses the timing issue explicitly (extended-time students are the single most common accommodation; a quiz with a hard 30-minute cap excludes them), (4) treats images in questions the same way as images in readings — alt text that describes the question-relevant content. Low scores come from vague changes, leaving inaccessible question types, or not addressing timing.",
+      "title": "Accessible Assessment with Keyboard Test",
+      "instructions": "PART A — Redesign. Pick one quiz or exam you give (LMS-based or paper-based) and redesign it for accessibility. Minimum required: (a) replace any drag-and-drop or hotspot questions with a keyboard-accessible alternative (multiple choice, matching, or text input), (b) add alt text to every image used in a question, (c) set time limits that accommodate extended-time accommodations — either disable time limits or make sure your LMS honors the per-student extension, (d) avoid questions that rely on color alone (e.g., 'which one is highlighted in red?'), (e) ensure every question is keyboard-reachable.\n\nPART B — Keyboard-only test. After redesigning, take your own quiz using ONLY the keyboard. Unplug your mouse or move it out of reach. Use Tab/Shift+Tab to navigate, Space or Enter to activate controls, and arrow keys for menus. Report: were you able to complete every question? Did you hit focus traps, invisible focus, or illogical tab order? What would this experience be like for a student who ALWAYS uses the keyboard?\n\nWrite up both parts together: describe the original design, the issues you found, the Module 6 techniques you applied, and what your keyboard-only walkthrough revealed.",
+      "minWords": 150,
+      "maxWords": 500,
+      "rubric": "A strong response (1) identifies at least 2-3 specific accessibility issues in the original quiz — not just theoretical, but issues in THIS specific quiz, (2) applies specific Module 6 techniques — not 'I made it more accessible' but 'I replaced the drag-and-drop matching with a dropdown matching question', (3) addresses the timing issue explicitly (extended-time students are the single most common accommodation; a quiz with a hard 30-minute cap excludes them), (4) treats images in questions the same way as images in readings — alt text that describes the question-relevant content, (5) shows evidence that the keyboard-only test actually happened — specific moments of friction or flow, honest reporting of focus traps or invisible focus, and a connection to student impact ('a keyboard-only user would have given up at Question 4'). Low scores come from vague changes, leaving inaccessible question types, not addressing timing, or skipping the keyboard walkthrough.",
       "tips": [
         "Canvas, Blackboard, and Moodle all support per-student time extensions — ask DRC which students need them and add the extension BEFORE the quiz opens",
         "Drag-and-drop matching → dropdown matching (keyboard-accessible) is a common direct swap",
         "For chemistry structures, diagrams, or images in questions — alt text should describe what's relevant to the QUESTION, not the whole image",
         "If you must use a time limit, make it generous — a quiz that's a knowledge check shouldn't be a reading-speed test",
-        "Preview the quiz as a student — use your LMS's 'student view' and try it"
-      ]
-    },
-    {
-      "key": "keyboard-test-report",
-      "title": "Keyboard-Only Test Report",
-      "instructions": "Take your redesigned quiz from Section 3, but complete it using ONLY the keyboard. Unplug your mouse or put it behind your monitor where you can't reach it. Use Tab to move forward, Shift+Tab to move backward, Space or Enter to activate buttons/radios, and arrow keys for menus. Report: (a) Were you able to complete every question? (b) Did you get stuck anywhere — focus traps, invisible focus, unreachable controls? (c) Was the tab order logical, or did focus jump around? (d) What would this experience be like for a student who ALWAYS uses the keyboard? This is your first-person experience of what keyboard-only users face daily.",
-      "minWords": 75,
-      "maxWords": 300,
-      "rubric": "A strong response (1) shows evidence that the faculty member actually did the test — specific moments of friction or flow, (2) honestly reports what didn't work, even if it's embarrassing (a stuck focus is not a personal failure, it's a fix-list), (3) identifies at least one issue (there's almost always at least one), (4) connects the experience to the student impact — 'a keyboard-only user would have given up at Question 4', (5) lists what you'll change. Low scores come from 'everything worked fine' with no evidence, or not doing the test at all.",
-      "tips": [
-        "Visible focus indicator is critical — if you can't SEE where you are, you can't use it. Check if focus is visible on every control",
+        "Preview the quiz as a student — use your LMS's 'student view' and try it",
+        "Visible focus indicator is critical — if you can't SEE where you are, you can't use it. Check focus on every control",
         "Tab order should match visual order — top-to-bottom, left-to-right. If Tab jumps you from Question 1 to the submit button, something's wrong",
         "Try Escape to close any modals/popups — some LMSs trap focus in modals that can't be escaped",
-        "If you can't complete a question via keyboard, that's a blocker — report it in detail",
         "Screen reader test is bonus: NVDA (free on Windows), VoiceOver (Mac — Cmd+F5). Even 30 seconds with a screen reader is revealing"
       ]
     }
