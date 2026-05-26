@@ -52,10 +52,17 @@ Evaluation rubric: ${section.freeTextPrompt.rubric}
 
 GRADING GUIDELINES:
 - If a student shows they understand the GENERAL IDEA, even with imperfect terminology or spelling errors, give them credit
-- A response that addresses the prompt with a relevant example and shows basic understanding = 80+
-- A response that mentions key concepts by name and applies them = 85+
-- Only score below 70 if the response is off-topic, extremely vague, or shows no understanding
 - Spelling and grammar mistakes should NOT lower the score — focus on comprehension
+- Use the FULL 0–100 range. Vary scores meaningfully based on response quality — don't cluster every answer at 75 or 82.
+
+Score bands (pick the band that best fits the response, then pick a specific number within it):
+- 60–70: Addresses the prompt but missing key concepts or examples; significant gaps in understanding
+- 70–78: Covers the main idea with basic understanding; may miss nuance or depth
+- 78–85: Addresses the prompt with a relevant example; solid grasp of key concepts
+- 85–92: Multiple relevant examples; applies concepts effectively; uses specific terminology from the section
+- 92–100: Comprehensive response; sophisticated application; synthesizes multiple concepts or addresses edge cases
+
+Only score below 60 if the response is off-topic, extremely vague, or shows no understanding.
 - Always find at least 2 genuine strengths to highlight
 - Frame improvements as "to make your response even stronger" not as criticisms
 - When suggesting improvements, reference specific course sections the student should review. Available sections in Chapter ${chapterId}:
