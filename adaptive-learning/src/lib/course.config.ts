@@ -41,6 +41,18 @@ export const courseConfig = {
     },
   },
 
+  // Credential issuer — used on the certificate and the LinkedIn
+  // "Add to Profile" certification deep-link. Keep these defaults unless the
+  // course is issued by a different organization.
+  issuer: {
+    name: "ES Designs",
+    // LinkedIn company page numeric ID. Found in the page admin URL:
+    // linkedin.com/company/<THIS_NUMBER>/admin/ . Passing it (alongside the
+    // exact organizationName) makes LinkedIn match the certification to the
+    // page and show its logo reliably, instead of a fuzzy name-only match.
+    linkedInOrgId: "101826827",
+  },
+
   // AI tutor personality (used in system prompts for all AI endpoints)
   aiTutor: {
     role: "a friendly accessibility specialist who has worked in higher-ed faculty development and understands the realities of teaching loads, LMS frustrations, and Title II compliance pressure",

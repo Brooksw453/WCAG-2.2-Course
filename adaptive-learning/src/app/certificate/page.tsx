@@ -1,12 +1,15 @@
 import { createClient } from '@/lib/supabase/server';
 import { getAllChapters, getAllAssignments } from '@/lib/content';
 import { redirect } from 'next/navigation';
+import { headers } from 'next/headers';
 import Link from 'next/link';
 import type { SectionProgress, AssignmentDraft } from '@/lib/types';
 import PrintButton from './PrintButton';
 import DownloadPDFButton from '@/components/DownloadPDFButton';
+import CertificateDocument from '@/components/CertificateDocument';
 import { courseConfig, COURSE_ID } from '@/lib/course.config';
 import { getLetterGrade } from '@/lib/scoreUtils';
+import { formatVerificationId } from '@/lib/certUtils';
 
 interface QuizAttempt {
   score: number;
@@ -79,8 +82,7 @@ export default async function CertificatePage() {
       remainingItems.push(`Submit Assignment${ungradedAssignments.length > 1 ? 's' : ''} ${ungradedAssignments.join(', ')}`);
     }
     if (!portfolioSubmitted) {
-      const capstoneLabel = courseConfig.capstone.navLabel || courseConfig.capstone.title || 'capstone';
-      remainingItems.push(`Submit your ${capstoneLabel}`);
+      remainingItems.push(`Submit your ${courseConfig.capstone.labels.finalTitle} (capstone)`);
     }
 
     return (
@@ -212,6 +214,63 @@ export default async function CertificatePage() {
     day: 'numeric',
   });
 
+  // Issue (or fetch) the persisted certificate record. Its uuid is the stable,
+  // public verification key powering /verify/[certId] and the LinkedIn link.
+  // Best-effort: if the certificates table is unavailable, fall back to the
+  // legacy derived ID and hide the share controls — the page still renders.
+  let certId: string | null = null;
+  {
+    const { data: existing } = await supabase
+      .from('certificates')
+      .select('id')
+      .eq('user_id', user.id)
+      .eq('course_id', COURSE_ID)
+      .maybeSingle();
+    if (existing?.id) {
+      certId = existing.id;
+    } else {
+      const { data: inserted } = await supabase
+        .from('certificates')
+        .insert({
+          user_id: user.id,
+          course_id: COURSE_ID,
+          student_name: displayName,
+          final_grade: finalGrade !== null ? Math.round(finalGrade) : null,
+          letter_grade: letterGrade,
+        })
+        .select('id')
+        .single();
+      certId = inserted?.id ?? null;
+    }
+  }
+
+  const verificationId = certId
+    ? formatVerificationId(certId)
+    : `${user.id.slice(0, 8).toUpperCase()}-${Math.abs(completionDate.getTime() % 9999).toString().padStart(4, '0')}`;
+
+  // Public verification URL + LinkedIn "Add to Profile" deep-link.
+  let verifyUrl = '';
+  let linkedInAddUrl = '';
+  if (certId) {
+    const hdrs = await headers();
+    const host = hdrs.get('host');
+    const proto = hdrs.get('x-forwarded-proto') || 'https';
+    if (host) {
+      verifyUrl = `${proto}://${host}/verify/${certId}`;
+      const params = new URLSearchParams({
+        startTask: 'CERTIFICATION_NAME',
+        name: courseConfig.title,
+        organizationId: courseConfig.issuer.linkedInOrgId,
+        organizationName: courseConfig.issuer.name,
+        issueYear: String(completionDate.getFullYear()),
+        issueMonth: String(completionDate.getMonth() + 1),
+        certId,
+        certUrl: verifyUrl,
+      });
+      linkedInAddUrl = `https://www.linkedin.com/profile/add?${params.toString()}`;
+    }
+  }
+
   return (
     <div className="min-h-screen bg-gray-100 dark:bg-gray-900 print:bg-white">
       {/* Screen-only controls */}
@@ -236,160 +295,47 @@ export default async function CertificatePage() {
       </div>
 
       {/* Certificate */}
-      <div className="max-w-4xl mx-auto px-4 pb-8 print:px-0 print:pb-0 print:max-w-none">
-        <div id="certificate-content" className="bg-white rounded-xl shadow-lg print:shadow-none print:rounded-none overflow-hidden">
-          {/* Outer decorative border */}
-          <div className="border-[12px] border-amber-500/20 m-4 print:m-0 print:border-[16px]">
-            {/* Inner decorative border */}
-            <div className="border-2 border-navy-800 p-6 sm:p-12 print:p-16" style={{ borderColor: '#1e3a5f' }}>
-              {/* Corner ornaments */}
-              <div className="relative" aria-label="Certificate of completion" role="region">
-                {/* Top decorative line */}
-                <div className="flex items-center justify-center mb-8">
-                  <div className="flex-1 h-px bg-gradient-to-r from-transparent via-amber-400 to-transparent" />
-                  <div className="mx-4">
-                    <svg aria-hidden="true" className="w-8 h-8 text-amber-500" viewBox="0 0 24 24" fill="currentColor">
-                      <path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z" />
-                    </svg>
-                  </div>
-                  <div className="flex-1 h-px bg-gradient-to-r from-transparent via-amber-400 to-transparent" />
-                </div>
-
-                {/* Certificate content */}
-                <div className="text-center">
-                  <h2 className="text-sm font-semibold tracking-[0.3em] uppercase mb-2" style={{ color: '#1e3a5f', fontFamily: 'Georgia, serif' }}>
-                    This is to certify that
-                  </h2>
-
-                  <div className="my-6">
-                    <h1
-                      className="text-3xl sm:text-5xl font-bold mb-2"
-                      style={{
-                        color: '#1e3a5f',
-                        fontFamily: 'Georgia, "Times New Roman", serif',
-                      }}
-                    >
-                      {displayName}
-                    </h1>
-                    <div className="w-64 h-px bg-amber-400 mx-auto" />
-                  </div>
-
-                  <p className="text-base max-w-xl mx-auto mb-8 leading-relaxed" style={{ color: '#374151', fontFamily: 'Georgia, serif' }}>
-                    has successfully completed all requirements of the
-                  </p>
-
-                  <h2
-                    className="text-2xl sm:text-4xl font-bold mb-2"
-                    style={{
-                      color: '#1e3a5f',
-                      fontFamily: 'Georgia, "Times New Roman", serif',
-                    }}
-                  >
-                    {courseConfig.title}
-                  </h2>
-                  <p className="text-lg mb-8" style={{ color: '#6b7280', fontFamily: 'Georgia, serif' }}>
-                    {courseConfig.subtitle}
-                  </p>
-
-                  <p className="text-sm max-w-lg mx-auto mb-8 leading-relaxed" style={{ color: '#6b7280', fontFamily: 'Georgia, serif' }}>
-                    This certifies that {displayName} has successfully completed all {totalSections} sections
-                    of the {courseConfig.title} adaptive learning course, demonstrating proficiency
-                    in the course material.
-                  </p>
-
-                  {/* Grade display */}
-                  {finalGrade !== null && letterGrade && (
-                    <div className="flex items-center justify-center gap-4 sm:gap-8 mb-8 flex-wrap">
-                      <div className="text-center">
-                        <div
-                          className="text-4xl font-bold"
-                          style={{ color: '#1e3a5f', fontFamily: 'Georgia, serif' }}
-                        >
-                          {letterGrade}
-                        </div>
-                        <div className="text-xs uppercase tracking-wider text-gray-500 mt-1">Final Grade</div>
-                      </div>
-                      <div className="w-px h-12 bg-gray-300" />
-                      <div className="text-center">
-                        <div
-                          className="text-4xl font-bold"
-                          style={{ color: '#1e3a5f', fontFamily: 'Georgia, serif' }}
-                        >
-                          {Math.round(finalGrade)}%
-                        </div>
-                        <div className="text-xs uppercase tracking-wider text-gray-500 mt-1">Score</div>
-                      </div>
-                    </div>
-                  )}
-
-                  {/* Date */}
-                  <div className="mb-8">
-                    <div className="text-sm" style={{ color: '#6b7280', fontFamily: 'Georgia, serif' }}>
-                      Awarded on
-                    </div>
-                    <div
-                      className="text-lg font-semibold mt-1"
-                      style={{ color: '#1e3a5f', fontFamily: 'Georgia, serif' }}
-                    >
-                      {formattedDate}
-                    </div>
-                  </div>
-
-                  {/* Signature line */}
-                  <div className="flex items-end justify-center gap-8 sm:gap-16 mt-12 flex-wrap">
-                    <div className="text-center">
-                      <div className="w-48 border-b border-gray-400 mb-2" />
-                      <div className="text-xs uppercase tracking-wider text-gray-500">Instructor</div>
-                    </div>
-                    <div className="text-center">
-                      <div className="w-48 border-b border-gray-400 mb-2" />
-                      <div className="text-xs uppercase tracking-wider text-gray-500">Date</div>
-                    </div>
-                  </div>
-                </div>
-
-                {/* Verification code */}
-                <div className="mt-8 text-center">
-                  <p className="text-[10px] tracking-wider text-gray-500 dark:text-gray-400" style={{ fontFamily: 'monospace' }}>
-                    Verification ID: {user.id.slice(0, 8).toUpperCase()}-{Math.abs(completionDate.getTime() % 9999).toString().padStart(4, '0')}
-                  </p>
-                </div>
-
-                {/* Bottom decorative line */}
-                <div className="flex items-center justify-center mt-4">
-                  <div className="flex-1 h-px bg-gradient-to-r from-transparent via-amber-400 to-transparent" />
-                  <div className="mx-4">
-                    <svg aria-hidden="true" className="w-6 h-6 text-amber-500" viewBox="0 0 24 24" fill="currentColor">
-                      <path d="M12 2L15.09 8.26L22 9.27L17 14.14L18.18 21.02L12 17.77L5.82 21.02L7 14.14L2 9.27L8.91 8.26L12 2Z" />
-                    </svg>
-                  </div>
-                  <div className="flex-1 h-px bg-gradient-to-r from-transparent via-amber-400 to-transparent" />
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
+      <CertificateDocument
+        studentName={displayName}
+        totalSections={totalSections}
+        finalGrade={finalGrade}
+        letterGrade={letterGrade}
+        formattedDate={formattedDate}
+        verificationId={verificationId}
+      />
 
       {/* Share Section */}
-      <div className="print:hidden max-w-4xl mx-auto px-4 pb-8">
-        <div className="bg-white dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700 shadow-sm p-6 text-center">
-          <h3 className="text-sm font-semibold text-gray-700 dark:text-gray-300 uppercase tracking-wide mb-3">Share Your Achievement</h3>
-          <div className="flex justify-center gap-3">
+      {linkedInAddUrl && (
+        <div className="print:hidden max-w-4xl mx-auto px-4 pb-8">
+          <div className="bg-white dark:bg-gray-800 rounded-lg border border-gray-200 dark:border-gray-700 shadow-sm p-6 text-center">
+            <h3 className="text-sm font-semibold text-gray-700 dark:text-gray-300 uppercase tracking-wide mb-3">Share Your Achievement</h3>
+            <div className="flex justify-center mb-4">
+              <a
+                href={linkedInAddUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 px-5 py-2.5 bg-[#0A66C2] text-white text-sm font-medium rounded-lg hover:bg-[#004182] transition-colors"
+              >
+                <svg aria-hidden="true" className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
+                  <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+                </svg>
+                Add to LinkedIn Profile
+              </a>
+            </div>
+            <p className="text-xs text-gray-500 dark:text-gray-400 mb-1">
+              Public verification link (anyone can view — no login required):
+            </p>
             <a
-              href={`https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(typeof window !== 'undefined' ? window.location.href : '')}&title=${encodeURIComponent(`I completed ${courseConfig.title}!`)}&summary=${encodeURIComponent(`I earned a ${letterGrade || ''} (${finalGrade ? Math.round(finalGrade) : ''}%) in ${courseConfig.title} - ${courseConfig.subtitle}`)}`}
+              href={verifyUrl}
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 px-5 py-2.5 bg-[#0A66C2] text-white text-sm font-medium rounded-lg hover:bg-[#004182] transition-colors"
+              className="text-xs text-blue-600 hover:text-blue-800 break-all underline"
             >
-              <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24">
-                <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
-              </svg>
-              Share on LinkedIn
+              {verifyUrl}
             </a>
           </div>
         </div>
-      </div>
+      )}
 
       {/* Print-specific styles */}
       <style>{`

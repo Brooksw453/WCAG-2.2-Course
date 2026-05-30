@@ -40,6 +40,7 @@ export async function updateSession(request: NextRequest) {
   // Public routes that don't require auth
   const isPublicRoute =
     request.nextUrl.pathname.startsWith('/auth') ||
+    request.nextUrl.pathname.startsWith('/verify') ||
     request.nextUrl.pathname === '/';
 
   // API routes handle their own auth (return 401 JSON, not a redirect).
