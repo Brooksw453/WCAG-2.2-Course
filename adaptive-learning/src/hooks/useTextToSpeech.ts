@@ -66,6 +66,11 @@ const MOBILE_RATES = [0.85, 1.0, 1.05, 1.1, 1.15];
 const OPENAI_RATES = [0.75, 1.0, 1.25, 1.5, 2.0];
 // Display labels shown to the user (same for all platforms)
 const RATE_LABELS = ['0.75x', '1x', '1.25x', '1.5x', '2x'];
+// Max attempts to (re)generate a single chunk before skipping it. A chunk
+// that fails (e.g. a cold cache-miss hitting a transient OpenAI error or a
+// brief rate-limit) must never halt the whole section — after exhausting
+// retries we skip it and keep reading.
+const MAX_CHUNK_ATTEMPTS = 4;
 
 function isMobile(): boolean {
   if (typeof navigator === 'undefined') return false;
@@ -358,40 +363,50 @@ export function useTextToSpeech(
       speakChunkOpenAI();
     });
 
-    player.playChunk(blockChunks[chunkIdx]).catch((err) => {
-      console.warn('OpenAI TTS chunk error:', err);
+    // Play the current chunk with bounded retries. If it keeps failing we
+    // skip it and advance — a single bad chunk must never stop the section.
+    const playWithRetry = (attempt: number) => {
+      player.playChunk(blockChunks[chunkIdx]).catch((err) => {
+        console.warn(`OpenAI TTS chunk error (attempt ${attempt}):`, err);
 
-      // Quota exceeded — fall back to SpeechSynthesis for the rest of this session
-      if (err?.message === 'quota_exceeded') {
-        const resetMsg = (err as Record<string, string>).message
-          || 'Premium voice limit reached for today. Switching to standard voice.';
-        setQuotaMessage(resetMsg);
+        // Quota exceeded — fall back to SpeechSynthesis for the rest of this session
+        if (err?.message === 'quota_exceeded') {
+          const resetMsg = (err as Record<string, string>).message
+            || 'Premium voice limit reached for today. Switching to standard voice.';
+          setQuotaMessage(resetMsg);
 
-        // Clean up OpenAI player
-        player.cleanup();
-        ttsPlayerRef.current = null;
+          // Clean up OpenAI player
+          player.cleanup();
+          ttsPlayerRef.current = null;
 
-        // Switch to SpeechSynthesis mode and continue playing from current position
-        setUseOpenAI(false);
-        rateRef.current = getSpeechSynthesisRates()[rateIndex];
-        startSilentAudio();
-        speakChunkSpeechSynthesisRef.current();
-        return;
-      }
-
-      // Other errors — retry once after 1 second
-      setTimeout(() => {
-        if (isPlayingRef.current) {
-          player.playChunk(blockChunks[chunkIdx]).catch(() => {
-            // Give up — stop playback
-            isPlayingRef.current = false;
-            setIsPlaying(false);
-            player.cleanup();
-            ttsPlayerRef.current = null;
-          });
+          // Switch to SpeechSynthesis mode and continue playing from current position
+          setUseOpenAI(false);
+          rateRef.current = getSpeechSynthesisRates()[rateIndex];
+          startSilentAudio();
+          speakChunkSpeechSynthesisRef.current();
+          return;
         }
-      }, 1000);
-    });
+
+        if (!isPlayingRef.current) return;
+
+        if (attempt < MAX_CHUNK_ATTEMPTS) {
+          // Transient failure — back off and retry the SAME chunk.
+          setTimeout(() => {
+            if (isPlayingRef.current) playWithRetry(attempt + 1);
+          }, 500 * attempt);
+        } else {
+          // Still failing — skip this chunk and continue with the next one
+          // so the rest of the section still plays.
+          console.warn('OpenAI TTS: skipping chunk after repeated failures');
+          chunkIndexRef.current = chunkIdx + 1;
+          setTimeout(() => {
+            if (isPlayingRef.current) speakChunkOpenAI();
+          }, 300);
+        }
+      });
+    };
+
+    playWithRetry(1);
 
     prefetchAhead(2);
   }, [prefetchAhead, rateIndex]);
